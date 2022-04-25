@@ -59,7 +59,11 @@ export function logInFacebook() {
 
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log("Autenticado con Facebook");
+      const user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
     })
     .catch((error) => {
       const errorCode = error.code;
