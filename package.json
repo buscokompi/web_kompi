@@ -27,5 +27,8 @@
     "vite": "^2.9.0"
   },
   "keywords": [],
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.6.11"
+  }
 }
