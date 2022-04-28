@@ -42,8 +42,8 @@ body {
 
 .card-login {
   display: flex;
-  width: 40%;
-  height: 55%;
+  width: 28rem;
+  height: 35rem;
   flex-direction: column;
   border-radius: 30px;
   padding: 3.5rem 5rem;
