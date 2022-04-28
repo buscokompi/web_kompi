@@ -32,6 +32,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 50%;
+  margin-left: 3.6rem;
 }
 
 .logo {
@@ -78,7 +79,7 @@ input:focus {
 
 .button {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 3rem;
   border-radius: 12px;
@@ -98,6 +99,7 @@ input:focus {
   background-color: var(--primary-color);
   margin-top: 2.5rem;
   margin-bottom: 4.5rem;
+  justify-content: center;
 }
 
 .button span {
@@ -178,12 +180,13 @@ input:focus {
 .google {
   width: 1.8rem;
   height: 1.8rem;
+  margin-left: 20%;
 }
 
 .facebook {
   width: 1.8rem;
   height: 1.8rem;
-  margin-left: 1.2rem;
+  margin-left: 20%;
 }
 
 p {

@@ -10,11 +10,13 @@ export function signInFirebase(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log("usuario registrado");
+      alert("Usuario " + email + " creado.");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
+      alert("Registro invalido");
     });
 }
 
@@ -23,12 +25,14 @@ export function logInFirebase(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log("El usuario existe");
+      alert("Usuario " + email + " logueado.");
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
+      alert("Login invalido");
     });
 }
 
@@ -39,7 +43,9 @@ export function logInGoogle() {
 
   signInWithPopup(auth, provider)
     .then((result) => {
+      const user = result.user;
       console.log("Autenticado con google");
+      alert("Usuario " + user.email + " logueado con Google.");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -49,6 +55,7 @@ export function logInGoogle() {
       console.log(errorMessage);
       console.log(email);
       console.log(credential);
+      alert("Login invalido");
     });
 }
 
