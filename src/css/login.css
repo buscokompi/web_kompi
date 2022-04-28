@@ -1,0 +1,116 @@
+:root {
+  --primary-color: #f9b225;
+  --secondary-color: #ffe194;
+  --terciary-color: #d11149;
+  --terciary2-color: #c83e4d;
+  --dark-color: #3f3d3b;
+  --white-color: #fff;
+  --grey-color: #c4c4c4;
+
+  /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
+  --title-font: "Dosis", sans-serif;
+  --subtitle-font: "Poppins", sans-serif;
+  --text-font: "Open Sans", sans-serif;
+}
+
+body{
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  height: 100vh;
+  background-color: bisque;
+}
+
+.img-dog-login{
+  width: 50%;
+  object-fit: cover;
+}
+
+.container-login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.logo{
+  justify-self: flex-start;
+  margin-bottom: 4rem;
+}
+
+.card-login{
+  display: flex;
+  width: 40%;
+  height: 65%;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 3rem;
+  background-color: white;
+}
+
+.card-login p{
+  color: var(--grey-color);
+  font-family: var(--text-font);
+}
+
+.p-title{
+  text-align: center;
+  font-family: var(--text-font);
+  font-size: 1.2rem;
+}
+
+input{
+  padding: 1rem;
+  border-radius: 12px;
+  border: var(--grey-color) 1px solid;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border-radius: 12px;
+  border: 0;
+  font-size: 0.9rem;
+  font-family: var(--text-font);
+}
+
+.button img{
+  object-fit: contain;
+  margin-right: 1.5rem;
+}
+
+.btn-login-email{
+  background-color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.button span{
+  color: var(--white-color);
+}
+
+.btn-login-google{
+  background-color: var(--white-color);
+  border: var(--grey-color) 1px solid;
+  color: var(--grey-color);
+  margin-bottom: 1rem;
+}
+.btn-login-google span{
+  color: var(--grey-color);
+}
+
+.btn-login-facebook{
+  background-color: #30457B;
+}
+
+.link-signin{
+  color: var(--primary-color);
+  font-family: var(--text-font);
+}
+
+p{
+  font-family: var(--text-font);
+}
