@@ -37,12 +37,12 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
+  padding: 0 15rem;
 }
 
 .topbar img {
-  width: 16.1rem;
-  height: 5rem;
+  width: 14rem;
+  height: auto;
 }
 
 .topbar-nav {
@@ -50,7 +50,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .topbar-nav a {
@@ -200,13 +200,17 @@ h3 {
 .animal-adoptions-cards {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 3rem;
 }
 
+/* BUG: con los tamaños de las cartas para diferentes resoluciones, revisar */
+
 .card {
-  width: 20rem;
-  height: 28.3rem;
+  /* width: 100vw; */
+  height: 40vh;
+  max-width: 27rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -216,8 +220,9 @@ h3 {
 }
 
 .card-extra {
-  width: 20rem;
-  height: 28.3rem;
+  /* width: 100vw; */
+  height: 40vh;
+  max-width: 27rem;
   background-color: var(--orange);
   display: flex;
   flex-direction: column;
@@ -229,15 +234,15 @@ h3 {
 }
 
 .card-img {
-  width: 100%;
-  height: 50%;
+  max-width: 100%;
+  max-height: 50%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
 .card-logo {
-  width: 35%;
-  height: 35%;
+  max-width: 35%;
+  max-height: 35%;
 }
 
 .card-name {
@@ -251,23 +256,27 @@ h3 {
   color: var(--white);
   text-align: center;
   font-family: var(--main-font);
-  font-size: 15px;
+  font-size: 15px;/* 22px */
   font-weight: 400;
   margin: 0;
 }
 
+.card-text span {
+  font-weight: 700;
+}
+
 .card-link {
-  width: 12rem;
-  height: 3rem;
+  width: 15rem;
+  height: 4rem;
   border: 1px solid var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 1.5rem;
+  border-radius: 1.8rem;
   text-decoration: none;
   color: var(--white);
   font-family: var(--main-font);
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -281,6 +290,7 @@ h3 {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 3% 10%;
 }
 
 .counter-container {
@@ -305,4 +315,23 @@ h3 {
   font-size: 60px;
   font-weight: 600;
   color: var(--orange);
+}
+
+/**  ADOPTION PROCESS  **/
+
+.adoption-process {
+  width: 100%;
+  height: 100vh;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15rem;
+}
+
+.adoption-process-container {
+  width: 100%;
+  height: 5rem;
+  background-color: lightcoral;
 }
