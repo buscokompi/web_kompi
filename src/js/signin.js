@@ -1,8 +1,8 @@
 import { signInFirebase, logInGoogle, logInFacebook } from "./fbauth.js";
 
 const signInButton = document.querySelector(".btn-login-email");
-const logGoogle = document.querySelector(".btn-login-google");
-const logFacebook = document.querySelector(".btn-login-facebook");
+const logGoogle = document.querySelector(".btn-signin-google");
+const logFacebook = document.querySelector(".btn-signin-facebook");
 
 // Evento on click que coge el nombre de usuario y contraseña y lo registra en la base de datos de firebase
 signInButton.addEventListener("click", () => {
