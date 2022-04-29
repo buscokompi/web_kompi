@@ -496,7 +496,9 @@ h3 {
 }
 
 .footer .kompi-logo {
-  height: 4rem;
+  height: 3rem;
+  margin-top: 2rem;
+  margin-right: 4.5rem;
 }
 
 .footer ul {
@@ -597,13 +599,11 @@ h3 {
 }
 
 .social-media-list {
-  margin: 0;
   display: flex;
-  gap: 2.5rem;
 }
 
 .social-media-list a {
-  padding: 0.5rem;
+  margin-right: 8rem;
   color: var(--color-smooth);
   display: flex;
   border-radius: 0.3rem;
