@@ -35,10 +35,15 @@ body {
   margin-left: 3.6rem;
 }
 
-.logo {
+.container-login a{
   width: 18%;
   justify-self: flex-start;
   margin-bottom: 3rem;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
 }
 
 .card-login {
