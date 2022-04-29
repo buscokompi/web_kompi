@@ -356,6 +356,12 @@ h3 {
   font-weight: 600;
 }
 
+.adoption-process-container p {
+  font-family: var(--main-font);
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .adoption-process-prueba {
   display: flex;
   justify-content: center;
