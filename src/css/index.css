@@ -5,6 +5,14 @@
   --grey: #c4c4c4;
   --title-font: "Dosis";
   --main-font: "Open Sans";
+
+  /* variables del footer */
+  --footer-bg: #3f3d3b;
+  --color: #f2f3fb;
+  --color-smooth: #9da2ae;
+  --btn-bg-color: #f1f2fc;
+  --btn-hover-bg: #d5d9f6;
+  --btn-color: #1e2641;
 }
 
 html {
@@ -37,12 +45,12 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
+  padding: 0 15rem;
 }
 
 .topbar img {
-  width: 16.1rem;
-  height: 5rem;
+  width: 14rem;
+  height: auto;
 }
 
 .topbar-nav {
@@ -50,7 +58,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .topbar-nav a {
@@ -81,7 +89,10 @@ h3 {
 .header {
   width: 100%;
   height: calc(7 / 8 * 100vh);
-  background-color: var(--black);
+  background-image: url("../assets/fondo_web.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .header-content {
@@ -130,7 +141,7 @@ h3 {
 .animal-categories h2 {
   color: var(--white);
   font-family: var(--main-font);
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
 }
 
@@ -200,13 +211,17 @@ h3 {
 .animal-adoptions-cards {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 3rem;
 }
 
+/* BUG: con los tamaños de las cartas para diferentes resoluciones, revisar */
+
 .card {
-  width: 20rem;
-  height: 28.3rem;
+  /* width: 100vw; */
+  height: 40vh;
+  max-width: 27rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -216,8 +231,9 @@ h3 {
 }
 
 .card-extra {
-  width: 20rem;
-  height: 28.3rem;
+  /* width: 100vw; */
+  height: 40vh;
+  max-width: 27rem;
   background-color: var(--orange);
   display: flex;
   flex-direction: column;
@@ -229,18 +245,19 @@ h3 {
 }
 
 .card-img {
-  width: 100%;
-  height: 50%;
+  max-width: 100%;
+  max-height: 50%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
 .card-logo {
-  width: 35%;
-  height: 35%;
+  max-width: 35%;
+  max-height: 35%;
 }
 
 .card-name {
+  color: var(--black);
   font-family: var(--main-font);
   font-size: 20px;
   font-weight: 600;
@@ -251,23 +268,27 @@ h3 {
   color: var(--white);
   text-align: center;
   font-family: var(--main-font);
-  font-size: 15px;
+  font-size: 15px;/* 22px */
   font-weight: 400;
   margin: 0;
 }
 
+.card-text span {
+  font-weight: 700;
+}
+
 .card-link {
-  width: 12rem;
-  height: 3rem;
+  width: 15rem;
+  height: 4rem;
   border: 1px solid var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 1.5rem;
+  border-radius: 1.8rem;
   text-decoration: none;
   color: var(--white);
   font-family: var(--main-font);
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -281,6 +302,7 @@ h3 {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 3% 10%;
 }
 
 .counter-container {
@@ -305,4 +327,315 @@ h3 {
   font-size: 60px;
   font-weight: 600;
   color: var(--orange);
+}
+
+/**  ADOPTION PROCESS  **/
+
+.adoption-process {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15rem;
+}
+
+.adoption-process h2 {
+  color: var(--black);
+  font-family: var(--main-font);
+  font-size: 32px;
+  font-weight: 700;
+  padding-bottom: 10rem;
+}
+
+.adoption-process-grid {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  justify-items: center;
+  align-items: flex-start; /* flex-start */
+  padding: 2rem 6rem;
+  column-gap: 6rem;
+}
+
+.adoption-process-grid img {
+  height: 14rem;
+}
+
+.adoption-process-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.step {
+  width: 3rem;
+  height: 3rem;
+  color: var(--black);
+  background-color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 2rem;
+  font-family: var(--main-font);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.adoption-process-grid h4 {
+  color: var(--black);
+  font-family: var(--main-font);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.adoption-process-grid p {
+  color: var(--black);
+  font-family: var(--main-font);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+
+/** REGULAR QUESTIONS **/
+.regular-questions {
+  width: 100%;
+
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 15rem;
+  font-family: var(--main-font);
+}
+
+/* esta clase creo que no hace nada */
+.wrapper {
+  width: 60%;
+}
+
+.regular-questions h1 {
+  color: var(--black);
+  margin-bottom: 2rem;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.container {
+  width: 50%;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 25%);
+  margin: 2rem 0;
+}
+
+.question {
+  color: var(--black);
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 20px 80px 20px 20px;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question::after {
+  content: "\002B";
+  font-size: 3.5rem;
+  right: 20px;
+  transition: 0.2s;
+}
+
+.question.active::after {
+  transform: rotate(45deg);
+}
+
+.answercont {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.answer p {
+  color: var(--black);
+  font-size: 15px;
+  padding: 0 20px 20px;
+  line-height: 2rem;
+}
+
+@media screen and (max-width: 790px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/**  FOOTER  **/
+
+.footer {
+  font-size: 16px;
+  background: var(--footer-bg);
+  padding: 3.4rem 4rem;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--main-font);
+}
+
+.main {
+  display: flex;
+}
+
+.footer .kompi-logo {
+  height: 4rem;
+}
+
+.footer ul {
+  list-style: none;
+  line-height: 4.5rem;
+}
+
+.col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.col-title {
+  font-family: var(--main-font);
+  color: var(--color);
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.col-title1 {
+  font-family: var(--main-font);
+  color: var(--color);
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.col-list a {
+  color: var(--color-smooth);
+  text-decoration: none;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.col-list a:hover,
+.col-list a:focus {
+  text-decoration: underline;
+}
+
+.send-form,
+.social-media {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.send-input {
+  width: auto;
+  flex: 1;
+  background: transparent;
+  border: 0.06rem solid var(--color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.25s ease 0s;
+  display: inline-block;
+  color: var(--color-smooth);
+}
+
+.send-input:focus {
+  outline: none;
+  border-color: var(--color);
+  color: var(--color);
+}
+
+.send-btn {
+  background: var(--btn-bg-color);
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.25s ease 0s;
+  display: inline-block;
+  color: var(--btn-color);
+  cursor: pointer;
+}
+
+.send-btn:hover,
+.send-btn:focus {
+  background: var(--orange);
+}
+
+.form-title {
+  font-size: 1em;
+  color: var(--color);
+  font-weight: 500;
+}
+
+.social-media {
+  display: flex;
+  margin: 0 80px 120px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media-list {
+  margin: 0;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.social-media-list a {
+  padding: 0.5rem;
+  color: var(--color-smooth);
+  display: flex;
+  border-radius: 0.3rem;
+  transition: all 0.25s ease 0s;
+}
+
+.social-media-list a:hover,
+.social-media-list a:focus {
+  color: var(--color);
+  background: #ffffff1a;
+}
+
+.social-media-list img {
+  width: 1.7rem;
+  height: 2rem;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: white;
+  margin: 1rem 15rem;
+}
+
+.footer .copyright_line {
+  text-align: center;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 750px) {
+  footer {
+    padding: 2rem;
+    flex-direction: column;
+  }
 }
