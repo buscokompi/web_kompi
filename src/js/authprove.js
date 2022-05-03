@@ -1,5 +1,6 @@
 import { signInFirebase, logInFirebase, logInGoogle, logInFacebook, logOut, userLogued } from "./fbauth.js";
 import { readAnimals, addAnimals } from "./fbfirestore.js";
+import { uploadImage } from "./fbstorage.js";
 
 const signInButton = document.querySelector(".signin");
 const logInButton = document.querySelector(".btn-login-email");
