@@ -10,7 +10,7 @@ const fileinput = document.querySelector(".fileinput");
 const uploadImage = document.querySelector(".upload");
 const showImages = document.querySelector(".showimages");
 let archivo = null;
-let html = "";
+const html = "";
 
 fileinput.addEventListener("change", (e) => {
   e.preventDefault();
@@ -25,17 +25,4 @@ uploadImage.addEventListener("click", () => {
   uploadBytes(refImg, archivo).then((snapshot) => {
     console.log(archivo);
   });
-});
-
-const imganimals = document.querySelector(".img-animals");
-
-showImages.addEventListener("click", () => {
-  getDownloadURL(ref(storage, "gs://web-kompi.appspot.com/animals/pisko.jpg"))
-    .then((url) => {
-      html += ` <div>
-                  <img src="${url}" width="200px" height="200px">
-                <div>`;
-    });
-
-  imganimals.innerHTML = html;
 });
