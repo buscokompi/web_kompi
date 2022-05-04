@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,9 +16,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet">
   <script type="module" src="./js/index.js"></script>
 </head>
+
 <body>
-  <section class="topbar">
-    <a href="#logo_kompi#"><img src="./assets/logo_versioncolor.png" alt="Logo-kompi"></a>
+  <header class="topbar">
+    <a href="index.html"><img class="logo" src="./assets/logo_versioncolor.png" alt="Logo"></a>
     <nav class="topbar-nav">
       <a href="#Adopcion">Adopción</a>
       <a href="#Categorias">Categorias</a>
@@ -26,313 +28,337 @@
       <div class="vertical-line"></div>
       <a href="./login.html">Iniciar Sesión</a>
     </nav>
-  </section>
-
-  <header class="header">
-    <div class="header-content">
-        <div class="header-content-h1">
-          <h1>Mi raza favorita es: <br>Adoptado</h1>
-        </div>
-        <div class="header-content-h3">
-          <h3>Kompi el buscador de animales más grande de la red de España</h3>
-        </div>
-    </div>
+    <div class="menu-toggle menuClick"></div>
+    <nav class="mobile-nav">
+      <a href="#Adopcion" class="menuClick">Adopción</a>
+      <a href="#Categorias" class="menuClick">Categorias</a>
+      <a href="#SobreNosotros" class="menuClick">Sobre Nosotros</a>
+      <a href="#Like" class="menuClick"><img src="./assets/like-svgrepo-com.svg" alt="Like-icon"></a>
+      <div class="vertical-line"></div>
+      <a href="./login.html" class="menuClick">Iniciar Sesión</a>
+    </nav>
   </header>
 
-    <section class="animal-categories">
-      <h2>¿Qué buscas?</h2>
-      <div class="animal-categories-icons">
-        <div class="dogs">
-          <a href=""> <img src="./assets/dog.svg" alt=""></a>
-        </div>
-        <div class="cats">
-          <a href=""><img src="./assets/cat.svg" alt=""></a>
-        </div>
-        <div class="rodents">
-          <a href=""> <img src="./assets/rodent.svg" alt=""></a>
-        </div>
-        <div class="birds">
-          <a href=""> <img src="./assets/bird.svg" alt=""></a>
-        </div>
-        <div class="reptiles">
-          <a href=""><img src="./assets/reptiles.svg" alt=""></a>
-        </div>
-      </div>
-    </section>
 
-    <section class="animal-adoptions">
-      <div class="animal-adoptions-text">
-        <h2>Animales en adopción</h2>
-        <p>Aquí tienes algunas de las últimas mascotas en adopción</p>
+  <section class="welcome">
+    <div class="welcome-content">
+      <div class="welcome-content-h1">
+        <h1>Mi raza favorita es: <br>Adoptado</h1>
+      </div>
+      <div class="welcome-content-h3">
+        <h3>Kompi el buscador de animales más grande de la red de España</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="animal-categories">
+    <h2>¿Qué buscas?</h2>
+    <div class="animal-categories-icons">
+      <div class="dogs">
+        <a href=""> <img src="./assets/dog.svg" alt=""></a>
+      </div>
+      <div class="cats">
+        <a href=""><img src="./assets/cat.svg" alt=""></a>
+      </div>
+      <div class="rodents">
+        <a href=""> <img src="./assets/rodent.svg" alt=""></a>
+      </div>
+      <div class="birds">
+        <a href=""> <img src="./assets/bird.svg" alt=""></a>
+      </div>
+      <div class="reptiles">
+        <a href=""><img src="./assets/reptiles.svg" alt=""></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="animal-adoptions">
+    <div class="animal-adoptions-text">
+      <h2>Animales en adopción</h2>
+      <p>Aquí tienes algunas de las últimas mascotas en adopción</p>
+    </div>
+
+    <div class="animal-adoptions-cards">
+      <div class="card">
+        <img class="card-img" src="./assets/bordercollie_smiling.jpg" alt="Nala-img">
+        <h3 class="card-name">Nala</h3>
+      </div>
+      <div class="card">
+        <img class="card-img" src="./assets/imgYorkshire.jpg" alt="Chico-img">
+        <h3 class="card-name">Chico</h3>
+      </div>
+      <div class="card">
+        <img class="card-img" src="./assets/imgSleapingCat.jpg" alt="Coco-img">
+        <h3 class="card-name">Coco</h3>
+      </div>
+      <div class="card">
+        <img class="card-img" src="./assets/whitebrown_hamster.jpg" alt="Gus-img">
+        <h3 class="card-name">Gus</h3>
+      </div>
+      <div class="card-extra">
+        <img class="card-logo" src="./assets/Icono_logo_blanco.svg" alt="logo-img">
+        <p class="card-text"><span>+315 mascotas</span> disponibles en kompi</p>
+        <a class="card-link" href="#VerTodas">VER TODAS</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="counter">
+    <div class="counter-container">
+      <div class="counter-display">811</div>
+      <p class="counter-text">adoptadas</p>
+    </div>
+    <div class="counter-container">
+      <div class="counter-display">319</div>
+      <p class="counter-text">en adopción</p>
+    </div>
+    <div class="counter-container">
+      <div class="counter-display">7</div>
+      <p class="counter-text">colaboradoras</p>
+    </div>
+  </section>
+
+  <section class="adoption-process">
+    <h2>¿Quieres dar en adopción?</h2>
+    <div class="adoption-process-grid">
+      <img src="./assets/icono_notificaciones.svg" alt="Sign-in-image">
+      <img src="./assets//icono_publica.svg" alt="Publish-image">
+      <img src="./assets/icono_registra.svg" alt="Notifications-image">
+
+      <!-- SUG:Los h4 y los img podrian ir dentro de un div separados -->
+
+      <div class="adoption-process-steps">
+        <div class="step">1</div>
+        <h4>Regístrate en la web</h4>
+      </div>
+      <div class="adoption-process-steps">
+        <div class="step">2</div>
+        <h4>Publica una adopción</h4>
+      </div>
+      <div class="adoption-process-steps">
+        <div class="step">3</div>
+        <h4>¡Recibe notificaciones!</h4>
       </div>
 
-      <div class="animal-adoptions-cards">
-        <div class="card">
-          <img class="card-img" src="./assets/bordercollie_smiling.jpg" alt="Nala-img">
-          <h3 class="card-name">Nala</h3>
-        </div>
-        <div class="card">
-          <img class="card-img" src="./assets/imgYorkshire.jpg" alt="Chico-img">
-          <h3 class="card-name">Chico</h3>
-        </div>
-        <div class="card">
-          <img class="card-img" src="./assets/imgSleapingCat.jpg" alt="Coco-img">
-          <h3 class="card-name">Coco</h3>
-        </div>
-        <div class="card">
-          <img class="card-img" src="./assets/whitebrown_hamster.jpg" alt="Gus-img">
-          <h3 class="card-name">Gus</h3>
-        </div>
-        <div class="card-extra">
-          <img class="card-logo" src="./assets/Icono_logo_blanco.svg" alt="logo-img">
-          <p class="card-text"><span>+315 mascotas</span> disponibles en kompi</p>
-          <a class="card-link" href="#VerTodas">VER TODAS</a>
-        </div>
-      </div>
-    </section>
+      <p>Regístrate en dos sencillos pasos.
+        ¡No te llevará más de 1 min!</p>
+      <p>Crea la publicación añadiendo características e información relevante de la mascota.
+        ¡No te olvides de las fotos!</p>
+      <p>Se te notificará cuando alguien esté interesado en el animal y serás tú quien cierre el acuerdo.</p>
+    </div>
+  </section>
 
-    <section class="counter">
-      <div class="counter-container">
-        <div class="counter-display">811</div>
-        <p class="counter-text">adoptadas</p>
-      </div>
-      <div class="counter-container">
-        <div class="counter-display">319</div>
-        <p class="counter-text">en adopción</p>
-      </div>
-      <div class="counter-container">
-        <div class="counter-display">7</div>
-        <p class="counter-text">colaboradoras</p>
-      </div>
-    </section>
+  <section class="regular-questions">
+    <h1>Preguntas frecuentes</h1>
 
-    <section class="adoption-process">
-      <h2>¿Quieres dar en adopción?</h2>
-      <div class="adoption-process-grid">
-          <img src="./assets/icono_notificaciones.svg" alt="Sign-in-image">
-          <img src="./assets//icono_publica.svg" alt="Publish-image">
-          <img src="./assets/icono_registra.svg" alt="Notifications-image">
+    <div class="wrapper"></div>
 
-          <!-- SUG:Los h4 y los img podrian ir dentro de un div separados -->
+    <div class="container">
+      <div class="question">
+        ¿Que es Kompi?
+      </div>
+      <div class="answercont">
+        <div class="answer">
+          <p> Es una plataforma destinada a la adopción de animales en España,
+            en donde puedes encontrar animales para adoptar tanto de particulares como de protectoras
+            y asociaciones. Aunque por motivos diferentes, todas los animales comparten que necesitan
+            un nuevo hogar urgentemente. Si quieres obtener más información sobre el animal que más te gusta,
+            lee su ficha de descripción y haz click en "Adopta" para ponerte en contacto con su cuidador actual.</p>
 
-          <div class="adoption-process-steps">
-            <div class="step">1</div>
-            <h4>Regístrate en la web</h4>
-          </div>
-          <div class="adoption-process-steps">
-            <div class="step">2</div>
-            <h4>Publica una adopción</h4>
-          </div>
-          <div class="adoption-process-steps">
-            <div class="step">3</div>
-            <h4>¡Recibe notificaciones!</h4>
-          </div>
+        </div>
+      </div>
+    </div>
 
-          <p>Regístrate en dos sencillos pasos.
-          ¡No te llevará más de 1 min!</p>
-          <p>Crea la publicación añadiendo características e información relevante de la mascota.
-          ¡No te olvides de las fotos!</p>
-          <p>Se te notificará cuando alguien esté interesado en el animal y serás tú quien cierre el acuerdo.</p>
+    <div class="container">
+      <div class="question">
+        ¿Como funciona?
       </div>
-    </section>
+      <div class="answercont">
+        <div class="answer">
+          <p> La plataforma es muy facil, sencilla e intuitiva por lo que cualquier persona podrá entrar y
+            navegar en ella sin ningún problema. Es tan sencillo como buscar por secciones el tipo de mascota
+            que estes buscando, y si en cado de que se incline hacia alguna, lo siguiente seria registrarse y
+            rellenar una serie se datos. A partir de ahi se le pondrá en contacto con la persona que esta poniendo
+            en adopción ese animal y se comunicarían entre ustedes, es decir, nosotros somos una plataforma
+            intermediaria,
+            que buscamos hacer mas facil la adopción y que los animales tengan una vida mejor</p>
+        </div>
+      </div>
+    </div>
 
-    <section class="regular-questions">
-      <h1>Preguntas frecuentes</h1>
-      
-      <div class="wrapper"></div>
-      
-      <div class="container">
-        <div class="question">
-          ¿Que es Kompi?
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p> Es una plataforma destinada a la adopción de animales en España,
-              en donde puedes encontrar animales para adoptar tanto de particulares como de protectoras
-              y asociaciones. Aunque por motivos diferentes, todas los animales comparten que necesitan
-              un nuevo hogar urgentemente. Si quieres obtener más información sobre el animal que más te gusta,
-              lee su ficha de descripción y haz click en "Adopta" para ponerte en contacto con su cuidador actual.</p>
-      
-          </div>
+    <div class="container">
+      <div class="question">
+        ¿Qué animales puedo encontrar / publicar?</div>
+      <div class="answercont">
+        <div class="answer">
+          <p>Puedes encontrar todo tipo de mascotas en nuestra página web, todo depende de la oferta disponible en ese
+            momento, es decir,
+            si usted está buscando una mascota con ciertas características y no lo encuentra pues es que nadie ha
+            puesto
+            ese
+            animal en nuestra web.
+            Pero por lo general podrán encontrar gatos, perros, aves y reptiles. Se podrán encontrar animales exóticos
+            pero
+            no hay una sección como tal,
+            y solo podrán encontrar los permitidos segun normativa.
+          </p>
         </div>
       </div>
-      
-      <div class="container">
-        <div class="question">
-          ¿Como funciona?
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p> La plataforma es muy facil, sencilla e intuitiva por lo que cualquier persona podrá entrar y
-              navegar en ella sin ningún problema. Es tan sencillo como buscar por secciones el tipo de mascota
-              que estes buscando, y si en cado de que se incline hacia alguna, lo siguiente seria registrarse y
-              rellenar una serie se datos. A partir de ahi se le pondrá en contacto con la persona que esta poniendo
-              en adopción ese animal y se comunicarían entre ustedes, es decir, nosotros somos una plataforma intermediaria,
-              que buscamos hacer mas facil la adopción y que los animales tengan una vida mejor</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="container">
-        <div class="question">
-          ¿Qué animales puedo encontrar / publicar?</div>
-        <div class="answercont">
-          <div class="answer">
-            <p>Puedes encontrar todo tipo de mascotas en nuestra página web, todo depende de la oferta disponible en ese
-              momento, es decir,
-              si usted está buscando una mascota con ciertas características y no lo encuentra pues es que nadie ha puesto ese
-              animal en nuestra web.
-              Pero por lo general podrán encontrar gatos, perros, aves y reptiles. Se podrán encontrar animales exóticos pero
-              no hay una sección como tal,
-              y solo podrán encontrar los permitidos segun normativa.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="container">
-        <div class="question">
-          ¿Es gratis?
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p>AdoptaunKompi es totalmente gratuito, lo único que tiene que hacer
-              es registrarse en nuestra web si quiere adoptar, o esta interesado en un animal
-              y quiere hablar con el propietario</p>
-      
-          </div>
-        </div>
-      </div>
-      
-      <div class="container">
-        <div class="question">
-          ¿Porqué tengo que registrarme?</div>
-        <div class="answercont">
-          <div class="answer">
-            <p> El login en nuestra web se solicita única y exclusivamente por temas de seguridad, una vez vaya a adoptar o
-              hablar con un propietario
-              y es solo para llevar un registro de quién adiota y de quién lo ha puesto en adopción por si tenemos que
-              contactar con alguno de ellos
-              en caso de que hubiera algun problema. También aclarar que sus datos no serán compartidos con terceros ya que
-              serán almacenados
-              unicamente en nuestra base de datos.</p>
-    
-          </div>
-      
-        </div>
-      </div>
-      <div class="container">
-        <div class="question">
-          ¿Puedo editar una publicación? ¿Y eliminarla? 
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p>Si, en el apartado de mi perfil puede editar la información de su mascota asi como eliminarla también</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="container">
-        <div class="question">
-          Si somos una empresa o protectora ¿Podemos publicar adopciones?
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p>Si, en el apartado de mi perfil puede editar la información de su mascota asi como eliminarla también</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="container">
-        <div class="question">
-          Requisitos mínimos para adoptar 
-        </div>
-        <div class="answercont">
-          <div class="answer">
-            <p>
-                Y todo no acaba aquí, ya que a la hora de adoptar se pedirán una serie de requisitos:
-                -Ser mayor de edad
-                -Tener un espacio u hogar donde poder tener a la mascota(que no esté en malas condiciones)
-                -Tener tiempo para atenderla, es decir, pasearla, bañarla(cuidados mínimos)
-                -Cumplir con las normas minimas como vacunación, y desparacitación
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <footer class="footer" id="footer">
-      <div class="main">
-        <span class="col">
-    
-          <!-- <h3 class="col-title">Información</h3> -->
-          <nav class="col-list">
-            <ul>
-              <li><h3 class="col-title">Información</h3></li>
-              <li><a href="#">Sobre Nosotros</a></li>
-              <li><a href="#">Busca Una Mascota</a></li>
-              <li><a href="#">Contactanos</a></li>
-    
-            </ul>
-          </nav>
-        </span>
-    
-        <span class="col">
-          <nav class="col-list">
-            <ul>
-              <li><h3 class="col-title">Acerda de...</h3></li>
-              <li><a href="#">Política De Privacidad</a></li>
-              <li><a href="#">Términos y Condiciones</a></li>
-              <li><a href="#">Preguntas Frecuentes</a></li>
-            </ul>
-          </nav>
-        </span>
-    
-        <span class="col">
-          <!-- <h3 class="col-title1">C/ Frontend EOI Nº1</h3> -->
-          <nav class="col-list">
-            <ul>
-              <li><h3 class="col-title1">C/ Frontend EOI Nº1</h3></li>
-              <li><a href="#">Salamanca, España</a></li>
-              <li><a href="#">+34 655433210</a></li>
-    
-            </ul>
-          </nav>
-        </span>
-    
-        <span class="col">
-          <div class="send-form-holder">
-            <h3 class="form-title">E-mail</h3>
-            <form action="mailto:buscokompi@gmail.com" class="send-form">
-    
-    
-              <input type="email" name="email" id="email" class="email send-input" autocomplete="off"
-                placeholder="buscokompi@gmail.com">
-              <button type="submit" class="send-btn"> Enviar</button>
-    
-            </form>
-          </div>
-          <div class="social-media">
-            <a href="#"><img class="kompi-logo" src="./assets/version_blanca_logo.svg"></a>
-            <ul class="social-media-list">
-              <li><a href="https://www.facebook.com/profile.php?id=100079663393852" class="facebook"><img
-                    src="./assets/facebook.svg" alt=""></a></li>
-              <li><a href="https://twitter.com/adoptaunkompi" class="twitter"><img src="./assets/twitter.svg" alt=""></a>
-              </li>
-              <li><a href="https://www.instagram.com/adoptaunkompi" class="instagram"><img src="./assets/instagram.svg"
-                    alt=""></a></li>
-    
-            </ul>
-    
-          </div>
-    
-    
-        </span>
+    <div class="container">
+      <div class="question">
+        ¿Es gratis?
       </div>
-      <div class="copyright">
-        <hr class="copyright_line">
-        <p>© 2022. Todos los Derechos Reservados. Desarrollado por Karmic Koala</p>
+      <div class="answercont">
+        <div class="answer">
+          <p>AdoptaunKompi es totalmente gratuito, lo único que tiene que hacer
+            es registrarse en nuestra web si quiere adoptar, o esta interesado en un animal
+            y quiere hablar con el propietario</p>
+
+        </div>
       </div>
-    </footer>
+    </div>
+
+    <div class="container">
+      <div class="question">
+        ¿Porqué tengo que registrarme?</div>
+      <div class="answercont">
+        <div class="answer">
+          <p> El login en nuestra web se solicita única y exclusivamente por temas de seguridad, una vez vaya a
+            adoptar
+            o
+            hablar con un propietario
+            y es solo para llevar un registro de quién adiota y de quién lo ha puesto en adopción por si tenemos que
+            contactar con alguno de ellos
+            en caso de que hubiera algun problema. También aclarar que sus datos no serán compartidos con terceros ya
+            que
+            serán almacenados
+            unicamente en nuestra base de datos.</p>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <div class="question">
+        ¿Puedo editar una publicación? ¿Y eliminarla?
+      </div>
+      <div class="answercont">
+        <div class="answer">
+          <p>Si, en el apartado de mi perfil puede editar la información de su mascota asi como eliminarla también</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="question">
+        Si somos una empresa o protectora ¿Podemos publicar adopciones?
+      </div>
+      <div class="answercont">
+        <div class="answer">
+          <p>Si, en el apartado de mi perfil puede editar la información de su mascota asi como eliminarla también</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="question">
+        Requisitos mínimos para adoptar
+      </div>
+      <div class="answercont">
+        <div class="answer">
+          <p>
+            Y todo no acaba aquí, ya que a la hora de adoptar se pedirán una serie de requisitos:
+            -Ser mayor de edad
+            -Tener un espacio u hogar donde poder tener a la mascota(que no esté en malas condiciones)
+            -Tener tiempo para atenderla, es decir, pasearla, bañarla(cuidados mínimos)
+            -Cumplir con las normas minimas como vacunación, y desparacitación
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer">
+    <div class="main">
+      <span class="col">
+
+        <!-- <h3 class="col-title">Información</h3> -->
+        <nav class="col-list">
+          <ul>
+            <li>
+              <h3 class="col-title">Información</h3>
+            </li>
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Busca Una Mascota</a></li>
+            <li><a href="#">Contactanos</a></li>
+
+          </ul>
+        </nav>
+      </span>
+
+      <span class="col">
+        <nav class="col-list">
+          <ul>
+            <li>
+              <h3 class="col-title">Acerda de...</h3>
+            </li>
+            <li><a href="#">Política De Privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Preguntas Frecuentes</a></li>
+          </ul>
+        </nav>
+      </span>
+
+      <span class="col">
+        <!-- <h3 class="col-title1">C/ Frontend EOI Nº1</h3> -->
+        <nav class="col-list">
+          <ul>
+            <li>
+              <h3 class="col-title1">C/ Frontend EOI Nº1</h3>
+            </li>
+            <li><a href="#">Salamanca, España</a></li>
+            <li><a href="#">+34 655433210</a></li>
+
+          </ul>
+        </nav>
+      </span>
+
+      <span class="col">
+        <div class="send-form-holder">
+          <h3 class="form-title">E-mail</h3>
+          <form action="mailto:buscokompi@gmail.com" class="send-form">
+
+
+            <input type="email" name="email" id="email" class="email send-input" autocomplete="off"
+              placeholder="buscokompi@gmail.com">
+            <button type="submit" class="send-btn"> Enviar</button>
+
+          </form>
+        </div>
+        <div class="social-media">
+          <a href="#"><img class="kompi-logo" src="./assets/version_blanca_logo.svg"></a>
+          <ul class="social-media-list">
+            <li><a href="https://www.facebook.com/profile.php?id=100079663393852" class="facebook"><img
+                  src="./assets/facebook.svg" alt=""></a></li>
+            <li><a href="https://twitter.com/adoptaunkompi" class="twitter"><img src="./assets/twitter.svg" alt=""></a>
+            </li>
+            <li><a href="https://www.instagram.com/adoptaunkompi" class="instagram"><img src="./assets/instagram.svg"
+                  alt=""></a></li>
+
+          </ul>
+
+        </div>
+
+
+      </span>
+    </div>
+    <div class="copyright">
+      <hr class="copyright_line">
+      <p>© 2022. Todos los Derechos Reservados. Desarrollado por Karmic Koala</p>
+    </div>
+  </footer>
 </body>
+
 </html>
