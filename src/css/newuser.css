@@ -38,7 +38,8 @@ body {
 .container-login a{
   width: 18%;
   justify-self: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .logo {
@@ -49,25 +50,17 @@ body {
 .card-login {
   display: flex;
   width: 28rem;
-  height: 35rem;
+  height: 40rem;
   flex-direction: column;
   border-radius: 30px;
-  padding: 3.5rem 5rem;
+  padding: 1.5rem 5rem;
   background-color: white;
-  margin-bottom: 2rem;
 }
 
 .card-login p {
   color: var(--grey-color);
   font-family: var(--text-font);
 }
-
-/* .p-title {
-  text-align: center;
-  font-family: var(--text-font);
-  font-size: 2rem;
-  margin-top: -1rem;
-} */
 
 input {
   padding: 0.5rem;
@@ -81,6 +74,18 @@ input:focus {
   color: var(--dark-color);
   outline-color: var(--dark-color);
 }
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.double-input{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
 
 .button {
   display: flex;
@@ -103,7 +108,6 @@ input:focus {
 .btn-login-email {
   background-color: var(--primary-color);
   margin-top: 2.5rem;
-  margin-bottom: 4.5rem;
   justify-content: center;
 }
 
@@ -120,89 +124,13 @@ input:focus {
   color: var(--white-color);
 }
 
-/* BOTONES LOGIN */
-.btn-login-google {
-  background-color: var(--white-color);
-  border: var(--grey-color) 1px solid;
-  color: var(--grey-color);
-  margin-bottom: 1rem;
-  margin-top: 4rem;
-}
-
-.btn-login-google:hover {
-  background-color: #bebebe;
-}
-
-.btn-login-google span {
-  color: var(--dark-color);
-}
-
-.btn-login-facebook {
-  background-color: #30457b;
-}
-
-.btn-login-facebook span {
-  color: var(--white-color);
-}
-
-.btn-login-facebook:hover {
-  background-color: rgb(10 20 44);
-}
-
-/* BOTONES SIGN IN */
-.btn-signin-google {
-  background-color: var(--white-color);
-  border: var(--grey-color) 1px solid;
-  color: var(--grey-color);
-  margin-bottom: 1rem;
-}
-
-.btn-signin-google:hover {
-  background-color: #bebebe;
-}
-
-.btn-signin-google span {
-  color: var(--dark-color);
-}
-
-.btn-signin-facebook {
-  background-color: #30457b;
-}
-
-.btn-signin-facebook span {
-  color: var(--white-color);
-}
-
-.btn-signin-facebook:hover {
-  background-color: rgb(10 20 44);
-}
-
 .link-signin {
   color: var(--primary-color);
   font-family: var(--text-font);
-}
-
-.google {
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-left: 20%;
-}
-
-.facebook {
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-left: 20%;
 }
 
 p {
   font-family: var(--text-font);
   color: var(--dark-color);
   font-size: 0.9rem;
-}
-
-/*new user css*/
-.double-input{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
 }
