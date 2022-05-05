@@ -32,7 +32,7 @@ click.forEach(element => {
 
 function toggleMenu() {
   const menuToggle = document.querySelector(".menu-toggle");
-  const navigation = document.querySelector(".mobile-nav");
+  const navigation = document.querySelector(".nav");
   const logo = document.querySelector(".logo");
 
   menuToggle.classList.toggle("active");
