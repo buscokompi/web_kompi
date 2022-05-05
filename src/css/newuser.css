@@ -5,7 +5,7 @@
   --terciary2-color: #c83e4d;
   --dark-color: #3f3d3b;
   --white-color: #fff;
-  --grey-color: #c4c4c4;
+  --grey-color: #bbbbbb;
 
   /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
   --title-font: "Dosis", sans-serif;
@@ -53,7 +53,7 @@ body {
   height: 40rem;
   flex-direction: column;
   border-radius: 30px;
-  padding: 1.5rem 5rem;
+  padding: 2rem 5rem 2.5rem;
   background-color: white;
 }
 
@@ -70,20 +70,35 @@ input {
   font-size: 1rem;
 }
 
+.form-control{
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: var(--grey-color) 1px solid;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  background-color: white;
+}
+
 input:focus {
   color: var(--dark-color);
   outline-color: var(--dark-color);
 }
 
-.input-container{
-  display: flex;
-  flex-direction: column;
+.form-control:focus {
+  color: var(--dark-color);
+  outline-color: var(--dark-color);
+}
+
+.input-container input{
+  width: 12.3rem;
+  height: 1.5rem;
 }
 
 .double-input{
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
 }
 
 
@@ -133,4 +148,31 @@ p {
   font-family: var(--text-font);
   color: var(--dark-color);
   font-size: 0.9rem;
+}
+
+/*calendar*/
+
+input::-webkit-inner-spin-button,
+input::-webkit-clear-button {
+  display: block;
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 1
+}
+
+input::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+}
+
+input::-webkit-calendar-picker-indicator::after {
+  content: '';
+  display: block;
+  background: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-32.png") no-repeat;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -16px;
 }

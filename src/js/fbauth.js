@@ -100,7 +100,7 @@ export function logOut() {
 export function userLogued() {
   auth.onAuthStateChanged(function(user) {
     if (user) {
-      console.log("Usuario logueado.");
+      console.log(user.email);
     } else {
       console.log("No hay usuario logueado");
     }
