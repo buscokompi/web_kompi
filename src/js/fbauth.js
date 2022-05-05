@@ -1,22 +1,38 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import { initFirebase } from "./fbinit.js";
 
 initFirebase();
 
 const auth = getAuth();
 
+export function setPers(email, password) {
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      signInFirebase(email, password);
+    })
+    .catch((error) => {
+    // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+    });
+}
+
+export function setUser() {
+  return auth.currentUser;
+}
+
 // Funcion para crear un usuario con email y contraseña
 export function signInFirebase(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log("usuario registrado");
-      alert("Usuario " + email + " creado.");
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
-      alert("Registro invalido");
     });
 }
 
@@ -100,7 +116,7 @@ export function logOut() {
 export function userLogued() {
   auth.onAuthStateChanged(function(user) {
     if (user) {
-      console.log(user.email);
+      console.log(user);
     } else {
       console.log("No hay usuario logueado");
     }

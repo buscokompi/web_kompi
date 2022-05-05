@@ -160,6 +160,14 @@ input:focus {
   justify-content: center;
 }
 
+.btn-signin-email:hover {
+  background-color: var(--terciary-color);
+}
+
+.btn-signin-email:hover span {
+  color: var(--white-color);
+}
+
 .btn-signin-google {
   background-color: var(--white-color);
   border: var(--grey-color) 1px solid;
