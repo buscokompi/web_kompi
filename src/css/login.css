@@ -35,7 +35,7 @@ body {
   margin-left: 3.6rem;
 }
 
-.container-login a{
+.container-login a {
   width: 18%;
   justify-self: flex-start;
   margin-bottom: 3rem;
@@ -156,16 +156,11 @@ input:focus {
 .btn-signin-email {
   background-color: var(--primary-color);
   margin-top: 2rem;
-  margin-bottom: 4.8rem;
+  margin-bottom: 3.8rem;
   justify-content: center;
 }
-
 .btn-signin-email:hover {
-  background-color: var(--terciary-color);
-}
-
-.btn-signin-email:hover span {
-  color: var(--white-color);
+  background-color: #f8a408;
 }
 
 .btn-signin-google {
@@ -218,11 +213,12 @@ p {
   font-size: 0.9rem;
 }
 
-.forgot-pass{
+.forgot-pass {
   font-family: var(--text-font);
   font-size: 0.9rem;
 }
-.forgot-pass a{
+
+.forgot-pass a {
   text-decoration: underline;
   color: var(--grey-color);
 }

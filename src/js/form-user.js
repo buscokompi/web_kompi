@@ -13,6 +13,8 @@ const answersForm = [["no tengo preferencia", "un perro", "un gato", "un ave", "
   ["de 2 a 5 horas", "de 5 a 8 horas", "de 8 a 12 horas"],
   ["tengo en mi entorno a alguien que cuide del animal", "no tengo a nadie que cuide del animal"]];
 
-// const questions = document.getElementsByClassName(".question");
+const questions = document.getElementsByClassName("question");
 
-console.log("hola");
+questions.forEach((e, index) => {
+  const html = "";
+});
