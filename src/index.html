@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="./css/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@800&display=swap" rel="stylesheet">
@@ -20,77 +21,101 @@
 <body>
   <header class="topbar">
     <a href="index.html"><img class="logo" src="./assets/icons/version_primario_logo.svg" alt="Logo"></a>
-    <div class="menu-toggle menuClick"></div>
     <ul class="nav">
       <li><a href="#Adopcion">Adopción</a></li>
-      <li><a href="#Categorias">Categorias</a></li>
+      <li><a href="#Categorias">Categorías</a></li>
       <li><a href="#SobreNosotros">Sobre nosotros</a></li>
       <li><a href="#Like"><img src="./assets/icons/corazon_icono.svg" alt="icono me gusta"></a></li>
       <div class="vertical-line"></div>
       <li><a href="./login.html">Iniciar sesión</a></li>
     </ul>
+    <div class="menu-toggle menuClick"></div>
+    <nav class="burger">
+      <div class="opacity"></div>
+      <div class="menu">
+        <ul>
+          <li><a href="#Adopcion">Adopción</a></li>
+          <li><a href="#Categorias">Categorías</a></li>
+          <li><a href="#SobreNosotros">Sobre nosotros</a></li>
+          <li><a href="./login.html">Iniciar sesión</a></li>
+        </ul>
+        <div class="menu-contact">
+          <a href="./login.html">Contáctanos</a>
+        </div>
+        <div class="menu-icons">
+          <a href="./login.html"><img src="./assets/icons/icono_facebook.svg" alt=""></a>
+          <a href="./login.html"><img src="./assets/icons/icono_instagram.svg" alt=""></a>
+          <a href="./login.html"><img src="./assets/icons/icono_twitter.svg" alt=""></a>
+          <a href="#Like"><img src="./assets/icons/corazon_icono.svg" alt="icono me gusta"></a>
+        </div>
+        <div class="m-footer"></div>
+      </div>
+    </nav>
   </header>
 
 
   <section class="welcome">
     <div class="welcome-content">
-      <div class="welcome-content-h1">
-        <h1>Mi raza favorita es: <br>Adoptado</h1>
-      </div>
-      <div class="welcome-content-h3">
-        <h3>Kompi el buscador de animales más grande de la red de España</h3>
-      </div>
+      <h1>Mi raza favorita es: Ad<img src="./assets/icons/icono_logo_blanco.svg" alt="">ptado</h1>
+      <h2>Kompi el buscador de animales más grande de la red de España</h2>
+      <a href="" class="button">Comenzar búsqueda</a>
     </div>
   </section>
 
   <section class="animal-categories">
-    <h2>¿Qué buscas?</h2>
+
     <div class="animal-categories-icons">
       <div class="dogs">
-        <a href=""> <img src="./assets/dog.svg" alt=""></a>
+        <a href=""> <img src="./assets/icons/icono_perro.svg" alt=""></a>
       </div>
       <div class="cats">
-        <a href=""><img src="./assets/cat.svg" alt=""></a>
-      </div>
-      <div class="rodents">
-        <a href=""> <img src="./assets/rodent.svg" alt=""></a>
+        <a href=""><img src="./assets/icons/icono_gato.svg" alt=""></a>
       </div>
       <div class="birds">
-        <a href=""> <img src="./assets/bird.svg" alt=""></a>
+        <a href=""> <img src="./assets/icons/icono_pajaro.svg" alt=""></a>
+      </div>
+      <div class="rodents">
+        <a href=""> <img src="./assets/icons/icono_roedor.svg" alt=""></a>
       </div>
       <div class="reptiles">
-        <a href=""><img src="./assets/reptiles.svg" alt=""></a>
+        <a href=""><img src="./assets/icons/icono_reptil.svg" alt=""></a>
       </div>
     </div>
   </section>
 
   <section class="animal-adoptions">
-    <div class="animal-adoptions-text">
-      <h2>Animales en adopción</h2>
-      <p>Aquí tienes algunas de las últimas mascotas en adopción</p>
-    </div>
+
+    <h2>Animales en adopción</h2>
+    <p>Aquí tienes algunas de las últimas mascotas en adopción</p>
+
 
     <div class="animal-adoptions-cards">
       <div class="card">
-        <img class="card-img" src="./assets/bordercollie_smiling.jpg" alt="Nala-img">
+        <img src="./assets/bordercollie_smiling.jpg" alt="Nala-img">
         <h3 class="card-name">Nala</h3>
+        <p><img src="./assets/icons/icono_logo.svg" alt="">Las Pedroñeras</p>
       </div>
       <div class="card">
-        <img class="card-img" src="./assets/imgYorkshire.jpg" alt="Chico-img">
+        <img src="./assets/imgYorkshire.jpg" alt="Chico-img">
         <h3 class="card-name">Chico</h3>
+        <p><img src="./assets/icons/icono_logo.svg" alt="">Arona</p>
       </div>
       <div class="card">
-        <img class="card-img" src="./assets/imgSleapingCat.jpg" alt="Coco-img">
+        <img src="./assets/imgSleapingCat.jpg" alt="Coco-img">
         <h3 class="card-name">Coco</h3>
+        <p><img src="./assets/icons/icono_logo.svg" alt="">Córdoba</p>
       </div>
       <div class="card">
-        <img class="card-img" src="./assets/whitebrown_hamster.jpg" alt="Gus-img">
+        <img src="./assets/whitebrown_hamster.jpg" alt="Gus-img">
         <h3 class="card-name">Gus</h3>
+        <p><img src="./assets/icons/icono_logo.svg" alt="">Teide</p>
       </div>
       <div class="card-extra">
-        <img class="card-logo" src="./assets/Icono_logo_blanco.svg" alt="logo-img">
-        <p class="card-text"><span>+315 mascotas</span> disponibles en kompi</p>
-        <a class="card-link" href="#VerTodas">VER TODAS</a>
+        <img src="./assets/icons/icono_logo.svg" alt="logo-img">
+        <p><span>+315 mascotas<br></span> disponibles en kompi</p>
+        <div class=" horizontal-line">
+        </div>
+        <a class="button" href="#VerTodas">Ver más</a>
       </div>
     </div>
   </section>
