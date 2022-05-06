@@ -1,0 +1,110 @@
+:root {
+  --primary-color: #f9b225;
+  --secondary-color: #ffe194;
+  --terciary-color: #d11149;
+  --terciary2-color: #c83e4d;
+  --dark-color: #3f3d3b;
+  --white-color: #fff;
+  --light-grey-color: #f5f5f5;
+  --grey-color: #c4c4c4;
+
+  /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
+  --title-font: "Dosis", sans-serif;
+  --text-font: "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--light-grey-color);
+}
+
+.top-bar {
+  width: 100%;
+  height: 5rem;
+  background-color: var(--white-color);
+  display: flex;
+  align-items: center;
+}
+
+img {
+  width: 7rem;
+  margin-left: 7rem;
+}
+
+.form-user-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-box {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 9rem;
+}
+
+h1 {
+  font-family: var(--text-font);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark-color);
+  text-align: left;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--text-font);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  text-align: left;
+  margin-top: 0.2rem;
+}
+
+p {
+  font-family: var(--text-font);
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.rules {
+  margin-top: 3rem;
+}
+
+.rules p,
+ul,
+.checkbox {
+  font-family: var(--text-font);
+  list-style: none;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
+
+.checkbox {
+  margin-bottom: 2 rem;
+}
+
+button {
+  background-color: var(--primary-color);
+  padding: 0.8rem 2rem;
+  border-style: none;
+  border-radius: 2rem;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.7s ease;
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+}
+
+button:hover {
+  background-color: #cc9320;
+  cursor: pointer;
+}
