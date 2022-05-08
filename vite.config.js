@@ -19,8 +19,8 @@ module.exports = {
         emailvalidate: resolve(__dirname, "src/email-validated.html"),
         formuser: resolve(__dirname, "src/form-user.html"),
         newuser: resolve(__dirname, "src/newuser.html"),
-        optnewuser: resolve(__dirname, "src/options-newuser.html")
-        // nested: resolve(__dirname, "src/login.html"),
+        optnewuser: resolve(__dirname, "src/options-newuser.html"),
+        nested: resolve(__dirname, "src/404file.html")
       }
     }
   }
