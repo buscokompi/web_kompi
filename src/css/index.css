@@ -209,19 +209,20 @@ a {
 
 .topbar .burger.active .menu .icons {
   display: grid;
-  grid-auto-columns: minmax(0, 1fr);
+  width: 8rem;
+  grid-auto-columns: repeat(4, 1fr);
   grid-auto-flow: column;
   justify-items: center;
   transition: color 0.5s;
   position: absolute;
   top: 24rem;
-  left: 3rem;
-  gap: 0.5rem;
+  left: 2.4rem;
 }
 
 .topbar .burger.active .menu .icons img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  position: absolute;
 }
 
 .topbar .burger.active .menu .icons img:hover {
@@ -428,14 +429,19 @@ a {
   font-weight: 800;
 }
 
-.adoption .group .card-extra .horizontal-line {
-  height: 0.15rem;
+.adoption .group .card-extra .footer {
+  position: relative;
+  bottom: 0;
+  height: 27%;
   width: 100%;
-  background-color: var(--white);
+  border-top: 0.1rem solid var(--white);
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .adoption .group .card-extra .button {
-  margin-bottom: 2rem;
+  align-self: center;
 }
 
 .adoption .more {
@@ -465,7 +471,7 @@ a {
 .counter .number {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--orange);
+  color: var(--green);
 }
 
 /* <!-- -----------------------------GUIDE------------------------- --> */
@@ -616,7 +622,7 @@ footer {
   background: var(--black);
 }
 
-footer h4 {
+footer .column p {
   color: var(--white);
   font-size: 1rem;
   margin: 0.5rem 0 0;
@@ -771,7 +777,7 @@ footer .copyright p {
     height: 40vh;
   }
 
-  footer h4 {
+  footer .column p {
     margin-bottom: 1rem;
   }
 
@@ -884,6 +890,11 @@ footer .copyright p {
     display: none;
   }
 
+  .topbar .burger.active {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   .topbar .desktop {
     display: flex;
     gap: 2rem;
@@ -918,7 +929,7 @@ footer .copyright p {
   }
 
   .topbar .desktop a:hover {
-    text-decoration: underline;
+    color: var(--orange);
   }
 
   .home p {
