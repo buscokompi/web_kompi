@@ -21,7 +21,22 @@ for (let i = 0; i < questions.length; i++) {
   let html = "";
   for (let e = 0; e < answersForm[i].length; e++) {
     console.log(answersForm[i][e]);
-    html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
+    // html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
+    html += `<div class="quest" data-value="${answersForm[i][e]}">${answersForm[i][e]}</div>`;
   }
   questions[i].innerHTML = html;
+};
+
+const quest = document.getElementsByClassName("quest");
+
+for (let a = 0; a < quest.length; a++) {
+  quest[a].addEventListener("click", () => {
+    console.log(quest[a].getAttribute("data-value"));
+    document.querySelector(".textbox").value = quest[a].getAttribute("data-value");
+  });
+}
+
+const dropdow = document.querySelector(".dropdown");
+dropdow.onclick = function() {
+  dropdow.classList.toggle("active");
 };
