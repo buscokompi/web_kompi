@@ -1,5 +1,6 @@
 const answersForm = [["no tengo preferencia", "un perro", "un gato", "un ave", "un roedor", "un reptil"],
   ["no tengo preferencia", "una hembra", "un macho"],
+  ["no tengo preferencia", "cachorro", "joven", "adulta", "anciana"],
   ["no tengo preferencia", "pequeña", "mediana", "grande", "gigante"],
   ["no tengo preferencia", "muy activo", "activo", "poco activo"],
   ["un piso", "una casa", "una casa con jardín"],
@@ -15,6 +16,12 @@ const answersForm = [["no tengo preferencia", "un perro", "un gato", "un ave", "
 
 const questions = document.getElementsByClassName("question");
 
-questions.forEach((e, index) => {
-  const html = "";
-});
+for (let i = 0; i < questions.length; i++) {
+  console.log(typeof answersForm[i]);
+  let html = "";
+  for (let e = 0; e < answersForm[i].length; e++) {
+    console.log(answersForm[i][e]);
+    html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
+  }
+  questions[i].innerHTML = html;
+};

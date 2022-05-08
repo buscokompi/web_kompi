@@ -7,7 +7,7 @@
   --dark-color: #3f3d3b;
   --white-color: #fff;
   --light-grey-color: #f5f5f5;
-  --grey-color: #bbbbbb;
+  --grey-color: #bbb;
 
   /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
   --title-font: "Dosis", sans-serif;
@@ -46,7 +46,7 @@ body {
   line-height: 1.5rem;
 }
 
-.main-page{
+.main-page {
   justify-content: center;
   font-size: 1rem;
   font-family: var(--text-font);

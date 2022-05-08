@@ -49,6 +49,11 @@ img {
   margin-top: 9rem;
 }
 
+.question{
+  font-size: 1rem;
+  font-family: var(--text-font);
+}
+
 h1 {
   font-family: var(--text-font);
   font-size: 2rem;
