@@ -46,7 +46,7 @@ img {
   margin-top: 5rem;
 }
 
-/*.question{
+/* .question{
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--text-font);
@@ -64,7 +64,7 @@ img {
 
 .question:focus{
   outline-color: var(--grey);
-}*/
+} */
 
 h1 {
   font-family: var(--text-font);
@@ -126,7 +126,7 @@ button:hover {
   cursor: pointer;
 }
 
-.question{
+.question {
   display: flex;
   flex-direction: column;
   background: red;
@@ -136,13 +136,13 @@ button:hover {
   overflow: hidden;
 }
 
-.magicbox{
+.magicbox {
   display: inline-flex;
   justify-content: start;
   align-items: baseline;
 }
 
-.dropdown{
+.dropdown {
   display: flex;
   position: relative;
   width: 12.5rem;
@@ -150,7 +150,7 @@ button:hover {
   margin-left: 1rem;
 }
 
-.dropdown::before{
+.dropdown::before {
   content: "";
   position: absolute;
   width: 8px;
@@ -161,11 +161,11 @@ button:hover {
   z-index: 2;
 }
 
-.dropdown .active::before{
+.dropdown .active::before {
   transform: rotate(-255deg);
 }
 
-.dropdown input{
+.dropdown input {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -174,30 +174,30 @@ button:hover {
   outline: none;
   padding: 12px 10px;
   background-color: var(--lightgrey);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 20px rgb(0 0 0 / 5%);
   border-radius: 10px;
 }
 
-.dropdown .question{
-  position:absolute;
+.dropdown .question {
+  position: absolute;
   top: 80px;
   width: 100%;
   background: var(--lightgrey);
-  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 30px 30px rgb(0 0 0 / 5%);
   border-radius: 10px;
   overflow: hidden;
   display: none;
 }
 
-.dropdown.active .question{
+.dropdown.active .question {
   display: block;
 }
 
-.dropdown .question div{
+.dropdown .question div {
   padding: 12px 20px;
   cursor: pointer;
 }
 
-.dropdown .question div:hover{
+.dropdown .question div:hover {
   background-color: var(--yellow);
 }

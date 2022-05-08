@@ -1,15 +1,13 @@
 :root {
-  --primary-color: #f9b225;
-  --secondary-color: #ffe194;
-  --terciary-color: #d11149;
-  --terciary2-color: #c83e4d;
-  --dark-color: #3f3d3b;
-  --white-color: #fff;
-  --grey-color: #bbbbbb;
-
-  /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
-  --title-font: "Dosis", sans-serif;
-  --text-font: "Open Sans", sans-serif;
+  --orange: #f9b225;
+  --yellow: #ffe194;
+  --black: #3f3d3b;
+  --white: white;
+  --grey: #c4c4c4;
+  --lightgrey: #f5f5f5;
+  --green: #015865;
+  --title-font: "Dosis";
+  --text-font: "Open Sans";
 }
 
 body {
@@ -35,16 +33,10 @@ body {
   margin-left: 3.6rem;
 }
 
-.container-login a {
-  width: 18%;
-  justify-self: flex-start;
-  margin-bottom: 3rem;
-}
-
 .logo {
-  width: 100%;
-  height: auto;
-  margin-top: 2rem;
+  width: 8rem;
+  margin: 2rem 0;
+  cursor: pointer;
 }
 
 .card-login {
@@ -52,14 +44,14 @@ body {
   width: 28rem;
   height: 35rem;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: 1.9rem;
   padding: 3.5rem 5rem;
   background-color: white;
   margin-bottom: 2rem;
 }
 
 .card-login p {
-  color: var(--dark-color);
+  color: var(--black);
   font-family: var(--text-font);
 }
 
@@ -70,18 +62,17 @@ body {
   margin-top: -1rem;
 } */
 
-
 input {
   padding: 0.5rem;
-  border-radius: 12px;
-  border: var(--grey-color) 1px solid;
+  border-radius: 0.8rem;
+  border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
   font-size: 1rem;
 }
 
 input:focus {
-  color: var(--dark-color);
-  outline-color: var(--dark-color);
+  color: var(--black);
+  outline-color: var(--black);
 }
 
 .button {
@@ -103,19 +94,19 @@ input:focus {
 }
 
 .btn-login-email {
-  background-color: var(--primary-color);
+  background-color: var(--orange);
   margin-top: 2rem;
   margin-bottom: 3rem;
   justify-content: center;
 }
 
 .button span {
-  color: var(--dark-color);
+  color: var(--black);
   pointer-events: none;
 }
 
 .btn-login-email:hover {
-  background-color: var(--terciary-color);
+  background-color: #cc9320;
 }
 
 .btn-login-email:hover span {
@@ -126,8 +117,8 @@ input:focus {
 
 .btn-login-google {
   background-color: var(--white-color);
-  border: var(--grey-color) 1px solid;
-  color: var(--grey-color);
+  border: var(--grey) 0.06rem solid;
+  color: var(--black);
   margin-bottom: 1rem;
   margin-top: 4rem;
 }
@@ -137,7 +128,7 @@ input:focus {
 }
 
 .btn-login-google span {
-  color: var(--dark-color);
+  color: var(--black);
 }
 
 .btn-login-facebook {
@@ -145,7 +136,7 @@ input:focus {
 }
 
 .btn-login-facebook span {
-  color: var(--white-color);
+  color: var(--white);
 }
 
 .btn-login-facebook:hover {
@@ -155,19 +146,20 @@ input:focus {
 /* BOTONES SIGN IN */
 
 .btn-signin-email {
-  background-color: var(--primary-color);
+  background-color: var(--orange);
   margin-top: 2rem;
   margin-bottom: 2rem;
   justify-content: center;
 }
+
 .btn-signin-email:hover {
-  background-color: #f8a408;
+  background-color: #cc9320;
 }
 
 .btn-signin-google {
-  background-color: var(--white-color);
-  border: var(--grey-color) 1px solid;
-  color: var(--grey-color);
+  background-color: var(--white);
+  border: var(--grey) 0.06rem solid;
+  color: var(--black);
   margin-bottom: 1rem;
 }
 
@@ -176,7 +168,7 @@ input:focus {
 }
 
 .btn-signin-google span {
-  color: var(--dark-color);
+  color: var(--black);
 }
 
 .btn-signin-facebook {
@@ -184,18 +176,21 @@ input:focus {
 }
 
 .btn-signin-facebook span {
-  color: var(--white-color);
+  color: var(--white);
 }
 
 .btn-signin-facebook:hover {
   background-color: rgb(10 20 44);
 }
-.pepe{
-  margin-top: -3px;
+
+.pepe {
+  margin-top: -0.19rem;
 }
+
 .link-signin {
-  color: var(--primary-color);
+  color: var(--green);
   font-family: var(--text-font);
+  font-weight: 600;
 }
 
 .google {
@@ -212,21 +207,26 @@ input:focus {
 
 p {
   font-family: var(--text-font);
-  color: var(--dark-color);
+  color: var(--black);
   font-size: 0.9rem;
 }
 
 .forgot-pass {
   font-family: var(--text-font);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .forgot-pass a {
   text-decoration: underline;
-  color: var(--grey-color);
+  color: var(--black);
 }
 
-#message{
+#message {
   font-family: var(--text-font);
   font-size: 0.9rem;
+}
+
+#comment {
+  font-family: var(--text-font);
+  font-size: 0.8rem;
 }

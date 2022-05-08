@@ -9,16 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700;800&display=swap" rel="stylesheet">
     <!--Font-Family: Open Sans and Lato -->
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <title>New user</title>
-  <link rel="icon" href="./assets/pestaña_icono_logo.svg">
+  <title>Kompi | Registro</title>
+  <link rel="icon" href="./assets/icons/icono_logo.svg">
 </head>
 <body>
-  <img class="img-dog-login" src="./assets/images/foto_perro.svg">
+  <img class="img-dog-login" src="./assets/images/foto_perro.svg" alt="Fotografía perro Pug">
 
   <div class="container-login">
 
     <a href="./index.html">
-      <img class="logo" src="./assets/icons/version_negro_logo.svg">
+      <img class="logo" src="./assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
     </a>
 
     <form class="card-login">
@@ -48,7 +48,7 @@
       </div>
 
       <p>Dirección <span>*</span></p>
-      <input class="input-direction" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
+      <input class="input-direction" required="required" pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
       <p>Número de teléfono <span>*</span></p>
       <input class="input-phone" required="required" pattern="+?{,3}[0-9]{9,}" title="Debes poner un numéro de teléfono valido.">
       <button type="submit" class="button btn-login-email btn-continue">Continuar</button>

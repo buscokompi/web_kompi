@@ -1,15 +1,13 @@
 :root {
-  --primary-color: #f9b225;
-  --secondary-color: #ffe194;
-  --terciary-color: #d11149;
-  --terciary2-color: #c83e4d;
-  --dark-color: #3f3d3b;
-  --white-color: #fff;
-  --grey-color: #bbbbbb;
-
-  /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
-  --title-font: "Dosis", sans-serif;
-  --text-font: "Open Sans", sans-serif;
+  --orange: #f9b225;
+  --yellow: #ffe194;
+  --black: #3f3d3b;
+  --white: white;
+  --grey: #c4c4c4;
+  --lightgrey: #f5f5f5;
+  --green: #015865;
+  --title-font: "Dosis";
+  --text-font: "Open Sans";
 }
 
 body {
@@ -18,6 +16,7 @@ body {
   margin: 0;
   height: 100vh;
   background-color: #f5f5f5;
+  box-sizing: border-box;
 }
 
 .img-dog-login {
@@ -29,22 +28,15 @@ body {
 .container-login {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 50%;
-  margin-left: 3.6rem;
-}
-
-.container-login a{
-  width: 18%;
-  justify-self: flex-start;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  align-items: center;
+  width: 55%;
 }
 
 .logo {
-  width: 100%;
-  height: auto;
+  width: 8rem;
+  margin: 2rem 0;
+  cursor: pointer;
 }
 
 .card-login {
@@ -52,62 +44,61 @@ body {
   width: 28rem;
   height: 40rem;
   flex-direction: column;
-  border-radius: 30px;
+  border-radius: 1.9rem;
   padding: 2rem 5rem 2.5rem;
   background-color: white;
 }
 
 .card-login p {
-  color: var(--dark-color);
+  color: var(--black);
   font-family: var(--text-font);
 }
 
 input {
   padding: 0.5rem;
-  border-radius: 12px;
-  border: var(--grey-color) 1px solid;
+  border-radius: 0.75rem;
+  border: var(--grey) 0.06rem solid;
   font-family: var(--text-font);
   font-size: 1rem;
 }
 
-.form-control{
+.form-control {
   display: flex;
   padding: 0.5rem;
-  border-radius: 12px;
-  border: var(--grey-color) 1px solid;
+  border-radius: 0.75rem;
+  border: var(--grey) 0.06rem solid;
   font-family: var(--text-font);
   font-size: 1rem;
   background-color: white;
 }
 
 input:focus {
-  color: var(--dark-color);
-  outline-color: var(--dark-color);
+  color: var(--black);
+  outline-color: var(--black);
 }
 
 .form-control:focus {
-  color: var(--dark-color);
-  outline-color: var(--dark-color);
+  color: var(--black);
+  outline-color: var(--black);
 }
 
-.input-container input{
+.input-container input {
   width: 12.3rem;
   height: 1.5rem;
 }
 
-.double-input{
+.double-input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
 }
-
 
 .button {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 3rem;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   border: 0;
   font-size: 1rem;
   font-family: var(--text-font);
@@ -121,18 +112,18 @@ input:focus {
 }
 
 .btn-login-email {
-  background-color: var(--primary-color);
+  background-color: var(--orange);
   margin-top: 2.5rem;
   justify-content: center;
 }
 
 .button span {
-  color: var(--dark-color);
+  color: var(--black);
   pointer-events: none;
 }
 
 .btn-login-email:hover {
-  background-color: var(--terciary-color);
+  background-color: #cc9320;
 }
 
 .btn-login-email:hover span {
@@ -140,17 +131,18 @@ input:focus {
 }
 
 .link-signin {
-  color: var(--primary-color);
+  color: var(--green);
   font-family: var(--text-font);
+  font-weight: 600;
 }
 
 p {
   font-family: var(--text-font);
-  color: var(--dark-color);
+  color: var(--black);
   font-size: 0.9rem;
 }
 
-/*calendar*/
+/* calendar */
 
 input::-webkit-inner-spin-button,
 input::-webkit-clear-button {
@@ -158,7 +150,7 @@ input::-webkit-clear-button {
 }
 
 input::-webkit-calendar-picker-indicator {
-  opacity: 1
+  opacity: 1;
 }
 
 input::-webkit-calendar-picker-indicator:hover {
@@ -166,13 +158,13 @@ input::-webkit-calendar-picker-indicator:hover {
 }
 
 input::-webkit-calendar-picker-indicator::after {
-  content: '';
+  content: "";
   display: block;
   background: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-32.png") no-repeat;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   position: absolute;
   top: 50%;
   right: 0;
-  margin-top: -16px;
+  margin-top: -1rem;
 }
