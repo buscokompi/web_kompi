@@ -1,3 +1,23 @@
+
+// Burger menu for mobile
+
+const click = document.querySelectorAll(".burger-img");
+click.forEach(element => {
+  element.addEventListener("click", toggleMenu);
+});
+
+function toggleMenu() {
+  const burger = document.querySelector(".burger");
+  const burgerImg = document.querySelector(".burger-img");
+  const logo = document.querySelector(".logo");
+
+  burger.classList.toggle("active");
+  burgerImg.classList.toggle("active");
+  logo.classList.toggle("active");
+}
+
+// Questions display
+
 const question = document.querySelectorAll(".question");
 
 question.forEach(question => {
@@ -16,26 +36,3 @@ question.forEach(question => {
     }
   });
 });
-
-// Header transparent to white when scroll
-window.addEventListener("scroll", function () {
-  const header = document.querySelector(".topbar");
-  header.classList.toggle("sticky", window.scrollY > 0);
-});
-
-// Burger menu for mobile
-
-const click = document.querySelectorAll(".menuClick");
-click.forEach(element => {
-  element.addEventListener("click", toggleMenu);
-});
-
-function toggleMenu() {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const burger = document.querySelector(".burger");
-  const logo = document.querySelector(".logo");
-
-  menuToggle.classList.toggle("active");
-  burger.classList.toggle("active");
-  logo.classList.toggle("active");
-}
