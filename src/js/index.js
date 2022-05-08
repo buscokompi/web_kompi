@@ -1,3 +1,23 @@
+
+// Burger menu for mobile
+
+const click = document.querySelectorAll(".burger-img");
+click.forEach(element => {
+  element.addEventListener("click", toggleMenu);
+});
+
+function toggleMenu() {
+  const burger = document.querySelector(".burger");
+  const burgerImg = document.querySelector(".burger-img");
+  const logo = document.querySelector(".logo");
+
+  burger.classList.toggle("active");
+  burgerImg.classList.toggle("active");
+  logo.classList.toggle("active");
+}
+
+// Questions display
+
 const question = document.querySelectorAll(".question");
 
 question.forEach(question => {
