@@ -13,7 +13,14 @@ module.exports = {
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
-        nested: resolve(__dirname, "src/login.html"),
+        login: resolve(__dirname, "src/login.html"),
+        signin: resolve(__dirname, "src/signin.html"),
+        forgotpass: resolve(__dirname, "src/forgot-password.html"),
+        emailvalidate: resolve(__dirname, "src/email-validated.html"),
+        formuser: resolve(__dirname, "src/form-user.html"),
+        newuser: resolve(__dirname, "src/newuser.html"),
+        optnewuser: resolve(__dirname, "src/options-newuser.html")
+        // nested: resolve(__dirname, "src/login.html"),
       }
     }
   }
