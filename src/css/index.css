@@ -4,18 +4,10 @@
   --black: #3f3d3b;
   --white: white;
   --grey: #c4c4c4;
+  --lightgrey: #f5f5f5;
   --green: #015865;
-  --red: #d11149;
   --title-font: "Dosis";
   --text-font: "Open Sans";
-
-  /* variables del footer */
-  --footer-bg: #3f3d3b;
-  --color: #f2f3fb;
-  --color-smooth: #9da2ae;
-  --btn-bg-color: #f1f2fc;
-  --btn-hover-bg: #d5d9f6;
-  --btn-color: #1e2641;
 }
 
 /* 1rem = 10px */
@@ -801,7 +793,8 @@ footer .copyright p {
 
   footer .information .column {
     text-align: left;
-    line-height: 1rem;
+    line-height: 1.5rem;
+    width: 12rem;
   }
 }
 
@@ -868,7 +861,6 @@ footer .copyright p {
 
   footer .information .column {
     width: 13rem;
-    line-height: 1.2rem;
   }
 
   footer .information .two {
