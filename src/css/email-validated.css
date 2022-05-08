@@ -1,17 +1,13 @@
 :root {
-  --primary-color: #f9b225;
-  --primary-hover-color: #e6a422; /* este color solo se usa en los hover de los button */
-  --secondary-color: #ffe194;
-  --terciary-color: #d11149;
-  --terciary2-color: #c83e4d;
-  --dark-color: #3f3d3b;
-  --white-color: #fff;
-  --light-grey-color: #f5f5f5;
-  --grey-color: #bbbbbb;
-
-  /* IMPROVE: Recomiendo poner mas fuentes como alternativas (al menos 3) */
-  --title-font: "Dosis", sans-serif;
-  --text-font: "Open Sans", sans-serif;
+  --orange: #f9b225;
+  --yellow: #ffe194;
+  --black: #3f3d3b;
+  --white: white;
+  --grey: #c4c4c4;
+  --lightgrey: #f5f5f5;
+  --green: #015865;
+  --title-font: "Dosis";
+  --text-font: "Open Sans";
 }
 
 body {
@@ -19,7 +15,7 @@ body {
   flex-direction: row;
   margin: 0;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: var(--lightgrey);
 }
 
 .container-login {
@@ -31,9 +27,9 @@ body {
 }
 
 .logo {
-  width: 10rem;
-  height: 3rem;
+  width: 8rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .text {
@@ -44,15 +40,4 @@ body {
   text-align: center;
   width: 40rem;
   line-height: 1.5rem;
-}
-
-.main-page{
-  justify-content: center;
-  font-size: 1rem;
-  font-family: var(--text-font);
-  color: var(--grey-color);
-  text-align: center;
-  width: 40rem;
-  line-height: 1.5rem;
-  text-decoration: none;
 }
