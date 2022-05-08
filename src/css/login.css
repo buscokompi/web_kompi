@@ -222,3 +222,8 @@ p {
   text-decoration: underline;
   color: var(--grey-color);
 }
+
+#message{
+  font-family: var(--text-font);
+  font-size: 0.9rem;
+}
