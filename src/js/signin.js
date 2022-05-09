@@ -20,6 +20,7 @@ signInButton.addEventListener("click", () => {
     alert("Comprueba que la contraseña sea correcta");
   } else {
     signInFirebase(email, password);
+    window.location.href = "newuser.html";
   }
 });
 
