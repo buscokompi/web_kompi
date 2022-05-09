@@ -3,9 +3,9 @@ import { initFirebase } from "./fbinit.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 class Animal {
-  constructor(url, urlFb, name, race) {
+  constructor(url, urlfb, name, race) {
     this.url = url;
-    this.urlFb = urlFb;
+    this.urlfb = urlfb;
     this.name = name;
     this.race = race;
   }
@@ -18,10 +18,27 @@ const storage = getStorage(firebaseapp);
 const animalesArr = [];
 
 export async function readAnimals() {
-  await readCollection();
-  await getUrls();
+  /* readCollection();
+  getUrls(); */
 
+  const animals = await getDocs(collection(fs, "animals"));
   let html = "";
+
+  animals.forEach((doc) => {
+    const animal = new Animal("", doc.data().Imagen, doc.data().Nombre, doc.data().Raza);
+    console.log(animal.urlfb);
+    animalesArr.push(animal);
+  });
+
+  for (let i = 0; i < animalesArr.length; i++) {
+    await getDownloadURL(ref(storage, animalesArr[i].urlfb))
+      .then((url) => {
+        animalesArr[i].url = url;
+        console.log(url);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
 
   for (let i = 0; i < animalesArr.length; i++) {
     html += `<div>
@@ -35,25 +52,22 @@ export async function readAnimals() {
 }
 
 export async function addAnimals(ageAnimal, nameAnimal, raceAnimal, sexAnimal) {
-  await addDoc(collection(fs, "animals"), { age: ageAnimal, name: nameAnimal, race: raceAnimal, sex: sexAnimal });
+  await addDoc(collection(fs, "animals"), { name: nameAnimal, race: raceAnimal, sex: sexAnimal });
 }
 
-export async function readCollection() {
-  const animals = () => getDocs(collection(fs, "animals"));
+/* export async function readCollection() {
+  const animals = await getDocs(collection(fs, "animals"));
 
-  const animales = animals();
-
-  (await animales).forEach(doc => {
-    const animal = new Animal("", doc.data().image, doc.data().name, doc.data().race);
+  animals.forEach((doc) => {
+    const animal = new Animal("", doc.data().Imagen, doc.data().Nombre, doc.data().Raza);
+    console.log(animal.urlfb);
     animalesArr.push(animal);
-
-    console.log(animal);
   });
 }
 
 function getUrls() {
   for (let i = 0; i < animalesArr.length; i++) {
-    getDownloadURL(ref(storage, animalesArr[i].urlFb))
+    getDownloadURL(ref(storage, animalesArr[i].urlfb))
       .then((url) => {
         animalesArr[i].url = url;
         console.log(url);
@@ -61,4 +75,4 @@ function getUrls() {
         console.log(error);
       });
   }
-}
+} */
