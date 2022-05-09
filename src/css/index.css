@@ -142,16 +142,15 @@ a {
   background-size: 1.3rem;
   background-repeat: no-repeat;
   background-position: center;
-  transition: 1s;
+  transition: 1s linear;
   z-index: 2;
-  top: 1rem;
-  right: 1.5rem;
+  position: absolute;
+  top: 1.5rem;
 }
 
 .topbar .burger {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .topbar .burger.active {
@@ -159,14 +158,23 @@ a {
   opacity: 1;
 }
 
-.topbar .burger.active .menu {
+.topbar .burger .menu {
   max-width: 42rem;
-  width: 85vw;
+  width: 1vw;
   height: 100%;
   background: white;
   position: fixed;
   top: 0;
   right: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.topbar .burger.active .menu {
+  width: 85vw;
+  transition: 0.7s linear;
+  visibility: visible;
+  opacity: 1;
 }
 
 .topbar .burger.active .opacity {
@@ -418,7 +426,7 @@ a {
 }
 
 .adoption .group .card-extra p span {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .adoption .group .card-extra .footer {
@@ -849,6 +857,10 @@ footer .copyright p {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .list .container .question {
+    gap: 1rem;
+  }
+
   .list .container .answer ul {
     font-size: 1rem;
   }
@@ -991,6 +1003,10 @@ footer .copyright p {
 
   .list {
     margin-bottom: 11rem;
+  }
+
+  .list .container .question {
+    gap: 0;
   }
 
   footer .information {
