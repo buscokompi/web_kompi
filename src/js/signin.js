@@ -1,17 +1,41 @@
 import { signInFirebase, logInGoogle, logInFacebook } from "./fbauth.js";
+import { initFirebase } from "./fbinit";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+initFirebase();
+const fs = getFirestore();
+let userEmail = null;
+const auth = getAuth();
+
+function userLog() {
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      userEmail = user.email;
+    } else {
+      console.log("el usuario no esta logueado");
+    }
+  });
+};
 
 const signInButton = document.querySelector(".btn-signin-email");
 const logGoogle = document.querySelector(".btn-signin-google");
 const logFacebook = document.querySelector(".btn-signin-facebook");
 
 // Evento on click que coge el nombre de usuario y contraseña y lo registra en la base de datos de firebase
-signInButton.addEventListener("click", () => {
+signInButton.addEventListener("click", (e) => {
+  e.preventDefault();
   signIn();
+  userLog();
 
-  setTimeout(function() {
-    console.log("hola");
-    window.location.href = "newuser.html";
-  }, 4000);
+  console.log(userEmail);
+
+  if (userEmail !== null) {
+    setTimeout(function() {
+      console.log("hola");
+      window.location.href = "newuser.html";
+    }, 4000);
+  };
 });
 
 // Login con google
