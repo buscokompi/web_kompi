@@ -56,6 +56,7 @@ btnContinue.addEventListener("click", () => {
 export async function addUser(nameUser, surnameUser, dniUser, birthdateUser, provinceUser, locationUser, directionUser, phoneUser) {
   // await addDoc(collection(fs, "usuarios/" + logued), { name: nameUser, surname: surnameUser, nif: dniUser, birthdate: birthdateUser, province: provinceUser, location: locationUser, direction: directionUser, phone: phoneUser });
   await setDoc(doc(fs, "usuarios", userEmail), { name: nameUser, surname: surnameUser, nif: dniUser, birthdate: birthdateUser, province: provinceUser, location: locationUser, direction: directionUser, phone: phoneUser });
+  window.location.href = "options-newuser.html";
 }
 
 function actualDate() {

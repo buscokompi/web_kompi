@@ -4,7 +4,7 @@ import {
   logInFacebook
 } from "./fbauth.js";
 
-const signInButton = document.querySelector(".btn-login-email");
+const signInButton = document.querySelector(".btn-signin-email");
 const logGoogle = document.querySelector(".btn-signin-google");
 const logFacebook = document.querySelector(".btn-signin-facebook");
 
