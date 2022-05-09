@@ -126,6 +126,11 @@ button:hover {
   cursor: pointer;
 }
 
+.questions{
+  display: flex;
+  flex-direction: column;
+}
+
 .question {
   display: flex;
   flex-direction: column;
@@ -138,13 +143,13 @@ button:hover {
 
 .magicbox {
   display: inline-flex;
-  justify-content: start;
-  align-items: baseline;
+  align-items: center;
 }
 
 .dropdown {
   display: flex;
   position: relative;
+  align-items: center;
   width: 12.5rem;
   height: 1rem;
   margin-left: 1rem;
@@ -157,7 +162,7 @@ button:hover {
   height: 8px;
   border: 2px solid var(--white);
   right: 0.1rem;
-  top: 0.9rem;
+  top: 0.3rem;
   z-index: 2;
 }
 
@@ -180,17 +185,22 @@ button:hover {
 
 .dropdown .question {
   position: absolute;
-  top: 80px;
+  top: 2rem;
   width: 100%;
   background: var(--lightgrey);
   box-shadow: 0 30px 30px rgb(0 0 0 / 5%);
   border-radius: 10px;
   overflow: hidden;
   display: none;
+  z-index: 5;
 }
 
 .dropdown.active .question {
   display: block;
+}
+
+.dropdown.hide .question{
+  background-color: aqua;
 }
 
 .dropdown .question div {
@@ -200,4 +210,8 @@ button:hover {
 
 .dropdown .question div:hover {
   background-color: var(--yellow);
+}
+
+.p-after{
+  margin-left: 2.5rem;
 }
