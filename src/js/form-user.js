@@ -20,8 +20,8 @@ for (let i = 0; i < questions.length; i++) {
   let html = "";
   for (let e = 0; e < answersForm[i].length; e++) {
     console.log(answersForm[i][e]);
-    // html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
-    html += `<div class="quest" data-value="${answersForm[i][e]}">${answersForm[i][e]}</div>`;
+    html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
+    // html += `<div class="quest" data-value="${answersForm[i][e]}">${answersForm[i][e]}</div>`;
   }
   questions[i].innerHTML = html;
 };

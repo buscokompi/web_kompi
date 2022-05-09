@@ -46,7 +46,7 @@ img {
   margin-top: 5rem;
 }
 
-/* .question{
+.question{
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--text-font);
@@ -64,7 +64,7 @@ img {
 
 .question:focus{
   outline-color: var(--grey);
-} */
+}
 
 h1 {
   font-family: var(--text-font);
@@ -126,7 +126,7 @@ button:hover {
   cursor: pointer;
 }
 
-.questions{
+/*.questions{
   display: flex;
   flex-direction: column;
 }
@@ -214,4 +214,4 @@ button:hover {
 
 .p-after{
   margin-left: 2.5rem;
-}
+}*/
