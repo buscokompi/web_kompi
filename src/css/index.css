@@ -226,7 +226,7 @@ a {
 }
 
 .topbar .burger.active .menu .icons img:hover {
-  filter: brightness(0) saturate(100%) invert(23%) sepia(29%) saturate(3149%) hue-rotate(157deg) brightness(97%) contrast(99%);
+  filter: invert(95%) sepia(98%) saturate(6680%) hue-rotate(325deg) brightness(92%) contrast(112%);
   border: 0.1rem solid var(--orange);
   border-radius: 20%;
 }
@@ -907,7 +907,8 @@ footer .copyright p {
     right: 8rem;
   }
 
-  .topbar .desktop a {
+  .topbar .desktop a,
+  .topbar .desktop .display p {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 0.9rem;
@@ -921,8 +922,8 @@ footer .copyright p {
     transition: 0.1s;
   }
 
-  .topbar .desktop img:hover {
-    filter: invert(17%) sepia(40%) saturate(6264%) hue-rotate(329deg) brightness(98%) contrast(103%);
+  .topbar .desktop .display img {
+    width: 1.6rem;
   }
 
   .topbar .desktop .vertical-line {
@@ -932,8 +933,39 @@ footer .copyright p {
     background-color: var(--black);
   }
 
-  .topbar .desktop a:hover {
+  .topbar .desktop a:hover,
+  .topbar .desktop .display p:hover {
     color: var(--orange);
+  }
+
+  .topbar .desktop .profile a:hover {
+    color: var(--green);
+  }
+
+  .topbar .desktop .display {
+    cursor: pointer;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .topbar .desktop .display .profile {
+    background: var(--orange);
+    position: absolute;
+    top: 4rem;
+    right: -0.5rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 1.5rem 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s linear;
+  }
+
+  .topbar .desktop .display.active .profile {
+    visibility: visible;
+    opacity: 1;
   }
 
   .home p {
