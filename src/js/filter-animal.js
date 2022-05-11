@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, setDoc, query, where } from "firebase/firestore";
 import { initFirebase } from "./fbinit.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
@@ -9,7 +9,9 @@ const provincias = ["Cualquiera", "Álava", "Albacete", "Alicante", "Almería", 
   "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo",
   "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"];
 
-const specie = ["Cualquiera", "Caninos", "Felinos", "Aves", "Roedores", "Reptiles"];
+// const specie = ["Cualquiera", "Caninos", "Felinos", "Aves", "Roedores", "Reptiles"];
+
+const specie = ["Cualquiera", "Perro", "Gato", "Ave", "Roedor", "Reptil"];
 
 const catsraces = ["Cualquiera", "Abisinio", "Americano de pelo duro", "Asiático", "Azul ruso", "Balinés", "Bengalí", "Birmano", "Bobtail japonés de pelo corto",
   "Bobtail japonés de pelo largo", "Bombay", "Bosque de Noruega", "Bosque de Siberia", "Británico de pelo corto", "Burmés", "Burmilla",
@@ -57,6 +59,7 @@ const animalesArr = [];
 const animalContainer = document.querySelector(".group");
 const cardAnimal = document.getElementsByClassName("card");
 const selectSpecie = document.querySelector(".sel-specie");
+const btnFilter = document.querySelector(".btn-search");
 let html = "";
 let htmlspecie = "";
 let htmlrace = "";
@@ -70,6 +73,12 @@ window.onload = function() {
 
 selectSpecie.addEventListener("change", () => {
   getRaces(selectSpecie.value);
+
+  console.log(selectSpecie.name + " " + selectSpecie.value);
+});
+
+btnFilter.addEventListener("click", () => {
+  getFilters();
 });
 
 // Funcion que lee todos los animales de firebase y crea un html
@@ -77,7 +86,6 @@ async function readAnimals() {
   const animals = await getDocs(collection(fs, "animals"));
   animals.forEach((doc) => {
     const animal = new Animal(doc.id, "", doc.data().Imagen1, doc.data().Nombre, doc.data().Raza, doc.data().Ubicacion);
-    console.log(animal.id);
     animalesArr.push(animal);
   });
 
@@ -85,20 +93,19 @@ async function readAnimals() {
     await getDownloadURL(ref(storage, animalesArr[i].urlfb))
       .then((url) => {
         animalesArr[i].url = url;
-        addAnimalHtml(i);
+        addAnimalHtml(i, animalesArr);
       }).catch((error) => {
         console.log(error);
       });
   }
-
   addClicks();
 }
 
-function addAnimalHtml(index) {
-  html += `<div class="card" data-value="${animalesArr[index].id}">
-                    <img src="${animalesArr[index].url}" alt="mascota">
-                    <h3 class="name">${animalesArr[index].name}</h3>
-                    <p><img src="./assets/icons/icono_logo.svg" alt="">${animalesArr[index].location}</p>
+function addAnimalHtml(index, arrAnimals) {
+  html += `<div class="card" data-value="${arrAnimals[index].id}">
+                    <img src="${arrAnimals[index].url}" alt="mascota">
+                    <h3 class="name">${arrAnimals[index].name}</h3>
+                    <p><img src="./assets/icons/icono_logo.svg" alt="">${arrAnimals[index].location}</p>
                 </div>`;
   animalContainer.innerHTML = html;
 }
@@ -153,4 +160,36 @@ function getRaces(specie) {
   const select = document.querySelector(".sel-race");
   select.innerHTML = htmlrace;
   htmlrace = "";
+}
+
+async function getFilters(location, specie, race, sex, size, vaccination, sterilization, certified) {
+  html = "";
+  const q = query(collection(fs, "animals"),
+    where("Ubicacion", "==", location),
+    where("Especie", "==", specie),
+    where("Raza", "==", race),
+    where("Sexo", "==", sex),
+    where("Tamano", "==", size),
+    where("Vacunacion", "==", vaccination),
+    where("Esterilizacion", "==", sterilization));
+
+  const arrQuery = [];
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    const animal = new Animal(doc.id, "", doc.data().Imagen1, doc.data().Nombre, doc.data().Raza, doc.data().Ubicacion, doc.data().Especie,
+      doc.data().Sexo, doc.data().Edad, doc.data().Tamano, doc.data().color, doc.data().Vacunacion, doc.data().Esterilizacion, doc.data().Certificado_ppp);
+    arrQuery.push(animal);
+    console.log(animal);
+  });
+
+  for (let i = 0; i < arrQuery.length; i++) {
+    await getDownloadURL(ref(storage, arrQuery[i].urlfb))
+      .then((url) => {
+        arrQuery[i].url = url;
+        addAnimalHtml(i, arrQuery);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
 }
