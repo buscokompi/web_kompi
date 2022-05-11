@@ -17,26 +17,31 @@ const answersForm = [["no tengo preferencia", "un perro", "un gato", "un ave", "
 const questions = document.getElementsByClassName("question");
 
 for (let i = 0; i < questions.length; i++) {
-  console.log(typeof answersForm[i]);
   let html = "";
   for (let e = 0; e < answersForm[i].length; e++) {
     console.log(answersForm[i][e]);
-    // html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
-    html += `<div class="quest" data-value="${answersForm[i][e]}">${answersForm[i][e]}</div>`;
+    html += `<option value="${answersForm[i][e]}">${answersForm[i][e]}</option>`;
+    // html += `<div class="quest" data-value="${answersForm[i][e]}">${answersForm[i][e]}</div>`;
   }
   questions[i].innerHTML = html;
 };
 
 const quest = document.getElementsByClassName("quest");
+const textbox = document.getElementsByClassName("textbox");
+const dropdow = document.getElementsByClassName("dropdown");
 
 for (let a = 0; a < quest.length; a++) {
-  quest[a].addEventListener("click", () => {
-    console.log(quest[a].getAttribute("data-value"));
+  quest[a].addEventListener("click", (e) => {
+    e.target.parentNode.parentNode.classList.remove("active");
     document.querySelector(".textbox").value = quest[a].getAttribute("data-value");
   });
 }
 
-const dropdow = document.querySelector(".dropdown");
-dropdow.onclick = function() {
-  dropdow.classList.toggle("active");
+for (let x = 0; x < dropdow.length; x++) {
+  dropdow[x].addEventListener("click", () => {
+    for (let g = 0; g < dropdow.length; g++) {
+      dropdow[g].classList.remove("active");
+    }
+    dropdow[x].classList.add("active");
+  });
 };

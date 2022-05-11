@@ -50,9 +50,8 @@ const showAnimals = document.querySelector(".muestraanimales");
 const animalContainer = document.querySelector(".animales");
 
 showAnimals.addEventListener("click", async() => {
-  const html = await readAnimals();
-
-  animalContainer.innerHTML = html;
+  console.log(readAnimals());
+  animalContainer.innerHTML = await readAnimals();
 });
 // ______________________________________________
 
