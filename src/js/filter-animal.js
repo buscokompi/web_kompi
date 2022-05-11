@@ -66,6 +66,8 @@ const selectLocation = document.querySelector(".sel-location");
 const selectRace = document.querySelector(".sel-race");
 const selectSex = document.querySelector(".sel-sex");
 const selectSize = document.querySelector(".sel-size");
+const selectVaccination = document.querySelector(".sel-vaccination");
+const selectSterilization = document.querySelector(".sel-sterilization");
 
 const btnFilter = document.querySelector(".btn-search");
 
@@ -74,12 +76,14 @@ let speciesVar = "";
 let raceVar = "";
 let sexVar = "";
 let sizeVar = "";
+let vaccinationVar = "";
+let sterilizationVar = "";
 
 let html = "";
 let htmlspecie = "";
 let htmlrace = "";
 
-window.onload = function () {
+window.onload = function() {
   readAnimals();
   getLocation();
   getRaces();
@@ -118,7 +122,7 @@ selectRace.addEventListener("change", () => {
 
 selectSex.addEventListener("change", () => {
   if (selectSex.value !== "Cualquiera") {
-    sexVar = { field: selectSex.name, value: selectSex.value, query: where(selectSex.name, "==", selectSize.value) };
+    sexVar = { field: selectSex.name, value: selectSex.value, query: where(selectSex.name, "==", selectSex.value) };
   } else {
     sexVar = "";
   }
@@ -132,12 +136,36 @@ selectSize.addEventListener("change", () => {
   }
 });
 
+selectVaccination.addEventListener("change", () => {
+  if (selectVaccination.value !== "Cualquiera") {
+    vaccinationVar = { field: selectVaccination.name, value: selectVaccination.value, query: where(selectVaccination.name, "==", selectVaccination.value) };
+  } else {
+    vaccinationVar = "";
+  }
+});
+
+selectSterilization.addEventListener("change", () => {
+  if (selectSterilization.value !== "Cualquiera") {
+    sterilizationVar = { field: selectSterilization.name, value: selectSterilization.value, query: where(selectSterilization.name, "==", selectSterilization.value) };
+  } else {
+    sterilizationVar = "";
+  }
+});
+
 btnFilter.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const arrQuery = [location, speciesVar, raceVar, sexVar, sizeVar];
+  const arrQuery = [location, speciesVar, raceVar, sexVar, sizeVar, vaccinationVar, sterilizationVar];
+  const arrQuery2 = [];
 
-  getFilters(arrQuery);
+  for (let i = 0; i < arrQuery.length; i++) {
+    if (arrQuery[i] !== "") {
+      arrQuery2.push(arrQuery[i]);
+    }
+  }
+  console.log(arrQuery2);
+
+  getFilters(arrQuery2);
 });
 
 // Funcion que lee todos los animales de firebase y crea un html
@@ -161,6 +189,7 @@ async function readAnimals() {
 }
 
 function addAnimalHtml(index, arrAnimals) {
+  document.querySelector(".number-animals").textContent = arrAnimals.length + " resultados disponibles";
   html += `<div class="card" data-value="${arrAnimals[index].id}">
               <div class ="img-container">
                 <img src="${arrAnimals[index].url}" alt="mascota">
@@ -222,7 +251,7 @@ function getSize() {
 }
 
 function getVaccination() {
-  const arrVac = ["Cualquiera", "Si", "No"];
+  const arrVac = ["Cualquiera", "Al día", "Ninguna vacuna"];
   let htmlVac = "";
   for (let i = 0; i < arrVac.length; i++) {
     htmlVac += `<option value="${arrVac[i]}">${arrVac[i]}</option>`;
@@ -271,10 +300,9 @@ async function getFilters(arranimals) {
   html = "";
   const animalRef = collection(fs, "animals");
   const queryArray = [];
+  console.log(arranimals);
   arranimals.forEach(e => {
-    if (e.query !== undefined && e.query !== "Cualquiera") {
-      queryArray.push(e.query);
-    }
+    queryArray.push(e.query);
   });
 
   const q = query(animalRef, ...queryArray);
@@ -284,11 +312,10 @@ async function getFilters(arranimals) {
 
   querySnapshot.forEach((doc) => {
     const animal = new Animal(doc.id, "", doc.data().Imagen1, doc.data().Nombre, doc.data().Raza, doc.data().Ubicacion, doc.data().Especie,
-      doc.data().Sexo, doc.data().Edad, doc.data().Tamano, doc.data().color, doc.data().Vacunacion, doc.data().Esterilizacion, doc.data().Certificado_ppp);
+      doc.data().Sexo, doc.data().Edad, doc.data().Tamano, doc.data().Color, doc.data().Vacunacion, doc.data().Esterilizacion, doc.data().Certificado_ppp);
     // const user = doc.data().Propietario;
 
     arrQuery.push(animal);
-    console.log(animal);
   });
 
   for (let i = 0; i < arrQuery.length; i++) {
