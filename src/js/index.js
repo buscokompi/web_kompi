@@ -19,10 +19,20 @@ click.forEach(element => {
 function toggleMenu() {
   const burger = document.querySelector(".burger");
   const burgerImg = document.querySelector(".burger-img");
-  const display = document.querySelector(".display");
 
   burger.classList.toggle("active");
   burgerImg.classList.toggle("active");
+}
+
+// Profile menu for mobile
+
+const profile = document.querySelectorAll(".display");
+profile.forEach(element => {
+  element.addEventListener("click", displayMenu);
+});
+
+function displayMenu() {
+  const display = document.querySelector(".display");
   display.classList.toggle("active");
 }
 

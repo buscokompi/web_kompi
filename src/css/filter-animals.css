@@ -267,8 +267,6 @@ select {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(20, 1fr);
-  grid-column-gap: 0;
-  grid-row-gap: 0;
   margin: 0 7rem;
 }
 
@@ -283,15 +281,16 @@ select {
 .results p {
   font-size: 1.7rem;
   font-weight: 600;
+  margin-left: -2.5rem;
 }
 
 .results select {
   background: var(--white);
-  margin-right: 4.5rem;
   width: 13rem;
   height: 3rem;
   border-right: 1rem solid transparent;
   font-size: 1rem;
+  margin-right: -1rem;
 }
 
 .group {
@@ -318,6 +317,7 @@ select {
   box-shadow: 0 0 0.5rem  rgb(146 146 146 / 50%);
   cursor: pointer;
   background: var(--white);
+  overflow: hidden;
 }
 
 .img-container {
