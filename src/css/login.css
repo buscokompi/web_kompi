@@ -50,6 +50,27 @@ body {
   margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 970px) {
+  .logo {
+    margin-left: 6rem;
+  }
+
+  .card-login {
+    display: flex;
+    margin-left: 8rem;
+    width: 17rem;
+  }
+
+  .register {
+    margin-left: 10rem;
+    width: 20rem;
+  }
+
+  .img-dog-login {
+    display: none;
+  }
+}
+
 .card-login p {
   color: var(--black);
   font-family: var(--text-font);
@@ -181,10 +202,6 @@ input:focus {
 
 .btn-signin-facebook:hover {
   background-color: rgb(10 20 44);
-}
-
-.pepe {
-  margin-top: -0.19rem;
 }
 
 .link-signin {
