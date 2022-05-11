@@ -1,30 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./css/filter-animals.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="./js/filter-animal.js"></script>
 </head>
+
 <body>
-  <select name="Ubicacion" class="sel-location"></select>
-  <select name="Especie" class="sel-specie"></select>
-  <select name="Race" class="sel-race"></select>
-  <select name="Sex" class="sel-sex"></select>
-  <!--<select name="select" class="sel-age"></select>-->
-  <select name="select" class="sel-size"></select>
-  <!--<select name="select" class="sel-color"></select>-->
-  <select name="Vacunacion" class="sel-vaccination"></select>
-  <select name="Esterilizacion" class="sel-sterilization">
-    <option value="cualquiera">Cualquiera</option>
-    <option value="si">Si</option>
-    <option value="no">No</option>
-  </select>
-  <!--<select name="Certificado_ppp" class="sel-certificadoppp"></select>-->
-  <button class="btn-search">Iniciar busqueda</button>
-  <div class="group">
-  </div>
-<script type="module" src="./js/filter-animal.js"></script>
+  <header>
+    <nav class="topbar">
+      <a href="index.html"><img class="logo" src="./assets/icons/version_primario_logo.svg" alt="Logo"></a>
+      <div class="burger-img"></div>
+      <div class="burger">
+        <div class="opacity"></div>
+        <div class="menu">
+          <ul>
+            <li><a href="./404file.html">Adopción</a></li>
+            <li><a href="./404file.html">Categorías</a></li>
+            <li><a href="./404file.html">Sobre nosotros</a></li>
+          </ul>
+          <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
+          <div class="icons">
+            <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook_yellow.svg"
+                alt="facebook"></a>
+            <a href="https://www.instagram.com/adoptaunkompi"><img src="./assets/icons/icono_instagram_yellow.svg"
+                alt="instagram"></a>
+            <a href="https://twitter.com/adoptaunkompi"><img src="./assets/icons/icono_twitter_yellow.svg"
+                alt="twitter"></a>
+            <a href="./login.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos" class="heart"></a>
+          </div>
+          <div class="m-footer">
+            <a href="./login.html" class="button">Iniciar sesión</a>
+          </div>
+        </div>
+      </div>
+
+      <ul class="desktop">
+        <li><a href="./404file.html">Adopción</a></li>
+        <li><a href="./404file.html">Categorías</a></li>
+        <li><a href="./404file.html">Sobre nosotros</a></li>
+        <li><a href="./404file.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos"></a></li>
+        <div class="vertical-line"></div>
+        <li><a href="./login.html">Iniciar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="home">
+    <h1>¡Tú próxima mascota está esperandote!</h1>
+    <p>Te mostraremos los resultados más acordes a tu busqueda</p>
+  </main>
+
+  <section class="searcher">
+
+    <div class="results">
+      <p>519 resultados disponibles</p>
+      <select name="select" class="recent">
+        <option value="Más recientes">Más recientes</option>
+        <option value="macho">Más antiguos</option>
+        <option value="hembra">Aleatorio</option>
+      </select>
+    </div>
+
+    <div class="group">
+    </div>
+
+    <div class="filter">
+
+      <p>Localidad</p>
+
+      <select name="Ubicacion" class="sel-location" data-value="Ubicacion"></select>
+      <p>Especie</p>
+      <select name="Especie" class="sel-specie"></select>
+      <p>Raza</p>
+      <select name="Race" class="sel-race"></select>
+      <p>Sexo</p>
+      <select name="Sex" class="sel-sex">
+        <option value="cualquiera">Cualquiera</option>
+        <option value="macho">Macho</option>
+        <option value="hembra">Hembra</option>
+      </select>
+      <p>Edad</p>
+      <select name="select" class="sel-age">
+      </select>
+      <p>Tamaño</p>
+      <select name="select" class="sel-size">
+        <option value="cualquiera">Cualquiera</option>
+        <option value="pequenio">Pequeño</option>
+        <option value="mediano">Mediano</option>
+        <option value="grande">Grande</option>;
+      </select>
+      <p>Color</p>
+      <select name="select" class="sel-color">
+      </select>
+      <p>Vacunas</p>
+      <select name="Vacunacion" class="sel-vaccination">
+        <option value="cualquiera">Cualquiera</option>
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <p>Esterilización</p>
+      <select name="Esterilizacion" class="sel-sterilization">
+        <option value="cualquiera">Cualquiera</option>
+        <option value="si">Si</option>
+        <option value="no">No</option>
+      </select>
+      <button class="btn-search">Iniciar busqueda</button>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="information">
+
+      <div class="column two">
+        <a href="./index.html"><img class="logo" src="./assets/icons/version_blanca_logo.svg"></a>
+        <a href="mailto:buscokompi@gmail.com" class="mail">buscokompi@gmail.com</a>
+        <div class="social">
+          <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook.svg"
+              alt="facebook"></a>
+          <a href="https://www.instagram.com/adoptaunkompi"><img src="./assets/icons/icono_instagram.svg"
+              alt="instagram"></a>
+          <a href="https://twitter.com/adoptaunkompi"><img src="./assets/icons/icono_twitter.svg" alt="twitter"></a>
+        </div>
+      </div>
+
+      <div class="column">
+        <p>Información</p>
+        <a href="./404file.html">Sobre nosotros</a>
+        <a href="./404file.html">Busca una mascota</a>
+        <a href="./404file.html">Contáctanos</a>
+      </div>
+
+      <div class="column three">
+        <p>Acerca de...</p>
+        <a href="./404file.html">Política de privacidad</a>
+        <a href="./404file.html">Términos y condiciones</a>
+        <a href="./404file.html">Preguntas frecuentes</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <hr class=" horizontal-line">
+      <p>© 2022. Todos los Derechos Reservados. <br>Desarrollado por Karmic Koala</p>
+    </div>
+
+  </footer>
+
 </body>
+
 </html>

@@ -79,7 +79,7 @@ let html = "";
 let htmlspecie = "";
 let htmlrace = "";
 
-window.onload = function() {
+window.onload = function () {
   readAnimals();
   getLocation();
   getRaces();
@@ -162,10 +162,12 @@ async function readAnimals() {
 
 function addAnimalHtml(index, arrAnimals) {
   html += `<div class="card" data-value="${arrAnimals[index].id}">
-                    <img src="${arrAnimals[index].url}" alt="mascota">
-                    <h3 class="name">${arrAnimals[index].name}</h3>
-                    <p><img src="./assets/icons/icono_logo.svg" alt="">${arrAnimals[index].location}</p>
-                </div>`;
+              <div class ="img-container">
+                <img src="${arrAnimals[index].url}" alt="mascota">
+              </div>
+              <h2 class="name">${arrAnimals[index].name}</h2>
+              <p><img src="./assets/icons/icono_logo_negro.svg" alt="">${arrAnimals[index].location}</p>
+            </div>`;
   animalContainer.innerHTML = html;
 }
 
