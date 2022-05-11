@@ -31,6 +31,8 @@ const birdraces = ["Cualquiera", "Agaporni", "Cacatúa", "Canario", "Cotorra", "
 
 const reptilraces = ["Cualquiera", "Camaleón", "Gecko", "Iguana", "Pogona", "Serpiente", "Tortuga de agua"];
 
+const arrwhere = [];
+
 class Animal {
   constructor(id, url, urlfb, name, race, location, species, gender, age, size, color, vaccination,
     sterilization, certificationppp) {
@@ -58,8 +60,21 @@ const storage = getStorage(firebaseapp);
 const animalesArr = [];
 const animalContainer = document.querySelector(".group");
 const cardAnimal = document.getElementsByClassName("card");
+
 const selectSpecie = document.querySelector(".sel-specie");
+const selectLocation = document.querySelector(".sel-location");
+const selectRace = document.querySelector(".sel-race");
+const selectSex = document.querySelector(".sel-sex");
+const selectSize = document.querySelector(".sel-size");
+
 const btnFilter = document.querySelector(".btn-search");
+
+let location = "";
+let speciesVar = "";
+let raceVar = "";
+let sexVar = "";
+let sizeVar = "";
+
 let html = "";
 let htmlspecie = "";
 let htmlrace = "";
@@ -69,16 +84,60 @@ window.onload = function() {
   getLocation();
   getRaces();
   getSpecies();
+  getSex();
+  getSize();
+  getVaccination();
+  getSterilization();
 };
+
+selectLocation.addEventListener("change", () => {
+  if (selectLocation.value !== "Cualquiera") {
+    location = { field: selectLocation.name, value: selectLocation.value, query: where(selectLocation.name, "==", selectLocation.value) };
+  } else {
+    location = "";
+  }
+});
 
 selectSpecie.addEventListener("change", () => {
   getRaces(selectSpecie.value);
 
-  console.log(selectSpecie.name + " " + selectSpecie.value);
+  if (selectSpecie.value !== "Cualquiera") {
+    speciesVar = { field: selectSpecie.name, value: selectSpecie.value, query: where(selectSpecie.name, "==", selectSpecie.value) };
+  } else {
+    speciesVar = "";
+  }
 });
 
-btnFilter.addEventListener("click", () => {
-  getFilters();
+selectRace.addEventListener("change", () => {
+  if (selectRace.value !== "Cualquiera") {
+    raceVar = { field: selectRace.name, value: selectRace.value, query: where(selectRace.name, "==", selectRace.value) };
+  } else {
+    raceVar = "";
+  }
+});
+
+selectSex.addEventListener("change", () => {
+  if (selectSex.value !== "Cualquiera") {
+    sexVar = { field: selectSex.name, value: selectSex.value, query: where(selectSex.name, "==", selectSize.value) };
+  } else {
+    sexVar = "";
+  }
+});
+
+selectSize.addEventListener("change", () => {
+  if (selectSize.value !== "Cualquiera") {
+    sizeVar = { field: selectSize.name, value: selectSize.value, query: where(selectSize.name, "==", selectSize.value) };
+  } else {
+    sizeVar = "";
+  }
+});
+
+btnFilter.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const arrQuery = [location, speciesVar, raceVar, sexVar, sizeVar];
+
+  getFilters(arrQuery);
 });
 
 // Funcion que lee todos los animales de firebase y crea un html
@@ -138,18 +197,62 @@ function getSpecies() {
   select.innerHTML = htmlspecie;
 }
 
+function getSex() {
+  const arrSex = ["Cualquiera", "Macho", "Hembra"];
+  let htmlSex = "";
+  for (let i = 0; i < arrSex.length; i++) {
+    htmlSex += `<option value="${arrSex[i]}">${arrSex[i]}</option>`;
+  }
+
+  const select = document.querySelector(".sel-sex");
+  select.innerHTML = htmlSex;
+}
+
+function getSize() {
+  const arrSize = ["Cualquiera", "Pequeño", "Mediano", "Grande"];
+  let htmlSize = "";
+  for (let i = 0; i < arrSize.length; i++) {
+    htmlSize += `<option value="${arrSize[i]}">${arrSize[i]}</option>`;
+  }
+
+  const select = document.querySelector(".sel-size");
+  select.innerHTML = htmlSize;
+}
+
+function getVaccination() {
+  const arrVac = ["Cualquiera", "Si", "No"];
+  let htmlVac = "";
+  for (let i = 0; i < arrVac.length; i++) {
+    htmlVac += `<option value="${arrVac[i]}">${arrVac[i]}</option>`;
+  }
+
+  const select = document.querySelector(".sel-vaccination");
+  select.innerHTML = htmlVac;
+}
+
+function getSterilization() {
+  const arrSterilization = ["Cualquiera", "Si", "No"];
+  let htmlSterilization = "";
+  for (let i = 0; i < arrSterilization.length; i++) {
+    htmlSterilization += `<option value="${arrSterilization[i]}">${arrSterilization[i]}</option>`;
+  }
+
+  const select = document.querySelector(".sel-sterilization");
+  select.innerHTML = htmlSterilization;
+}
+
 function getRaces(specie) {
   let races = dogsraces;
 
-  if (specie === "Felinos") {
+  if (specie === "Gato") {
     races = catsraces;
-  } else if (specie === "Caninos") {
+  } else if (specie === "Perro") {
     races = dogsraces;
-  } else if (specie === "Roedores") {
+  } else if (specie === "Roedor") {
     races = rodentraces;
-  } else if (specie === "Aves") {
+  } else if (specie === "Ave") {
     races = birdraces;
-  } else if (specie === "Reptiles") {
+  } else if (specie === "Reptil") {
     races = reptilraces;
   }
 
@@ -162,16 +265,17 @@ function getRaces(specie) {
   htmlrace = "";
 }
 
-async function getFilters(location, specie, race, sex, size, vaccination, sterilization, certified) {
+async function getFilters(arranimals) {
   html = "";
-  const q = query(collection(fs, "animals"),
-    where("Ubicacion", "==", location),
-    where("Especie", "==", specie),
-    where("Raza", "==", race),
-    where("Sexo", "==", sex),
-    where("Tamano", "==", size),
-    where("Vacunacion", "==", vaccination),
-    where("Esterilizacion", "==", sterilization));
+  const animalRef = collection(fs, "animals");
+  const queryArray = [];
+  arranimals.forEach(e => {
+    if (e.query !== undefined && e.query !== "Cualquiera") {
+      queryArray.push(e.query);
+    }
+  });
+
+  const q = query(animalRef, ...queryArray);
 
   const arrQuery = [];
   const querySnapshot = await getDocs(q);
@@ -179,6 +283,8 @@ async function getFilters(location, specie, race, sex, size, vaccination, steril
   querySnapshot.forEach((doc) => {
     const animal = new Animal(doc.id, "", doc.data().Imagen1, doc.data().Nombre, doc.data().Raza, doc.data().Ubicacion, doc.data().Especie,
       doc.data().Sexo, doc.data().Edad, doc.data().Tamano, doc.data().color, doc.data().Vacunacion, doc.data().Esterilizacion, doc.data().Certificado_ppp);
+    // const user = doc.data().Propietario;
+
     arrQuery.push(animal);
     console.log(animal);
   });
