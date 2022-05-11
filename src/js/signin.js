@@ -9,7 +9,7 @@ let userEmail = null;
 const auth = getAuth();
 
 function userLog() {
-  auth.onAuthStateChanged(function(user) {
+  auth.onAuthStateChanged(function (user) {
     if (user) {
       userEmail = user.email;
     } else {
@@ -31,7 +31,7 @@ signInButton.addEventListener("click", (e) => {
   console.log(userEmail);
 
   if (userEmail !== null) {
-    setTimeout(function() {
+    setTimeout(function () {
       console.log("hola");
       window.location.href = "newuser.html";
     }, 4000);
