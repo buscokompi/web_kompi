@@ -141,7 +141,7 @@ input:focus {
   border: var(--grey) 0.06rem solid;
   color: var(--black);
   margin-bottom: 1rem;
-  margin-top: 4rem;
+  margin-top: rem;
 }
 
 .btn-login-google:hover {
@@ -246,4 +246,34 @@ p {
 #comment {
   font-family: var(--text-font);
   font-size: 0.8rem;
+}
+
+#password {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  width: 27rem;
+}
+
+#password.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password {
+  display: none;
+}
+
+.pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+}
+
+#toggle-password + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
 }

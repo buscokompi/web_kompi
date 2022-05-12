@@ -25,17 +25,25 @@
     </a>
 
     <form class="card-login">
-
       <p>E-mail <span>*</span></p>
       <input class="input-email" type="email" required="required">
 
       <p>Contraseña <span>*</span></p>
-      <input name="password" class="input-password" id="password" type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onkeyup='check();' />
+
+      <input  name="password" class="input-password" id="password" type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onkeyup='check();' />
+
+
+
       <p>Utiliza ocho caracteres como mínimo con una mayuscula, una minúscula, un número y un caracter especial</p>
 
       <p>Verifica tu contraseña <span>*</span></p>
-      <input class="input-password-check" type="password" name="confirm_password" id="confirm_password" required="required"
+
+     <input class="input-password-check" type="password" name="confirm_password" id="confirm_password" required="required"
         onkeyup='check();'>
+
+
+
+
       <span id='message'></span>
 
       <button type="submit" class="button btn-signin-email">Continuar</button>
@@ -51,17 +59,6 @@
 
   <script type="module" src="./js/signin.js"></script>
 
-  <script>
-    var check = function () {
-      if (document.getElementById('password').value ==
-        document.getElementById('confirm_password').value) {
-        document.getElementById('message').style.color = 'green';
-        document.getElementById('message').innerHTML = '';
-      } else {
-        document.getElementById('message').style.color = 'red';
-        document.getElementById('message').innerHTML = 'Las contraseñas no coinciden. Inténtalo de nuevo.';
-      }
-    }
-  </script>
+
 </body>
 </html>

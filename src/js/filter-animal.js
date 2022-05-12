@@ -79,7 +79,7 @@ let html = "";
 let htmlspecie = "";
 let htmlrace = "";
 
-window.onload = function () {
+window.onload = function() {
   readAnimals();
   getLocation();
   getRaces();
