@@ -8,14 +8,6 @@
   --green: #015865;
   --title-font: "Dosis";
   --text-font: "Open Sans";
-
-  /* variables del footer */
-  --footer-bg: #3f3d3b;
-  --color: #f2f3fb;
-  --color-smooth: #9da2ae;
-  --btn-bg-color: #f1f2fc;
-  --btn-hover-bg: #d5d9f6;
-  --btn-color: #1e2641;
 }
 
 *,
@@ -31,6 +23,7 @@ a {
 
 body {
   margin: 0;
+  background-color: var(--lightgrey);
 }
 
 .topbar {
@@ -200,13 +193,14 @@ body {
 
 .topbar .desktop {
   display: none;
+  list-style: none;
 }
 
 /* CAROUSEL */
 .header {
   width: 100%;
-  height: calc(6.5/ 8 * 100vh);
-  background-color: #608479;
+  height: calc(6.5 / 8 * 90vh);
+  background-color: var(--green);
   overflow-x: hidden;
   position: relative;
   padding: 0 12.5rem;
@@ -287,7 +281,7 @@ body {
 .name-location .name {
   color: var(--white);
   font-family: var(--title-font);
-  font-size: 57.6px;
+  font-size: 3rem;
   font-weight: 800;
   margin: 0;
 }
@@ -327,12 +321,13 @@ body {
 
 .publish-date {
   width: 100%;
-  height: calc(0.75/ 8 * 100vh);
+  height: calc(0.75 / 8 * 100vh);
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 12.5rem;
-  background-color: #f2f2f2;
+  margin: 1rem 0;
+  background-color: var(--lightgrey);
 }
 
 .publish-date p {
@@ -352,7 +347,7 @@ body {
 
 .content {
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: var(--lightgrey);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -380,13 +375,13 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 4.375rem 8.125rem;
+  padding: 4rem 5rem;
 }
 
 .description h3 {
   color: var(--black);
   font-family: var(--text-font);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
   padding-bottom: 1.25rem;
@@ -416,7 +411,7 @@ body {
 .animal-data h3 {
   color: var(--black);
   font-family: var(--text-font);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
 }
@@ -424,7 +419,7 @@ body {
 .animal-data p {
   color: var(--black);
   font-family: var(--text-font);
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 400;
   margin: 0;
 }
@@ -453,7 +448,7 @@ body {
 .adoption h3 {
   color: var(--black);
   font-family: var(--text-font);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -465,6 +460,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0.5rem;
 }
 
 .adoption-link-container a {
@@ -472,7 +468,11 @@ body {
   text-decoration: none;
   font-family: var(--text-font);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.adoption-link-container:hover {
+  background-color: var(--lightgrey);
 }
 
 /* <!-- -----------------------------CARD------------------------- --> */
@@ -489,6 +489,8 @@ body {
 
 .other-kompis h2 {
   margin: -3rem 0 0;
+  font-family: var(--text-font);
+  font-size: 2rem;
 }
 
 .other-kompis .text {
@@ -550,19 +552,21 @@ body {
 }
 
 .other-kompis .group .card-extra img {
-  width: 5.5rem;
+  width: 4rem;
   margin-top: 1.8rem;
 }
 
 .other-kompis .group .card-extra p {
   color: var(--white);
+  font-family: var(--text-font);
+  font-weight: 400;
   font-size: 1rem;
   text-align: center;
-  line-height: 0rem;
 }
 
 .other-kompis .group .card-extra p span {
-  font-weight: 700;
+  font-weight: 600;
+  margin: 0;
 }
 
 .other-kompis .group .card-extra .footer {
@@ -595,13 +599,16 @@ footer {
 
 footer .column p {
   color: var(--white);
-  font-size: 1rem;
+  font-family: var(--text-font);
+  font-size: 0.9rem;
   margin: 0.5rem 0 0;
   font-weight: 700;
 }
 
 footer p {
   color: var(--white);
+  font-family: var(--text-font);
+  font-size: 0.8rem;
 }
 
 footer a {
@@ -698,10 +705,6 @@ footer .copyright p {
     font-weight: 500;
   }
 
-  br {
-    display: none;
-  }
-
   .topbar .logo {
     left: 4rem;
   }
@@ -752,11 +755,13 @@ footer .copyright p {
   }
 
   footer p {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
   }
 
   footer a {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
   }
 
   footer .information {
@@ -773,6 +778,10 @@ footer .copyright p {
     text-align: left;
     line-height: 1.5rem;
     width: 12rem;
+  }
+
+  .copyright br {
+    display: none;
   }
 }
 
