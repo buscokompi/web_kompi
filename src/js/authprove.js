@@ -49,17 +49,16 @@ userLogued();
 const showAnimals = document.querySelector(".muestraanimales");
 const animalContainer = document.querySelector(".animales");
 
-showAnimals.addEventListener("click", async() => {
-  const html = await readAnimals();
-
-  animalContainer.innerHTML = html;
+showAnimals.addEventListener("click", async () => {
+  console.log(readAnimals());
+  animalContainer.innerHTML = await readAnimals();
 });
 // ______________________________________________
 
 // Añade un animal a la base de datos de animals
 const btnAddAnimal = document.querySelector(".addAnimal");
 
-btnAddAnimal.addEventListener("click", async() => {
+btnAddAnimal.addEventListener("click", async () => {
   const nameAnimal = document.querySelector(".nameAnimal").value;
   const ageAnimal = document.querySelector(".ageAnimal").value;
   const raceAnimal = document.querySelector(".raceAnimal").value;

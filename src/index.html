@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="./css/index.css">
 
   <script type="module" src="./js/index.js"></script>
+  <script type="module" src="./js/logout.js"></script>
 
 
 </head>
@@ -61,7 +62,6 @@
             <li><a href="./404file.html">Categorías</a></li>
             <li><a href="./404file.html">Sobre nosotros</a></li>
           </ul>
-          <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
           <div class="icons">
             <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook_yellow.svg"
                 width="27" height="27" alt="facebook"></a>
@@ -82,18 +82,16 @@
         <li><a href="./404file.html">Adopción</a></li>
         <li><a href="./404file.html">Categorías</a></li>
         <li><a href="./404file.html">Sobre nosotros</a></li>
-        <li><a href="./404file.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos" width="16"
-              height="15"></a></li>
-        <li class="vertical-line"></li>
-        <!-- <li><a href="./login.html">Iniciar sesión</a></li> -->
-        <!-- --------------------------------------When login---------------------------------- -->
+        <li><a href="./404file.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos"></a></li>
+        <div class="vertical-line"></div>
+        <li class="login"><a href="./login.html">Iniciar sesión</a></li>
         <li class="display">
           <img src="./assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
           <p>Perfil</p>
           <ul class="profile">
             <li><a href="./404file.html">Mi perfil</a></li>
             <li><a href="./404file.html">Ajustes</a></li>
-            <li><a href="./404file.html">Cerrar sesión</a></li>
+            <li class="signout">Cerrar sesión</li>
           </ul>
         </li>
       </ul>
@@ -144,31 +142,39 @@
 
     <div class="group">
       <div class="card">
-        <img src="./assets/bordercollie_smiling.jpg" alt="mascota" width="364" height="243">
+        <div class="img-container">
+          <img src="./assets/bordercollie_smiling.jpg" alt="mascota">
+        </div>
         <h3 class="name">Nala</h3>
-        <p><img src="./assets/icons/icono_logo.svg" alt="Kompi Logo" width="16" height="16">Las Pedroñeras</p>
+        <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Las Pedroñeras</p>
       </div>
       <div class="card">
-        <img src="./assets/imgYorkshire.jpg" alt="mascota" width="364" height="243">
+        <div class="img-container">
+          <img src="./assets/imgYorkshire.jpg" alt="mascota">
+        </div>
         <h3 class="name">Chico</h3>
-        <p><img src="./assets/icons/icono_logo.svg" alt="Kompi Logo" width="16" height="16">Arona</p>
+        <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Arona</p>
       </div>
       <div class="card">
-        <img src="./assets/imgSleapingCat.jpg" alt="mascota" width="364" height="243">
+        <div class="img-container">
+          <img src="./assets/imgSleapingCat.jpg" alt="mascota">
+        </div>
         <h3 class="name">Coco</h3>
-        <p><img src="./assets/icons/icono_logo.svg" alt="Kompi Logo" width="16" height="16">Córdoba</p>
+        <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
       </div>
       <div class="card">
-        <img src="./assets/whitebrown_hamster.jpg" alt="mascota" width="364" height="243">
+        <div class="img-container">
+          <img src="./assets/whitebrown_hamster.jpg" alt="mascota">
+        </div>
         <h3 class="name">Gus</h3>
-        <p><img src="./assets/icons/icono_logo.svg" alt="Kompi Logo" width="16" height="16">Teide</p>
+        <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Teide</p>
       </div>
       <div class="card-extra">
         <img src="./assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
         <p><span>+315 mascotas</span></p>
         <p>disponibles en kompi</p>
         <div class="footer">
-          <a class="button" href="./404file.html">Ver más</a>
+          <a class="button" href="./filter-animals.html">Ver más</a>
         </div>
       </div>
 
@@ -176,7 +182,7 @@
 
     </div>
 
-    <a class="button more" href="./404file.html">Ver más</a>
+    <a class="button more" href="./filter-animals.html">Ver más</a>
   </section>
 
 
@@ -383,7 +389,7 @@
       <div class="column">
         <p>Información</p>
         <a href="./404file.html">Sobre nosotros</a>
-        <a href="./404file.html">Busca una mascota</a>
+        <a href="./filter-animals.html">Busca una mascota</a>
         <a href="./404file.html">Contáctanos</a>
       </div>
 
