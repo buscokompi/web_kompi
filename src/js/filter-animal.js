@@ -92,6 +92,22 @@ window.onload = function() {
   getSize();
   getVaccination();
   getSterilization();
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const categoryParam = urlParams.get("category");
+
+  if (categoryParam) {
+    const categoria = categoryParam.substring(1, categoryParam.length - 1);
+
+    for (let i = 0; i < specie.length; i++) {
+      if (specie[i] === categoria) {
+        console.log(specie[i] + " " + categoria);
+        document.querySelector(".sel-specie").options.item(i).selected = categoryParam;
+        speciesVar = { field: selectSpecie.name, value: selectSpecie.value, query: where(selectSpecie.name, "==", selectSpecie.value) };
+      }
+    };
+  }
 };
 
 selectLocation.addEventListener("change", () => {
@@ -221,7 +237,7 @@ function getLocation() {
 
 function getSpecies() {
   for (let i = 0; i < specie.length; i++) {
-    htmlspecie += `<option value="${specie[i]}">${specie[i]}</option>`;
+    htmlspecie += `<option class="specie" value="${specie[i]}">${specie[i]}</option>`;
   }
 
   const select = document.querySelector(".sel-specie");

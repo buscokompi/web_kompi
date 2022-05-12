@@ -7,9 +7,35 @@ initFirebase();
 
 const auth = getAuth();
 
-window.onload = function() {
-  comprobarUser();
-};
+const content2 = document.querySelector(".display");
+const profile2 = document.querySelector(".login");
+const profileName = document.querySelector(".profile-name");
+
+const user = auth.currentUser;
+console.log(user);
+if (user) {
+  content2.style.display = "grid";
+  profile2.style.display = "none";
+  profileName.textContent = user.email;
+} else {
+  content2.style.display = "none";
+  profile2.style.display = "flex";
+  console.log(user);
+}
+
+/* window.onload = function() {
+  const user = auth.currentUser;
+  console.log(user);
+  if (user) {
+    content2.style.display = "none";
+    profile2.style.display = "block";
+    console.log(user);
+  } else {
+    content2.style.display = "block";
+    profile2.style.display = "none";
+    console.log(user);
+  }
+}; */
 
 const click = document.querySelectorAll(".burger-img", ".display");
 click.forEach(element => {
@@ -58,7 +84,7 @@ question.forEach(question => {
   });
 });
 
-function comprobarUser() {
+/* function comprobarUser() {
   auth.onAuthStateChanged(function(user) {
     if (user) {
       console.log(user.email);
@@ -66,4 +92,4 @@ function comprobarUser() {
       console.log("el usuario no esta logueado");
     }
   });
-}
+} */

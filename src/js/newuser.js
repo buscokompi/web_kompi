@@ -1,7 +1,6 @@
 import { initFirebase } from "./fbinit";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
-import { setUser, userLogued } from "./fbauth.js";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const auth = getAuth();
 
@@ -31,24 +30,9 @@ auth.onAuthStateChanged(function(user) {
   }
 });
 
-/* if (user !== null) {
-  // The user object has basic properties such as display name, email, etc.
-  const displayName = user.displayName;
-  const email = user.email;
-  const photoURL = user.photoURL;
-  const emailVerified = user.emailVerified;
-
-  console.log(email);
-
-  // The user's ID, unique to the Firebase project. Do NOT use
-  // this value to authenticate with your backend server, if
-  // you have one. Use User.getToken() instead.
-  const uid = user.uid;
-} */
-
 const btnContinue = document.querySelector(".btn-continue");
 
-btnContinue.addEventListener("click", (e) => {
+btnContinue.addEventListener("click", async(e) => {
   e.preventDefault();
   const nameUser = document.querySelector(".input-name").value;
   const surnameUser = document.querySelector(".input-surname").value;
@@ -59,26 +43,19 @@ btnContinue.addEventListener("click", (e) => {
   const directionUser = document.querySelector(".input-direction").value;
   const phoneUser = document.querySelector(".input-phone").value;
 
-  console.log(nameUser);
-  console.log(surnameUser);
-  console.log(dniUser);
-  console.log(birthdateUser);
-  console.log(provinceUser);
-  console.log(locationUser);
-  console.log(directionUser);
-  console.log(phoneUser);
+  await setDoc(doc(fs, "usuarios", userEmail), {
+    name: nameUser,
+    surname: surnameUser,
+    nif: dniUser,
+    birthdate: birthdateUser,
+    province: provinceUser,
+    location: locationUser,
+    direction: directionUser,
+    phone: phoneUser
+  });
 
-  addUser(nameUser, surnameUser, dniUser, birthdateUser, provinceUser, locationUser, directionUser, phoneUser);
-  setTimeout(function() {
-    console.log("hola");
-    window.location.href = "options-newuser.html";
-  }, 4000);
+  window.location.href = "../index.html";
 });
-
-export async function addUser(nameUser, surnameUser, dniUser, birthdateUser, provinceUser, locationUser, directionUser, phoneUser) {
-  // await addDoc(collection(fs, "usuarios/" + logued), { name: nameUser, surname: surnameUser, nif: dniUser, birthdate: birthdateUser, province: provinceUser, location: locationUser, direction: directionUser, phone: phoneUser });
-  await setDoc(doc(fs, "usuarios", userEmail), { name: nameUser, surname: surnameUser, nif: dniUser, birthdate: birthdateUser, province: provinceUser, location: locationUser, direction: directionUser, phone: phoneUser });
-}
 
 function actualDate() {
   const fecha = new Date();
