@@ -50,15 +50,48 @@ body {
   margin-bottom: 2rem;
 }
 
+.input-email {
+  width: 27rem;
+}
+
+#password {
+  width: 27rem;
+}
+
 @media screen and (max-width: 970px) {
   .logo {
     margin-left: 6rem;
   }
 
   .card-login {
+    height: 65%;
     display: flex;
     margin-left: 8rem;
     width: 17rem;
+  }
+
+  .input-email {
+    width: 16rem;
+  }
+
+  .btn-signin-facebook {
+    margin-top: 1rem;
+  }
+
+  #password {
+    width: 16rem;
+  }
+
+  .btn-signin-email {
+    padding: 0.8rem;
+  }
+
+  .btn-login-facebook {
+    margin-top: 1rem;
+  }
+
+  .btn-login-google {
+    margin-top: 2rem;
   }
 
   .register {
@@ -253,7 +286,6 @@ p {
   background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
   background-position: 97% center;
   background-repeat: no-repeat;
-  width: 27rem;
 }
 
 #password.visible {
