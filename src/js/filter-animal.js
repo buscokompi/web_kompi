@@ -231,7 +231,7 @@ function addClicks() {
     const idAnimal = cardAnimal[i].getAttribute("data-value");
 
     cardAnimal[i].addEventListener("click", () => {
-      window.location.href = `../animal-card-info.html?id="${idAnimal}"`;
+      window.location.href = `../animal-card-info.html?id=${idAnimal}`;
     });
   }
 }
