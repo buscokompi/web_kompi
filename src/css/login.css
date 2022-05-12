@@ -280,6 +280,8 @@ p {
   font-size: 0.8rem;
 }
 
+/* see first password */
+
 #password {
   margin-top: 1rem;
   background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
@@ -301,6 +303,37 @@ p {
 }
 
 #toggle-password + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
+}
+
+/* see second password */
+
+#password2 {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+}
+
+#password2.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password2 {
+  display: none;
+}
+
+/* .pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+} */
+
+#toggle-password2 + label {
   text-indent: -9999px;
   display: inline-block;
   width: 20px;

@@ -30,7 +30,9 @@
       <input class="input-email" type="email" required="required" placeholder="adoptaunkompi@gmail.com">
 
       <p class="pass">Contraseña <span>*</span></p>
-<div>
+
+
+      <div>
       <input name="password" class="input-password input-email" placeholder="Buscokompi6."
        id="password" type="password" required="required"
        pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
@@ -45,10 +47,15 @@
 
       <p>Verifica tu contraseña <span>*</span></p>
 
-     <input class="input-password-check" type="password" placeholder="Buscokompi6."
-     name="confirm_password" id="confirm_password" required="required"
-        onkeyup='check();'>
 
+      <div>
+        <input name="password2" class="input-password input-email" placeholder="Buscokompi6."
+         id="password2" type="password" required="required"
+         pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+         onkeyup='check();' />
+          <input type="checkbox" id="toggle-password2" />
+          <label for="toggle-password2"></label>
+        </div>
 
 
 
