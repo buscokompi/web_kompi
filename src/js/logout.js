@@ -2,10 +2,10 @@
 /* eslint-disable space-before-function-paren */
 // Desloguea al usuario
 import { logOut } from "./fbauth.js";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 const auth = getAuth();
-const signOut = document.querySelector(".signout");
+const btnSignOut = document.querySelector(".signout");
 window.onload = function () {
     auth.onAuthStateChanged(function (user) {
         if (user) {
@@ -16,6 +16,14 @@ window.onload = function () {
     });
 };
 
-signOut.addEventListener("click", () => {
-    logOut();
+btnSignOut.addEventListener("click", async() => {
+    await signOut(auth).then(() => {
+        console.log("Usuario deslogueado");
+        location.reload();
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+    });
 });
