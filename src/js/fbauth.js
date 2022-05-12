@@ -11,7 +11,7 @@ export function setPers(email, password) {
       signInFirebase(email, password);
     })
     .catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
@@ -114,7 +114,7 @@ export function logOut() {
 
 // Comprueba que un usuario este autenticado
 export function userLogued() {
-  auth.onAuthStateChanged(function(user) {
+  auth.onAuthStateChanged(function (user) {
     if (user) {
       console.log(user);
     } else {

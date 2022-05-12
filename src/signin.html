@@ -11,17 +11,17 @@
   <!--Font-Family: Open Sans and Lato -->
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;600&display=swap"
     rel="stylesheet">
-  <title>Kompi | Registro</title>
-  <link rel="icon" href="./assets/icons/icono_logo.svg">
+  <title>Sign in</title>
+  <link rel="icon" href="./assets/pestaña_icono_logo.svg">
 </head>
 
 <body>
-  <img class="img-dog-login" src="./assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+  <img class="img-dog-login" src="./assets/images/foto_perro.svg">
 
   <div class="container-login">
 
     <a href="./index.html">
-      <img class="logo" src="./assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+      <img class="logo" src="./assets/version_negro_logo.svg">
     </a>
 
     <form class="card-login">
@@ -30,18 +30,20 @@
       <input class="input-email" type="email" required="required">
 
       <p>Contraseña <span>*</span></p>
-      <input name="password" id="password" type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onkeyup='check();' />
-      <p id="comment">Utiliza ocho caracteres que contengan como mínimo una mayúscula, una minúscula, un número y un caracter especial.</p>
+      <input name="password" class="input-password" id="password" type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onkeyup='check();' />
+      <p>Utiliza ocho caracteres como mínimo con una mayuscula, una minúscula, un número y un caracter especial</p>
 
       <p>Verifica tu contraseña <span>*</span></p>
-      <input class="input-password-check" type="password" name="confirm_password" id="confirm_password" required="required"
-        onkeyup='check();'>
+      <input class="input-password-check" type="password" name="confirm_password" id="confirm_password" required="required">
       <span id='message'></span>
 
-     <button type="submit" class="button btn-signin-email">Continuar</button>
+      <button type="submit" class="button btn-signin-email">Continuar</button>
 
-      <div class="button btn-signin-google"><img class="google" src="./assets/icons/google_icono.svg" alt="Icono Google"><span>Regístrate con Google</span></div>
-      <div class="button btn-signin-facebook"><img class="facebook" src="./assets/icons/facebook_icono.svg" alt="Icono Facebook"><span>Regístrate con Facebook</span></div>
+      <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
+      <div class="button btn-signin-google"><img class="google" src="./assets/icons/google_icono.svg"><span>Regístrate
+          con Google</span></div>
+      <div class="button btn-signin-facebook"><img class="facebook"
+          src="./assets/icons/facebook_icono.svg"><span>Regístrate con Facebook</span></div>
     </form>
     <p>¿Ya tienes una cuenta? <a class="link-signin" href="./login.html">Inicia sesión</a></p>
   </div>

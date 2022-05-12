@@ -375,30 +375,50 @@ a {
   width: 16rem;
   height: 22rem;
   display: grid;
-  grid-template-rows: repeat(1, 3fr 1fr 1fr);
-  flex-direction: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 1fr);
   justify-content: center;
-  align-items: center;
+  justify-items: center;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   box-shadow: 0 0 0.5rem  rgb(146 146 146 / 50%);
+  cursor: pointer;
+  background: var(--white);
   overflow: hidden;
 }
 
-.adoption .group .card img {
-  height: 15.2rem;
-  border-radius: 1rem 1rem 0 0;
+.adoption .group .img-container {
+  grid-area: 1 / 1 / 6 / 2;
+  width: 22rem;
+  height: 15rem;
+  border-radius: 1.2rem 1.2rem 48% 47%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.adoption .group .img-container img {
+  width: 16rem;
+  min-height: 15rem;
+  object-fit: cover;
 }
 
 .adoption .group .card p img {
   width: 1rem;
   height: 1rem;
   margin-right: 0.2rem;
+  object-fit: contain;
+}
+
+.adoption .group .card h3 {
+  grid-area: 6 / 1 / 7 / 2;
+  margin-top: 1.2rem;
 }
 
 .adoption .group .card p {
-  margin-top: -2rem;
-  margin-left: -1rem;
+  grid-area: 7 / 1 / 9/ 2;
+  width: 16rem;
+  margin-top: 0.3rem;
 }
 
 .adoption .group .card-extra {
@@ -913,6 +933,7 @@ footer .copyright p {
   }
 
   .topbar .desktop a,
+  .topbar .desktop .display li,
   .topbar .desktop .display p {
     color: var(--black);
     font-family: var(--text-font);
@@ -920,6 +941,7 @@ footer .copyright p {
     font-weight: 600;
     text-decoration: none;
     transition: color 0.5s;
+    cursor: pointer;
   }
 
   .topbar .desktop img {
@@ -948,8 +970,7 @@ footer .copyright p {
   }
 
   .topbar .desktop .display {
-    cursor: pointer;
-    display: grid;
+    display: none;
     grid-auto-flow: column;
     gap: 0.4rem;
     align-items: center;

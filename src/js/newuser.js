@@ -8,6 +8,14 @@ const auth = getAuth();
 window.onload = function() {
   actualDate();
   addProvinces();
+
+  auth.onAuthStateChanged(async(user) => {
+    if (user) {
+      console.log(user.email);
+    } else {
+      console.log("el usuario no esta logueado");
+    }
+  });
 };
 
 initFirebase();
@@ -40,7 +48,8 @@ auth.onAuthStateChanged(function(user) {
 
 const btnContinue = document.querySelector(".btn-continue");
 
-btnContinue.addEventListener("click", () => {
+btnContinue.addEventListener("click", (e) => {
+  e.preventDefault();
   const nameUser = document.querySelector(".input-name").value;
   const surnameUser = document.querySelector(".input-surname").value;
   const dniUser = document.querySelector(".input-dni").value;
@@ -50,7 +59,20 @@ btnContinue.addEventListener("click", () => {
   const directionUser = document.querySelector(".input-direction").value;
   const phoneUser = document.querySelector(".input-phone").value;
 
+  console.log(nameUser);
+  console.log(surnameUser);
+  console.log(dniUser);
+  console.log(birthdateUser);
+  console.log(provinceUser);
+  console.log(locationUser);
+  console.log(directionUser);
+  console.log(phoneUser);
+
   addUser(nameUser, surnameUser, dniUser, birthdateUser, provinceUser, locationUser, directionUser, phoneUser);
+  setTimeout(function() {
+    console.log("hola");
+    window.location.href = "options-newuser.html";
+  }, 4000);
 });
 
 export async function addUser(nameUser, surnameUser, dniUser, birthdateUser, provinceUser, locationUser, directionUser, phoneUser) {
