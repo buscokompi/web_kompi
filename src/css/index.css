@@ -933,10 +933,7 @@ footer .copyright p {
   }
 
   .topbar .desktop a,
-<<<<<<< HEAD
-=======
   .topbar .desktop .display li,
->>>>>>> develop
   .topbar .desktop .display p {
     color: var(--black);
     font-family: var(--text-font);
@@ -973,12 +970,7 @@ footer .copyright p {
   }
 
   .topbar .desktop .display {
-<<<<<<< HEAD
-    cursor: pointer;
-    display: grid;
-=======
     display: none;
->>>>>>> develop
     grid-auto-flow: column;
     gap: 0.4rem;
     align-items: center;
