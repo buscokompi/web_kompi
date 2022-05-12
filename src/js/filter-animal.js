@@ -104,7 +104,6 @@ window.onload = function() {
       if (specie[i] === categoria) {
         console.log(specie[i] + " " + categoria);
         document.querySelector(".sel-specie").options.item(i).selected = categoryParam;
-        speciesVar = { field: selectSpecie.name, value: selectSpecie.value, query: where(selectSpecie.name, "==", selectSpecie.value) };
       }
     };
   }

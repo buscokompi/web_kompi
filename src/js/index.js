@@ -1,9 +1,11 @@
 // // Burger menu for mobile
-
+import { getFirestore, collection, getDocs, setDoc, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { initFirebase } from "./fbinit.js";
 
-initFirebase();
+const firebaseapp = initFirebase();
+
+const fs = getFirestore();
 
 const auth = getAuth();
 
@@ -11,31 +13,16 @@ const content2 = document.querySelector(".display");
 const profile2 = document.querySelector(".login");
 const profileName = document.querySelector(".profile-name");
 
-const user = auth.currentUser;
-console.log(user);
-if (user) {
-  content2.style.display = "grid";
-  profile2.style.display = "none";
-  profileName.textContent = user.email;
-} else {
-  content2.style.display = "none";
-  profile2.style.display = "flex";
-  console.log(user);
-}
-
-/* window.onload = function() {
-  const user = auth.currentUser;
-  console.log(user);
+auth.onAuthStateChanged(function(user) {
   if (user) {
-    content2.style.display = "none";
-    profile2.style.display = "block";
-    console.log(user);
-  } else {
-    content2.style.display = "block";
+    content2.style.display = "grid";
     profile2.style.display = "none";
-    console.log(user);
+    getUserName(user.email);
+  } else {
+    content2.style.display = "none";
+    profile2.style.display = "flex";
   }
-}; */
+});
 
 const click = document.querySelectorAll(".burger-img", ".display");
 click.forEach(element => {
@@ -93,3 +80,19 @@ question.forEach(question => {
     }
   });
 } */
+
+async function getUserName(userEmail) {
+  const userRef = collection(fs, "usuarios");
+  const q = query(userRef, where("id", "==", userEmail));
+  let user = "";
+
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    user = doc.data().name + " " + doc.data().surname;
+  });
+
+  console.log(user);
+
+  profileName.textContent = user;
+}
