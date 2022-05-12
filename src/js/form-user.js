@@ -29,6 +29,7 @@ for (let i = 0; i < questions.length; i++) {
 const quest = document.getElementsByClassName("quest");
 const textbox = document.getElementsByClassName("textbox");
 const dropdow = document.getElementsByClassName("dropdown");
+const btnSearch = document.querySelector(".btn-ver-animales");
 
 for (let a = 0; a < quest.length; a++) {
   quest[a].addEventListener("click", (e) => {
@@ -45,3 +46,7 @@ for (let x = 0; x < dropdow.length; x++) {
     dropdow[x].classList.add("active");
   });
 };
+
+btnSearch.addEventListener("click", () => {
+  window.location.href = "../404file.html";
+});

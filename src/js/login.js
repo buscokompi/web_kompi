@@ -1,5 +1,3 @@
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable padded-blocks */
 import { setPers } from "./fbauth.js";
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import { initFirebase } from "./fbinit.js";
@@ -21,7 +19,6 @@ logInButton.addEventListener("click", async () => {
     .then((userCredential) => {
       console.log("El usuario existe");
     })
-
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -30,7 +27,7 @@ logInButton.addEventListener("click", async () => {
       alert("Login invalido");
     });
 
-  window.location.href = "../index.html";
+  window.history.back();
 });
 
 logGoogle.addEventListener("click", async () => {
@@ -53,7 +50,7 @@ logGoogle.addEventListener("click", async () => {
       alert("Login invalido");
     });
 
-  window.location.href = "../index.html";
+  window.history.back();
 });
 
 // Login con facebook
@@ -80,5 +77,5 @@ logFacebook.addEventListener("click", async () => {
       console.log(credential);
     });
 
-  window.location.href = "../index.html";
+  window.history.back();
 });

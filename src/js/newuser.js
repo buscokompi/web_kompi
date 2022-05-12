@@ -8,6 +8,14 @@ const auth = getAuth();
 window.onload = function() {
   actualDate();
   addProvinces();
+
+  auth.onAuthStateChanged(async(user) => {
+    if (user) {
+      console.log(user.email);
+    } else {
+      console.log("el usuario no esta logueado");
+    }
+  });
 };
 
 initFirebase();

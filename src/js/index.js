@@ -1,6 +1,17 @@
 // // Burger menu for mobile
 
-const click = document.querySelectorAll(".burger-img");
+import { getAuth } from "firebase/auth";
+import { initFirebase } from "./fbinit.js";
+
+initFirebase();
+
+const auth = getAuth();
+
+window.onload = function() {
+  comprobarUser();
+};
+
+const click = document.querySelectorAll(".burger-img", ".display");
 click.forEach(element => {
   element.addEventListener("click", toggleMenu);
 });
@@ -46,3 +57,13 @@ question.forEach(question => {
     }
   });
 });
+
+function comprobarUser() {
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      console.log(user.email);
+    } else {
+      console.log("el usuario no esta logueado");
+    }
+  });
+}
