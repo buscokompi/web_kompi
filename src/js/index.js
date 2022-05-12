@@ -13,7 +13,7 @@ const content2 = document.querySelector(".display");
 const profile2 = document.querySelector(".login");
 const profileName = document.querySelector(".profile-name");
 
-auth.onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function (user) {
   if (user) {
     content2.style.display = "grid";
     profile2.style.display = "none";
@@ -24,7 +24,7 @@ auth.onAuthStateChanged(function(user) {
   }
 });
 
-const click = document.querySelectorAll(".burger-img", ".display");
+const click = document.querySelectorAll(".burger-img");
 click.forEach(element => {
   element.addEventListener("click", toggleMenu);
 });
