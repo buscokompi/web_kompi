@@ -1,5 +1,5 @@
 import { initFirebase } from "./fbinit";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 // Inicializa la api de firebase
 
 // Inicializa firebase
@@ -23,6 +23,6 @@ uploadImage.addEventListener("click", () => {
   const metadata = { contentType: "img/jpeg" };
 
   uploadBytes(refImg, archivo).then((snapshot) => {
-    console.log(archivo);
+    console.log(snapshot);
   });
 });

@@ -11,6 +11,8 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600;700;800&display=swap" rel="stylesheet">
   <script type="module" src="./js/filter-animal.js"></script>
+  <script type="module" src="./js/index.js"></script>
+  <!-- <script type="module" src="./js/logout.js"></script> -->
 </head>
 
 <body>
@@ -26,7 +28,6 @@
             <li><a href="./404file.html">Categorías</a></li>
             <li><a href="./404file.html">Sobre nosotros</a></li>
           </ul>
-          <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
           <div class="icons">
             <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook_yellow.svg"
                 alt="facebook"></a>
@@ -41,17 +42,26 @@
           </div>
         </div>
       </div>
-
       <ul class="desktop">
         <li><a href="./404file.html">Adopción</a></li>
         <li><a href="./404file.html">Categorías</a></li>
         <li><a href="./404file.html">Sobre nosotros</a></li>
         <li><a href="./404file.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos"></a></li>
         <div class="vertical-line"></div>
-        <li><a href="./login.html">Iniciar sesión</a></li>
+        <li class="login"><a href="./login.html">Iniciar sesión</a></li>
+        <li class="display">
+          <img src="./assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
+          <p class="profile-name">Perfil</p>
+          <ul class="profile">
+            <li><a href="./404file.html">Mi perfil</a></li>
+            <li><a href="./404file.html">Ajustes</a></li>
+            <li class="signout">Cerrar sesión</li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
+
 
   <main class="home">
     <h1>¡Tú próxima mascota está esperandote!</h1>
@@ -61,12 +71,12 @@
   <section class="searcher">
 
     <div class="results">
-      <p class="number-animals">519 resultados disponibles</p>
-      <!--<select name="select" class="recent">
+      <p class="number-animals">0 resultados disponibles</p>
+      <select name="select" class="recent">
         <option value="Más recientes">Más recientes</option>
         <option value="macho">Más antiguos</option>
         <option value="hembra">Aleatorio</option>
-      </select>-->
+      </select>
     </div>
 
     <div class="group">
