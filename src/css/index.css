@@ -928,7 +928,8 @@ footer .copyright p {
   }
 
   .topbar .desktop a,
-  .topbar .desktop .display li {
+  .topbar .desktop .display li,
+  .topbar .desktop .display p {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 0.9rem;
@@ -964,7 +965,7 @@ footer .copyright p {
   }
 
   .topbar .desktop .display {
-    display: grid;
+    display: none;
     grid-auto-flow: column;
     gap: 0.4rem;
     align-items: center;

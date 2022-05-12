@@ -1,4 +1,4 @@
-// Burger menu for mobile
+// // Burger menu for mobile
 
 const click = document.querySelectorAll(".burger-img");
 click.forEach(element => {
