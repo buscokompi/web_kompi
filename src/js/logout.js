@@ -9,7 +9,7 @@ const signOut = document.querySelector(".signout");
 window.onload = function () {
     auth.onAuthStateChanged(function (user) {
         if (user) {
-            console.log(user.email);
+            // console.log(user.email);
         } else {
             console.log("el usuario no esta logueado");
         }

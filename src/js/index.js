@@ -71,28 +71,19 @@ question.forEach(question => {
   });
 });
 
-/* function comprobarUser() {
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      console.log(user.email);
-    } else {
-      console.log("el usuario no esta logueado");
-    }
-  });
-} */
-
 async function getUserName(userEmail) {
-  const userRef = collection(fs, "usuarios");
-  const q = query(userRef, where("id", "==", userEmail));
+  const userRef = await getDocs(collection(fs, "usuarios"));
   let user = "";
 
-  const querySnapshot = await getDocs(q);
-
-  querySnapshot.forEach((doc) => {
-    user = doc.data().name + " " + doc.data().surname;
+  userRef.forEach((doc) => {
+    if (doc.id === userEmail) {
+      user = doc.data().name + " " + doc.data().surname;
+    }
   });
 
-  console.log(user);
+  if (user === "") {
+    user = userEmail;
+  }
 
   profileName.textContent = user;
 }

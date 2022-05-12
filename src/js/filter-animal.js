@@ -84,7 +84,6 @@ let htmlspecie = "";
 let htmlrace = "";
 
 window.onload = function() {
-  readAnimals();
   getLocation();
   getRaces();
   getSpecies();
@@ -102,10 +101,20 @@ window.onload = function() {
 
     for (let i = 0; i < specie.length; i++) {
       if (specie[i] === categoria) {
-        console.log(specie[i] + " " + categoria);
-        document.querySelector(".sel-specie").options.item(i).selected = categoryParam;
+        const selCategory = document.querySelector(".sel-specie");
+        selCategory.options.item(i).selected = categoryParam;
+
+        if (selectSpecie.value !== "Cualquiera") {
+          speciesVar = { field: selCategory.name, value: selCategory.value, query: where(selCategory.name, "==", selCategory.value) };
+        } else {
+          speciesVar = "";
+        }
+
+        getFilters(checkFilters());
       }
     };
+  } else {
+    readAnimals();
   }
 };
 
@@ -170,6 +179,10 @@ selectSterilization.addEventListener("change", () => {
 btnFilter.addEventListener("click", (e) => {
   e.preventDefault();
 
+  getFilters(checkFilters());
+});
+
+function checkFilters() {
   const arrQuery = [location, speciesVar, raceVar, sexVar, sizeVar, vaccinationVar, sterilizationVar];
   const arrQuery2 = [];
 
@@ -178,10 +191,8 @@ btnFilter.addEventListener("click", (e) => {
       arrQuery2.push(arrQuery[i]);
     }
   }
-  console.log(arrQuery2);
-
-  getFilters(arrQuery2);
-});
+  return arrQuery2;
+}
 
 // Funcion que lee todos los animales de firebase y crea un html
 async function readAnimals() {
@@ -315,7 +326,6 @@ async function getFilters(arranimals) {
   html = "";
   const animalRef = collection(fs, "animals");
   const queryArray = [];
-  console.log(arranimals);
   arranimals.forEach(e => {
     queryArray.push(e.query);
   });
@@ -333,13 +343,19 @@ async function getFilters(arranimals) {
     arrQuery.push(animal);
   });
 
-  for (let i = 0; i < arrQuery.length; i++) {
-    await getDownloadURL(ref(storage, arrQuery[i].urlfb))
-      .then((url) => {
-        arrQuery[i].url = url;
-        addAnimalHtml(i, arrQuery);
-      }).catch((error) => {
-        console.log(error);
-      });
+  if (arrQuery <= 0) {
+    document.querySelector(".number-animals").textContent = "0 resultados disponibles";
+    html = "";
+    animalContainer.innerHTML = html;
+  } else {
+    for (let i = 0; i < arrQuery.length; i++) {
+      await getDownloadURL(ref(storage, arrQuery[i].urlfb))
+        .then((url) => {
+          arrQuery[i].url = url;
+          addAnimalHtml(i, arrQuery);
+        }).catch((error) => {
+          console.log(error);
+        });
+    }
   }
 }
