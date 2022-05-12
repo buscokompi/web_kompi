@@ -2,6 +2,7 @@ import { initFirebase } from "./fbinit";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+initFirebase();
 const auth = getAuth();
 
 window.onload = function() {
@@ -63,11 +64,11 @@ function actualDate() {
   let hoy = fecha.getDate();
   let mesActual = fecha.getMonth() + 1;
 
-  if (mesActual.toString().length >= 1) {
+  if (mesActual.toString().length === 1) {
     mesActual = "0" + mesActual;
   }
 
-  if (hoy.toString().length >= 1) {
+  if (hoy.toString().length === 1) {
     hoy = "0" + hoy;
   }
 

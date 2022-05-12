@@ -18,6 +18,7 @@ logInButton.addEventListener("click", async() => {
   await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log("El usuario existe");
+      window.history.back();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -26,8 +27,6 @@ logInButton.addEventListener("click", async() => {
       console.log(errorMessage);
       alert("Login invalido");
     });
-
-  window.history.back();
 });
 
 logGoogle.addEventListener("click", async() => {
