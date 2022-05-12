@@ -104,6 +104,7 @@ export function logInFacebook() {
 export function logOut() {
   signOut(auth).then(() => {
     console.log("Usuario deslogueado");
+    location.reload();
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -114,7 +115,7 @@ export function logOut() {
 
 // Comprueba que un usuario este autenticado
 export function userLogued() {
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged(function(user) {
     if (user) {
       console.log(user);
     } else {

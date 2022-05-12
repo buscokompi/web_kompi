@@ -1,15 +1,28 @@
 // // Burger menu for mobile
-
+import { getFirestore, collection, getDocs, setDoc, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { initFirebase } from "./fbinit.js";
 
-initFirebase();
+const firebaseapp = initFirebase();
+
+const fs = getFirestore();
 
 const auth = getAuth();
 
-window.onload = function() {
-  comprobarUser();
-};
+const content2 = document.querySelector(".display");
+const profile2 = document.querySelector(".login");
+const profileName = document.querySelector(".profile-name");
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    content2.style.display = "grid";
+    profile2.style.display = "none";
+    getUserName(user.email);
+  } else {
+    content2.style.display = "none";
+    profile2.style.display = "flex";
+  }
+});
 
 const click = document.querySelectorAll(".burger-img");
 click.forEach(element => {
@@ -58,7 +71,7 @@ question.forEach(question => {
   });
 });
 
-function comprobarUser() {
+/* function comprobarUser() {
   auth.onAuthStateChanged(function(user) {
     if (user) {
       console.log(user.email);
@@ -66,4 +79,20 @@ function comprobarUser() {
       console.log("el usuario no esta logueado");
     }
   });
+} */
+
+async function getUserName(userEmail) {
+  const userRef = collection(fs, "usuarios");
+  const q = query(userRef, where("id", "==", userEmail));
+  let user = "";
+
+  const querySnapshot = await getDocs(q);
+
+  querySnapshot.forEach((doc) => {
+    user = doc.data().name + " " + doc.data().surname;
+  });
+
+  console.log(user);
+
+  profileName.textContent = user;
 }
