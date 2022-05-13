@@ -10,6 +10,7 @@ module.exports = {
   build: {
     outDir: "../dist",
     assetsDir: "./",
+    target: "esnext",
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
