@@ -56,74 +56,97 @@ function chargeForm() {
   profileContent.innerHTML = /* html */`
       <form class="formulario">
         <div class="name">
-          <h3>Nombre *</h3>
+          <p>Nombre*</p>
           <input type="text">
+        </div>
+        <div class="location">
+          <p>Localidad*</p>
+          <select data-value="Ubicacion"></select>
         </div>
         <div class="species">
-          <h3>Especie *</h3>
-          <input type="text">
-        </div>
-        <div class="age">
-          <h3>Edad *</h3>
-          <input type="number">
+          <p>Especie*</p>
+          <select ></select>
         </div>
         <div class="breed">
-          <h3>Raza *</h3>
-          <input type="text">
+          <p>Raza*</p>
+          <select></select>
         </div>
         <div class="gender">
-          <h3>Sexo *</h3>
-          <input type="text">
+          <p>Sexo*</p>
+          <select >
+            <option value="macho">Macho</option>
+            <option value="hembra">Hembra</option>
+          </select>
         </div>
-        <div class="size">
-          <h3>Tamaño *</h3>
-          <input type="number">
+        <div  class="age">
+          <p>Edad*</p>
+          <select>
+          </select>
         </div>
         <div class="weight">
-          <h3>Peso *</h3>
-          <input type="number">
+          <p>Tamaño*</p>
+          <select name="Tamano">
+
+          <option value="pequenio">Pequeño</option>
+          <option value="mediano">Mediano</option>
+          <option value="grande">Grande</option>;
+          </select>
         </div>
         <div class="color">
-          <h3>Color *</h3>
-          <input type="text">
+          <p>Color*</p>
+          <select name="select">
+          </select>
         </div>
         <div class="hair">
-          <h3>Pelo *</h3>
-          <input type="text">
+          <p>Pelo*</p>
+          <select name="hair">
+          </select>
         </div>
         <div class="microchip">
-          <h3>Microchip *</h3>
-          <input type="text">
+          <p>Microchip*</p>
+          <select>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+          </select>
         </div>
         <div class="vaccination">
-          <h3>Vacunación * *</h3>
-          <input type="text">
+          <p>Vacunas*</p>
+          <select>
+
+            <option value="si">Si</option>
+            <option value="no">No</option>
+          </select>
         </div>
         <div class="sterilized">
-          <h3>Esterilizado *</h3>
-          <input type="text">
+          <p>Esterilización*</p>
+          <select>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+          </select>
         </div>
         <div class="danger-certificate">
-          <h3>Certificado ppp *</h3>
-          <input type="text">
+          <p>Certificado ppp*</p>
+          <select>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+          </select>
         </div>
         <div class="description">
-          <h3>Decripción</h3>
+          <p>Decripción*</p>
           <textarea name="" placeholder="Escribe aquí"></textarea>
         </div>
         <div class="images">
-          <h3>Fotografías</h3>
+          <p>Fotografías</p>
           <div class="uploadImages">
-          <input class="fileinput" type="file" value="Subir Archivo" accept="image/*">
+            <input class="fileinput" type="file" value="Subir Archivo" accept="image/*">
           </div>
-          
         </div>
-    </form>
+      </form>
 
-    <div class="save">
-      <button class="submit">Guardar</button>
-    </div>
-    
+      <div class="save">
+        <button class="submit">Guardar</button>
+      </div>
+
     `;
 
   const fileinput = document.querySelector(".fileinput");
@@ -154,7 +177,7 @@ function aboutMe() {
 
 function adopterProfile() {
   profileContent.innerHTML = /* html */`
-    
+
     `;
 }
 
@@ -173,13 +196,13 @@ function animalProfile() {
 
 function favorites() {
   profileContent.innerHTML = /* html */`
-    
+
     `;
 }
 
 function settings() {
   profileContent.innerHTML = /* html */`
-    
+
     `;
 }
 function chargeSection(index) {
