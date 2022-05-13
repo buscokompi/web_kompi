@@ -339,9 +339,8 @@ a {
 
 select {
   background: var(--lightgrey);
-  width: 100%;
+  width: 90%;
   height: 2.5rem;
-  appearance: none;
   border-radius: 0.5rem;
   border: none;
 }
