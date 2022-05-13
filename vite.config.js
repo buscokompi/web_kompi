@@ -21,7 +21,7 @@ module.exports = {
         newuser: resolve(__dirname, "src/newuser.html"),
         optnewuser: resolve(__dirname, "src/options-newuser.html"),
         animalsfilter: resolve(__dirname, "src/filter-animals.html"),
-        animaltemplate: resolve(__dirname, "src/animal-card-info.html"),
+        // animaltemplate: resolve(__dirname, "src/animal-card-info.html"),
         animalform: resolve(__dirname, "src/formulario.html"),
         nested: resolve(__dirname, "src/404file.html")
       }
