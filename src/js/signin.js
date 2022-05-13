@@ -1,41 +1,44 @@
 import { signInFirebase, logInGoogle, logInFacebook } from "./fbauth.js";
 import { initFirebase } from "./fbinit";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
 initFirebase();
-const fs = getFirestore();
-let userEmail = null;
-const auth = getAuth();
 
-function userLog() {
-  auth.onAuthStateChanged(function(user) {
-    if (user) {
-      userEmail = user.email;
-    } else {
-      console.log("el usuario no esta logueado");
-    }
-  });
-};
+initFirebase();
+const auth = getAuth();
 
 const signInButton = document.querySelector(".btn-signin-email");
 const logGoogle = document.querySelector(".btn-signin-google");
 const logFacebook = document.querySelector(".btn-signin-facebook");
 
 // Evento on click que coge el nombre de usuario y contraseña y lo registra en la base de datos de firebase
-signInButton.addEventListener("click", (e) => {
+signInButton.addEventListener("click", async(e) => {
   e.preventDefault();
-  signIn();
-  userLog();
 
-  console.log(userEmail);
+  const email = document.querySelector(".input-email").value;
+  const password = document.querySelector(".input-password").value;
+  const passwordCheck = document.querySelector(".input-password-check").value;
 
-  if (userEmail !== null) {
-    setTimeout(function() {
-      console.log("hola");
+  check();
+
+  if (password !== passwordCheck) {
+    alert("Comprueba que la contraseña sea correcta");
+  } else {
+    signInFirebase(email, password);
+  }
+
+  await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log("usuario registrado");
       window.location.href = "newuser.html";
-    }, 4000);
-  };
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      alert("invalido");
+    });
 });
 
 // Login con google
@@ -47,19 +50,15 @@ logGoogle.addEventListener("click", () => {
 logFacebook.addEventListener("click", () => {
   logInFacebook();
 });
-// validar contraseñas coincidentes
 
-function signIn() {
-  console.log("sign up en proceso");
-
-  const email = document.querySelector(".input-email").value;
-  const password = document.querySelector(".input-password").value;
-  const passwordCheck = document.querySelector(".input-password-check").value;
-
-  if (password !== passwordCheck) {
-    alert("Comprueba que la contraseña sea correcta");
+const check = function() {
+  if (document.getElementById("password").value ==
+    document.getElementById("confirm_password").value) {
+    document.getElementById("message").style.color = "green";
+    document.getElementById("message").innerHTML = "";
   } else {
-    signInFirebase(email, password);
+    document.getElementById("message").style.color = "red";
+    document.getElementById("message").innerHTML = "Las contraseñas no coinciden. Inténtalo de nuevo.";
   }
 };
 // See first password

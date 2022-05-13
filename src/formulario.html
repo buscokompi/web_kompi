@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/formulario.css">
+  <!-- Open Sans font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <!--Dosis font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" src="./js/formulario.js"></script>
+  <script type="module" src="./js/index.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="topbar">
+      <a href="index.html"><img class="logo" src="./assets/icons/version_primario_logo.svg" width="112" height="34"
+          alt="Logo"></a>
+      <div class="burger-img"></div>
+      <div class="burger">
+        <div class="opacity"></div>
+        <div class="menu">
+          <ul>
+            <li><a href="./404file.html">Adopción</a></li>
+            <li><a href="./404file.html">Categorías</a></li>
+            <li><a href="./404file.html">Sobre nosotros</a></li>
+          </ul>
+          <div class="icons">
+            <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook_yellow.svg"
+                width="27" height="27" alt="facebook"></a>
+            <a href="https://www.instagram.com/adoptaunkompi"><img src="./assets/icons/icono_instagram_yellow.svg"
+                width="27" height="27" alt="instagram"></a>
+            <a href="https://twitter.com/adoptaunkompi"><img src="./assets/icons/icono_twitter_yellow.svg" width="27"
+                height="27" alt="twitter"></a>
+            <a href="./login.html"><img src="./assets/icons/corazon_icono.svg" width="27" height="27" alt="favoritos"
+                class="heart"></a>
+          </div>
+          <div class="m-footer">
+            <a href="./login.html" class="button">Iniciar sesión</a>
+          </div>
+        </div>
+      </div>
+
+      <ul class="desktop">
+        <li><a href="./404file.html">Adopción</a></li>
+        <li><a href="./filter-animals.html">Categorías</a></li>
+        <li><a href="./404file.html">Sobre nosotros</a></li>
+        <li><a href="./404file.html"><img src="./assets/icons/corazon_icono.svg" alt="favoritos"></a></li>
+        <div class="vertical-line"></div>
+        <li class="login"><a href="./login.html">Iniciar sesión</a></li>
+        <li class="display">
+          <img src="./assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
+          <p class="profile-name">Perfil</p>
+          <ul class="profile">
+            <li><a href="./404file.html">Mi perfil</a></li>
+            <li><a href="./404file.html">Ajustes</a></li>
+            <li class="signout">Cerrar sesión</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="home">
+    <h1>Mi perfil</h1>
+    <div class="sections">
+      <p href="">Sobre mí</p>
+      <p href="">Perfil adoptante</p>
+      <p href="">Perfil animal</p>
+      <p href="">Favoritos</p>
+      <p href="">Ajustes</p>
+      <hr class="hr">
+      <hr class="hr">
+      <hr class="hr">
+      <hr class="hr">
+      <hr class="hr">
+    </div>
+
+    <div class="profile-content">
+
+    </div>
+    <!-- <p>Para poner en adopción a un animal, pulsa el botón 'Añadir animal' y completa el formulario</p>
+
+      <div class="new-animal-link">
+        <a href="#">Añadir animal</a>
+      </div> -->
+
+    <!-- <form class="formulario">
+      <div class="name">
+        <h3>Nombre *</h3>
+        <input type="text">
+      </div>
+      <div class="species">
+        <h3>Especie *</h3>
+        <input type="text">
+      </div>
+      <div class="age">
+        <h3>Edad *</h3>
+        <input type="number">
+      </div>
+      <div class="breed">
+        <h3>Raza *</h3>
+        <input type="text">
+      </div>
+      <div class="gender">
+        <h3>Sexo *</h3>
+        <input type="text">
+      </div>
+      <div class="size">
+        <h3>Tamaño *</h3>
+        <input type="number">
+      </div>
+      <div class="weight">
+        <h3>Peso *</h3>
+        <input type="number">
+      </div>
+      <div class="color">
+        <h3>Color *</h3>
+        <input type="text">
+      </div>
+      <div class="hair">
+        <h3>Pelo *</h3>
+        <input type="text">
+      </div>
+      <div class="microchip">
+        <h3>Microchip *</h3>
+        <input type="text">
+      </div>
+      <div class="vaccination">
+        <h3>Vacunación * *</h3>
+        <input type="text">
+      </div>
+      <div class="sterilized">
+        <h3>Esterilizado *</h3>
+        <input type="text">
+      </div>
+      <div class="danger-certificate">
+        <h3>Certificado ppp *</h3>
+        <input type="text">
+      </div>
+      <div class="description">
+        <h3>Decripción</h3>
+        <input type="text">
+      </div>
+      <div class="images">
+        <h3>Fotografías</h3>
+        <input type="text">
+      </div>
+
+    </form> -->
+  </main>
+  <footer>
+
+    <div class="information">
+
+      <div class="column two">
+        <a href="./index.html"><img class="logo" src="./assets/icons/version_blanca_logo.svg" alt="Kompi logo"
+            width="74" height="22"></a>
+        <a href="mailto:buscokompi@gmail.com" class="mail">adoptaunkompi@gmail.com</a>
+        <div class="social">
+          <a href="https://www.facebook.com/adoptaunkompi/"><img src="./assets/icons/icono_facebook.svg" width="21"
+              height="21" alt="facebook"></a>
+          <a href="https://www.instagram.com/adoptaunkompi"><img src="./assets/icons/icono_instagram.svg" width="21"
+              height="21" alt="instagram"></a>
+          <a href="https://twitter.com/adoptaunkompi"><img src="./assets/icons/icono_twitter.svg" width="21" height="21"
+              alt="twitter"></a>
+        </div>
+      </div>
+
+      <div class="column">
+        <p>Información</p>
+        <a href="./404file.html">Sobre nosotros</a>
+        <a href="./filter-animals.html">Busca una mascota</a>
+        <a href="./404file.html">Contáctanos</a>
+      </div>
+
+      <div class="column three">
+        <p>Acerca de...</p>
+        <a href="./404file.html">Política de privacidad</a>
+        <a href="./404file.html">Términos y condiciones</a>
+        <a href="./404file.html">Preguntas frecuentes</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <hr class=" horizontal-line">
+      <p>© 2022. Todos los Derechos Reservados. <br>Desarrollado por Karmic Koala</p>
+    </div>
+
+  </footer>
+</body>
+
+</html>

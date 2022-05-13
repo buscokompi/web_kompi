@@ -11,7 +11,7 @@ export function setPers(email, password) {
       signInFirebase(email, password);
     })
     .catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode);
@@ -104,6 +104,7 @@ export function logInFacebook() {
 export function logOut() {
   signOut(auth).then(() => {
     console.log("Usuario deslogueado");
+    location.reload();
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;

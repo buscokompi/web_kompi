@@ -7,7 +7,8 @@ const btnPass = document.querySelector(".btn");
 
 btnPass.addEventListener("click", () => {
   const email = document.querySelector(".input-email").value;
-  const promesa = sendPasswordResetEmail(auth, email)
+  console.log("hola");
+  sendPasswordResetEmail(auth, email)
     .then(() => {
       console.log("Email enviado");
       window.location.href = "../email-validated.html";
