@@ -20,25 +20,24 @@ signInButton.addEventListener("click", async(e) => {
   const password = document.querySelector(".input-password").value;
   const passwordCheck = document.querySelector(".input-password-check").value;
 
-  // check();
+  check();
 
   if (password !== passwordCheck) {
     alert("Comprueba que la contraseña sea correcta");
   } else {
-    signInFirebase(email, password);
+    // signInFirebase(email, password);
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("usuario registrado");
+        window.location.href = "newuser.html";
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        alert("invalido");
+      });
   }
-
-  await createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("usuario registrado");
-      window.location.href = "newuser.html";
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      alert("invalido");
-    });
 });
 
 // Login con google
@@ -51,7 +50,7 @@ logFacebook.addEventListener("click", () => {
   logInFacebook();
 });
 
-/* const check = function() {
+const check = function() {
   if (document.getElementById("password").value ==
     document.getElementById("confirm_password").value) {
     document.getElementById("message").style.color = "green";
@@ -60,4 +59,4 @@ logFacebook.addEventListener("click", () => {
     document.getElementById("message").style.color = "red";
     document.getElementById("message").innerHTML = "Las contraseñas no coinciden. Inténtalo de nuevo.";
   }
-}; */
+};
