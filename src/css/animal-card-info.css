@@ -10,10 +10,33 @@
   --text-font: "Open Sans";
 }
 
-*,
-*::before,
-*::after {
+body {
+  min-height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--lightgrey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html {
+  scroll-behavior: smooth;
+  display: inline-block;
+  overflow-x: hidden;
+}
+
+h3,
+p {
+  font-family: var(--text-font);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
 }
 
 a {
@@ -21,9 +44,23 @@ a {
   margin: 0;
 }
 
-body {
-  margin: 0;
-  background-color: var(--lightgrey);
+.button {
+  background: var(--orange);
+  color: var(--black);
+  padding: 0.8rem 2rem;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 3rem;
+  font-family: var(--text-font);
+  font-size: 1em;
+  font-weight: 600;
+  transition: 0.5s ease-out;
+  border: 0;
+}
+
+.button:hover {
+  background: #cc9320;
+  border: 0;
 }
 
 .topbar {
@@ -37,7 +74,7 @@ body {
   top: 0;
   left: 0;
   box-shadow: 0 0.125rem 0.25rem 0 rgb(0 0 0 / 20%);
-  z-index: 5;
+  z-index: 9;
 }
 
 .topbar .logo {
@@ -54,10 +91,6 @@ body {
   text-decoration: none;
   transition: color 0.5s;
 }
-
-/* .topbar a:hover {
-  text-decoration: underline;
-} */
 
 .topbar .burger-img {
   width: 3rem;
@@ -160,7 +193,7 @@ body {
 }
 
 .topbar .burger.active .menu .icons img:hover {
-  filter: brightness(0) saturate(100%) invert(23%) sepia(29%) saturate(3149%) hue-rotate(157deg) brightness(97%) contrast(99%);
+  filter: invert(95%) sepia(98%) saturate(6680%) hue-rotate(325deg) brightness(92%) contrast(112%);
   border: 0.1rem solid var(--orange);
   border-radius: 20%;
 }
@@ -193,7 +226,6 @@ body {
 
 .topbar .desktop {
   display: none;
-  list-style: none;
 }
 
 /* CAROUSEL */
@@ -267,11 +299,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 2.5rem 12.5rem;
+  padding: 0 12.5rem;
 }
 
 .info .name-location {
-  width: 100%;
+  margin: 0 10rem 2rem;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -320,13 +353,11 @@ body {
 /* PUBLISH DATE */
 
 .publish-date {
-  width: 100%;
+  width: 85%;
   height: calc(0.75 / 8 * 100vh);
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 12.5rem;
-  margin: 1rem 0;
   background-color: var(--lightgrey);
 }
 
@@ -362,12 +393,11 @@ body {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: repeat(3, 1fr);
-  gap: 3.125rem;
 }
 
 .animal-info .description {
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 80%;
   background-color: var(--white);
   grid-row: 1/4;
   border-radius: 0.93rem;
@@ -376,6 +406,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 4rem 5rem;
+  margin: 0 -5rem 0 10rem;
 }
 
 .description h3 {
@@ -396,8 +427,8 @@ body {
 }
 
 .animal-info .animal-data {
-  width: 100%;
-  height: 100%;
+  width: 68%;
+  height: 70%;
   background-color: var(--white);
   border-radius: 0.93rem;
   grid-row: 1/3;
@@ -406,6 +437,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 4.375rem;
+  margin-right: -5rem;
 }
 
 .animal-data h3 {
@@ -432,8 +464,8 @@ body {
 }
 
 .animal-info .adoption {
-  width: 100%;
-  height: 100%;
+  width: 68%;
+  height: 65%;
   background-color: var(--orange);
   border-radius: 0.93rem;
   grid-row: 3/4;
@@ -484,17 +516,15 @@ body {
   justify-content: center;
   align-content: center;
   text-align: center;
-  padding: 0 12.5rem;
 }
 
 .other-kompis h2 {
-  margin: -3rem 0 0;
   font-family: var(--text-font);
   font-size: 2rem;
+  color: var(--black);
 }
 
 .other-kompis .text {
-  margin: 1rem 6rem;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -513,30 +543,50 @@ body {
   width: 16rem;
   height: 22rem;
   display: grid;
-  grid-template-rows: repeat(1, 3fr 1fr 1fr);
-  flex-direction: column;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 1fr);
   justify-content: center;
-  align-items: center;
+  justify-items: center;
   text-align: center;
-  border-radius: 1rem;
-  box-shadow: 0 0 0.5rem rgb(146 146 146 / 50%);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0.5rem  rgb(146 146 146 / 50%);
+  cursor: pointer;
+  background: var(--white);
   overflow: hidden;
 }
 
-.other-kompis .group .card img {
-  height: 15.2rem;
-  border-radius: 1rem 1rem 0 0;
+.other-kompis .group .img-container {
+  grid-area: 1 / 1 / 6 / 2;
+  width: 22rem;
+  height: 15rem;
+  border-radius: 1.2rem 1.2rem 48% 47%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.other-kompis .group .img-container img {
+  width: 16rem;
+  min-height: 15rem;
+  object-fit: cover;
 }
 
 .other-kompis .group .card p img {
   width: 1rem;
   height: 1rem;
   margin-right: 0.2rem;
+  object-fit: contain;
+}
+
+.other-kompis .group .card h3 {
+  grid-area: 6 / 1 / 7 / 2;
+  margin-top: 1.2rem;
 }
 
 .other-kompis .group .card p {
-  margin-top: -2rem;
-  margin-left: -1rem;
+  grid-area: 7 / 1 / 9/ 2;
+  width: 16rem;
+  margin-top: 0.3rem;
 }
 
 .other-kompis .group .card-extra {
@@ -552,21 +602,19 @@ body {
 }
 
 .other-kompis .group .card-extra img {
-  width: 4rem;
+  width: 5.5rem;
   margin-top: 1.8rem;
 }
 
 .other-kompis .group .card-extra p {
   color: var(--white);
-  font-family: var(--text-font);
-  font-weight: 400;
   font-size: 1rem;
   text-align: center;
+  line-height: 0rem;
 }
 
 .other-kompis .group .card-extra p span {
-  font-weight: 600;
-  margin: 0;
+  font-weight: 700;
 }
 
 .other-kompis .group .card-extra .footer {
@@ -582,11 +630,6 @@ body {
 
 .other-kompis .group .card-extra .button {
   align-self: center;
-}
-
-.other-kompis .more {
-  visibility: hidden;
-  opacity: 0;
 }
 
 /* ----------------------------------Footer---------------------------------- */
@@ -696,10 +739,6 @@ footer .copyright p {
     width: 2rem;
   }
 
-  .other-kompis h2 {
-    margin-top: 6rem;
-  }
-
   .other-kompis .text {
     font-size: 1.1rem;
     font-weight: 500;
@@ -711,10 +750,6 @@ footer .copyright p {
 
   .topbar .burger-img {
     right: 5rem;
-  }
-
-  .other-kompis h2 {
-    margin-top: -4.5rem;
   }
 
   .other-kompis .group {
@@ -798,16 +833,20 @@ footer .copyright p {
     font-size: 1rem;
   }
 
+  .topbar .logo {
+    left: 4rem;
+  }
+
+  .topbar .burger-img {
+    right: 5rem;
+  }
+
   .home p {
     font-size: 1.25rem;
   }
 
   .home h1 img {
     width: 2rem;
-  }
-
-  .other-kompis h2 {
-    margin-top: 6rem;
   }
 
   .other-kompis .text {
@@ -886,13 +925,16 @@ footer .copyright p {
     right: 8rem;
   }
 
-  .topbar .desktop a {
+  .topbar .desktop a,
+  .topbar .desktop .display li,
+  .topbar .desktop .display p {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.5s;
+    cursor: pointer;
   }
 
   .topbar .desktop img {
@@ -900,8 +942,8 @@ footer .copyright p {
     transition: 0.1s;
   }
 
-  .topbar .desktop img:hover {
-    filter: invert(17%) sepia(40%) saturate(6264%) hue-rotate(329deg) brightness(98%) contrast(103%);
+  .topbar .desktop .display img {
+    width: 1.6rem;
   }
 
   .topbar .desktop .vertical-line {
@@ -911,8 +953,39 @@ footer .copyright p {
     background-color: var(--black);
   }
 
-  .topbar .desktop a:hover {
+  .topbar .desktop a:hover,
+  .topbar .desktop .display p:hover {
     color: var(--orange);
+  }
+
+  .topbar .desktop .profile a:hover {
+    color: var(--green);
+  }
+
+  .topbar .desktop .display {
+    display: none;
+    grid-auto-flow: column;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .topbar .desktop .display .profile {
+    background: var(--orange);
+    position: absolute;
+    top: 4rem;
+    right: -4.4rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem 2.5rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s linear;
+    line-height: 2rem;
+  }
+
+  .topbar .desktop .display.active .profile {
+    visibility: visible;
+    opacity: 1;
   }
 
   .home p {
@@ -933,10 +1006,6 @@ footer .copyright p {
     height: 4.5;
   }
 
-  .other-kompis h2 {
-    margin-top: 11rem;
-  }
-
   .other-kompis .group {
     grid-template-columns: repeat(5, 1fr);
     gap: 2.5rem;
@@ -945,47 +1014,6 @@ footer .copyright p {
 
   .other-kompis .group .card-extra {
     display: flex;
-  }
-
-  .other-kompis .more {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .counter {
-    gap: 10rem;
-  }
-
-  .guide .group {
-    gap: 10rem;
-  }
-
-  .guide h2 {
-    margin-top: 11rem;
-  }
-
-  .guide .group .step {
-    width: 20rem;
-  }
-
-  .guide .group .step img {
-    height: 9rem;
-  }
-
-  .guide .button {
-    margin-bottom: 11rem;
-  }
-
-  .list h2 {
-    margin-top: 2rem;
-  }
-
-  .list {
-    margin-bottom: 11rem;
-  }
-
-  .list .container .question {
-    gap: 0;
   }
 
   footer .information {
