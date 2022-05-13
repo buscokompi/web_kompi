@@ -1,5 +1,5 @@
 // // Burger menu for mobile
-import { getFirestore, collection, getDocs, setDoc, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { initFirebase } from "./fbinit.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -129,7 +129,7 @@ async function readAnimals() {
 
   console.log();
 
-  for (let i = 0; i <= animalesArr.length; i++) {
+  for (let i = 0; i < animalesArr.length; i++) {
     await getDownloadURL(ref(storage, animalesArr[i].urlfb))
       .then((url) => {
         animalesArr[i].url = url;
@@ -138,6 +138,7 @@ async function readAnimals() {
         console.log(error);
       });
   }
+
   addClicks();
 }
 
@@ -152,8 +153,6 @@ function addClicks() {
 }
 
 function addAnimalHtml(index, arrAnimals) {
-  console.log(arrAnimals.length);
-
   if (index === 4) {
     html += `<div class="card-extra">
               <img src="./assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
