@@ -105,7 +105,7 @@ function chargeForm() {
         <div class="microchip">
           <p>Microchip*</p>
           <select>
-            <option value="si">Si</option>
+            <option value="sí">Si</option>
             <option value="no">No</option>
           </select>
         </div>
@@ -113,38 +113,37 @@ function chargeForm() {
           <p>Vacunas*</p>
           <select>
 
-            <option value="si">Si</option>
+            <option value="sí">Si</option>
             <option value="no">No</option>
           </select>
         </div>
         <div class="sterilized">
           <p>Esterilización*</p>
           <select>
-            <option value="si">Si</option>
+            <option value="sí">Si</option>
             <option value="no">No</option>
           </select>
         </div>
-        <div class="danger-certificate">
+        <div class="certificate">
           <p>Certificado ppp*</p>
           <select>
-            <option value="si">Si</option>
+            <option value="sí">Si</option>
             <option value="no">No</option>
           </select>
         </div>
         <div class="description">
           <p>Decripción*</p>
-          <textarea name="" placeholder="Escribe aquí"></textarea>
+          <textarea name="" placeholder="Deja una descripción."></textarea>
         </div>
         <div class="images">
-          <p>Fotografías</p>
+          <p>Sube una foto*</p>
           <div class="uploadImages">
             <input class="fileinput" type="file" value="Subir Archivo" accept="image/*">
           </div>
         </div>
       </form>
-
       <div class="save">
-        <button class="submit">Guardar</button>
+          <button class="button">Guardar</button>
       </div>
 
     `;
@@ -185,9 +184,9 @@ function animalProfile() {
   profileContent.innerHTML = /* html */`
     <p>Para poner en adopción a un animal, pulsa el botón 'Añadir animal' y completa el formulario</p>
 
-    <div class="new-animal-link">
-        <a href="#">Añadir animal</a>
-    </div>
+
+    <a href="#" class="button new-animal-link">Añadir animal</a>
+
     `;
 
   const newAnimal = document.querySelector(".new-animal-link");
