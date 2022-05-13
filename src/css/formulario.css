@@ -307,21 +307,7 @@ a {
 }
 
 .new-animal-link {
-  width: 17rem;
-  height: 5rem;
-  background-color: var(--orange);
-  border-radius: 4.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.new-animal-link a {
-  color: var(--black);
-  font-family: var(--text-font);
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
+  margin-top: 1rem;
 }
 
 /* FORMULARIO */
@@ -329,12 +315,19 @@ a {
 .profile-content {
   width: 52vw;
   margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulario {
+  height: 100vh;
   margin-top: 1rem;
   display: grid;
-  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 0;
 }
 
 select {
@@ -343,7 +336,9 @@ select {
   height: 2.5rem;
   appearance: none;
   border-radius: 0.5rem;
+  font-family: var(--text-font);
   border: none;
+  cursor: pointer;
 }
 
 input {
@@ -351,45 +346,100 @@ input {
   appearance: none;
   border-radius: 0.5rem;
   background: var(--lightgrey);
+  font-family: var(--text-font);
   width: 100%;
   border: none;
+  padding: 0;
 }
 
 .name {
   width: 18rem;
-  grid-column: 1/3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  grid-area: 1 / 1 / 3 / 5;
+  font-family: var(--text-font);
 }
 
 .location {
   width: 18rem;
+  grid-area: 3 / 1 / 5 / 5;
 }
 
 .species {
   width: 18rem;
-  grid-column: 3/5;
+  grid-area: 5 / 1 / 7 / 5;
+
+  /* grid-column: 3/5;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; */
 }
 
 .age {
   width: 9rem;
-  grid-column: 5/6;
+  grid-area: 1 / 5 / 3 / 7;
+
+  /* grid-column: 5/6;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; */
+}
+
+.gender {
+  width: 9rem;
+  grid-area: 3 / 5 / 5 / 7;
+}
+
+.breed {
+  width: 9rem;
+  grid-area: 5 / 5 / 7 / 7;
+}
+
+.weight {
+  width: 9rem;
+  grid-area: 1 / 7 / 3 / 9;
+}
+
+.color {
+  width: 9rem;
+  grid-area: 3 / 7 / 5 / 9;
+}
+
+.hair {
+  width: 9rem;
+  grid-area: 5 / 7 / 7 / 9;
+}
+
+.microchip {
+  width: 9rem;
+  grid-area: 1 / 9 / 3 / 11;
+}
+
+.vaccination {
+  width: 9rem;
+  grid-area: 3 / 9 / 5 / 11;
+}
+
+.sterilized {
+  width: 9rem;
+  grid-area: 5 / 9 / 7 / 11;
+}
+
+.certificate {
+  width: 9rem;
+  grid-area: 7 / 1 / 9 / 3;
+}
+
+.images {
+  grid-area: 9 / 1 / 11 / 11;
+  width: 100%;
+}
+
+.uploadImages {
 }
 
 .description {
-  height: 10rem;
-  grid-column: 1/6;
-  grid-row: 4/7;
+  grid-area: 11 / 1 / 20 / 11;
 }
 
 .description textarea {
@@ -400,32 +450,17 @@ input {
   height: 100%;
 }
 
-.images {
-  width: 100%;
-  padding-top: 5rem;
-  grid-column: 1/3;
+.formulario .button {
+  grid-area: 22 / 1 / 24 / 11;
+}
+
+.fileinput::-webkit-file-upload-button {
+  display: none;
 }
 
 .fileinput {
-  width: 100%;
-}
-
-.uploadImages {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.save {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.submit {
-  width: 12rem;
-  grid-column: 4/6;
+  color: transparent;
+  cursor: pointer;
 }
 
 footer {
