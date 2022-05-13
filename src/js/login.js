@@ -10,7 +10,7 @@ const logInButton = document.querySelector(".btn-login-email");
 const logGoogle = document.querySelector(".btn-login-google");
 const logFacebook = document.querySelector(".btn-login-facebook");
 
-logInButton.addEventListener("click", async() => {
+logInButton.addEventListener("click", async () => {
   const email = document.querySelector(".input-email").value;
   const password = document.querySelector(".input-password").value;
   setPers(email, password);
@@ -29,7 +29,7 @@ logInButton.addEventListener("click", async() => {
     });
 });
 
-logGoogle.addEventListener("click", async() => {
+logGoogle.addEventListener("click", async () => {
   const provider = new GoogleAuthProvider();
   auth.languageCode = "es";
 
@@ -52,7 +52,7 @@ logGoogle.addEventListener("click", async() => {
 });
 
 // Login con facebook
-logFacebook.addEventListener("click", async() => {
+logFacebook.addEventListener("click", async () => {
   const provider = new FacebookAuthProvider();
   auth.languageCode = "es";
 
@@ -76,3 +76,17 @@ logFacebook.addEventListener("click", async() => {
       console.log(credential);
     });
 });
+
+// See password
+const password = document.getElementById("password");
+const togglePassword = document.getElementById("toggle-password");
+togglePassword.addEventListener("click", toggleClicked);
+
+function toggleClicked() {
+  password.classList.toggle("visible");
+  if (this.checked) {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+}
