@@ -1,6 +1,6 @@
 // ----------------- URL PARAMS -----------------
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite";
+import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
