@@ -101,6 +101,7 @@ window.onload = function() {
 
     for (let i = 0; i < specie.length; i++) {
       if (specie[i] === categoria) {
+        getRaces(categoria);
         const selCategory = document.querySelector(".sel-specie");
         selCategory.options.item(i).selected = categoryParam;
 

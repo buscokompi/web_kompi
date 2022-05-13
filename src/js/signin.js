@@ -20,7 +20,7 @@ signInButton.addEventListener("click", async(e) => {
   const password = document.querySelector(".input-password").value;
   const passwordCheck = document.querySelector(".input-password-check").value;
 
-  check();
+  // check();
 
   if (password !== passwordCheck) {
     alert("Comprueba que la contraseña sea correcta");
@@ -51,7 +51,7 @@ logFacebook.addEventListener("click", () => {
   logInFacebook();
 });
 
-const check = function() {
+/* const check = function() {
   if (document.getElementById("password").value ==
     document.getElementById("confirm_password").value) {
     document.getElementById("message").style.color = "green";
@@ -60,4 +60,4 @@ const check = function() {
     document.getElementById("message").style.color = "red";
     document.getElementById("message").innerHTML = "Las contraseñas no coinciden. Inténtalo de nuevo.";
   }
-};
+}; */
