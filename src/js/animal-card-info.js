@@ -1,6 +1,6 @@
 // ----------------- URL PARAMS -----------------
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore";
+import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
@@ -47,6 +47,7 @@ auth.onAuthStateChanged(function(user) {
 let snap = await getDoc(doc(firestore, "animals/aOXbYmSuDhJYxMdovnyC"));
 if (id) {
   snap = await getDoc(doc(firestore, `animals/${id}`));
+  console.log(snap);
 }
 const animalImagen1 = document.querySelector(".img1");
 const animalImagen2 = document.querySelector(".img2");
