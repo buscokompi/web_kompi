@@ -1,7 +1,7 @@
 import { signInFirebase, logInGoogle, logInFacebook } from "./fbauth.js";
 import { initFirebase } from "./fbinit";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 initFirebase();
 

@@ -1,7 +1,8 @@
 // ----------------- URL PARAMS -----------------
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 
 const url = new URL(location.href);
 const id = url.searchParams.get("id");
@@ -26,6 +27,23 @@ export function initFirebase() {
 const db = initFirebase();
 const storage = getStorage(db);
 const firestore = getFirestore(db);
+const auth = getAuth();
+
+const content2 = document.querySelector(".display");
+const profile2 = document.querySelector(".login");
+const profileName = document.querySelector(".profile-name");
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    content2.style.display = "grid";
+    profile2.style.display = "none";
+    getUserName(user.email);
+  } else {
+    content2.style.display = "none";
+    profile2.style.display = "flex";
+  }
+});
+
 let snap = await getDoc(doc(firestore, "animals/aOXbYmSuDhJYxMdovnyC"));
 if (id) {
   snap = await getDoc(doc(firestore, `animals/${id}`));
@@ -106,3 +124,20 @@ arrowNext.addEventListener("click", () => {
   // cuando se pulsa el transformX es -50%
   headerCarousel.style.transform = "translateX(-50%)";
 });
+
+async function getUserName(userEmail) {
+  const userRef = await getDocs(collection(db, "usuarios"));
+  let user = "";
+
+  userRef.forEach((doc) => {
+    if (doc.id === userEmail) {
+      user = doc.data().name + " " + doc.data().surname;
+    }
+  });
+
+  if (user === "") {
+    user = userEmail;
+  }
+
+  profileName.textContent = user;
+}

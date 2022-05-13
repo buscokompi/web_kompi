@@ -516,6 +516,7 @@ footer .copyright p {
     height: 3rem;
     border-radius: 3rem;
     background: var(--orange);
+    border: 0px;
   }
 
   footer {
