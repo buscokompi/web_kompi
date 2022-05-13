@@ -1,0 +1,1 @@
+import{c as t,s as c}from"./fbinit.b2d12662.js";const n=t(),a=document.querySelector(".signout");a.addEventListener("click",async()=>{await c(n).then(()=>{console.log("Usuario deslogueado"),location.reload()}).catch(o=>{const e=o.code,s=o.message;console.log(e),console.log(s)})});
