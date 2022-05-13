@@ -28,7 +28,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 50%;
   margin-left: 3.6rem;
 }
@@ -48,6 +47,60 @@ body {
   padding: 3.5rem 5rem;
   background-color: white;
   margin-bottom: 2rem;
+}
+
+.input-email {
+  width: 27rem;
+}
+
+#password {
+  width: 27rem;
+}
+
+@media screen and (max-width: 970px) {
+  .logo {
+    margin-left: 6rem;
+  }
+
+  .card-login {
+    height: 65%;
+    display: flex;
+    margin-left: 8rem;
+    width: 17rem;
+  }
+
+  .input-email {
+    width: 16rem;
+  }
+
+  .btn-signin-facebook {
+    margin-top: 1rem;
+  }
+
+  #password {
+    width: 16rem;
+  }
+
+  .btn-signin-email {
+    padding: 0.8rem;
+  }
+
+  .btn-login-facebook {
+    margin-top: 1rem;
+  }
+
+  .btn-login-google {
+    margin-top: 2rem;
+  }
+
+  .register {
+    margin-left: 10rem;
+    width: 20rem;
+  }
+
+  .img-dog-login {
+    display: none;
+  }
 }
 
 .card-login p {
@@ -120,7 +173,7 @@ input:focus {
   border: var(--grey) 0.06rem solid;
   color: var(--black);
   margin-bottom: 1rem;
-  margin-top: 4rem;
+  margin-top: rem;
 }
 
 .btn-login-google:hover {
@@ -183,10 +236,6 @@ input:focus {
   background-color: rgb(10 20 44);
 }
 
-.pepe {
-  margin-top: -0.19rem;
-}
-
 .link-signin {
   color: var(--green);
   font-family: var(--text-font);
@@ -229,4 +278,66 @@ p {
 #comment {
   font-family: var(--text-font);
   font-size: 0.8rem;
+}
+
+/* see first password */
+
+#password {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+}
+
+#password.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password {
+  display: none;
+}
+
+.pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+}
+
+#toggle-password + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
+}
+
+/* see second password */
+
+#password2 {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+}
+
+#password2.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password2 {
+  display: none;
+}
+
+/* .pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+} */
+
+#toggle-password2 + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
 }

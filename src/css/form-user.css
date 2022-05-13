@@ -46,23 +46,23 @@ img {
   margin-top: 5rem;
 }
 
-.question{
+.question {
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--text-font);
   color: var(--green);
-  border: 0px;
+  border: 0;
   background-color: var(--lightgrey);
   border-radius: 1rem;
   margin: 0.2rem;
   padding: 0.5rem;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
+  appearance: none;
+  appearance: none;
+  appearance: none;
   appearance: none;
 }
 
-.question:focus{
+.question:focus {
   outline-color: var(--grey);
 }
 
@@ -126,7 +126,7 @@ button:hover {
   cursor: pointer;
 }
 
-/*.questions{
+/* .questions{
   display: flex;
   flex-direction: column;
 }
@@ -214,4 +214,4 @@ button:hover {
 
 .p-after{
   margin-left: 2.5rem;
-}*/
+} */

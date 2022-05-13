@@ -11,8 +11,9 @@
   <!--Font-Family: Open Sans and Lato -->
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;600&display=swap"
     rel="stylesheet">
-    <title>Kompi | Registrarse</title>
-    <link rel="icon" href="./assets/icons/icono_logo.svg">
+  <title>Kompi | Registrarse</title>
+  <link rel="icon" href="./assets/icons/icono_logo.svg">
+  <script type="module" src="./js/signin.js"></script>
 </head>
 
 <body>
@@ -23,44 +24,51 @@
     <a href="./index.html">
       <img class="logo" src="./assets/version_negro_logo.svg">
     </a>
-
     <form class="card-login">
 
-      <p>E-mail <span>*</span></p>
-      <input class="input-email" type="email" required="required">
+    <div>
+    <p>E-mail <span>*</span></p>
+    <input class="input-email" type="email" required="required" placeholder="adoptaunkompi@gmail.com">
 
-      <p>Contraseña <span>*</span></p>
-      <input name="password" class="input-password" id="password" type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" onkeyup='check();' />
-      <p>Utiliza ocho caracteres como mínimo con una mayuscula, una minúscula, un número y un caracter especial</p>
+    <p class="pass">Contraseña <span>*</span></p>
+    </div>
 
-      <p>Verifica tu contraseña <span>*</span></p>
-      <input class="input-password-check" type="password" name="confirm_password" id="confirm_password" required="required">
-      <span id='message'></span>
+    <div>
+      <input name="password" class="input-password input-email" placeholder="Buscokompi6." id="password" type="password"
+        required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+      <input type="checkbox" id="toggle-password" />
+      <label for="toggle-password"></label>
+    </div>
 
-      <button type="submit" class="button btn-signin-email">Continuar</button>
 
-      <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-      <div class="button btn-signin-google"><img class="google" src="./assets/icons/google_icono.svg"><span>Regístrate
-          con Google</span></div>
-      <div class="button btn-signin-facebook"><img class="facebook"
-          src="./assets/icons/facebook_icono.svg"><span>Regístrate con Facebook</span></div>
+    <p>Utiliza ocho caracteres como mínimo con una mayuscula, una minúscula, un número y un caracter especial</p>
+
+    <p>Verifica tu contraseña <span>*</span></p>
+
+
+    <div>
+      <input name="password2" class="input-password input-email" placeholder="Buscokompi6." id="password2"
+        type="password" required="required" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+      <input type="checkbox" id="toggle-password2" />
+      <label for="toggle-password2"></label>
+    </div>
+
+
+
+    <span id='message'></span>
+
+    <button type="submit" class="button btn-signin-email">Continuar</button>
+
+    <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
+    <div class="button btn-signin-google"><img class="google" src="./assets/icons/google_icono.svg"><span>Regístrate
+        con Google</span></div>
+    <div class="button btn-signin-facebook"><img class="facebook"
+        src="./assets/icons/facebook_icono.svg"><span>Regístrate con Facebook</span></div>
     </form>
-    <p>¿Ya tienes una cuenta? <a class="link-signin" href="./login.html">Inicia sesión</a></p>
+    <p class="register">¿Ya tienes una cuenta? <a class="link-signin" href="./login.html">Inicia sesión</a></p>
   </div>
 
-  <script type="module" src="./js/signin.js"></script>
 
-  <script>
-    var check = function () {
-      if (document.getElementById('password').value ==
-        document.getElementById('confirm_password').value) {
-        document.getElementById('message').style.color = 'green';
-        document.getElementById('message').innerHTML = '';
-      } else {
-        document.getElementById('message').style.color = 'red';
-        document.getElementById('message').innerHTML = 'Las contraseñas no coinciden. Inténtalo de nuevo.';
-      }
-    }
-  </script>
 </body>
+
 </html>
