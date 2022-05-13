@@ -1,26 +1,35 @@
 // ----------------- URL PARAMS -----------------
-import { initFirebase } from "./fbinit.js";
-// import { getFirestore, getDoc, doc } from "firebase/firestore/lite";
+import { initializeApp } from "firebase/app";
+import { getFirestore, getDoc, doc } from "firebase/firestore/lite";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { getFirestore, collection, getDocs, setDoc, query, where, doc, getDoc } from "firebase/firestore";
 
 const url = new URL(location.href);
 const id = url.searchParams.get("id");
+console.log(id);
 
 // Inicializa la api de firebase
+export function initFirebase() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+    authDomain: "web-kompi.firebaseapp.com",
+    projectId: "web-kompi",
+    storageBucket: "web-kompi.appspot.com",
+    messagingSenderId: "556298514839",
+    appId: "1:556298514839:web:92e508e18c5685e99694d2",
+    measurementId: "G-93MGP34YQN"
+  };
 
-const fs = initFirebase();
-const storage = getStorage(fs);
-const firestore = getFirestore(fs);
-
-const docRef = doc(firestore, "animals", "aOXbYmSuDhJYxMdovnyC");
-if (id) {
-  const docRef = doc(firestore, "animals", id);
+  // Inicializa firebase
+  return initializeApp(firebaseConfig);
 }
-
-const docSnap = await getDoc(docRef);
-console.log(docSnap);
-
+/* --------------------------------------- */
+const db = initFirebase();
+const storage = getStorage(db);
+const firestore = getFirestore(db);
+let snap = await getDoc(doc(firestore, "animals/aOXbYmSuDhJYxMdovnyC"));
+if (id) {
+  snap = await getDoc(doc(firestore, `animals/${id}`));
+}
 const animalImagen1 = document.querySelector(".img1");
 const animalImagen2 = document.querySelector(".img2");
 const animalName = document.querySelector(".info .name");
@@ -38,27 +47,27 @@ const animalVaccination = document.querySelector(".animal-data .vaccination");
 const animalCertified = document.querySelector(".animal-data .certified");
 const animalEsterilized = document.querySelector(".animal-data .esterilized");
 
-const imagenURL = await getDownloadURL(ref(storage, docSnap.data().Imagen1));
+const imagenURL = await getDownloadURL(ref(storage, snap.data().Imagen1));
 // const imagen2URL = await getDownloadURL(ref(storage, snap.data().Imagen2));
 
 // console.log(imagenURL);
 
 animalImagen1.src = imagenURL;
 // animalImagen2.src = imagen2URL;
-animalName.textContent = docSnap.data().Nombre;
-animalLocation.textContent = docSnap.data().Ubicacion;
-animalDescription.textContent = docSnap.data().Descripcion;
-animalAge.textContent = docSnap.data().Edad;
-animalBreed.textContent = docSnap.data().Raza;
-animalGender.textContent = docSnap.data().Sexo;
-animalSize.textContent = docSnap.data().Tamano;
-animalWeight.textContent = docSnap.data().Peso;
-animalColor.textContent = docSnap.data().Color;
-animalHair.textContent = docSnap.data().Pelo;
-animalMicrochip.textContent = docSnap.data().Microchip;
-animalVaccination.textContent = docSnap.data().Vacunacion;
-animalCertified.textContent = docSnap.data().Certificado_ppp;
-animalEsterilized.textContent = docSnap.data().Esterilizacion;
+animalName.textContent = snap.data().Nombre;
+animalLocation.textContent = snap.data().Ubicacion;
+animalDescription.textContent = snap.data().Descripcion;
+animalAge.textContent = snap.data().Edad;
+animalBreed.textContent = snap.data().Raza;
+animalGender.textContent = snap.data().Sexo;
+animalSize.textContent = snap.data().Tamano;
+animalWeight.textContent = snap.data().Peso;
+animalColor.textContent = snap.data().Color;
+animalHair.textContent = snap.data().Pelo;
+animalMicrochip.textContent = snap.data().Microchip;
+animalVaccination.textContent = snap.data().Vacunacion;
+animalCertified.textContent = snap.data().Certificado_ppp;
+animalEsterilized.textContent = snap.data().Esterilizacion;
 
 // const arrayP = document.querySelectorAll("p"); ;
 
