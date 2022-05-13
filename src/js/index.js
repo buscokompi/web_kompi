@@ -17,7 +17,7 @@ const profileName = document.querySelector(".profile-name");
 
 const cardAnimal = document.getElementsByClassName("card");
 const animalContainer = document.querySelector(".group");
-let html = "";
+const html = "";
 
 readAnimals();
 auth.onAuthStateChanged(function (user) {
@@ -152,24 +152,24 @@ function addClicks() {
   }
 }
 
-function addAnimalHtml(index, arrAnimals) {
-  if (index === 4) {
-    html += `<div class="card-extra">
-              <img src="./assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
-              <p><span>+315 mascotas</span></p>
-              <p>disponibles en kompi</p>
-              <div class="footer">
-                <a class="button" href="./filter-animals.html">Ver más</a>
-              </div>
-            </div>`;
-  } else {
-    html += `<div class="card" data-value="${arrAnimals[index].id}">
-              <div class ="img-container">
-                <img src="${arrAnimals[index].url}" alt="mascota">
-              </div>
-              <h3 class="name">${arrAnimals[index].name}</h3>
-              <p><img src="./assets/icons/icono_logo_negro.svg" alt="">${arrAnimals[index].location}</p>
-            </div>`;
-  }
-  animalContainer.innerHTML = html;
-}
+// function addAnimalHtml(index, arrAnimals) {
+//   if (index === 4) {
+//     html += `<div class="card-extra">
+//               <img src="./assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
+//               <p><span>+315 mascotas</span></p>
+//               <p>disponibles en kompi</p>
+//               <div class="footer">
+//                 <a class="button" href="./filter-animals.html">Ver más</a>
+//               </div>
+//             </div>`;
+//   } else {
+//     html += `<div class="card" data-value="${arrAnimals[index].id}">
+//               <div class ="img-container">
+//                 <img src="${arrAnimals[index].url}" alt="mascota">
+//               </div>
+//               <h3 class="name">${arrAnimals[index].name}</h3>
+//               <p><img src="./assets/icons/icono_logo_negro.svg" alt="">${arrAnimals[index].location}</p>
+//             </div>`;
+//   }
+//   animalContainer.innerHTML = html;
+// }
