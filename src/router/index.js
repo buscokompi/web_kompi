@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("")
+      component: () => import("../views/ForgotPassword.vue")
     },
   ]
 });
