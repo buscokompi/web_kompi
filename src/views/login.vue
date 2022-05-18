@@ -1,0 +1,379 @@
+<template>
+<div class="app">
+  <img class="img-dog-login" src="./assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+
+  <div class="container-login">
+
+    <a href="./index.html">
+      <img class="logo" src="./assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+    </a>
+
+    <div class="card-login">
+     <form id="login">
+
+</form>
+<div>
+      <p>E-mail</p>
+      <input class="input-email" placeholder="adoptaunkompi@gmail.com" >
+        <p class="pass">Contraseña</p>
+        <input type="password" id="password" placeholder="BuscoKompi6."/>
+        <input type="checkbox" id="toggle-password" />
+        <label for="toggle-password"></label>
+      </div>
+
+
+      <p class="forgot-pass"><a  href="./forgot-password.html">¿Has olvidado tu contraseña?</a></p>
+      <div class="button btn-login-email"><span>Continuar</span></div>
+      <div class="button btn-login-google"><img class="google" src="./assets/icons/google_icono.svg"
+          alt="Icono Google"><span>Inicia sesión con Google</span></div>
+      <div class="button btn-login-facebook"><img class="facebook" src="./assets/icons/facebook_icono.svg"
+          alt="Icono Facebook"><span>Inicia sesión con Facebook</span></div>
+    </div>
+    <p class="register">¿No tienes una cuenta? <a class="link-signin" href="./signin.html">Regístrate</a></p>
+  </div>
+</div>
+
+</template>
+
+<script>
+    export default {
+        name: "App",
+    }
+</script>
+
+<style scoped>
+:root {
+  --orange: #f9b225;
+  --yellow: #ffe194;
+  --black: #3f3d3b;
+  --white: white;
+  --grey: #c4c4c4;
+  --lightgrey: #f5f5f5;
+  --green: #015865;
+  --title-font: "Dosis";
+  --text-font: "Open Sans";
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.img-dog-login {
+  width: 45%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-left: 3.6rem;
+}
+
+.logo {
+  width: 8rem;
+  margin: 2rem 0;
+  cursor: pointer;
+}
+
+.card-login {
+  display: flex;
+  width: 28rem;
+  height: 40rem;
+  flex-direction: column;
+  border-radius: 1.9rem;
+  padding: 3.5rem 5rem;
+  background-color: white;
+  margin-bottom: 2rem;
+}
+
+.input-email {
+  width: 27rem;
+}
+
+#password {
+  width: 27rem;
+}
+
+@media screen and (max-width: 970px) {
+  .logo {
+    margin-left: 6rem;
+  }
+
+  .card-login {
+    height: 65%;
+    display: flex;
+    margin-left: 8rem;
+    width: 17rem;
+  }
+
+  .input-email {
+    width: 16rem;
+  }
+
+  .btn-signin-facebook {
+    margin-top: 1rem;
+  }
+
+  #password {
+    width: 16rem;
+  }
+
+  .btn-signin-email {
+    padding: 0.8rem;
+  }
+
+  .btn-login-facebook {
+    margin-top: 1rem;
+  }
+
+  .btn-login-google {
+    margin-top: 2rem;
+  }
+
+  .register {
+    margin-left: 10rem;
+    width: 20rem;
+  }
+
+  .img-dog-login {
+    display: none;
+  }
+}
+
+.card-login p {
+  color: var(--black);
+  font-family: var(--text-font);
+}
+
+
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  border: var(--grey) 0.1rem solid;
+  font-family: var(--text-font);
+  font-size: 1rem;
+}
+
+input:focus {
+  color: var(--black);
+  outline-color: var(--black);
+}
+
+.button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+  border-radius: 0.8rem;
+  border: 0;
+  font-size: 1rem;
+  font-family: var(--text-font);
+  font-weight: 600;
+  transition: background-color 0.7s ease;
+}
+
+.button img {
+  object-fit: contain;
+  margin-right: 1.5rem;
+}
+
+.btn-login-email {
+  background-color: var(--orange);
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+.button span {
+  color: var(--black);
+  pointer-events: none;
+}
+
+.btn-login-email:hover {
+  background-color: #cc9320;
+}
+
+.btn-login-email:hover span {
+  color: var(--white-color);
+}
+
+/* BOTONES LOGIN */
+
+.btn-login-google {
+  background-color: var(--white-color);
+  border: var(--grey) 0.06rem solid;
+  color: var(--black);
+  margin-bottom: 1rem;
+  margin-top: rem;
+}
+
+.btn-login-google:hover {
+  background-color: #bebebe;
+}
+
+.btn-login-google span {
+  color: var(--black);
+}
+
+.btn-login-facebook {
+  background-color: #30457b;
+}
+
+.btn-login-facebook span {
+  color: var(--white);
+}
+
+.btn-login-facebook:hover {
+  background-color: rgb(10 20 44);
+}
+
+/* BOTONES SIGN IN */
+
+.btn-signin-email {
+  background-color: var(--orange);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.btn-signin-email:hover {
+  background-color: #cc9320;
+}
+
+.btn-signin-google {
+  background-color: var(--white);
+  border: var(--grey) 0.06rem solid;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.btn-signin-google:hover {
+  background-color: #bebebe;
+}
+
+.btn-signin-google span {
+  color: var(--black);
+}
+
+.btn-signin-facebook {
+  background-color: #30457b;
+}
+
+.btn-signin-facebook span {
+  color: var(--white);
+}
+
+.btn-signin-facebook:hover {
+  background-color: rgb(10 20 44);
+}
+
+.link-signin {
+  color: var(--green);
+  font-family: var(--text-font);
+  font-weight: 600;
+}
+
+.google {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 20%;
+}
+
+.facebook {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 20%;
+}
+
+p {
+  font-family: var(--text-font);
+  color: var(--black);
+  font-size: 0.9rem;
+}
+
+.forgot-pass {
+  font-family: var(--text-font);
+  font-size: 0.8rem;
+}
+
+.forgot-pass a {
+  text-decoration: underline;
+  color: var(--black);
+}
+
+#message {
+  font-family: var(--text-font);
+  font-size: 0.9rem;
+}
+
+#comment {
+  font-family: var(--text-font);
+  font-size: 0.8rem;
+}
+
+/* see first password */
+
+#password {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+}
+
+#password.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password {
+  display: none;
+}
+
+.pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+}
+
+#toggle-password + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
+}
+
+/* see second password */
+
+#password2 {
+  margin-top: 1rem;
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+}
+
+#password2.visible {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+}
+
+#toggle-password2 {
+  display: none;
+}
+
+
+#toggle-password2 + label {
+  text-indent: -9999px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: -32px;
+  cursor: pointer;
+}
+</style>
