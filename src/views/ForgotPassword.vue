@@ -3,35 +3,64 @@
     <a href="./index.html">
       <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
     </a>
-    <div>
+    <div class="text">
       <p>Indica tu e-mail y te enviaremos un enlace para restablecer la contraseña</p>
     </div>
     <div class="card-login">
       <p>E-mail</p>
-      <input class="input-email">
-      <button class="btn">Restaurar contraseña</button>
+      <input class="input-email" v-model="email">
+      <button class="btn" @click="sendEmail">Restaurar contraseña</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "ForgotPassword"
+/*----------------*/
+import { initializeApp } from "firebase/app";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
-}
+const firebaseConfig = {
+  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+  authDomain: "web-kompi.firebaseapp.com",
+  projectId: "web-kompi",
+  storageBucket: "web-kompi.appspot.com",
+  messagingSenderId: "556298514839",
+  appId: "1:556298514839:web:92e508e18c5685e99694d2",
+  measurementId: "G-93MGP34YQN"
+};
+
+initializeApp(firebaseConfig);
+const auth = getAuth();
+/*----------------*/
+
+export default {
+  name: "ForgotPassword",
+  data() {
+    return {
+      email: ""
+    };
+  },
+  methods: {
+    sendEmail() {
+      sendPasswordResetEmail(auth, this.email)
+        .then(() => {
+          console.log(this.email + " email enviado correctamente");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert("El email introducido no es correcto");
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import '../assets/base.css';
-
-body {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  height: 100vh;
-  background-color: var(--lightgrey);
-}
 
 .container-login {
   display: flex;
@@ -39,6 +68,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100vh;
+  background-color: var(--lightgrey);
 }
 
 .logo {
@@ -49,6 +80,10 @@ body {
 
 .container-login a {
   margin-bottom: 0.5rem;
+}
+
+.container-login .text {
+  text-align: center;
 }
 
 p {
@@ -109,5 +144,61 @@ input:focus {
   background-color: #e6a422;
   color: var(--black);
   cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .card-login {
+    width: 18rem;
+  }
+
+  .container-login .text {
+    width: 18rem;
+  }
+
+  .btn {
+    width: 17rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card-login {
+    width: 15rem;
+  }
+
+  .container-login .text {
+    width: 15rem;
+  }
+
+  .btn {
+    width: 14rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .card-login {
+    width: 10rem;
+  }
+
+  .container-login .text {
+    width: 10rem;
+  }
+
+  .btn {
+    width: 9rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .card-login {
+    width: 7.5rem;
+  }
+
+  .container-login .text {
+    width: 7.5rem;
+  }
+
+  .btn {
+    width: 6.5rem;
+  }
 }
 </style>
