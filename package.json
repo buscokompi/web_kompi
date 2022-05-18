@@ -34,6 +34,7 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.6.11",
+    "pinia": "^2.0.13",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   }
