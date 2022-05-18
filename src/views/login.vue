@@ -23,7 +23,7 @@
            alt="Icono Google"><span>Inicia sesión con Google</span></div>
 
       </div>
-      <p class="register">¿No tienes una cuenta? <a class="link-signin" href="../signin.html">Regístrate</a></p>
+      <p class="register">¿No tienes una cuenta? <RouterLink class="link-signin" to="/OptionsNewUser">Regístrate</RouterLink></p>
     </div>
   </div>
 
@@ -31,6 +31,7 @@
 
 <script>
   export default {
+    name: "OptionsNewUser"
 
   }
 </script>
@@ -249,8 +250,6 @@
   .register {
     text-align: center;
   }
-
-
 
   /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
   @media screen and (min-width: 767px) {
