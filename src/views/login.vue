@@ -1,11 +1,11 @@
 <template>
 <div class="app">
-  <img class="img-dog-login" src="./assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+  <img class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
 
   <div class="container-login">
 
-    <a href="./index.html">
-      <img class="logo" src="./assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+    <a href="../index.html">
+      <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
     </a>
 
     <div class="card-login">
@@ -13,7 +13,7 @@
 
 </form>
 <div>
-      <p>E-mail</p>
+      <p class="email">E-mail</p>
       <input class="input-email" placeholder="adoptaunkompi@gmail.com" >
         <p class="pass">Contraseña</p>
         <input type="password" id="password" placeholder="BuscoKompi6."/>
@@ -22,14 +22,13 @@
       </div>
 
 
-      <p class="forgot-pass"><a  href="./forgot-password.html">¿Has olvidado tu contraseña?</a></p>
+      <p class="forgot-pass"><a  href="./forgot-password.html">Has olvidado tu contraseña?</a></p>
       <div class="button btn-login-email"><span>Continuar</span></div>
-      <div class="button btn-login-google"><img class="google" src="./assets/icons/google_icono.svg"
+      <div class="button btn-login-google"><img class="google" src="../assets/icons/google_icono.svg"
           alt="Icono Google"><span>Inicia sesión con Google</span></div>
-      <div class="button btn-login-facebook"><img class="facebook" src="./assets/icons/facebook_icono.svg"
-          alt="Icono Facebook"><span>Inicia sesión con Facebook</span></div>
+
     </div>
-    <p class="register">¿No tienes una cuenta? <a class="link-signin" href="./signin.html">Regístrate</a></p>
+    <p class="register">¿No tienes una cuenta? <a class="link-signin" href="../signin.html">Regístrate</a></p>
   </div>
 </div>
 
@@ -37,8 +36,9 @@
 
 <script>
     export default {
-        name: "App",
+
     }
+
 </script>
 
 <style scoped>
@@ -54,7 +54,7 @@
   --text-font: "Open Sans";
 }
 
-body {
+.app {
   display: flex;
   flex-direction: row;
   margin: 0;
@@ -153,7 +153,6 @@ body {
 }
 
 
-
 input {
   padding: 0.5rem;
   border-radius: 0.8rem;
@@ -222,19 +221,6 @@ input:focus {
 .btn-login-google span {
   color: var(--black);
 }
-
-.btn-login-facebook {
-  background-color: #30457b;
-}
-
-.btn-login-facebook span {
-  color: var(--white);
-}
-
-.btn-login-facebook:hover {
-  background-color: rgb(10 20 44);
-}
-
 /* BOTONES SIGN IN */
 
 .btn-signin-email {
@@ -262,19 +248,6 @@ input:focus {
 .btn-signin-google span {
   color: var(--black);
 }
-
-.btn-signin-facebook {
-  background-color: #30457b;
-}
-
-.btn-signin-facebook span {
-  color: var(--white);
-}
-
-.btn-signin-facebook:hover {
-  background-color: rgb(10 20 44);
-}
-
 .link-signin {
   color: var(--green);
   font-family: var(--text-font);
@@ -282,12 +255,6 @@ input:focus {
 }
 
 .google {
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-left: 20%;
-}
-
-.facebook {
   width: 1.8rem;
   height: 1.8rem;
   margin-left: 20%;
@@ -319,7 +286,7 @@ p {
   font-size: 0.8rem;
 }
 
-/* see first password */
+/* see password */
 
 #password {
   margin-top: 1rem;
@@ -335,7 +302,6 @@ p {
 #toggle-password {
   display: none;
 }
-
 .pass {
   margin-top: 2rem;
   margin-bottom: -1px;
@@ -349,31 +315,5 @@ p {
   margin-left: -32px;
   cursor: pointer;
 }
-
-/* see second password */
-
-#password2 {
-  margin-top: 1rem;
-  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
-  background-position: 97% center;
-  background-repeat: no-repeat;
-}
-
-#password2.visible {
-  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
-}
-
-#toggle-password2 {
-  display: none;
-}
-
-
-#toggle-password2 + label {
-  text-indent: -9999px;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: -32px;
-  cursor: pointer;
-}
 </style>
+

@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-<login />
+<RouterView />
 </template>
 
 <style>
