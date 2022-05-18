@@ -1,5 +1,5 @@
 <script>
-import TopBar from './components/TopBar.vue'
+import login from './views/login.vue'
 // import { RouterLink, RouterView } from 'vue-router'
 export default {
   name: "App",
@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-
+<login />
 </template>
 
 <style>
