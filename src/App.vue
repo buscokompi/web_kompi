@@ -1,14 +1,17 @@
 <script>
 import TopBar from './components/TopBar.vue'
 // import { RouterLink, RouterView } from 'vue-router'
+import ForgotPassword from './views/ForgotPassword.vue'
 export default {
   name: "App",
-
+  components: {
+    ForgotPassword
+  }
 }
 </script>
 
 <template>
-
+  <ForgotPassword />
 </template>
 
 <style>
