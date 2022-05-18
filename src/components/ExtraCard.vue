@@ -4,13 +4,15 @@
         <p><span>+315 mascotas</span></p>
         <p>disponibles en kompi</p>
         <div class="footer">
-            <a class="button" href="./filter-animals.html">Ver más</a>
+            <BaseButton url="../filter-animals.html" text="Ver más"/>
         </div>
     </div>
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue'
 export default {
+    components: {BaseButton }
 
 }
 </script>
