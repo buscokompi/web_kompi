@@ -1,8 +1,35 @@
-<script></script>
+<script>
+import TopBar from './components/TopBar.vue'
+// import { RouterLink, RouterView } from 'vue-router'
+export default {
+  name: "App",
+  components: {
+    TopBar
+  }
+}
+</script>
 
-<template></template>
-
+<template>
+  <TopBar />
+  <div class="view-container">
+    <RouterView />
+  </div>
+</template>
 
 <style>
+/* Para importar las fuentes de google */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* Para importar el CSS global */
 @import './assets/base.css';
+
+.view-container {
+  width: 100%;
+  /*Solucion provisional*/
+  /* position: absolute;
+  top: 5rem;
+  left: 0; */
+  /* ------------------ */
+
+}
 </style>
