@@ -50,6 +50,7 @@
   font-weight: 600;
   color: var(--green);
 }
+
 @media screen and (min-width: 767px) {
 .counter {
     gap: 5rem;

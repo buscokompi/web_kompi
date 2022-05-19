@@ -4,7 +4,7 @@
     <h1>Mi raza favorita es: <br>Ad<img src="../assets/icons/icono_logo_blanco.svg" alt="logo letra 'o'" width="36"
         height="49">ptado</h1>
     <p>Kompi el buscador de animales más<br> grande de la red de España</p>
-    <BaseButton url="../views/CategoryPage.vue" text="Comenzar Búsqueda"/>
+    <BaseButton url="../views/CategoryPage.vue" text="Comenzar búsqueda"/>
   </main>
 
 </template>
@@ -36,7 +36,10 @@ import BaseButton from './BaseButton.vue'
   align-items: center;
   flex-direction: column;
   text-align: center;
-  color: white;
+}
+h1{
+  color: var(--white);
+  margin: 0 1rem;
 }
 
 .home h1 img {

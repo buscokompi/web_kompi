@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: "TopBar",
+    name: "TheHeader",
     data() {
         return {
             scrolledNav: null,
@@ -320,22 +320,4 @@ ul,
     background-color: var(--black);
     cursor: auto;
 }
-
-
-
-
-/* .scrolled-nav {
-    background: red;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-    nav {
-        padding: 8px 0px;
-
-        .logo {
-            img {
-                width: 7rem;
-            }
-        }
-    }
-} */
 </style>

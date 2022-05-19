@@ -1,23 +1,25 @@
 <template>
-    <TopBar />
+    <TheHeader />
     <MainMain />
-    <!-- <MainCategory /> -->
+    <MainCategory />
     <MainAdoption />
     <MainCounter />
+    <MainGuide />
     <MainList />
-    <FooterSection />
+    <TheFooter />
 </template>
 
 <script>
-import FooterSection from '../components/FooterSection.vue'
 import MainMain from '../components/MainMain.vue'
-import TopBar from '../components/TopBar.vue'
 import MainCategory from '../components/MainCategory.vue'
 import MainAdoption from '../components/MainAdoption.vue'
 import MainCounter from '../components/MainCounter.vue'
 import MainList from '../components/MainList.vue'
+import MainGuide from '../components/MainGuide.vue'
+import TheFooter from '../components/TheFooter.vue'
+import TheHeader from '../components/TheHeader.vue'
     export default {
-    components: { FooterSection, MainMain, TopBar, MainCategory, MainAdoption, MainCounter, MainList }
+    components: { TheHeader ,MainMain, MainCategory, MainAdoption, MainCounter, MainGuide, MainList, TheFooter}
 }
 
 </script>

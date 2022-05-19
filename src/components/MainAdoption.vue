@@ -26,18 +26,14 @@ import CardGroup from './CardGroup.vue'
   justify-content: center;
   align-content: center;
   text-align: center;
-}
+    color: var(--black);
 
-h2 {
-  margin: -3rem  0 0;
-  color: var(--black);
 }
 
 .text {
   margin: 1rem 6rem;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--black);
 }
 .more {
   visibility: hidden;
