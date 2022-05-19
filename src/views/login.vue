@@ -4,7 +4,7 @@
 
     <div class="container-login">
 
-      <a href="../index.html">
+      <a to="../index.html">
         <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
       </a>
 
@@ -17,7 +17,7 @@
         <input type="checkbox" id="toggle-password" />
         <label for="toggle-password"></label>
 
-       <a class="forgot-pass" href="./forgot-password.html">Has olvidado tu contraseña?</a>
+       <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?</a>
         <div class="button btn-login-email"><span>Continuar</span></div>
         <div class="button btn-login-google"><img class="google" src="../assets/icons/google_icono.svg"
            alt="Icono Google"><span>Inicia sesión con Google</span></div>

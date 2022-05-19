@@ -86,7 +86,7 @@ a p {
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  gap: 6rem;
+  gap: 3rem;
 }
 
 img {
@@ -127,7 +127,7 @@ a:hover {
 
 
 
-@media screen and (max-width: 960px){
+@media screen and (min-width: 960px){
 .adopt, .give-in-adoption{
 width: 65%;
 height: 55%;
@@ -139,7 +139,15 @@ padding: 1.5rem;
 }
 
 .card-options{
+  width: 40rem;
   gap: 2rem;
+}
+
+@media screen and (max-width: 450px){
+.card-options{
+width: 27rem;
+}
+
 }
 
 </style>
