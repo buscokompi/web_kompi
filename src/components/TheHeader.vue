@@ -1,55 +1,3 @@
-<script>
-export default {
-    name: "TheHeader",
-    data() {
-        return {
-            scrolledNav: null,
-            desktop: false,
-            mobileNav: null,
-            windowWidth: null,
-        };
-    },
-    created() {
-        window.addEventListener("resize", this.checkScreen);
-        this.checkScreen();
-    },
-    mounter() {
-        window.addEventListener("scroll", this.updateScroll);
-    },
-    methods: {
-        toggleMenu() {
-            this.mobileNav = !this.mobileNav;
-
-        },
-
-        closeNav() {
-            this.mobileNav = false;
-        },
-
-        updateScroll() {
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 50) {
-                this.scrolledNav = true;
-                return;
-            }
-            this.scrolledNav = false;
-        },
-
-        checkScreen() {
-            this.windowWidth = window.innerWidth;
-            if (this.windowWidth >= 1300) {
-                this.desktop = true;
-                this.mobileNav = false;
-                return;
-            }
-            this.desktop = false;
-            this.mobileNav = false;
-            return;
-        }
-    },
-};
-</script>
-
 <template>
     <header :class="{ 'scrolled-nav': scrolledNav }">
         <nav>
@@ -120,7 +68,59 @@ export default {
     </header>
 </template>
 
-<style>
+<script>
+export default {
+    name: "TheHeader",
+    data() {
+        return {
+            scrolledNav: null,
+            desktop: false,
+            mobileNav: null,
+            windowWidth: null,
+        };
+    },
+    created() {
+        window.addEventListener("resize", this.checkScreen);
+        this.checkScreen();
+    },
+    mounter() {
+        window.addEventListener("scroll", this.updateScroll);
+    },
+    methods: {
+        toggleMenu() {
+            this.mobileNav = !this.mobileNav;
+
+        },
+
+        closeNav() {
+            this.mobileNav = false;
+        },
+
+        updateScroll() {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 50) {
+                this.scrolledNav = true;
+                return;
+            }
+            this.scrolledNav = false;
+        },
+
+        checkScreen() {
+            this.windowWidth = window.innerWidth;
+            if (this.windowWidth >= 1300) {
+                this.desktop = true;
+                this.mobileNav = false;
+                return;
+            }
+            this.desktop = false;
+            this.mobileNav = false;
+            return;
+        }
+    },
+};
+</script>
+
+<style scoped>
 header {
     width: 100%;
     height: 5rem;
