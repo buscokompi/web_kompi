@@ -1,17 +1,17 @@
 <template>
   <div class="card">
     <div class="img-container">
-      <img src="./assets/imgSleapingCat.jpg" alt="mascota">
+      <img src="../assets/images/imgSleapingCat.jpg" alt="mascota">
     </div>
     <h3 class="name">Coco</h3>
-    <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
+    <p><img src="../assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "AnimalCard"
+  name: "CardAnimal"
 
 }
 </script>

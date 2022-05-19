@@ -1,16 +1,13 @@
 <script>
-import TopBar from './components/TopBar.vue'
 
 // import { RouterLink, RouterView } from 'vue-router'
 export default {
     name: "App",
-    components: { TopBar }
+    components: { }
 }
 </script>
 
 <template>
-
-<TopBar />
 <RouterView />
 </template>
 

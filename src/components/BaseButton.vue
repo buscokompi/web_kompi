@@ -1,5 +1,7 @@
 <template>
+
     <RouterLink class="button" :to="buttonUrl">{{buttonText}}</RouterLink>
+
 </template>
 
 <script>

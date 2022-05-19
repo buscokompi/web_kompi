@@ -1,19 +1,23 @@
 <template>
-    <AnimalCard />
-    <AnimalCard />
-    <AnimalCard />
-    <ExtraCard />
-    <BaseButton url="../filter-animals.html" text="Comenzar Búsqueda"/>
+    <TopBar />
+    <MainMain />
+    <!-- <MainCategory /> -->
+    <MainAdoption />
+    <MainCounter />
+    <MainList />
     <FooterSection />
 </template>
 
 <script>
 import FooterSection from '../components/FooterSection.vue'
-import AnimalCard from '../components/AnimalCard.vue'
-import ExtraCard from '../components/ExtraCard.vue'
-import BaseButton from '../components/BaseButton.vue'
+import MainMain from '../components/MainMain.vue'
+import TopBar from '../components/TopBar.vue'
+import MainCategory from '../components/MainCategory.vue'
+import MainAdoption from '../components/MainAdoption.vue'
+import MainCounter from '../components/MainCounter.vue'
+import MainList from '../components/MainList.vue'
     export default {
-    components: {FooterSection, AnimalCard, ExtraCard, BaseButton }
+    components: { FooterSection, MainMain, TopBar, MainCategory, MainAdoption, MainCounter, MainList }
 }
 
 </script>
