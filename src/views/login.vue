@@ -34,6 +34,21 @@
     name: "OptionsNewUser"
 
   }
+
+//   const password = document.getElementById("password");
+// const togglePassword = document.getElementById("toggle-password");
+// togglePassword.addEventListener("click", toggleClicked);
+
+// function toggleClicked() {
+//   password.classList.toggle("visible");
+//   if (this.checked) {
+//     password.type = "text";
+//   } else {
+//     password.type = "password";
+//   }
+// }
+
+
 </script>
 
 <style scoped>
@@ -227,15 +242,18 @@
 
   #password.visible {
     background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
+
   }
 
   #toggle-password {
     display: none;
+
   }
 
   .pass {
     margin-top: 2rem;
     margin-bottom: -1px;
+
   }
 
   #toggle-password+label {
@@ -287,6 +305,7 @@
 .btn-login-email{
   margin-top: 5rem;
 }
+
   }
 
   @media screen and (min-width: 1300px) {

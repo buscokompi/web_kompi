@@ -23,6 +23,7 @@
     export default {
         name: "login"
     }
+
 </script>
 
 <style scoped>
