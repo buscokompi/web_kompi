@@ -4,14 +4,19 @@
       <img src="./assets/imgSleapingCat.jpg" alt="mascota">
     </div>
     <h3 class="name">Coco</h3>
-    <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
+    <p><img src="../assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "AnimalCard"
+  name: "AnimalCard",
+  props: {
+    image: String,
+    name: String,
+    location: String
+  }
 
 }
 </script>
