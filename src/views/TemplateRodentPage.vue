@@ -7,13 +7,12 @@ import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firesto
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
 
-
 export default {
     name: "TemplatePage",
     props: {
-        buttonURL: {
-            type: String,
-            required: true
+        type: {
+            AnimalID: String,
+            require: true
         }
     },
     data() {
@@ -23,7 +22,7 @@ export default {
             firestore: null,
             auth: null,
             animalInfo: null,
-            cat: {
+            rodent: {
                 Nombre: '',
                 Ubicacion: '',
                 Edad: '',
@@ -49,7 +48,7 @@ export default {
     },
     methods: {
         info() {
-            console.log(this.cat)
+            console.log(this.rodent)
         }
     },
     mounted() {
@@ -57,12 +56,12 @@ export default {
         this.storage = getStorage(this.db)
         this.firestore = getFirestore(this.db)
         this.auth = getAuth()
-        getDoc(doc(this.firestore, `animals/aOXbYmSuDhJYxMdovnyC`))
+        getDoc(doc(this.firestore, `animals/DQQDuc8dfuRSdldHWt0f`))
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
-                    for (const element in this.cat) {
-                        this.cat[element] = this.animalInfo[element]
+                    for (const element in this.rodent) {
+                        this.rodent[element] = this.animalInfo[element]
                     }
                 }
             })
@@ -91,9 +90,9 @@ export default {
                 </div>
             </div> -->
             <div class="info">
-                <div class="name-location">
-                    <h2 class="name">{{ cat.Nombre }}</h2>
-                    <p class="location">{{ cat.Ubicacion }}</p>
+                <div class="name-lorodention">
+                    <h2 class="name">{{ rodent.Nombre }}</h2>
+                    <p class="lorodention">{{ rodent.Ubicacion }}</p>
                 </div>
                 <!-- <div class="save-share">
                     <h3 class="save">Guardar</h3>
@@ -111,43 +110,43 @@ export default {
                 <div class="description">
                     <h3>Descripción</h3>
                     <p>
-                        {{ cat.Descripcion }}
+                        {{ rodent.Descripcion }}
                     </p>
 
                 </div>
                 <div class="animal-data">
                     <h3>Edad:</h3>
-                    <p class="age">{{ cat.Edad }}</p>
+                    <p class="age">{{ rodent.Edad }}</p>
                     <div class="hr"></div>
                     <h3>Raza:</h3>
-                    <p class="breed">{{ cat.Raza }}</p>
+                    <p class="breed">{{ rodent.Raza }}</p>
                     <div class="hr"></div>
                     <h3>Sexo:</h3>
-                    <p class="gender">{{ cat.Sexo }}</p>
+                    <p class="gender">{{ rodent.Sexo }}</p>
                     <div class="hr"></div>
                     <h3>Tamaño:</h3>
-                    <p class="size">{{ cat.Tamano }}</p>
+                    <p class="size">{{ rodent.Tamano }}</p>
                     <div class="hr"></div>
                     <h3>Peso:</h3>
-                    <p class="weight">{{ cat.Peso }}</p>
+                    <p class="weight">{{ rodent.Peso }}</p>
                     <div class="hr"></div>
                     <h3>Color:</h3>
-                    <p class="color">{{ cat.Color }}</p>
+                    <p class="color">{{ rodent.Color }}</p>
                     <div class="hr"></div>
                     <h3>Pelo:</h3>
-                    <p class="hair">{{ cat.Pelo }}</p>
+                    <p class="hair">{{ rodent.Pelo }}</p>
                     <div class="hr"></div>
                     <h3>Microchip:</h3>
-                    <p class="microchip">{{ cat.Microchip }}</p>
+                    <p class="microchip">{{ rodent.Microchip }}</p>
                     <div class="hr"></div>
                     <h3>Vacunación:</h3>
-                    <p class="vaccination">{{ cat.Vacunacion }}</p>
+                    <p class="vaccination">{{ rodent.Vacunacion }}</p>
+                    <!-- <div class="hr"></div>
+                    <h3>Certificado ppp:</h3>
+                    <p class="certified">{{ rodent.Certificado_ppp }}</p> -->
                     <div class="hr"></div>
-                    <!-- <h3>Certificado ppp:</h3>
-                    <p class="certified"></p>
-                    <div class="hr"></div> -->
                     <h3>Esterilizado:</h3>
-                    <p class="esterilized">{{ cat.Esterilizacion }}</p>
+                    <p class="esterilized">{{ rodent.Esterilizacion }}</p>
                 </div>
                 <div class="adoption">
                     <h3>¿Quieres adoptar o saber más sobre Nala?<br>
@@ -303,7 +302,7 @@ a {
     padding: 0 12.5rem;
 }
 
-.info .name-location {
+.info .name-lorodention {
     margin: 0 10rem 2rem;
     width: 80%;
     display: flex;
@@ -312,7 +311,7 @@ a {
     align-items: flex-start;
 }
 
-.name-location .name {
+.name-lorodention .name {
     color: var(--white);
     font-family: var(--title-font);
     font-size: 3rem;
@@ -320,7 +319,7 @@ a {
     margin: 0;
 }
 
-.name-location .location {
+.name-lorodention .lorodention {
     color: var(--white);
     font-family: var(--text-font);
     font-size: 16px;
@@ -669,7 +668,7 @@ a {
         justify-self: center;
     }
 
-    .category {
+    .rodentegory {
         visibility: visible;
         opacity: 1;
     }
@@ -809,12 +808,12 @@ a {
         width: 2.25rem;
     }
 
-    .category .icon .shadow {
+    .rodentegory .icon .shadow {
         width: 7rem;
         height: 7rem;
     }
 
-    .category .icon img {
+    .rodentegory .icon img {
         width: 3.2rem;
         height: 4.5;
     }

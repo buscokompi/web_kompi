@@ -58,21 +58,22 @@ export default {
             </a>
             <ul v-show="desktop" class="desktop">
                 <li>
-                    <RouterLink class="link" to="/">Adopción</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg" alt="favoritos">
+                    <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"
+                            alt="favoritos">
                     </RouterLink>
                 </li>
                 <li class="vertical-line"></li>
                 <li>
-                    <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageReptile">Iniciar sesión</RouterLink>
                 </li>
             </ul>
             <div class="burger">
