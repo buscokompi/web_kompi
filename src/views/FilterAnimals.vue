@@ -119,6 +119,7 @@ export default {
       animalsArr: []
     }
   },
+  //Al montar la pagina, crea todas las card de los animales
   mounted() {
     this.readAnimals();
   },
@@ -154,12 +155,6 @@ export default {
       });
     },
   },
-  getValue(data) {
-    this.values = data;
-    console.log(data);
-  },
-  checkFilters() {
-  }
 }
 </script>
 
