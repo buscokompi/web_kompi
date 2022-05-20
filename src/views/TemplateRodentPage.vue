@@ -2,16 +2,18 @@
 import AnimalCard from '@/components/AnimalCard.vue'
 import ExtraCard from '@/components/ExtraCard.vue'
 import FooterSection from '@/components/FooterSection.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
-import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite"
+import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
 
 export default {
     name: "TemplatePage",
     props: {
-        type: {
-            AnimalID: String,
+        //Recibimos obligatoriamente el id del animal para buscarlo e la BBDD
+        AnimalId: {
+            type: String,
             require: true
         }
     },
@@ -22,6 +24,8 @@ export default {
             firestore: null,
             auth: null,
             animalInfo: null,
+            arrayAnimales: [],
+            Nombre1: '',
             rodent: {
                 Nombre: '',
                 Ubicacion: '',
@@ -36,7 +40,8 @@ export default {
                 Vacunacion: '',
                 Certificado_ppp: '',
                 Esterilizacion: '',
-                Descripcion: ''
+                Descripcion: '',
+                Imagen1: ''
             }
 
         }
@@ -44,11 +49,12 @@ export default {
     components: {
         AnimalCard,
         ExtraCard,
-        FooterSection
+        FooterSection,
+        BaseButton
     },
     methods: {
         info() {
-            console.log(this.rodent)
+            console.log(this.arrayAnimales);
         }
     },
     mounted() {
@@ -63,8 +69,31 @@ export default {
                     for (const element in this.rodent) {
                         this.rodent[element] = this.animalInfo[element]
                     }
+                    getDownloadURL(ref(this.storage, this.rodent.Imagen1))
+                        .then(URL => {
+                            this.rodent.Imagen1 = URL;
+                        })
                 }
             })
+        // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
+        const p = query(collection(this.firestore, 'animals'), where('Especie', '==', 'Perro'));
+        getDocs(p)
+            .then(element => {
+                // console.log(element)
+                for (let i = 0; i < 5; i++) {
+                    this.arrayAnimales[i] = element._docs[Math.floor(Math.random() * element.size)].data();
+                }
+
+                // console.log(this.arrayAnimales[0])
+
+                this.Nombre1 = this.arrayAnimales[0].Nombre;
+
+                // this.arrayAnimales.forEach(x => {
+                //     // console.log(x.Imagen1);
+
+                // })
+            })
+
     },
 }
 </script>
@@ -75,7 +104,7 @@ export default {
         <header class="header">
             <div class="header-carousel">
                 <div class="img-container">
-                    <img class="img1" src="" alt="imagen1">
+                    <img class="img1" :src="this.rodent.Imagen1" alt="imagen1">
                 </div>
                 <div class="img-container">
                     <img class="img2" src="" alt="imagen2">
@@ -90,9 +119,9 @@ export default {
                 </div>
             </div> -->
             <div class="info">
-                <div class="name-lorodention">
+                <div class="name-location">
                     <h2 class="name">{{ rodent.Nombre }}</h2>
-                    <p class="lorodention">{{ rodent.Ubicacion }}</p>
+                    <p class="location">{{ rodent.Ubicacion }}</p>
                 </div>
                 <!-- <div class="save-share">
                     <h3 class="save">Guardar</h3>
@@ -115,9 +144,9 @@ export default {
 
                 </div>
                 <div class="animal-data">
-                    <h3>Edad:</h3>
-                    <p class="age">{{ rodent.Edad }}</p>
-                    <div class="hr"></div>
+                    <h3 v-show="false">Edad:</h3>
+                    <p v-show="false" class="age">{{ rodent.Edad }}</p>
+                    <div v-show="false" class="hr"></div>
                     <h3>Raza:</h3>
                     <p class="breed">{{ rodent.Raza }}</p>
                     <div class="hr"></div>
@@ -148,13 +177,15 @@ export default {
                     <h3>Esterilizado:</h3>
                     <p class="esterilized">{{ rodent.Esterilizacion }}</p>
                 </div>
+
                 <div class="adoption">
                     <h3>¿Quieres adoptar o saber más sobre Nala?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
 
-                    <div class="adoption-link-container">
+                    <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />
+                    <!-- <div class="adoption-link-container">
                         <a href="./404file.html">CONTACTAR</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -164,11 +195,13 @@ export default {
                 <h2>Otros Kompis que encajan con tu búsqueda</h2>
 
                 <div class="group">
-                    <AnimalCard />
-                    <AnimalCard />
-                    <AnimalCard />
-                    <AnimalCard />
-                    <ExtraCard />
+                    <!-- :img="arrayAnimales[0].Imagen1" -->
+                    <AnimalCard :name="Nombre1" />
+
+                    <!-- <AnimalCard :name="arrayAnimales[1].Nombre" :location="arrayAnimales[1].Ubicacion" />
+                    <AnimalCard :name="arrayAnimales[2].Nombre" :location="arrayAnimales[2].Ubicacion" />
+                    <AnimalCard :name="arrayAnimales[3].Nombre" :location="arrayAnimales[3].Ubicacion" />
+                    <ExtraCard :name="arrayAnimales[4].Nombre" :location="arrayAnimales[4].Ubicacion" /> -->
                 </div>
             </div>
         </section>
@@ -192,22 +225,9 @@ export default {
     align-items: center;
 }
 
-h3,
-p {
-    font-family: var(--text-font);
-}
 
-ul {
-    list-style: none;
-    margin: 0;
-}
 
-a {
-    text-decoration: none;
-    margin: 0;
-}
-
-.button {
+/* .button {
     background: var(--orange);
     color: var(--black);
     padding: 0.8rem 2rem;
@@ -224,7 +244,7 @@ a {
 .button:hover {
     background: #cc9320;
     border: 0;
-}
+} */
 
 
 /* CAROUSEL */
@@ -302,7 +322,7 @@ a {
     padding: 0 12.5rem;
 }
 
-.info .name-lorodention {
+.info .name-location {
     margin: 0 10rem 2rem;
     width: 80%;
     display: flex;
@@ -311,7 +331,7 @@ a {
     align-items: flex-start;
 }
 
-.name-lorodention .name {
+.name-location .name {
     color: var(--white);
     font-family: var(--title-font);
     font-size: 3rem;
@@ -319,7 +339,7 @@ a {
     margin: 0;
 }
 
-.name-lorodention .lorodention {
+.name-location .location {
     color: var(--white);
     font-family: var(--text-font);
     font-size: 16px;
@@ -668,7 +688,7 @@ a {
         justify-self: center;
     }
 
-    .rodentegory {
+    .category {
         visibility: visible;
         opacity: 1;
     }
@@ -808,12 +828,12 @@ a {
         width: 2.25rem;
     }
 
-    .rodentegory .icon .shadow {
+    .category .icon .shadow {
         width: 7rem;
         height: 7rem;
     }
 
-    .rodentegory .icon img {
+    .category .icon img {
         width: 3.2rem;
         height: 4.5;
     }

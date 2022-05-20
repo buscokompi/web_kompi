@@ -2,6 +2,7 @@
 import AnimalCard from '@/components/AnimalCard.vue'
 import ExtraCard from '@/components/ExtraCard.vue'
 import FooterSection from '@/components/FooterSection.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
 import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
@@ -36,7 +37,8 @@ export default {
                 Vacunacion: '',
                 Certificado_ppp: '',
                 Esterilizacion: '',
-                Descripcion: ''
+                Descripcion: '',
+                Imagen1: '',
             }
 
         }
@@ -44,7 +46,8 @@ export default {
     components: {
         AnimalCard,
         ExtraCard,
-        FooterSection
+        FooterSection,
+        BaseButton
     },
     methods: {
         info() {
@@ -63,6 +66,10 @@ export default {
                     for (const element in this.reptile) {
                         this.reptile[element] = this.animalInfo[element]
                     }
+                    getDownloadURL(ref(this.storage, this.reptile.Imagen1))
+                        .then(URL => {
+                            this.reptile.Imagen1 = URL;
+                        })
                 }
             })
     },
@@ -75,7 +82,7 @@ export default {
         <header class="header">
             <div class="header-carousel">
                 <div class="img-container">
-                    <img class="img1" src="" alt="imagen1">
+                    <img class="img1" :src="this.reptile.Imagen1" alt="imagen1">
                 </div>
                 <div class="img-container">
                     <img class="img2" src="" alt="imagen2">
@@ -152,9 +159,10 @@ export default {
                     <h3>¿Quieres adoptar o saber más sobre Nala?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
 
-                    <div class="adoption-link-container">
+                    <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />
+                    <!-- <div class="adoption-link-container">
                         <a href="./404file.html">CONTACTAR</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -207,24 +215,7 @@ a {
     margin: 0;
 }
 
-.button {
-    background: var(--orange);
-    color: var(--black);
-    padding: 0.8rem 2rem;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 3rem;
-    font-family: var(--text-font);
-    font-size: 1em;
-    font-weight: 600;
-    transition: 0.5s ease-out;
-    border: 0;
-}
 
-.button:hover {
-    background: #cc9320;
-    border: 0;
-}
 
 
 /* CAROUSEL */
