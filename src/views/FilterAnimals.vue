@@ -8,11 +8,14 @@
   <div class="searcher">
 
     <div class="results">
-      <p class="number-animals">0 resultados disponibles</p>
+      <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
       <SelectOptions :options="options" />
+      <p>{{ values }}</p>
     </div>
 
-    <div class="group" v-html="html">
+    <div class="group">
+      <AnimalCard v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
+      </AnimalCard>
     </div>
 
     <div class="filter">
@@ -42,7 +45,7 @@
       <p>Esterilización</p>
       <SelectOptions :options="others" />
 
-      <button class="btn-search">Iniciar busqueda</button>
+      <button class="btn-search" @click="checkFilters()">Iniciar busqueda</button>
 
     </div>
 
@@ -110,7 +113,10 @@ export default {
 
       //---------------------------------------------------------
 
-      html: ""
+      html: "",
+      nAnimals: "",
+      values: "",
+      animalsArr: []
     }
   },
   mounted() {
@@ -122,6 +128,7 @@ export default {
     y los muestra por pantalla*/
     async readAnimals() {
       const animals = await getDocs(collection(fs, "animals"));
+      const group = document.querySelector(".group");
 
       animals.forEach(async (doc) => {
 
@@ -135,12 +142,23 @@ export default {
               race: doc.data().Raza,
               location: doc.data().Ubicacion
             };
-            this.html += /*html*/ `<h2>${animal.name}</h2>`
+
+            //Provisional, hay que usar el componente
+            //this.html += /*html*/ `<AnimalCard></AnimalCard>`;
+            this.animalsArr.push(animal);
+            this.nAnimals = this.animalsArr.length;
+
           }).catch((error) => {
             console.log(error);
           });
       });
     },
+  },
+  getValue(data) {
+    this.values = data;
+    console.log(data);
+  },
+  checkFilters() {
   }
 }
 </script>

@@ -13,6 +13,7 @@ export default {
   },
   data() {
     return {
+      selected: "",
       html: ""
     }
   },
@@ -23,7 +24,8 @@ export default {
   },
   methods: {
     onChange(event) {
-      console.log(event.target.value);
+      this.selected = event.target.value;
+      console.log(this.selected)
     }
   }
 }

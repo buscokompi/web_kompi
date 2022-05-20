@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="clickAnimal()">
     <div class="img-container">
       <img :src="image" alt="mascota">
     </div>
@@ -15,9 +15,14 @@ export default {
   props: {
     image: String,
     name: String,
-    location: String
+    location: String,
+    id: String
+  },
+  methods: {
+    clickAnimal() {
+      console.log(this.id);
+    }
   }
-
 }
 </script>
 
