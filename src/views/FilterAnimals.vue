@@ -12,12 +12,7 @@
       <SelectOptions :options="options" />
     </div>
 
-    <div class="group">
-      <AnimalCard />
-      <AnimalCard />
-      <AnimalCard />
-      <AnimalCard />
-
+    <div class="group" v-html="html">
     </div>
 
     <div class="filter">
@@ -122,16 +117,30 @@ export default {
     this.readAnimals();
   },
   methods: {
+
+    /* Funcion que llama a la base de datos de firestore y storage, coge los animales
+    y los muestra por pantalla*/
     async readAnimals() {
       const animals = await getDocs(collection(fs, "animals"));
-      const animalesArr = [];
-      animals.forEach((doc) => {
-        const animal = { id: doc.id, url: "", urlfb: doc.data().Imagen1, name: doc.data().Nombre, race: doc.data().Raza, location: doc.data().Ubicacion }
-        animalesArr.push(animal);
-        console.log(animal);
-        this.html += /*html*/ `<AnimalCard/>`
+
+      animals.forEach(async (doc) => {
+
+        await getDownloadURL(ref(storage, doc.data().Imagen1))
+          .then((url) => {
+            const animal = {
+              id: doc.id,
+              url: url,
+              urlfb: doc.data().Imagen1,
+              name: doc.data().Nombre,
+              race: doc.data().Raza,
+              location: doc.data().Ubicacion
+            };
+            this.html += /*html*/ `<h2>${animal.name}</h2>`
+          }).catch((error) => {
+            console.log(error);
+          });
       });
-    }
+    },
   }
 }
 </script>
