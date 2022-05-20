@@ -37,7 +37,6 @@ select {
   background: var(--white);
   width: 13rem;
   height: 3rem;
-  border-right: 1rem solid transparent;
   margin: 1rem auto 0;
 }
 
