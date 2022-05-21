@@ -10,7 +10,6 @@
     <div class="results">
       <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
       <SelectOptions :options="options" />
-      <p>{{ values }}</p>
     </div>
 
     <div class="group">
@@ -60,9 +59,10 @@ import SelectOptions from '../components/SelectOptions.vue'
 import AnimalCard from '../components/AnimalCard.vue'
 
 //Imports de los metodos de firebase
-import { getFirestore, collection, getDocs, setDoc, query, where } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -74,10 +74,6 @@ const firebaseConfig = {
   measurementId: "G-93MGP34YQN"
 };
 
-const firebaseapp = initializeApp(firebaseConfig);
-const fs = getFirestore();
-const storage = getStorage(firebaseapp);
-
 export default {
   name: "FilterAnimals",
   components: {
@@ -87,40 +83,30 @@ export default {
   },
   data() {
     return {
-      /*-----------Los arrays hay que cambiarlos----------------*/
-      options: ["Más recientes", "Más antiguos", "Aleatorio"],
-
-      provincias: ["Cualquiera", "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos",
-        "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Ceuta", "Córdoba", "Cuenca", "Gerona",
-        "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Baleares", "Jaén", "La Coruña", "La Rioja",
-        "Las Palmas", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Melilla", "Murcia", "Navarra", "Orense", "Palencia",
-        "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo",
-        "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"],
-
-      specie: ["Cualquiera", "Perro", "Gato", "Ave", "Roedor", "Reptil"],
-
-      dogsraces: ["Cualquiera", "Basset Hound", "Beagle", "Bobtail", "Border Collie", "Boston", "Bóxer", "Boyero de Berna", "Braco alemán", "Braco húngaro",
-        "Braco de weimar", "Bulldog inglés", "Bulldog francés", "Cairn Terrier", "Caniche", "Carlino", "Chihuahua", "Corgi", "Cocker",
-        "Chow Chow", "Dálmata", "Dogo argentino", "Dogo de Burdeos", "Gran Danés", "Jack Russell Terrier", "Labrador Retriever",
-        "Lobero irlandés", "Mastín Español", "Mastín del Pirineo", "Papillón", "Pastor australiano", "Pastor ganadero australiano",
-        "Pastor Yugoslavo", "Pit Bull", "Pomerania", "Samoyedo", "San Bernardo", "Husky Siberiano", "Seltie", "Teckel", "Yorkshire", "Schanuzer enano"],
-
-      sex: ["Cualquiera", "Macho", "Hembra"],
-
-      size: ["Cualquiera", "Pequeño", "Mediano", "Grande"],
-
-      others: ["Cualquiera", "Si", "No"],
-
-      //---------------------------------------------------------
+      options: optionsArr,
+      provincias: provinciasArr,
+      specie: specieArr,
+      dogsraces: dogsracesArr,
+      sex: sexArr,
+      size: sizeArr,
+      others: othersArr,
 
       html: "",
       nAnimals: "",
-      values: "",
-      animalsArr: []
+      animalsArr: [],
+
+      firebaseapp: null,
+      fs: null,
+      storage: null
     }
   },
+
   //Al montar la pagina, crea todas las card de los animales
   mounted() {
+    this.firebaseapp = initializeApp(firebaseConfig);
+    this.fs = getFirestore();
+    this.storage = getStorage(this.firebaseapp);
+
     this.readAnimals();
   },
   methods: {
@@ -128,12 +114,11 @@ export default {
     /* Funcion que llama a la base de datos de firestore y storage, coge los animales
     y los muestra por pantalla*/
     async readAnimals() {
-      const animals = await getDocs(collection(fs, "animals"));
-      const group = document.querySelector(".group");
+      const animals = await getDocs(collection(this.fs, "animals"));
 
       animals.forEach(async (doc) => {
 
-        await getDownloadURL(ref(storage, doc.data().Imagen1))
+        await getDownloadURL(ref(this.storage, doc.data().Imagen1))
           .then((url) => {
             const animal = {
               id: doc.id,
@@ -144,8 +129,6 @@ export default {
               location: doc.data().Ubicacion
             };
 
-            //Provisional, hay que usar el componente
-            //this.html += /*html*/ `<AnimalCard></AnimalCard>`;
             this.animalsArr.push(animal);
             this.nAnimals = this.animalsArr.length;
 
