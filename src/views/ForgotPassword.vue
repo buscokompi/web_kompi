@@ -15,10 +15,11 @@
 </template>
 
 <script>
-/*----------------*/
+//Importa las funciones de firebase
 import { initializeApp } from "firebase/app";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
+//Esto hay que ponerlo en el .env
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
   authDomain: "web-kompi.firebaseapp.com",
@@ -29,24 +30,29 @@ const firebaseConfig = {
   measurementId: "G-93MGP34YQN"
 };
 
-initializeApp(firebaseConfig);
-const auth = getAuth();
-/*----------------*/
-
 export default {
   name: "ForgotPassword",
   data() {
     return {
-      email: ""
+      email: "",
+      auth: "",
+      firebaseapp: ""
     };
   },
+  mounted() {
+    this.firebaseapp = initializeApp(firebaseConfig);
+    this.auth = getAuth();
+  },
   methods: {
+    //Funcion de firebase que manda un email al usuario
     sendEmail() {
-      sendPasswordResetEmail(auth, this.email)
+      sendPasswordResetEmail(this.auth, this.email)
         .then(() => {
+          //Esta parte debe llevar a la view email validated
           console.log(this.email + " email enviado correctamente");
         })
         .catch((error) => {
+          //Si el usuario es incorrecto, imprime el error por consola
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
