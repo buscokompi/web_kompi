@@ -1,9 +1,9 @@
 <script>
-import login from './views/login.vue'
+import login from './views/login.vue';
+
 // import { RouterLink, RouterView } from 'vue-router'
 export default {
   name: "App",
-  components: { login },
 
 }
 </script>
