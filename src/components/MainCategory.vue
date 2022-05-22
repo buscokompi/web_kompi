@@ -1,5 +1,5 @@
 <template>
-  <section class="category">
+  <section v-if="desktop" class=" category">
 
     <div class="icon">
       <div class="shadow">
@@ -16,7 +16,8 @@
             alt="roedores"></a>
       </div>
       <div class="shadow">
-        <a href='./filter-animals.html?category="Reptil"'><img src="../assets/icons/icono_reptil.svg" alt="reptiles"></a>
+        <a href='./filter-animals.html?category="Reptil"'><img src="../assets/icons/icono_reptil.svg"
+            alt="reptiles"></a>
       </div>
     </div>
 
@@ -24,11 +25,33 @@
 </template>
 
 <script>
-// import CategoryShadow from './CategoryShadow.vue'
-    export default {
-//   components: { CategoryShadow },
-
+export default {
+  data() {
+    return {
+      desktop: false,
+      mobileNav: null,
+      windowWidth: null,
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.checkScreen);
+    this.checkScreen();
+  },
+  methods: {
+    checkScreen() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth >= 1170) {
+        this.desktop = true;
+        this.mobileNav = false;
+        return;
+      }
+      this.desktop = false;
+      this.mobileNav = false;
+      return;
     }
+  }
+
+}
 </script>
 
 <style scoped>
@@ -40,9 +63,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+
 }
 
 .category .icon {
@@ -70,16 +91,6 @@
   height: 3.3rem;
 }
 
-@media screen and (min-width: 767px) {
-
-}
-
-@media screen and (min-width: 1170px) {
- .category {
-    visibility: visible;
-    opacity: 1;
-  }
-}
 
 @media screen and (min-width: 1300px) {
   .category .icon .shadow {
@@ -92,5 +103,4 @@
     height: 4.5;
   }
 }
-
 </style>
