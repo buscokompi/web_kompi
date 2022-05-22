@@ -1,9 +1,12 @@
 <template>
   <section class="accordions">
-    <dl v-on:click="item.open = !item.open" v-for="(item, id) in items"> {{ item.title }}
-      <dt v-if="item.open"></dt>
-      <dd v-if="item.open">{{ item.content }}</dd>
-    </dl>
+    <div class="question" :class="[item.open ? 'open' : '']" @click="item.open = !item.open"
+      v-for="(item, id) in items"> {{
+          item.title
+      }}
+      <h3 v-if="item.open"></h3>
+      <p v-if="item.open">{{ item.content }}</p>
+    </div>
   </section>
 </template>
 
@@ -14,23 +17,76 @@ export default {
       items: {
         q1: {
           title: '¿Qué es Kompi?',
-          content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-          open: true
+          content: `Es una plataforma destinada a la adopción de animales en España,
+            en donde puedes encontrar animales para adoptar tanto de particulares como de protectoras
+            y asociaciones. Aunque por motivos diferentes, todas los animales comparten que necesitan
+            un nuevo hogar urgentemente. Si quieres obtener más información sobre el animal que te gusta,
+            lee su ficha de descripción y haz click en "Adopta" para ponerte en contacto con su cuidador actual.`,
+          open: false
         },
         q2: {
-          title: 'What is Lorem Ipsum',
-          content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+          title: '¿Cómo funciona?',
+          content: `La plataforma es muy fácil, sencilla e intuitiva por lo que cualquier persona podrá entrar y
+            navegar en ella sin ningún problema. Es tan sencillo como buscar el tipo de mascota que te
+            interesa haciendo uso de los filtros de búsqueda. Una vez sientas que hayas encontrado a tu
+            próximo kompi se te pondrá en contacto con el cuidador actual del animal, así podrán tramitar
+            sin intermediarios los detalles del proceso de adopción.`,
           open: false
         },
         q3: {
-          title: 'What is Lorem Ipsum',
-          content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industryI',
+          title: ' ¿Qué animales puedo encontrar / publicar?',
+          content: `Nuestra página web aloja a todo tipo de mascotas(legales), la oferta disponible depende del
+            momento. Si estás buscando una mascota con ciertas características y no la
+            encuentras, visítanos con regularidad ya que nuevos animales se unen a Kompi cada día.
+            Podrás encontrar entre nuestras categorías: perros, gatos, aves, roedores y reptiles.
+            Si lo que quieres es dar en adopción a tu mascota, regístrate y sigue los pasos para crear la
+            ficha de adopción.`,
+          open: false
+        },
+        q4: {
+          title: '¿Es gratis?',
+          content: `Kompi es totalmente gratuita. Lo único que tienes que hacer es registrarte tanto
+            si quieres adoptar, como dar en adopción.
+            Esta web está orientada a la adopción, no a la venta.`,
+          open: false
+        },
+        q5: {
+          title: '¿Por qué tengo que registrarme?',
+          content: `El registro en nuestra web se solicita única y exclusivamente por seguridad.
+            Sus datos no serán compartidos con terceros ya que
+            serán almacenados únicamente en nuestra base de datos.`,
+          open: false
+        },
+        q6: {
+          title: '¿Puedo editar una publicación? ¿Y eliminarla?',
+          content: `Sí, en el apartado de 'mi perfil' puede editar la información de su mascota, así como eliminarla.`,
+          open: false
+        },
+        q7: {
+          title: '¿Si somos una asociación o protectora, podemos publicar adopciones?',
+          content: `Sí, en Kompi no hay límite en el número de fichas de adopción a publicar.
+          No olvides mandarnos un correo indicando el nombre de la asociación o protectora
+            para añadiros como colaboradoras`,
+          open: false
+        },
+        q8: {
+          title: 'Requisitos mínimos para adoptar',
+          content: `          <p>
+            Entre nuestros requisitos mínimos para adoptar o dar en adopción se encuentran:
+          <ul>
+            <li>- Ser mayor de edad(+18).</li>
+            <li>- Tener un espacio u hogar en condiciones salubres para el animal.</li>
+            <li>- Tener tiempo para la atención y el cuidado de tu mascota.</li>
+            <li>- Cumplir con las normas minimas de vacunación y desparacitación.</li>
+          </ul>
+          </p>`,
           open: false
         }
       }
     }
   }
 }
+
 </script>
 
 <style scoped>
@@ -43,10 +99,11 @@ export default {
   margin: 4.5rem 0 7rem;
   font-family: var(--text-font);
   color: var(--black);
+  gap: 2.5rem;
 
 }
 
-dl {
+.question {
   background-color: white;
   border-radius: 2.4rem;
   border: 0.1rem solid var(--black);
@@ -66,10 +123,10 @@ dl {
   padding-right: 0.5rem;
   align-items: center;
   cursor: pointer;
-  transition: 1s;
+  transition: 2s;
 }
 
-dl::before {
+.question::before {
   margin-left: 1.3rem;
   content: "\002B";
   font-size: 1.5rem;
@@ -82,13 +139,17 @@ dl::before {
   text-align: center;
 }
 
-dl.open::before {
+.question.open::before {
   content: "-";
   text-align: center;
   line-height: 1.8rem;
 }
 
-dd {
+.question.active::after {
+  transform: rotate(45deg);
+}
+
+p {
   font-family: var(--text-font);
   font-weight: 400;
   color: var(--black);
