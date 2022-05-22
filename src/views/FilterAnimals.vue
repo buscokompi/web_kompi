@@ -20,31 +20,31 @@
     <div class="filter">
 
       <p>Localidad</p>
-      <SelectOptions :options="provincias" />
+      <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
 
       <p>Especie</p>
-      <SelectOptions :options="specie" />
+      <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
 
       <p>Raza</p>
-      <SelectOptions :options="dogsraces" />
+      <SelectOptions :options="races" @change="onChange($event, 'Raza')" />
 
       <p>Sexo</p>
-      <SelectOptions :options="sex" />
+      <SelectOptions :options="sex" @change="onChange($event, 'Sexo')" />
       <!--<p>Edad</p>
       <select name="select" class="sel-age">
       </select>-->
       <p>Tamaño</p>
-      <SelectOptions :options="size" />
+      <SelectOptions :options="size" @change="onChange($event, 'Tamano')" />
       <!--<p>Color</p>
       <select name="select" class="sel-color">
       </select>-->
       <p>Vacunas</p>
-      <SelectOptions :options="others" />
+      <SelectOptions :options="others" @change="onChange($event, 'Vacunacion')" />
 
       <p>Esterilización</p>
-      <SelectOptions :options="others" />
+      <SelectOptions :options="others" @change="onChange($event, 'Esterilizacion')" />
 
-      <button class="btn-search" @click="checkFilters()">Iniciar busqueda</button>
+      <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
 
     </div>
 
@@ -59,10 +59,10 @@ import SelectOptions from '../components/SelectOptions.vue'
 import AnimalCard from '../components/AnimalCard.vue'
 
 //Imports de los metodos de firebase
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
-import { optionsArr, provinciasArr, specieArr, dogsracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -83,18 +83,29 @@ export default {
   },
   data() {
     return {
+      //Variables con los arrays de opciones
       options: optionsArr,
       provincias: provinciasArr,
       specie: specieArr,
-      dogsraces: dogsracesArr,
+      races: ["Cualquiera"],
       sex: sexArr,
       size: sizeArr,
       others: othersArr,
 
-      html: "",
+      //Variables con el valor seleccionado de los select
+      selLocation: "",
+      selSpecie: "",
+      selRace: "",
+      selSex: "",
+      selSize: "",
+      selVaccination: "",
+      selSterilization: "",
+
+      //Variables con el array de animales y numero de estos
       nAnimals: "",
       animalsArr: [],
 
+      //Variables de firebase
       firebaseapp: null,
       fs: null,
       storage: null
@@ -111,7 +122,7 @@ export default {
   },
   methods: {
 
-    /* Funcion que llama a la base de datos de firestore y storage, coge los animales
+    /* Llama a la base de datos de firestore y storage, coge todos los animales
     y los muestra por pantalla*/
     async readAnimals() {
       const animals = await getDocs(collection(this.fs, "animals"));
@@ -137,7 +148,113 @@ export default {
           });
       });
     },
-  },
+
+    //Cambia los valores de las query al cambiar de opcion
+    onChange(event, field) {
+      let selValue = "";
+
+      if (event.target.value !== "Cualquiera") {
+        selValue = { field: field, value: event.target.value, query: where(field, "==", event.target.value) };
+      } else {
+        selValue = "";
+      }
+
+      switch (field) {
+        case "Ubicacion":
+          this.selLocation = selValue;
+          break;
+        case "Especie":
+          this.selSpecie = selValue;
+          this.changeRaces(event.target.value);
+          break;
+        case "Raza":
+          this.selRace = selValue;
+          break;
+        case "Sexo":
+          this.selSex = selValue;
+          break;
+        case "Tamano":
+          this.selSize = selValue;
+          break;
+        case "Vacunacion":
+          this.selVaccination = selValue;
+          break;
+        case "Esterilizacion":
+          this.selSterilization = selValue;
+          break;
+      }
+    },
+
+    //Cambia las opciones del select de razas al cambiar de especie (Vue no lo actualiza por defecto)
+    changeRaces(specie) {
+      switch (specie) {
+        case "Cualquiera":
+          this.races = ["Cualquiera"];
+          break;
+        case "Perro":
+          this.races = dogsracesArr;
+          break;
+        case "Gato":
+          this.races = catsracesArr;
+          break;
+        case "Ave":
+          this.races = birdracesArr;
+          break;
+        case "Roedor":
+          this.races = rodentracesArr;
+          break;
+        case "Reptil":
+          this.races = reptilracesArr;
+          break;
+      }
+    },
+
+    //Aplica las querys de los filtros de los select cambiados
+    async getFilters(arranimals) {
+      const animalRef = collection(this.fs, "animals");
+      const queryArray = [];
+      this.animalsArr = [];
+      arranimals.forEach(e => {
+        queryArray.push(e.query);
+      })
+
+      const q = query(animalRef, ...queryArray);
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach(async (doc) => {
+        await getDownloadURL(ref(this.storage, doc.data().Imagen1))
+          .then((url) => {
+            const animal = {
+              id: doc.id,
+              url: url,
+              urlfb: doc.data().Imagen1,
+              name: doc.data().Nombre,
+              race: doc.data().Raza,
+              location: doc.data().Ubicacion
+            };
+
+            this.animalsArr.push(animal);
+            this.nAnimals = this.animalsArr.length;
+
+          }).catch((error) => {
+            console.log(error);
+          });
+      });
+
+    },
+    //Descarta las querys innecesarias y retorna un array con todas las querys funcionales
+    checkFilters() {
+      const arrQuery = [this.selLocation, this.selSpecie, this.selRace, this.selSex, this.selSize, this.selVaccination, this.selSterilization];
+      const arrQuery2 = [];
+
+      arrQuery.forEach(e => {
+        if (e !== "") {
+          arrQuery2.push(e);
+        }
+      });
+      return arrQuery2;
+    },
+  }
 }
 </script>
 

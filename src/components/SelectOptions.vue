@@ -1,33 +1,20 @@
 <template>
-  <select v-html="html" @change="onChange($event)"></select>
+  <select>
+    <option v-for="e in options" :key="e">{{ e }}</option>
+  </select>
 </template>
 
 <script>
 export default {
   name: "SelectOptions",
   props: {
-    options: {
-      type: Array,
-      required: true,
-    }
+    options: Array,
   },
   data() {
     return {
       selected: "",
-      html: ""
     }
   },
-  created() {
-    this.options.forEach(option => {
-      this.html += /*html*/ `<option value="${option}">${option}</option>`
-    })
-  },
-  methods: {
-    onChange(event) {
-      this.selected = event.target.value;
-      console.log(this.selected)
-    }
-  }
 }
 </script>
 
