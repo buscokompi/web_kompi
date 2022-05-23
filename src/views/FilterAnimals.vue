@@ -47,9 +47,8 @@
       <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
 
     </div>
-
   </div>
-
+  <FooterSection />
 </template>
 
 <script>
@@ -57,6 +56,7 @@
 import TopBar from '../components/TopBar.vue'
 import SelectOptions from '../components/SelectOptions.vue'
 import AnimalCard from '../components/AnimalCard.vue'
+import FooterSection from '../components/FooterSection.vue';
 
 //Imports de los metodos de firebase
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
@@ -79,7 +79,8 @@ export default {
   components: {
     SelectOptions,
     TopBar,
-    AnimalCard
+    AnimalCard,
+    FooterSection
   },
   data() {
     return {
