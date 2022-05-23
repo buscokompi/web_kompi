@@ -9,7 +9,7 @@
 
     <div class="results">
       <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
-      <SelectOptions :options="options" />
+      <!--<SelectOptions :options="options" />-->
     </div>
 
     <div class="group">
@@ -26,7 +26,7 @@
       <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
 
       <p>Raza</p>
-      <SelectOptions :options="races" @change="onChange($event, 'Raza')" />
+      <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
 
       <p>Sexo</p>
       <SelectOptions :options="sex" @change="onChange($event, 'Sexo')" />
@@ -94,12 +94,15 @@ export default {
 
       //Variables con el valor seleccionado de los select
       selLocation: "",
-      selSpecie: "",
+      selSpecie: "Cualquiera",
       selRace: "",
       selSex: "",
       selSize: "",
       selVaccination: "",
       selSterilization: "",
+
+      //Variable para habilitar o deshabilitar el select de razas
+      disableRace: true,
 
       //Variables con el array de animales y numero de estos
       nAnimals: "",
@@ -112,7 +115,7 @@ export default {
     }
   },
 
-  //Al montar la pagina, crea todas las card de los animales
+  //Al cargar la pagina, crea todas las card de los animales
   mounted() {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.fs = getFirestore();
@@ -123,7 +126,7 @@ export default {
   methods: {
 
     /* Llama a la base de datos de firestore y storage, coge todos los animales
-    y los muestra por pantalla*/
+    y sus imagenes y los muestra por pantalla*/
     async readAnimals() {
       const animals = await getDocs(collection(this.fs, "animals"));
 
@@ -185,28 +188,34 @@ export default {
       }
     },
 
-    //Cambia las opciones del select de razas al cambiar de especie (Vue no lo actualiza por defecto)
+    //Cambia las opciones del select de razas al cambiar de especie
     changeRaces(specie) {
       switch (specie) {
         case "Cualquiera":
-          this.races = ["Cualquiera"];
+          this.disableRace = true;
           break;
         case "Perro":
           this.races = dogsracesArr;
+          this.disableRace = false;
           break;
         case "Gato":
           this.races = catsracesArr;
+          this.disableRace = false;
           break;
         case "Ave":
           this.races = birdracesArr;
+          this.disableRace = false;
           break;
         case "Roedor":
           this.races = rodentracesArr;
+          this.disableRace = false;
           break;
         case "Reptil":
           this.races = reptilracesArr;
+          this.disableRace = false;
           break;
       }
+      console.log(specie)
     },
 
     //Aplica las querys de los filtros de los select cambiados
@@ -242,6 +251,7 @@ export default {
       });
 
     },
+
     //Descarta las querys innecesarias y retorna un array con todas las querys funcionales
     checkFilters() {
       const arrQuery = [this.selLocation, this.selSpecie, this.selRace, this.selSex, this.selSize, this.selVaccination, this.selSterilization];
