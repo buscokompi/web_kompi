@@ -1,21 +1,21 @@
 <template>
-    <section class="adoption">
+  <section class="adoption">
 
     <h2>Animales <br>en adopción</h2>
     <p class="text">Aquí tienes algunas de las últimas mascotas en adopción</p>
     <CardGroup />
-    <BaseButton class="more" url="/TemplatePage" text="Ver más"/>
+    <BaseButton class="more" url="/TemplatePage" text="Ver más" />
 
-    </section>
+  </section>
 </template>
 
 <script>
 import BaseButton from './BaseButton.vue'
 import CardGroup from './CardGroup.vue'
-    export default {
+export default {
   components: { BaseButton, CardGroup },
 
-    }
+}
 </script>
 
 <style scoped>
@@ -26,7 +26,7 @@ import CardGroup from './CardGroup.vue'
   justify-content: center;
   align-content: center;
   text-align: center;
-    color: var(--black);
+  color: var(--black);
 
 }
 
@@ -35,24 +35,27 @@ import CardGroup from './CardGroup.vue'
   font-size: 1rem;
   font-weight: 500;
 }
+
 .more {
   visibility: hidden;
   opacity: 0;
 }
 
 @media screen and (min-width: 767px) {
-    br {
+  br {
     display: none;
   }
-    h2 {
-       margin-top: 6rem;
-    }
-    .text {
+
+  h2 {
+    margin-top: 6rem;
+  }
+
+  .text {
     font-size: 1.1rem;
     font-weight: 500;
   }
 
-    .more {
+  .more {
     visibility: visible;
     opacity: 1;
     justify-self: center;
@@ -64,11 +67,12 @@ import CardGroup from './CardGroup.vue'
 }
 
 @media screen and (min-width: 1170px) {
-    h2 {
+  h2 {
     font-size: 2.5rem;
     margin-top: 6rem;
   }
-    .text {
+
+  .text {
     margin: 1rem 2rem 1.4rem;
     font-size: 1.15rem;
     width: 25rem;
@@ -79,13 +83,13 @@ import CardGroup from './CardGroup.vue'
 
 @media screen and (min-width: 1300px) {
 
-    h2 {
+  h2 {
     margin-top: 11rem;
   }
-    .more {
+
+  .more {
     visibility: hidden;
     opacity: 0;
   }
 }
-
 </style>
