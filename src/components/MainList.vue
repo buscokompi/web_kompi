@@ -5,7 +5,7 @@
           item.title
       }}
       <h3 v-if="item.open"></h3>
-      <p v-if="item.open">{{ item.content }}</p>
+      <p v-html="item.content" v-if="item.open"></p>
     </div>
   </section>
 </template>
@@ -45,9 +45,9 @@ export default {
         },
         q4: {
           title: '¿Es gratis?',
-          content: `Kompi es totalmente gratuita. Lo único que tienes que hacer es registrarte tanto
-            si quieres adoptar, como dar en adopción.
-            Esta web está orientada a la adopción, no a la venta.`,
+          content: `<p>Kompi es totalmente gratuita. Lo único que tienes que hacer es registrarte tanto
+            si quieres adoptar, como dar en adopción.</p>
+          <p>Esta web está orientada a la adopción, no a la venta.</p>`,
           open: false
         },
         q5: {
@@ -64,9 +64,9 @@ export default {
         },
         q7: {
           title: '¿Si somos una asociación o protectora, podemos publicar adopciones?',
-          content: `Sí, en Kompi no hay límite en el número de fichas de adopción a publicar.
-          No olvides mandarnos un correo indicando el nombre de la asociación o protectora
-            para añadiros como colaboradoras`,
+          content: `<p>Sí, en Kompi no hay límite en el número de fichas de adopción a publicar.</p>
+          <p>No olvides mandarnos un correo indicando el nombre de la asociación o protectora
+            para añadiros como colaboradoras</p>`,
           open: false
         },
         q8: {
@@ -84,7 +84,7 @@ export default {
         }
       }
     }
-  }
+  },
 }
 
 </script>
