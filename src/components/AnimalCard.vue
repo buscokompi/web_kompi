@@ -1,7 +1,7 @@
 <template>
   <div class="card" @click="clickAnimal()">
     <div class="img-container">
-      <img :src="image" alt="mascota">
+      <img :src="image" :alt="name" loading="lazy">
     </div>
     <h3 class="name">{{ name }}</h3>
     <p><img src="../assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
