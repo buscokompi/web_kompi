@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <FilterAnimals />
+  <ForgotPassword />
 </template>
 
 <style>
