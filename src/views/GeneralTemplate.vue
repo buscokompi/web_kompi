@@ -7,19 +7,28 @@ import { initFirebase } from '@/firebase/firebase.js'
 import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
-import { IdStore } from '@/stores/IdStore.js'
-
 
 export default {
     name: "TemplatePage",
     props: {
-        buttonURL: {
+        // Recibimos obligatoriamente el id del animal para buscarlo en la BBDD
+        // Pero al ser una vista, debemos utilizar Pinia para paso de parámetros entre vistas
+        AnimalId: {
             type: String,
-            required: true
+            require: true
+        },
+        type: {
+            type: String,
+            default: "dog"
         }
     },
     data() {
         return {
+            dog: false,
+            cat: false,
+            bird: false,
+            rodent: false,
+            reptile: false,
             db: null,
             storage: null,
             firestore: null,
@@ -29,7 +38,7 @@ export default {
 
             nombre_1: '',
             location_1: '',
-            img_1: '',
+            img_1: null,
 
             nombre_2: '',
             location_2: '',
@@ -47,7 +56,7 @@ export default {
             location_5: '',
             img_5: '',
 
-            cat: {
+            animal: {
                 Nombre: '',
                 Ubicacion: '',
                 Edad: '',
@@ -62,7 +71,7 @@ export default {
                 Certificado_ppp: '',
                 Esterilizacion: '',
                 Descripcion: '',
-                Imagen1: '',
+                Imagen1: ''
             }
 
         }
@@ -75,28 +84,41 @@ export default {
     },
     methods: {
         info() {
-            const id = IdStore();
-            // console.log(id._id);
-            id.setId("aOXbYmSuDhJYxMdovnyC", "Antonio");
-            console.log(id._id);
+            console.log(this.arrayAnimales);
         }
     },
-
+    created() {
+        if (this.type.toLowerCase() == "dog") {
+            this.dog = true;
+        }
+        if (this.type.toLowerCase() == "cat") {
+            this.cat = true;
+        }
+        if (this.type.toLowerCase() == "bird") {
+            this.bird = true;
+        }
+        if (this.type.toLowerCase() == "rodent") {
+            this.rodent = true;
+        }
+        if (this.type.toLowerCase() == "reptile") {
+            this.reptile = true;
+        }
+    },
     mounted() {
         this.db = initFirebase()
         this.storage = getStorage(this.db)
         this.firestore = getFirestore(this.db)
         this.auth = getAuth()
-        getDoc(doc(this.firestore, `animals/aOXbYmSuDhJYxMdovnyC`))
+        getDoc(doc(this.firestore, `animals/DQQDuc8dfuRSdldHWt0f`))
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
-                    for (const element in this.cat) {
-                        this.cat[element] = this.animalInfo[element]
+                    for (const element in this.animal) {
+                        this.animal[element] = this.animalInfo[element]
                     }
-                    getDownloadURL(ref(this.storage, this.cat.Imagen1))
+                    getDownloadURL(ref(this.storage, this.animal.Imagen1))
                         .then(URL => {
-                            this.cat.Imagen1 = URL;
+                            this.animal.Imagen1 = URL;
                         })
                 }
             })
@@ -163,7 +185,7 @@ export default {
         <header class="header">
             <div class="header-carousel">
                 <div class="img-container">
-                    <img class="img1" :src="this.cat.Imagen1" alt="imagen1">
+                    <img class="img1" :src="this.animal.Imagen1" alt="imagen1">
                 </div>
                 <div class="img-container">
                     <img class="img2" src="" alt="imagen2">
@@ -179,8 +201,8 @@ export default {
             </div> -->
             <div class="info">
                 <div class="name-location">
-                    <h2 class="name">{{ cat.Nombre }}</h2>
-                    <p class="location">{{ cat.Ubicacion }}</p>
+                    <h2 class="name">{{ animal.Nombre }}</h2>
+                    <p class="location">{{ animal.Ubicacion }}</p>
                 </div>
                 <!-- <div class="save-share">
                     <h3 class="save">Guardar</h3>
@@ -198,44 +220,45 @@ export default {
                 <div class="description">
                     <h3>Descripción</h3>
                     <p>
-                        {{ cat.Descripcion }}
+                        {{ animal.Descripcion }}
                     </p>
 
                 </div>
                 <div class="animal-data">
                     <h3>Edad:</h3>
-                    <p class="age">{{ cat.Edad }}</p>
+                    <p class="age">{{ animal.Edad }}</p>
                     <div class="hr"></div>
                     <h3>Raza:</h3>
-                    <p class="breed">{{ cat.Raza }}</p>
+                    <p class="breed">{{ animal.Raza }}</p>
                     <div class="hr"></div>
                     <h3>Sexo:</h3>
-                    <p class="gender">{{ cat.Sexo }}</p>
+                    <p class="gender">{{ animal.Sexo }}</p>
                     <div class="hr"></div>
                     <h3>Tamaño:</h3>
-                    <p class="size">{{ cat.Tamano }}</p>
+                    <p class="size">{{ animal.Tamano }}</p>
                     <div class="hr"></div>
                     <h3>Peso:</h3>
-                    <p class="weight">{{ cat.Peso }}</p>
+                    <p class="weight">{{ animal.Peso }}</p>
                     <div class="hr"></div>
                     <h3>Color:</h3>
-                    <p class="color">{{ cat.Color }}</p>
+                    <p class="color">{{ animal.Color }}</p>
                     <div class="hr"></div>
                     <h3>Pelo:</h3>
-                    <p class="hair">{{ cat.Pelo }}</p>
+                    <p class="hair">{{ animal.Pelo }}</p>
                     <div class="hr"></div>
                     <h3>Microchip:</h3>
-                    <p class="microchip">{{ cat.Microchip }}</p>
+                    <p class="microchip">{{ animal.Microchip }}</p>
                     <div class="hr"></div>
                     <h3>Vacunación:</h3>
-                    <p class="vaccination">{{ cat.Vacunacion }}</p>
+                    <p class="vaccination">{{ animal.Vacunacion }}</p>
                     <div class="hr"></div>
-                    <!-- <h3>Certificado ppp:</h3>
-                    <p class="certified"></p>
-                    <div class="hr"></div> -->
+                    <h3>Certificado ppp:</h3>
+                    <p class="certified">{{ animal.Certificado_ppp }}</p>
+                    <div class="hr"></div>
                     <h3>Esterilizado:</h3>
-                    <p class="esterilized">{{ cat.Esterilizacion }}</p>
+                    <p class="esterilized">{{ animal.Esterilizacion }}</p>
                 </div>
+
                 <div class="adoption">
                     <h3>¿Quieres adoptar o saber más sobre Nala?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
@@ -253,11 +276,17 @@ export default {
                 <h2>Otros Kompis que encajan con tu búsqueda</h2>
 
                 <div class="group">
+                    <!-- :img="arrayAnimales[0].Imagen1" -->
                     <AnimalCard :name="nombre_1" :location="location_1" :img="img_1" />
                     <AnimalCard :name="nombre_2" :location="location_2" :img="img_2" />
                     <AnimalCard :name="nombre_3" :location="location_3" :img="img_3" />
                     <AnimalCard :name="nombre_4" :location="location_4" :img="img_4" />
                     <AnimalCard :name="nombre_5" :location="location_5" :img="img_5" />
+
+                    <!-- <AnimalCard :name="arrayAnimales[1].Nombre" :location="arrayAnimales[1].Ubicacion" />
+                    <AnimalCard :name="arrayAnimales[2].Nombre" :location="arrayAnimales[2].Ubicacion" />
+                    <AnimalCard :name="arrayAnimales[3].Nombre" :location="arrayAnimales[3].Ubicacion" />
+                    <ExtraCard :name="arrayAnimales[4].Nombre" :location="arrayAnimales[4].Ubicacion" /> -->
                 </div>
             </div>
         </section>
@@ -281,22 +310,26 @@ export default {
     align-items: center;
 }
 
-h3,
-p {
-    font-family: var(--text-font);
-}
 
-ul {
-    list-style: none;
-    margin: 0;
-}
 
-a {
+/* .button {
+    background: var(--orange);
+    color: var(--black);
+    padding: 0.8rem 2rem;
+    display: inline-block;
     text-decoration: none;
-    margin: 0;
+    border-radius: 3rem;
+    font-family: var(--text-font);
+    font-size: 1em;
+    font-weight: 600;
+    transition: 0.5s ease-out;
+    border: 0;
 }
 
-
+.button:hover {
+    background: #cc9320;
+    border: 0;
+} */
 
 
 /* CAROUSEL */

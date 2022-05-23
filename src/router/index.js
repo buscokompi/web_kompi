@@ -33,6 +33,11 @@ const router = createRouter({
       name: "TemplateRodent",
       component: () => import("../views/TemplateRodentPage.vue")
     },
+    {
+      path: "/NewAnimalForm",
+      name: "NewAnimalForm",
+      component: () => import("../views/NewAnimalForm.vue")
+    },
   ]
 });
 

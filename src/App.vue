@@ -11,9 +11,6 @@ export default {
 
 <template>
   <TopBar />
-  <div class="view-container">
-    <RouterView />
-  </div>
 </template>
 
 <style>

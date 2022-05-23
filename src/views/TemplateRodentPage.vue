@@ -25,7 +25,27 @@ export default {
             auth: null,
             animalInfo: null,
             arrayAnimales: [],
-            Nombre1: '',
+
+            nombre_1: '',
+            location_1: '',
+            img_1: null,
+
+            nombre_2: '',
+            location_2: '',
+            img_2: '',
+
+            nombre_3: '',
+            location_3: '',
+            img_3: '',
+
+            nombre_4: '',
+            location_4: '',
+            img_4: '',
+
+            nombre_5: '',
+            location_5: '',
+            img_5: '',
+
             rodent: {
                 Nombre: '',
                 Ubicacion: '',
@@ -80,18 +100,52 @@ export default {
         getDocs(p)
             .then(element => {
                 // console.log(element)
+                const aux = Math.floor(Math.random() * element.size);
                 for (let i = 0; i < 5; i++) {
-                    this.arrayAnimales[i] = element._docs[Math.floor(Math.random() * element.size)].data();
+                    this.arrayAnimales[i] = element._docs[(aux + i) % element.size].data();
                 }
 
                 // console.log(this.arrayAnimales[0])
 
-                this.Nombre1 = this.arrayAnimales[0].Nombre;
 
-                // this.arrayAnimales.forEach(x => {
-                //     // console.log(x.Imagen1);
+                this.nombre_1 = this.arrayAnimales[0].Nombre;
+                this.location_1 = this.arrayAnimales[0].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[0].Imagen1))
+                    .then(e => {
+                        // console.log(e);
+                        this.img_1 = e
+                        // console.log(this.img_1);
+                    })
 
-                // })
+                // console.log(this.img_1);
+
+                this.nombre_2 = this.arrayAnimales[1].Nombre;
+                this.location_2 = this.arrayAnimales[1].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[1].Imagen1))
+                    .then(e => {
+                        this.img_2 = e
+                    })
+
+                this.nombre_3 = this.arrayAnimales[2].Nombre;
+                this.location_3 = this.arrayAnimales[2].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[2].Imagen1))
+                    .then(e => {
+                        this.img_3 = e
+                    })
+
+                this.nombre_4 = this.arrayAnimales[3].Nombre;
+                this.location_4 = this.arrayAnimales[3].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[3].Imagen1))
+                    .then(e => {
+                        this.img_4 = e
+                    })
+
+                this.nombre_5 = this.arrayAnimales[4].Nombre;
+                this.location_5 = this.arrayAnimales[4].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[4].Imagen1))
+                    .then(e => {
+                        this.img_5 = e
+                    })
             })
 
     },
@@ -196,7 +250,11 @@ export default {
 
                 <div class="group">
                     <!-- :img="arrayAnimales[0].Imagen1" -->
-                    <AnimalCard :name="Nombre1" />
+                    <AnimalCard :name="nombre_1" :location="location_1" :img="img_1" />
+                    <AnimalCard :name="nombre_2" :location="location_2" :img="img_2" />
+                    <AnimalCard :name="nombre_3" :location="location_3" :img="img_3" />
+                    <AnimalCard :name="nombre_4" :location="location_4" :img="img_4" />
+                    <AnimalCard :name="nombre_5" :location="location_5" :img="img_5" />
 
                     <!-- <AnimalCard :name="arrayAnimales[1].Nombre" :location="arrayAnimales[1].Ubicacion" />
                     <AnimalCard :name="arrayAnimales[2].Nombre" :location="arrayAnimales[2].Ubicacion" />

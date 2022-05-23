@@ -119,6 +119,9 @@ export default {
             <div v-show="mobileNav" class="opacity"></div>
         </nav>
     </header>
+    <div class="view-container">
+        <RouterView />
+    </div>
 </template>
 
 <style>
@@ -143,8 +146,13 @@ nav {
 }
 
 .view-container {
-    padding-top: 5rem;
-    /* background-color: lightcyan; */
+    width: 100%;
+    /*Solucion provisional*/
+    /* position: absolute;
+  top: 5rem;
+  left: 0; */
+    /* ------------------ */
+
 }
 
 ul,

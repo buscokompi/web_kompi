@@ -4,7 +4,7 @@
       <img :src="img" alt="mascota">
     </div>
     <h3 class="name">{{ name }}</h3>
-    <p><img src="./assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
+    <p><img src="@/assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
   </div>
 </template>
 

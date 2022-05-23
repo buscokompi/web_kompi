@@ -4,9 +4,10 @@ import ExtraCard from '@/components/ExtraCard.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
-import { getFirestore, getDoc, doc, collection, getDocs } from "firebase/firestore/lite"
+import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
+import { useCounterStore } from '@/stores/counter.js'
 
 export default {
     name: "TemplatePage",
@@ -23,6 +24,27 @@ export default {
             firestore: null,
             auth: null,
             animalInfo: null,
+            arrayAnimales: [],
+
+            nombre_1: '',
+            location_1: '',
+            img_1: null,
+
+            nombre_2: '',
+            location_2: '',
+            img_2: '',
+
+            nombre_3: '',
+            location_3: '',
+            img_3: '',
+
+            nombre_4: '',
+            location_4: '',
+            img_4: '',
+
+            nombre_5: '',
+            location_5: '',
+            img_5: '',
             dog: {
                 Nombre: '',
                 Ubicacion: '',
@@ -51,9 +73,11 @@ export default {
     },
     methods: {
         info() {
-            console.log(this.dog)
+            const counter = useCounterStore();
+            console.log(counter.counter);
         }
     },
+
     mounted() {
         this.db = initFirebase()
         this.storage = getStorage(this.db)
@@ -72,6 +96,59 @@ export default {
                         })
                 }
             })
+        // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
+        const p = query(collection(this.firestore, 'animals'), where('Especie', '==', 'Perro'));
+        getDocs(p)
+            .then(element => {
+                // console.log(element)
+                const aux = Math.floor(Math.random() * element.size);
+                for (let i = 0; i < 5; i++) {
+                    this.arrayAnimales[i] = element._docs[(aux + i) % element.size].data();
+                }
+
+                // console.log(this.arrayAnimales[0])
+
+
+                this.nombre_1 = this.arrayAnimales[0].Nombre;
+                this.location_1 = this.arrayAnimales[0].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[0].Imagen1))
+                    .then(e => {
+                        // console.log(e);
+                        this.img_1 = e
+                        // console.log(this.img_1);
+                    })
+
+                // console.log(this.img_1);
+
+                this.nombre_2 = this.arrayAnimales[1].Nombre;
+                this.location_2 = this.arrayAnimales[1].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[1].Imagen1))
+                    .then(e => {
+                        this.img_2 = e
+                    })
+
+                this.nombre_3 = this.arrayAnimales[2].Nombre;
+                this.location_3 = this.arrayAnimales[2].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[2].Imagen1))
+                    .then(e => {
+                        this.img_3 = e
+                    })
+
+                this.nombre_4 = this.arrayAnimales[3].Nombre;
+                this.location_4 = this.arrayAnimales[3].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[3].Imagen1))
+                    .then(e => {
+                        this.img_4 = e
+                    })
+
+                this.nombre_5 = this.arrayAnimales[4].Nombre;
+                this.location_5 = this.arrayAnimales[4].Ubicacion;
+                getDownloadURL(ref(this.storage, this.arrayAnimales[4].Imagen1))
+                    .then(e => {
+                        this.img_5 = e
+                    })
+            })
+
     },
 }
 </script>
@@ -172,11 +249,11 @@ export default {
                 <h2>Otros Kompis que encajan con tu búsqueda</h2>
 
                 <div class="group">
-                    <AnimalCard />
-                    <AnimalCard />
-                    <AnimalCard />
-                    <AnimalCard />
-                    <ExtraCard />
+                    <AnimalCard :name="nombre_1" :location="location_1" :img="img_1" />
+                    <AnimalCard :name="nombre_2" :location="location_2" :img="img_2" />
+                    <AnimalCard :name="nombre_3" :location="location_3" :img="img_3" />
+                    <AnimalCard :name="nombre_4" :location="location_4" :img="img_4" />
+                    <AnimalCard :name="nombre_5" :location="location_5" :img="img_5" />
                 </div>
             </div>
         </section>
