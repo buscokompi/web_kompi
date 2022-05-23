@@ -11,8 +11,18 @@
 
 <script>
 export default {
-  name: "CardAnimal"
-
+  name: "CardAnimal",
+  props: {
+    image: String,
+    name: String,
+    location: String,
+    id: String
+  },
+  methods: {
+    clickAnimal() {
+      console.log(this.id);
+    }
+  }
 }
 </script>
 
