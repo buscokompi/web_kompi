@@ -1,16 +1,16 @@
 <script>
 import login from './views/login.vue';
+import DarkMode from './components/DarkMode.vue';
 
 // import { RouterLink, RouterView } from 'vue-router'
 export default {
   name: "App",
-
+  components: { DarkMode }
 }
 </script>
 
 <template>
-<RouterView />
-
+  <RouterView />
 </template>
 
 <style>

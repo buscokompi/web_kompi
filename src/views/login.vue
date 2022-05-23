@@ -1,13 +1,14 @@
 <template>
   <div class="app">
-    <img class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+    <img @click="info" class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
 
     <div class="container-login">
 
       <a to="../index.html">
-        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+        <img :v-show="darkMode" class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+        <img :v-show="false" class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco">
       </a>
-
+      <DarkMode />
       <div class="card-login">
 
         <p class="email">E-mail</p>
@@ -16,11 +17,16 @@
         <input :type="fieldType" id="password" placeholder="BuscoKompi6." v-model="password" v-bind:class="visible" />
         <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
         <label for="toggle-password"></label>
-        <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?</a>
-        <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span></div>
+        <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?
+        </a>
+        <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
+        </div>
         <div class="button btn-login-google" @click="loginGoogle()"><img class="google"
-            src="../assets/icons/google_icono.svg" alt="Icono Google"><span>Inicia sesión con Google</span></div>
-
+            src="../assets/icons/google_icono.svg" alt="Icono Google">
+          <span>
+            Inicia sesión con Google
+          </span>
+        </div>
       </div>
       <p class="register">¿No tienes una cuenta? <RouterLink class="link-signin" to="/OptionsNewUser">Regístrate
         </RouterLink>
@@ -33,6 +39,8 @@
 <script>
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import DarkMode from "../components/DarkMode.vue";
+import { ModeStorage } from "@/stores/ModeStorage.js"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -54,13 +62,29 @@ export default {
       firebaseapp: "",
       visible: "visible",
       fieldType: "password",
+      modeStorage: ModeStorage(),
+      darkMode: false,
+      lightMode: false
     };
   },
   mounted() {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.auth = getAuth();
   },
+
+  watch: {
+    modeStorage() {
+      this.darkMode = this.modeStorage.darkMode
+      this.lightMode = !this.modeStorage.darkMode
+    }
+  },
+
   methods: {
+    info() {
+      console.log(this.modeStorage)
+      this.darkMode = false
+    },
+
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
         .then((userCredential) => {
@@ -73,13 +97,10 @@ export default {
           console.log(errorMessage);
           alert("Login invalido");
         });
-
     },
-
     async loginGoogle() {
       const provider = new GoogleAuthProvider();
       this.auth.languageCode = "es";
-
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
@@ -96,17 +117,17 @@ export default {
           alert("Login invalido");
         });
     },
-
     seePassword() {
       this.fieldType = this.fieldType === "password" ? "text" : "password";
       if (this.visible === "visible") {
-        this.visible = ""
-      } else {
-        this.visible = "visible"
+        this.visible = "";
+      }
+      else {
+        this.visible = "visible";
       }
     }
-
-  }
+  },
+  components: { DarkMode }
 }
 
 </script>
@@ -128,20 +149,14 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 0;
-  height: 100vh;
-  background-color: #f5f5f5;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
   justify-content: center;
 }
 
 .img-dog-login {
   display: none;
-}
-
-.container-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
 }
 
 .logo {
@@ -150,18 +165,21 @@ export default {
   cursor: pointer;
 }
 
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120vh;
+}
+
+
 .card-login {
   display: flex;
   align-items: center;
-  width: 100vw;
-  height: 40rem;
+  width: 90%;
+  height: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
-  background-color: white;
-}
-
-.email {
-  margin-top: 2.5rem;
 }
 
 .card-login p {
@@ -171,9 +189,15 @@ export default {
   font-family: var(--text-font);
 }
 
-input {
+
+.email {
   width: 75%;
-  min-width: 250px;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  width: 90%;
   height: 2.5rem;
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
@@ -185,6 +209,12 @@ input:focus {
   color: var(--black);
   outline-color: var(--black);
 }
+
+.pass {
+  margin-top: 2rem;
+  margin-bottom: -1px;
+}
+
 
 .button {
   width: 75%;
@@ -200,6 +230,8 @@ input:focus {
   font-weight: 600;
   transition: background-color 0.7s ease;
 }
+
+/* BOTONES LOGIN */
 
 .btn-login-email {
   background-color: var(--orange);
@@ -221,8 +253,6 @@ input:focus {
 .btn-login-email:hover span {
   color: var(--white-color);
 }
-
-/* BOTONES LOGIN */
 
 .btn-login-google {
   display: flex;
@@ -278,8 +308,10 @@ p {
   align-self: left;
   font-family: var(--text-font);
   font-size: 0.8rem;
-  width: 40%;
-  margin-right: 12rem;
+  width: 75%;
+  margin-right: 8rem;
+  margin-top: 1rem;
+  margin-left: 7rem;
   text-decoration: underline;
   color: var(--black);
   cursor: pointer;
@@ -313,19 +345,13 @@ p {
 
 }
 
-.pass {
-  margin-top: 2rem;
-  margin-bottom: -1px;
-
-}
-
 #toggle-password+label {
   background-color: red;
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-left: 23rem;
-  margin-top: 12rem;
+  margin-left: 13rem;
+  margin-top: 12.5em;
   position: absolute;
   cursor: pointer;
 }
@@ -336,24 +362,43 @@ p {
 
 /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
 @media screen and (min-width: 767px) {
-  .card-login {
-    width: 100%
+  .register {
+    margin-top: 3rem;
   }
 
-  input,
   .button,
   .card-login p {
     width: 75%;
   }
 
+  input {
+    width: 75%;
+
+  }
+
+  .forgot-pass {
+    margin-right: 11rem;
+  }
+
+  .container-login {
+    width: 100%;
+  }
+
+  .card-login {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1.9rem;
+    background-color: var(--white);
+
+  }
 }
 
 @media screen and (min-width: 1170px) {
-
   .img-dog-login {
     object-fit: cover;
     width: 45%;
-    height: 100%;
     display: block
   }
 
@@ -366,33 +411,50 @@ p {
   .card-login {
     width: 28rem;
     height: 40rem;
-    padding: 3.5rem 5rem;
   }
 
   .btn-login-email {
-    margin-top: 5rem;
+    margin: 5rem;
+  }
+
+  .forgot-pass {
+    margin-right: 12rem;
   }
 
 }
 
 @media screen and (min-width: 1300px) {
+  .body {
+    background: var(--lightgrey);
+  }
+
+  .card-login {
+    background-color: var(--white);
+    width: 50%;
+    height: 70%;
+  }
 
   .img-dog-login {
-    display: block
+    object-fit: cover;
+    width: 45%;
+    display: block;
   }
+
 
   input,
   .button,
   .card-login p {
-    width: 90%;
+    width: 70%;
   }
 
   .forgot-pass {
     width: 12rem;
+    margin-left: 2rem;
   }
 
-  .register {
-    margin-top: 2rem;
+  .card-login {
+    margin-top: 3rem;
   }
+
 }
 </style>

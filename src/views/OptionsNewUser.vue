@@ -1,33 +1,39 @@
 <template>
-    <div class="options-container">
+
+  <div class="options-container">
+
     <div class="progress-bar"></div>
+    <DarkMode />
     <div class="title">
-        <h1>¡Bienvenido/a a Kompi!</h1>
-        <p>¿Qué es lo que quieres hacer?</p>
+      <h1>¡Bienvenido/a a Kompi!</h1>
+      <p class="question1">¿Qué es lo que quieres hacer?</p>
     </div>
     <div class="card-options">
-        <a href="./form-user.html" class="adopt">
-            <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
-            <p>ADOPTAR</p>
-        </a>
-        <a href="./formulario.html" class="give-in-adoption">
-            <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
-            <p>DAR EN ADOPCIÓN</p>
-        </a>
+      <a href="./form-user.html" class="adopt">
+        <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
+        <p>ADOPTAR</p>
+      </a>
+      <a href="./formulario.html" class="give-in-adoption">
+        <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
+        <p>DAR EN ADOPCIÓN</p>
+      </a>
     </div>
+
   </div>
+
 
 </template>
 
 <script>
-    export default {
-        name: "login"
-    }
+import DarkMode from '../components/DarkMode.vue';
+export default {
+  name: "login",
+  components: { DarkMode }
+}
 
 </script>
 
 <style scoped>
-
 :root {
   --orange: #f9b225;
   --yellow: #ffe194;
@@ -42,7 +48,7 @@
 
 body {
   margin: 0%;
-  background-color: var(--lightgrey);
+  color: var(--lightgrey);
 }
 
 .options-container {
@@ -81,13 +87,11 @@ a p {
 }
 
 .card-options {
-  width: 65%;
-  height: 35%;
+  width: 30rem;
+  height: 20rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 3rem;
+  gap: 2rem;
+  flex-direction: column;
 }
 
 img {
@@ -126,29 +130,20 @@ a:hover {
   font-weight: 600;
 }
 
+@media screen and (min-width: 767px) {}
 
-
-@media screen and (min-width: 960px){
-.adopt, .give-in-adoption{
-width: 65%;
-height: 55%;
-padding: 1.5rem;
-}
- p{
-  font-size: 1.6rem;
-}
-}
-
-.card-options{
-  width: 40rem;
-  gap: 2rem;
+@media screen and (min-width: 1170px) {
+  .card-options {
+    flex-direction: row;
+    width: 80%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 8rem;
+  }
 }
 
-@media screen and (max-width: 450px){
-.card-options{
-width: 27rem;
-}
-
-}
-
+@media screen and (min-width: 1300px) {}
 </style>
