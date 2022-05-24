@@ -6,8 +6,6 @@ import FilterAnimals from './views/FilterAnimals.vue'
 export default {
   name: "App",
   components: {
-    ForgotPassword,
-    FilterAnimals,
     TopBar
   }
 }

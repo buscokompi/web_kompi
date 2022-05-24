@@ -13,6 +13,11 @@ const router = createRouter({
       name: "FilterAnimals",
       component: () => import("../views/FilterAnimals.vue")
     },
+    {
+      path: "/TemplateDogPage",
+      name: "TemplateDogPage",
+      component: () => import("../views/TemplateDogPage.vue")
+    },
   ]
 });
 

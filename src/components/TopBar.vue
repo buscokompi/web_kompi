@@ -65,7 +65,7 @@ export default {
                 </li>
                 <li>
 
-                    <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                    <RouterLink class="link" to="/TemplateDogPage">Sobre nosotros</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
