@@ -340,9 +340,9 @@ p {
   cursor: pointer;
 }
 
-/* .register {
+.register {
   text-align: center;
-} */
+}
 
 /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
 @media screen and (min-width: 767px) {
