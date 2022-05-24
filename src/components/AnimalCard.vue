@@ -1,19 +1,10 @@
 <template>
-<<<<<<< HEAD
   <div class="card" @click="clickAnimal()">
     <div class="img-container">
       <img :src="image" :alt="name" loading="lazy">
     </div>
     <h3 class="name">{{ name }}</h3>
     <p><img src="../assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
-=======
-  <div class="card">
-    <div class="img-container">
-      <img :src="img" alt="mascota">
-    </div>
-    <h3 class="name">{{ name }}</h3>
-    <p><img src="@/assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
->>>>>>> Antonio
   </div>
 </template>
 
@@ -22,7 +13,6 @@
 export default {
   name: "AnimalCard",
   props: {
-<<<<<<< HEAD
     image: String,
     name: String,
     location: String,
@@ -33,24 +23,6 @@ export default {
       console.log(this.id);
     }
   }
-=======
-    img: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    location: {
-      type: String,
-      required: false,
-      default: 'Vacio'
-    }
-  }
-
->>>>>>> Antonio
 }
 </script>
 
@@ -106,8 +78,4 @@ export default {
   width: 16rem;
   margin-top: 0.3rem;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> Antonio

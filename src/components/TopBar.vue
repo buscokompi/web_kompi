@@ -61,7 +61,7 @@ export default {
                     <RouterLink class="link" to="/">Adopción</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                    <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                 </li>
                 <li>
 
