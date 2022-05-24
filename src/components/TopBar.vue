@@ -81,7 +81,7 @@ export default {
                             <RouterLink class="link" to="/" @click="closeNav">Adopción</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link" to="/TemplatePage" @click="closeNav">Categorías</RouterLink>
+                            <RouterLink class="link" to="/FilterAnimals" @click="closeNav">Categorías</RouterLink>
                         </li>
                         <li>
                             <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>

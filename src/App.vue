@@ -7,13 +7,14 @@ export default {
   name: "App",
   components: {
     ForgotPassword,
-    FilterAnimals
+    FilterAnimals,
+    TopBar
   }
 }
 </script>
 
 <template>
-  <FilterAnimals />
+  <TopBar />
 </template>
 
 <style>
