@@ -116,11 +116,10 @@ export default {
   padding: 1rem;
   display: grid;
   justify-content: center;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 15% 85%;
   column-gap: 2rem;
   row-gap: 0.5rem;
   align-content: center;
-  padding-right: 0.5rem;
   align-items: center;
   cursor: pointer;
   transition: 2s;
@@ -159,7 +158,11 @@ p {
 
 
 
-@media screen and (min-width: 767px) {}
+@media screen and (min-width: 767px) {
+  .question {
+    grid-template-columns: 6% 94%;
+  }
+}
 
 @media screen and (min-width: 1170px) {
   .accordions {}
