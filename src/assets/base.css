@@ -12,6 +12,13 @@
   --text-font: "Open Sans";
 }
 
+:root.dark-theme {
+  --white: #3f3d3b;
+  --hover-orange: #013a42;
+  --hover-green: #cc9320;
+  --black: #fff;
+}
+
 body {
   min-height: 100vh;
   box-sizing: border-box;
@@ -71,6 +78,10 @@ ul {
 a {
   text-decoration: none;
   margin: 0;
+}
+
+.logo.dark-theme {
+  content: url("./icons/icono_logo_blanco.svg");
 }
 
 @media screen and (min-width: 767px) {

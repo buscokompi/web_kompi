@@ -5,8 +5,7 @@
     <div class="container-login">
 
       <a to="../index.html">
-        <img :v-show="darkMode" class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
-        <img :v-show="false" class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Blanco">
       </a>
       <DarkMode />
       <div class="card-login">
@@ -133,26 +132,12 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --orange: #f9b225;
-  --yellow: #ffe194;
-  --black: #3f3d3b;
-  --white: white;
-  --grey: #c4c4c4;
-  --lightgrey: #f5f5f5;
-  --green: #015865;
-  --title-font: "Dosis";
-  --text-font: "Open Sans";
-}
-
 .app {
-  display: flex;
   flex-direction: row;
   margin: 0;
-  height: 100%;
-  width: 100%;
   background-color: #fff;
   justify-content: center;
+  height: 105.8vh;
 }
 
 .img-dog-login {
@@ -166,18 +151,17 @@ export default {
 }
 
 .container-login {
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120vh;
+  height: 100%;
 }
-
 
 .card-login {
   display: flex;
   align-items: center;
   width: 90%;
-  height: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
 }
@@ -188,7 +172,6 @@ export default {
   color: var(--black);
   font-family: var(--text-font);
 }
-
 
 .email {
   width: 75%;
@@ -215,6 +198,18 @@ input:focus {
   margin-bottom: -1px;
 }
 
+.forgot-pass {
+  align-self: left;
+  font-family: var(--text-font);
+  font-size: 0.8rem;
+  width: 75%;
+  margin-right: 8rem;
+  margin-top: 1rem;
+  margin-left: 7rem;
+  text-decoration: underline;
+  color: var(--black);
+  cursor: pointer;
+}
 
 .button {
   width: 75%;
@@ -258,19 +253,19 @@ input:focus {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
-  background-color: var(--white-color);
+  background-color: white;
   border: var(--grey) 0.06rem solid;
-  color: var(--black);
   margin-bottom: 1rem;
   cursor: pointer;
 }
+
 
 .btn-login-google:hover {
   background-color: #bebebe;
 }
 
 .btn-login-google span {
-  color: var(--black);
+  color: #3f3d3b;
 }
 
 /* BOTONES SIGN IN */
@@ -304,20 +299,9 @@ p {
   font-size: 0.9rem;
 }
 
-.forgot-pass {
-  align-self: left;
-  font-family: var(--text-font);
-  font-size: 0.8rem;
-  width: 75%;
-  margin-right: 8rem;
-  margin-top: 1rem;
-  margin-left: 7rem;
-  text-decoration: underline;
-  color: var(--black);
-  cursor: pointer;
-}
 
-#message {
+
+/* #message {
   font-family: var(--text-font);
   font-size: 0.9rem;
 }
@@ -325,7 +309,7 @@ p {
 #comment {
   font-family: var(--text-font);
   font-size: 0.8rem;
-}
+} */
 
 /* see password */
 
@@ -356,9 +340,9 @@ p {
   cursor: pointer;
 }
 
-.register {
+/* .register {
   text-align: center;
-}
+} */
 
 /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
 @media screen and (min-width: 767px) {
@@ -421,12 +405,20 @@ p {
     margin-right: 12rem;
   }
 
+  .app {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 1300px) {
-  .body {
-    background: var(--lightgrey);
+
+  .app {
+    display: flex;
   }
+
+  /* .container-login {
+    background: var(--lightgrey);
+  } */
 
   .card-login {
     background-color: var(--white);
@@ -434,17 +426,10 @@ p {
     height: 70%;
   }
 
-  .img-dog-login {
-    object-fit: cover;
-    width: 45%;
-    display: block;
-  }
-
-
   input,
   .button,
   .card-login p {
-    width: 70%;
+    width: 90%;
   }
 
   .forgot-pass {
@@ -452,9 +437,6 @@ p {
     margin-left: 2rem;
   }
 
-  .card-login {
-    margin-top: 3rem;
-  }
 
 }
 </style>

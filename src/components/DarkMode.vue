@@ -112,7 +112,6 @@ export default {
     --accent-color: #3f3f3f;
     --color: #fff;
     --black: #3f3d3b;
-
 }
 
 h1,
@@ -121,7 +120,7 @@ p,
 .question1,
 
 .forgot-pass {
-    color: var(--color) !important
+    color: var(--color) !important;
 }
 
 .container-login,
