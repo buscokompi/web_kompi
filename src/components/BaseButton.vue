@@ -12,6 +12,11 @@ export default {
         text: {
             type: String,
             required: true
+        },
+        bgColor: {
+            type: String,
+            required: false,
+            default: "#cc9320"
         }
     },
     data() {
@@ -27,9 +32,7 @@ export default {
 <style scoped>
 .button {
     background: var(--orange);
-    color: var(--black);
     padding: 0.8rem 2rem;
-    display: inline-block;
     text-decoration: none;
     border-radius: 3rem;
     font-family: var(--text-font);

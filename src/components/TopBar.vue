@@ -64,13 +64,9 @@ export default {
                     <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
                 </li>
                 <li>
+
                     <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
                 </li>
-                <li>
-                    <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg" alt="favoritos">
-                    </RouterLink>
-                </li>
-                <li class="vertical-line"></li>
                 <li>
                     <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
                 </li>

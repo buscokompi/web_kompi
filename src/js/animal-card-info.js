@@ -44,11 +44,12 @@ auth.onAuthStateChanged(function(user) {
   }
 });
 
-let snap = await getDoc(doc(firestore, "animals/aOXbYmSuDhJYxMdovnyC"));
+let snap = null;
 if (id) {
-  snap = await getDoc(doc(firestore, `animals/${id}`));
+  snap = getDoc(doc(firestore, `animals/${id}`));
   console.log(snap);
-}
+} else snap = getDoc(doc(firestore, "animals/aOXbYmSuDhJYxMdovnyC"));
+
 const animalImagen1 = document.querySelector(".img1");
 const animalImagen2 = document.querySelector(".img2");
 const animalName = document.querySelector(".info .name");
@@ -66,7 +67,7 @@ const animalVaccination = document.querySelector(".animal-data .vaccination");
 const animalCertified = document.querySelector(".animal-data .certified");
 const animalEsterilized = document.querySelector(".animal-data .esterilized");
 
-const imagenURL = await getDownloadURL(ref(storage, snap.data().Imagen1));
+const imagenURL = getDownloadURL(ref(storage, snap.data().Imagen1));
 // const imagen2URL = await getDownloadURL(ref(storage, snap.data().Imagen2));
 
 // console.log(imagenURL);
