@@ -13,7 +13,8 @@
     </div>
 
     <div class="group">
-      <AnimalCard v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
+      <AnimalCard v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+        :specie="e.specie">
       </AnimalCard>
     </div>
 
@@ -112,7 +113,11 @@ export default {
       //Variables de firebase
       firebaseapp: null,
       fs: null,
-      storage: null
+      storage: null,
+
+      //Variable de pinia
+      store: "",
+      idStore: ""
     }
   },
 
@@ -140,7 +145,7 @@ export default {
               url: url,
               urlfb: doc.data().Imagen1,
               name: doc.data().Nombre,
-              race: doc.data().Raza,
+              specie: doc.data().Especie,
               location: doc.data().Ubicacion
             };
 
@@ -239,7 +244,7 @@ export default {
               url: url,
               urlfb: doc.data().Imagen1,
               name: doc.data().Nombre,
-              race: doc.data().Raza,
+              specie: doc.data().Especie,
               location: doc.data().Ubicacion
             };
 

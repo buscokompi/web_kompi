@@ -58,17 +58,22 @@ export default {
             </a>
             <ul v-show="desktop" class="desktop">
                 <li>
-                    <RouterLink class="link" to="/">Adopción</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                 </li>
                 <li>
-
-                    <RouterLink class="link" to="/TemplateDogPage">Sobre nosotros</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"
+                            alt="favoritos">
+                    </RouterLink>
+                </li>
+                <li class="vertical-line"></li>
+                <li>
+                    <RouterLink class="link" to="/TemplatePageReptile">Iniciar sesión</RouterLink>
                 </li>
             </ul>
             <div class="burger">
@@ -81,7 +86,7 @@ export default {
                             <RouterLink class="link" to="/" @click="closeNav">Adopción</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link" to="/FilterAnimals" @click="closeNav">Categorías</RouterLink>
+                            <RouterLink class="link" to="/TemplatePage" @click="closeNav">Categorías</RouterLink>
                         </li>
                         <li>
                             <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
@@ -114,6 +119,9 @@ export default {
             <div v-show="mobileNav" class="opacity"></div>
         </nav>
     </header>
+    <div class="view-container">
+        <RouterView />
+    </div>
 </template>
 
 <style>
@@ -138,8 +146,13 @@ nav {
 }
 
 .view-container {
-    padding-top: 5rem;
-    /* background-color: lightcyan; */
+    width: 100%;
+    /*Solucion provisional*/
+    /* position: absolute;
+  top: 5rem;
+  left: 0; */
+    /* ------------------ */
+
 }
 
 ul,

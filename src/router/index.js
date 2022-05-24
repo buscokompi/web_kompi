@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/ForgotPassword.vue")
+      component: () => import("../views/CategoriesPage.vue")
     },
     {
       path: "/FilterAnimals",
@@ -14,9 +14,29 @@ const router = createRouter({
       component: () => import("../views/FilterAnimals.vue")
     },
     {
-      path: "/TemplateDogPage",
-      name: "TemplateDogPage",
+      path: "/TemplatePageDog",
+      name: "TemplateDog",
       component: () => import("../views/TemplateDogPage.vue")
+    },
+    {
+      path: "/TemplatePageReptile",
+      name: "TemplateReptile",
+      component: () => import("../views/TemplateReptilePage.vue")
+    },
+    {
+      path: "/TemplatePageBird",
+      name: "TemplateBird",
+      component: () => import("../views/TemplateBirdPage.vue")
+    },
+    {
+      path: "/TemplatePageRodent",
+      name: "TemplateRodent",
+      component: () => import("../views/TemplateRodentPage.vue")
+    },
+    {
+      path: "/NewAnimalForm",
+      name: "NewAnimalForm",
+      component: () => import("../views/NewAnimalForm.vue")
     },
   ]
 });

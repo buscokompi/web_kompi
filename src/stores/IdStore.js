@@ -2,12 +2,17 @@ import { defineStore } from "pinia";
 
 export const IdStore = defineStore({
   id: "idstore",
-  state: () => ({
-    _id: ""
-  }),
+  state: () => {
+    return {
+      id: ""
+    };
+  },
   actions: {
-    setId(id, nombre) {
+    setId(id) {
       this._id = id;
+    },
+    getId() {
+      return this.id;
     }
   }
 });

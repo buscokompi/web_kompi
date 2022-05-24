@@ -10,17 +10,28 @@
 
 
 <script>
+import { IdStore } from "../stores/IdStore";
+
 export default {
   name: "AnimalCard",
   props: {
     image: String,
     name: String,
     location: String,
+    specie: String,
     id: String
   },
+  data() {
+    return {
+      store: "",
+    }
+  },
   methods: {
+    //Al clicar en un animal, guarda su id en pinia y cambia la vista a Template
     clickAnimal() {
-      console.log(this.id);
+      this.store = IdStore();
+      this.store.setId(this.id);
+      this.$router.push("/TemplatePageDog");
     }
   }
 }

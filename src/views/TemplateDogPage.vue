@@ -8,6 +8,7 @@ import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "fi
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
 import { useCounterStore } from '@/stores/counter.js'
+import { IdStore } from '../stores/IdStore'
 
 export default {
     name: "TemplatePage",
@@ -61,7 +62,9 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
-            }
+            },
+
+            store: ""
 
         }
     },
@@ -83,7 +86,10 @@ export default {
         this.storage = getStorage(this.db)
         this.firestore = getFirestore(this.db)
         this.auth = getAuth()
-        getDoc(doc(this.firestore, `animals/LGNkZsfC0WkJ13VSt20T`))
+
+        this.store = IdStore();
+
+        getDoc(doc(this.firestore, `animals/${this.store.id}`))
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
