@@ -6,7 +6,7 @@
 
       <a to="../index.html">
         <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
-        <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco">
+        <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       </a>
       <DarkMode />
       <div class="card-login">
@@ -156,6 +156,7 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  background: var(--lightgrey);
 }
 
 .card-login {
@@ -300,16 +301,6 @@ p {
   font-size: 0.9rem;
 }
 
-/* #message {
-  font-family: var(--text-font);
-  font-size: 0.9rem;
-}
-
-#comment {
-  font-family: var(--text-font);
-  font-size: 0.8rem;
-} */
-
 /* see password */
 
 #password {
@@ -328,15 +319,14 @@ p {
 
 }
 
-#toggle-password+label {
-  background-color: red;
+#toggle-password2+label {
+  text-indent: -9999px;
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-left: 13rem;
-  margin-top: 12.3rem;
-  position: absolute;
+  margin-left: -32px;
   cursor: pointer;
+  background-color: red;
 }
 
 .register {
@@ -379,7 +369,6 @@ p {
     flex-direction: column;
     border-radius: 1.9rem;
     background-color: var(--white);
-
   }
 }
 
@@ -423,9 +412,6 @@ p {
     margin-top: 4rem;
   }
 
-  .card-login {
-    margin-top: -1rem;
-  }
 
   .email,
   .pass {
@@ -440,15 +426,6 @@ p {
     margin-top: 25px;
   }
 
-  #toggle-password+label {
-    background-color: red;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 24rem;
-    margin-top: 14rem;
-    position: absolute;
-    cursor: pointer;
-  }
+
 }
 </style>

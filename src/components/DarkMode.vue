@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
         <input @change="toggleTheme" id="checkbox" type="checkbox" class="switch-checkbox" />
         <label for="checkbox" class="switch-label">
@@ -197,4 +197,4 @@ p,
 
 
 }
-</style>
+</style> -->
