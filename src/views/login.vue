@@ -5,7 +5,8 @@
     <div class="container-login">
 
       <a to="../index.html">
-        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Blanco">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+        <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco">
       </a>
       <DarkMode />
       <div class="card-login">
@@ -137,7 +138,7 @@ export default {
   margin: 0;
   background-color: #fff;
   justify-content: center;
-  height: 105.8vh;
+  height: 100vh;
 }
 
 .img-dog-login {
@@ -146,12 +147,11 @@ export default {
 
 .logo {
   width: 8rem;
-  margin: 2rem 0;
+  margin: 3rem;
   cursor: pointer;
 }
 
 .container-login {
-  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,13 +174,13 @@ export default {
 }
 
 .email {
-  width: 75%;
+  margin-left: -3rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
 
 input {
-  width: 90%;
+  width: 95%;
   height: 2.5rem;
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
@@ -194,6 +194,7 @@ input:focus {
 }
 
 .pass {
+  margin-left: -3rem;
   margin-top: 2rem;
   margin-bottom: -1px;
 }
@@ -205,14 +206,14 @@ input:focus {
   width: 75%;
   margin-right: 8rem;
   margin-top: 1rem;
-  margin-left: 7rem;
+  margin-left: 5rem;
   text-decoration: underline;
   color: var(--black);
   cursor: pointer;
 }
 
 .button {
-  width: 75%;
+  width: 95%;
   min-width: 250px;
   display: flex;
   justify-content: flex-start;
@@ -299,8 +300,6 @@ p {
   font-size: 0.9rem;
 }
 
-
-
 /* #message {
   font-family: var(--text-font);
   font-size: 0.9rem;
@@ -335,7 +334,7 @@ p {
   width: 20px;
   height: 20px;
   margin-left: 13rem;
-  margin-top: 12.5em;
+  margin-top: 12.3rem;
   position: absolute;
   cursor: pointer;
 }
@@ -345,7 +344,7 @@ p {
 }
 
 /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 500px) {
   .register {
     margin-top: 3rem;
   }
@@ -357,11 +356,15 @@ p {
 
   input {
     width: 75%;
+  }
 
+  .email,
+  .pass {
+    margin-left: 1rem;
   }
 
   .forgot-pass {
-    margin-right: 11rem;
+    margin-left: 8rem;
   }
 
   .container-login {
@@ -370,6 +373,7 @@ p {
 
   .card-login {
     width: 60%;
+    height: 70%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -398,45 +402,53 @@ p {
   }
 
   .btn-login-email {
-    margin: 5rem;
-  }
-
-  .forgot-pass {
-    margin-right: 12rem;
+    margin: 3rem;
   }
 
   .app {
     display: flex;
   }
+
+
 }
 
 @media screen and (min-width: 1300px) {
 
-  .app {
-    display: flex;
-  }
-
-  /* .container-login {
-    background: var(--lightgrey);
-  } */
-
   .card-login {
-    background-color: var(--white);
-    width: 50%;
+    width: 55%;
     height: 70%;
   }
 
-  input,
-  .button,
-  .card-login p {
-    width: 90%;
+  .email {
+    margin-top: 4rem;
+  }
+
+  .card-login {
+    margin-top: -1rem;
+  }
+
+  .email,
+  .pass {
+    margin-left: 1rem;
   }
 
   .forgot-pass {
-    width: 12rem;
-    margin-left: 2rem;
+    margin-left: 8rem;
   }
 
+  .register {
+    margin-top: 25px;
+  }
 
+  #toggle-password+label {
+    background-color: red;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 24rem;
+    margin-top: 14rem;
+    position: absolute;
+    cursor: pointer;
+  }
 }
 </style>
