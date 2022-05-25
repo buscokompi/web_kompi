@@ -35,6 +35,7 @@
   "dependencies": {
     "firebase": "^9.6.11",
     "pinia": "^2.0.13",
+    "sass": "^1.52.1",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14",
     "vue-select": "^4.0.0-beta.3",
