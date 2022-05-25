@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import("../views/OptionsNewUser.vue")
     },
 
+    {
+      path: "/PrivacyPolicy",
+      name: "PrivacyPolicy",
+      component: () => import("../views/PrivacyPolicy.vue")
+    },
   ]
 });
 

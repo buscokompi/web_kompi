@@ -1,11 +1,13 @@
 <template>
   <div class="app">
-    <img @click="info" class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+    <img class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
 
     <div class="container-login">
 
       <a to="../index.html">
-        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+        <RouterLink to="/PrivacyPolicy">
+          <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+        </RouterLink>
         <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       </a>
       <DarkMode />
@@ -20,6 +22,7 @@
         <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?
         </a>
         <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
+
         </div>
         <div class="button btn-login-google" @click="loginGoogle()"><img class="google"
             src="../assets/icons/google_icono.svg" alt="Icono Google">
@@ -40,6 +43,7 @@
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import DarkMode from "../components/DarkMode.vue";
+import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
 
 const firebaseConfig = {
@@ -54,6 +58,7 @@ const firebaseConfig = {
 
 export default {
   name: "OptionsNewUser",
+  name: "PrivacyPolicy",
   data() {
     return {
       email: "",
@@ -127,7 +132,8 @@ export default {
       }
     }
   },
-  components: { DarkMode }
+  components: { DarkMode, PrivacyPolicy },
+
 }
 
 </script>

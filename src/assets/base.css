@@ -12,12 +12,12 @@
   --text-font: "Open Sans";
 }
 
-:root.dark-theme {
+/* :root.dark-theme {
   --white: #3f3d3b;
   --hover-orange: #013a42;
   --hover-green: #cc9320;
   --black: #fff;
-}
+} */
 
 body {
   min-height: 100vh;
