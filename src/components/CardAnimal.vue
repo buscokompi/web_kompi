@@ -1,21 +1,53 @@
 <template>
-  <div class="card">
+  <div class="card" @click="clickAnimal()">
     <div class="img-container">
-      <img src="./assets/imgSleapingCat.jpg" alt="mascota">
+      <img :src="image" :alt="name" loading="lazy">
     </div>
-    <h3 class="name">Coco</h3>
-    <p><img src="./assets/icons/icono_logo_negro.svg" alt="">Córdoba</p>
+    <h3 class="name">{{ name }}</h3>
+    <p><img src="../assets/icons/icono_logo_negro.svg" alt="">{{ location }}</p>
   </div>
 </template>
 
 
 <script>
-export default {
-  name: "AnimalCard"
+import { KompiStore } from '../stores/KompiStore.js';
 
+export default {
+  name: "CardAnimal",
+  props: {
+    image: String,
+    name: String,
+    location: String,
+    specie: String,
+    id: String
+  },
+  data() {
+    return {
+      store: "",
+    }
+  },
+  methods: {
+    //Al clicar en un animal, guarda su id en pinia y cambia la vista a Template
+    clickAnimal() {
+      this.store = KompiStore();
+      this.store.setId(this.id);
+      switch (this.specie) {
+        case "Perro":
+          this.$router.push("/TemplatePageDog");
+          break;
+        case "Roedor":
+          this.$router.push("/TemplatePageRodent");
+      }
+
+    },
+  },
+  methods: {
+    clickAnimal() {
+      console.log(this.id);
+    }
+  }
 }
 </script>
-
 
 <style scoped>
 .card {

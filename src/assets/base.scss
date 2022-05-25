@@ -1,0 +1,71 @@
+@import '../../node_modules/sweetalert2/src/variables.scss';
+@import '../../node_modules/vue-select/src/scss/global/_variables.scss';
+
+$swal2-font: var(--text-font);
+$swal2-button-font-weight: 600;
+//popup
+$swal2-background: var(--white);
+$swal2-border-radius: 2rem;
+$swal2-padding: 3rem 1rem 3rem;
+//Confirm-Button
+$swal2-confirm-button-border-radius: 3rem;
+$swal2-confirm-button-background-color: var(--orange);
+$swal2-confirm-button-color: var(--black);
+
+//Cancel-Button
+$swal2-cancel-button-border-radius: 3rem;
+$swal2-cancel-button-background-color: var(--green);
+$swal2-cancel-button-color: var(--white);
+$swal2-button-margin: 0 0.5rem;
+
+//  Global Component Variables
+$vs-component-bg: none !default;
+$vs-component-line-height: 1.4 !default;
+$vs-component-placeholder-color: inherit !default;
+
+//  Active State
+$vs-state-active-bg: var(--orange) !default;
+$vs-state-active-color: var(--green)  !default;
+
+//  Deselect State
+$vs-state-deselect-bg: #fb5858 !default;
+$vs-state-deselect-color: #fff !default;
+
+//  Disabled State
+$vs-state-disabled-bg: rgb(248, 248, 248) !default;
+$vs-state-disabled-color: map_get($vs-colors, 'light') !default;
+$vs-state-disabled-controls-color: map_get($vs-colors, 'light') !default;
+$vs-state-disabled-cursor: not-allowed !default;
+
+//  Borders
+$vs-border-width: 1px !default;
+$vs-border-style: solid !default;
+$vs-border-radius: 1rem !default;
+$vs-border-color: map_get($vs-colors, 'lightest') !default;
+
+//  Component Controls: Clear, Open Indicator
+$vs-controls-color: var(--black) !default;
+$vs-controls-size: 1 !default;
+$vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
+
+//  Selected
+$vs-selected-bg: var(--green) !default;
+$vs-selected-border-color: $vs-border-color  !default;
+$vs-selected-border-style: $vs-border-style  !default;
+$vs-selected-border-width: $vs-border-width  !default;
+
+
+//  Dropdown
+$vs-dropdown-z-index: 1000 !default;
+$vs-dropdown-min-width: fit-content !default;
+$vs-dropdown-max-height: 350px !default;
+$vs-dropdown-box-shadow: 0px 3px 6px 0px map_get($vs-colors, 'darkest') !default;
+$vs-dropdown-bg: var(--white);
+.vs--searchable .vs__dropdown-toggle,
+input {
+    cursor: pointer !important;
+}
+
+@import '../../node_modules/sweetalert2/src/sweetalert2.scss';
+@import '../../node_modules/vue-select/src/scss/vue-select.scss';
+

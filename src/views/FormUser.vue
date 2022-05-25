@@ -19,8 +19,8 @@ export default {
             measurementId: "G-93MGP34YQN"
         };
 
-        this.firebaseapp = initializeApp(firebaseConfig);
-        this.fs = getFirestore();
+        const firebaseapp = initializeApp(firebaseConfig);
+        const fs = getFirestore();
 
         const auth = getAuth();
 
@@ -217,7 +217,7 @@ export default {
             }
             console.log(event.target.value)
         },
-        addAnswerDataBase() {
+        async addAnswerDataBase() {
             await addDoc(doc(fs, "userForm", userEmail), {
                 answer1: this.question1,
                 answer2: this.question2,
@@ -279,7 +279,7 @@ export default {
 </template>
 
 
-<style>
+<style scoped>
 section {
     background-color: var(--light-grey-color);
 }
@@ -360,9 +360,10 @@ button:hover {
     background-color: #cc9320;
     cursor: pointer;
 }
-</style>
 
 /* img {
     width: 7rem;
     margin-left: 7rem;
 } */
+</style>
+

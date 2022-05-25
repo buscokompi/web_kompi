@@ -1,6 +1,80 @@
+<template>
+    <header :class="{ 'scrolled-nav': scrolledNav }">
+        <nav>
+            <a href="#">
+                <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
+            </a>
+            <ul v-show="desktop" class="desktop">
+                <li>
+                    <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
+                </li>
+                <li>
+                    <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
+                </li>
+                <li>
+                    <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
+                </li>
+                <li>
+                    <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"
+                            alt="favoritos">
+                    </RouterLink>
+                </li>
+                <li class="vertical-line"></li>
+                <li>
+                    <RouterLink class="link" to="/TemplatePageReptile">Iniciar sesión</RouterLink>
+                </li>
+            </ul>
+            <div class="burger">
+                <i @click="toggleMenu" v-show="!desktop" class="burger-img" :class="{ 'burger-close': mobileNav }"></i>
+            </div>
+            <transition name="mobile-nav">
+                <div v-show="mobileNav" class="dropdown">
+                    <ul class="list">
+                        <li>
+                            <RouterLink class="link" to="/" @click="closeNav">Adopción</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/TemplatePage" @click="closeNav">Categorías</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
+                        </li>
+                    </ul>
+                    <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
+                    <ul class="icons">
+                        <li>
+                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
+                                    alt="Facebook"></RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_instagram_yellow.svg"
+                                    alt="Instagram"></RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
+                                    alt="Twitter"></RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg"
+                                    alt="Favoritos"></RouterLink>
+                        </li>
+                    </ul>
+                    <div class="m-footer">
+                        <a href="./login.html">Iniciar sesión</a>
+                    </div>
+                </div>
+            </transition>
+            <div v-show="mobileNav" class="opacity"></div>
+        </nav>
+    </header>
+    <div class="view-container">
+        <RouterView />
+    </div>
+</template>
+
 <script>
 export default {
-    name: "TopBar",
+    name: "TheHeader",
     data() {
         return {
             scrolledNav: null,
@@ -50,77 +124,7 @@ export default {
 };
 </script>
 
-<template>
-    <header :class="{ 'scrolled-nav': scrolledNav }">
-        <nav>
-            <a href="#">
-                <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
-            </a>
-            <ul v-show="desktop" class="desktop">
-                <li>
-                    <RouterLink class="link" to="/">Adopción</RouterLink>
-                </li>
-                <li>
-                    <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
-                </li>
-                <li>
-                    <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
-                </li>
-                <li>
-                    <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg" alt="favoritos">
-                    </RouterLink>
-                </li>
-                <li class="vertical-line"></li>
-                <li>
-                    <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
-                </li>
-            </ul>
-            <div class="burger">
-                <i @click="toggleMenu" v-show="!desktop" class="burger-img" :class="{ 'burger-close': mobileNav }"></i>
-            </div>
-            <transition name="mobile-nav">
-                <div v-show="mobileNav" class="dropdown">
-                    <ul class="list">
-                        <li>
-                            <RouterLink class="link" to="/" @click="closeNav">Adopción</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/TemplatePage" @click="closeNav">Categorías</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
-                        </li>
-                    </ul>
-                    <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
-                    <ul class="icons">
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
-                                    alt="Facebook"></RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_instagram_yellow.svg"
-                                    alt="Instagram"></RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
-                                    alt="Twitter"></RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg"
-                                    alt="Favoritos"></RouterLink>
-                        </li>
-                    </ul>
-                    <div class="m-footer">
-                        <a href="./login.html">Iniciar sesión</a>
-                    </div>
-                </div>
-            </transition>
-            <div v-show="mobileNav" class="opacity"></div>
-        </nav>
-    </header>
-</template>
-
-<style>
+<style scoped>
 header {
     width: 100%;
     height: 5rem;
@@ -139,11 +143,6 @@ nav {
     height: 100%;
     margin: 0 auto;
     align-items: center;
-}
-
-.view-container {
-    padding-top: 5rem;
-    /* background-color: lightcyan; */
 }
 
 ul,
@@ -320,22 +319,4 @@ ul,
     background-color: var(--black);
     cursor: auto;
 }
-
-
-
-
-/* .scrolled-nav {
-    background: red;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-    nav {
-        padding: 8px 0px;
-
-        .logo {
-            img {
-                width: 7rem;
-            }
-        }
-    }
-} */
 </style>

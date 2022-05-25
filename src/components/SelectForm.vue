@@ -7,9 +7,9 @@ export default {
 </script>
 
 <template>
-    <p>{{ label1 }} <select name="" class="question">
-            <option :value="option" v-for="option in formOptions">{{ option }}</option>
-        </select> {{ label2 }} </p>
+    <p>{{ label1 }} <v-select v-model="formOptions[0]" name="" class="question" :options='formOptions'
+            :clearable="false">
+        </v-select> {{ label2 }} </p>
 </template>
 
 
@@ -36,13 +36,5 @@ export default {
 option {
     font-weight: 600;
 
-}
-
-.question:hover,
-option:hover {
-    background: var(--orange);
-    color: var(--black);
-    outline: none;
-    cursor: pointer;
 }
 </style>
