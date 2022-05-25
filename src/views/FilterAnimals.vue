@@ -54,9 +54,9 @@
 
 <script>
 //Imports de los componentes de vue
-import TopBar from '../components/TopBar.vue'
+import TheHeader from '../components/TheHeader.vue';
 import SelectOptions from '../components/SelectOptions.vue'
-import AnimalCard from '../components/AnimalCard.vue'
+import CardAnimal from '../components/CardAnimal.vue';
 import FooterSection from '../components/FooterSection.vue';
 
 //Imports de los metodos de firebase
@@ -79,9 +79,8 @@ export default {
   name: "FilterAnimals",
   components: {
     SelectOptions,
-    TopBar,
-    AnimalCard,
-    FooterSection
+    TheHeader,
+    CardAnimal
   },
   data() {
     return {

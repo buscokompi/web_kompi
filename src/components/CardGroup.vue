@@ -1,14 +1,14 @@
 <template>
   <div class="group">
-    <AnimalCard v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
-    </AnimalCard>
-    <ExtraCard />
+    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
+    </CardAnimal>
+    <CardExtra />
   </div>
 </template>
 
 <script>
-import AnimalCard from "./AnimalCard.vue";
-import ExtraCard from "./ExtraCard.vue";
+import CardAnimal from "./CardAnimal.vue";
+import CardExtra from "./CardExtra.vue";
 
 import { getFirestore, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -26,8 +26,8 @@ const firebaseConfig = {
 
 export default {
   components: {
-    AnimalCard,
-    ExtraCard
+    CardAnimal,
+    CardExtra
   },
   data() {
     return {

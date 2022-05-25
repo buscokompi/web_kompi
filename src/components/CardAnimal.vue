@@ -13,7 +13,7 @@
 import { KompiStore } from '../stores/KompiStore.js';
 
 export default {
-  name: "AnimalCard",
+  name: "CardAnimal",
   props: {
     image: String,
     name: String,
@@ -41,6 +41,11 @@ export default {
 
     },
   },
+  methods: {
+    clickAnimal() {
+      console.log(this.id);
+    }
+  }
 }
 </script>
 
