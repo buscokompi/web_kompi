@@ -19,7 +19,7 @@ export default {
             auth: null,
             animalInfo: null,
             arrayAnimales: [],
-            storage: null,
+            store: null,
 
             nombre_1: '',
             location_1: '',
@@ -74,7 +74,7 @@ export default {
     },
 
     created() {
-        this.storage = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
+        this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
     },
 
     mounted() {
@@ -82,7 +82,7 @@ export default {
         this.storage = getStorage(this.db)
         this.firestore = getFirestore(this.db)
         this.auth = getAuth()
-        getDoc(doc(this.firestore, `animals/${this.storage.getId()}`))
+        getDoc(doc(this.firestore, `animals/${this.store.getId()}`))
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
@@ -96,7 +96,7 @@ export default {
                 }
             })
         // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
-        const p = query(collection(this.firestore, 'animals'), where('Especie', '==', `${this.rodent.Ubicacion}`));
+        const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`));
         getDocs(p)
             .then(element => {
                 const aux = Math.floor(Math.random() * element.size);

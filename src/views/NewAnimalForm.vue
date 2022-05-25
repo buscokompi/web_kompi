@@ -4,7 +4,7 @@
         <div class="sections">
             <RouterLink to="/NewAnimalForm/saludo">Sobre mí</RouterLink>
             <RouterLink to="/NewAnimalForm/otroSaludo">Perfil adoptante</RouterLink>
-            <RouterLink to="/">Perfil animal</RouterLink>
+            <RouterLink to="/NewAnimalForm/formularioEjemplo">Perfil animal</RouterLink>
             <RouterLink to="/">Favoritos</RouterLink>
             <RouterLink to="/">Ajustes</RouterLink>
             <hr class="hr">
@@ -74,11 +74,10 @@ export default {
 }
 
 .profile-content {
-    width: 100%;
-    height: 400px;
+    width: 52vw;
+    margin: 2rem 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid blue;
 }
 </style>
