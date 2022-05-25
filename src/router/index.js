@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/CategoriesPage.vue")
+      component: () => import("../views/MainPage.vue")
     },
     {
       path: "/FilterAnimals",
@@ -40,11 +40,11 @@ const router = createRouter({
       children: [
         {
           path: "saludo",
-          component: () => import("../views/VistaPrueba.vue")
+          component: () => import("../views/NewAnimalForm.vue")
         },
         {
           path: "otroSaludo",
-          component: () => import("../views/OtroSaludo.vue")
+          component: () => import("../views/NewAnimalForm.vue")
         },
         {
           path: "formularioEjemplo",

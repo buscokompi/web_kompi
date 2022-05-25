@@ -6,7 +6,6 @@
     <MainCounter />
     <MainGuide />
     <MainList />
-    <BaseSelect />
     <TheFooter />
 </template>
 
@@ -19,9 +18,8 @@ import MainGuide from '../components/MainGuide.vue'
 import MainList from '../components/MainList.vue'
 import TheFooter from '../components/TheFooter.vue'
 import TheHeader from '../components/TheHeader.vue'
-import BaseSelect from '../components/BaseSelect.vue'
 export default {
-    components: { TheHeader, MainMain, MainCategory, MainAdoption, MainCounter, MainGuide, MainList, TheFooter, BaseSelect }
+    components: { TheHeader, MainMain, MainCategory, MainAdoption, MainCounter, MainGuide, MainList, TheFooter }
 }
 
 </script>

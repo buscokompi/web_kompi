@@ -1,5 +1,5 @@
 <template>
-  <TopBar />
+  <TheHeader />
   <div class="home">
     <h1>¡Tú próxima mascota está esperandote!</h1>
     <p>Te mostraremos los resultados más acordes a tu busqueda</p>
@@ -13,9 +13,9 @@
     </div>
 
     <div class="group">
-      <AnimalCard v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+      <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
         :specie="e.specie">
-      </AnimalCard>
+      </CardAnimal>
     </div>
 
     <div class="filter">
@@ -49,7 +49,7 @@
 
     </div>
   </div>
-  <FooterSection />
+  <TheFooter />
 </template>
 
 <script>
@@ -57,7 +57,7 @@
 import TheHeader from '../components/TheHeader.vue';
 import SelectOptions from '../components/SelectOptions.vue'
 import CardAnimal from '../components/CardAnimal.vue';
-import FooterSection from '../components/FooterSection.vue';
+import TheFooter from '../components/TheFooter.vue';
 
 //Imports de los metodos de firebase
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
@@ -80,7 +80,8 @@ export default {
   components: {
     SelectOptions,
     TheHeader,
-    CardAnimal
+    CardAnimal,
+    TheFooter
   },
   data() {
     return {

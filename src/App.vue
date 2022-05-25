@@ -1,19 +1,15 @@
 <script>
 
 // import { RouterLink, RouterView } from 'vue-router'
-import ForgotPassword from './views/ForgotPassword.vue'
-import FilterAnimals from './views/FilterAnimals.vue'
-import TheHeader from './components/TheHeader.vue'
 export default {
   name: "App",
   components: {
-    TheHeader
   }
 }
 </script>
 
 <template>
-  <TheHeader />
+  <RouterView />
 </template>
 
 <style lang="scss">
@@ -22,5 +18,4 @@ export default {
 /* Para importar el CSS global */
 @import './assets/base.css';
 @import './assets/base.scss';
-@import 'vue-select/dist/vue-select.css';
 </style>

@@ -1,7 +1,7 @@
 <script>
-import AnimalCard from '@/components/AnimalCard.vue'
-import ExtraCard from '@/components/ExtraCard.vue'
-import FooterSection from '@/components/FooterSection.vue'
+import CardAnimal from '@/components/CardAnimal.vue'
+import CardExtra from '@/components/CardExtra.vue'
+import TheFooter from '@/components/TheFooter.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
 import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
@@ -62,9 +62,9 @@ export default {
         }
     },
     components: {
-        AnimalCard,
-        ExtraCard,
-        FooterSection,
+        CardAnimal,
+        CardExtra,
+        TheFooter,
         BaseButton
     },
     methods: {
@@ -238,16 +238,16 @@ export default {
                 <h2>Otros Kompis que encajan con tu búsqueda</h2>
 
                 <div class="group">
-                    <AnimalCard :name="nombre_1" :location="location_1" :image="img_1" />
-                    <AnimalCard :name="nombre_2" :location="location_2" :image="img_2" />
-                    <AnimalCard :name="nombre_3" :location="location_3" :image="img_3" />
-                    <AnimalCard :name="nombre_4" :location="location_4" :image="img_4" />
-                    <AnimalCard :name="nombre_5" :location="location_5" :image="img_5" />
+                    <CardAnimal :name="nombre_1" :location="location_1" :image="img_1" />
+                    <CardAnimal :name="nombre_2" :location="location_2" :image="img_2" />
+                    <CardAnimal :name="nombre_3" :location="location_3" :image="img_3" />
+                    <CardAnimal :name="nombre_4" :location="location_4" :image="img_4" />
+                    <CardAnimal :name="nombre_5" :location="location_5" :image="img_5" />
                 </div>
             </div>
         </section>
 
-        <FooterSection />
+        <TheFooter />
 
     </div>
 </template>
