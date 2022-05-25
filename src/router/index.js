@@ -36,7 +36,17 @@ const router = createRouter({
     {
       path: "/NewAnimalForm",
       name: "NewAnimalForm",
-      component: () => import("../views/NewAnimalForm.vue")
+      component: () => import("../views/NewAnimalForm.vue"),
+      children: [
+        {
+          path: "saludo",
+          component: () => import("../views/VistaPrueba.vue")
+        },
+        {
+          path: "otroSaludo",
+          component: () => import("../views/OtroSaludo.vue")
+        }
+      ]
     },
   ]
 });

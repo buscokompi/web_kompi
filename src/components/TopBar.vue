@@ -61,7 +61,7 @@ export default {
                     <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                    <RouterLink class="link" to="/NewAnimalForm">Categorías</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
@@ -147,6 +147,9 @@ nav {
 
 .view-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*Solucion provisional*/
     /* position: absolute;
   top: 5rem;
