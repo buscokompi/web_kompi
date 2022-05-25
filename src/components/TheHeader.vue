@@ -1,9 +1,9 @@
 <template>
     <header :class="{ 'scrolled-nav': scrolledNav }">
         <nav>
-            <a href="#">
+            <RouterLink class="link" to="/">
                 <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
-            </a>
+            </RouterLink>
             <ul v-show="desktop" class="desktop">
                 <li>
                     <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
@@ -60,16 +60,14 @@
                         </li>
                     </ul>
                     <div class="m-footer">
-                        <a href="./login.html">Iniciar sesión</a>
+                        <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
                     </div>
                 </div>
             </transition>
-            <div v-show="mobileNav" class="opacity"></div>
+            <div v-show="mobileNav" class="opacity">
+            </div>
         </nav>
     </header>
-    <div class="view-container">
-        <RouterView />
-    </div>
 </template>
 
 <script>
