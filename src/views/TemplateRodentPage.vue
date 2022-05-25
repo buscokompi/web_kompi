@@ -96,7 +96,8 @@ export default {
                 }
             })
         // Esto es para obtener cinco animales de la especie Perro para ponerlos en las tarjetas  de la ficha
-        const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`)); // 'Perro'
+        const location_12 = "Tenerife";
+        const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', location_12)); // 'Perro'
         getDocs(p)
             .then(element => {
                 console.log(element);
@@ -227,7 +228,7 @@ export default {
                 </div>
 
                 <div class="adoption">
-                    <h3>¿Quieres adoptar o saber más sobre Nala?<br>
+                    <h3>¿Quieres adoptar o saber más sobre {{ rodent.Nombre }}?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
 
                     <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />

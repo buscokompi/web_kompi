@@ -224,7 +224,7 @@ export default {
                     <p class="esterilized">{{ dog.Esterilizacion }}</p>
                 </div>
                 <div class="adoption">
-                    <h3>¿Quieres adoptar o saber más sobre Nala?<br>
+                    <h3>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
 
                     <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />
