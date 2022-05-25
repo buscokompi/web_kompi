@@ -276,6 +276,8 @@ export default {
 
 <style scoped>
 /*---Home---*/
+@import "../assets/base.css";
+
 .home {
   width: 100%;
   height: 40vh;

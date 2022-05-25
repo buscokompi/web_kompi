@@ -39,11 +39,10 @@ export default {
           this.$router.push("/TemplatePageRodent");
       }
 
-    }
-  }
+    },
+  },
 }
 </script>
-
 
 <style scoped>
 .card {
