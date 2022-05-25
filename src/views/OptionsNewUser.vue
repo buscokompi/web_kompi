@@ -70,9 +70,15 @@ a p {
 .card-options {
   margin-top: 2rem;
   height: 20rem;
+  width: 60%;
   display: flex;
   gap: 2rem;
   flex-direction: column;
+}
+
+.adopt,
+.give-in-adoption {
+  width: 10rem;
 }
 
 .card-options p {
@@ -104,17 +110,19 @@ a:hover {
 
 .adopt {
   background-color: var(--orange);
-  width: 9rem;
 }
 
 .adopt:hover {
   background-color: #cc9320;
 }
 
-.give-in-adoption,
-.adopt {
-  color: black;
-  width: 9rem;
+.question1,
+.adopt p {
+  color: var(--black);
+}
+
+.give-in-adoption p {
+  color: var(--white);
 }
 
 @media screen and (min-width: 500px) {
@@ -124,7 +132,6 @@ a:hover {
 
   .give-in-adoption,
   .adopt {
-    color: black;
     width: 20rem;
   }
 }
@@ -142,7 +149,6 @@ a:hover {
 
   .give-in-adoption,
   .adopt {
-    color: black;
     width: 30rem;
   }
 }
@@ -159,7 +165,6 @@ a:hover {
 
   .give-in-adoption,
   .adopt {
-    color: black;
     width: 23rem;
   }
 }

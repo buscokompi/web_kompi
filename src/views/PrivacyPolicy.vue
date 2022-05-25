@@ -9,7 +9,8 @@
 
             <p>En aplicación de la normativa vigente en materia de protección de datos de carácter personal
                 se informa que los datos personales que se recogen a través de los formularios del sitio
-                web www.app.adoptaunkompi.com se incluyen en los ficheros automatizados específicos de usuarios de
+                web <strong>www.app.adoptaunkompi.com</strong> se incluyen en los ficheros automatizados específicos de
+                usuarios de
                 los servicios del titular.
             </p>
 
@@ -23,13 +24,14 @@
             </p>
 
             <p>El titular adopta las medidas necesarias para garantizar la seguridad, integridad y confidencialidad de
-                los datos conforme a lo dispuesto en la Ley Orgánica 15/1999 de 13 de diciembre, de Protección de Datos
-                de Carácter Personal (LOPD).
+                los datos conforme a lo dispuesto en la <strong> Ley Orgánica 15/1999 de 13 de diciembre, de Protección
+                    de Datos
+                    de Carácter Personal (LOPD)</strong>.
             </p>
 
             <p> El usuario podrá en cualquier momento ejercitar los derechos de acceso, oposición, rectificación y
                 cancelación reconocidos en la citada LOPD. El ejercicio de estos derechos puede realizarlo el propio
-                usuario a través de email a buscokompi@gmail.com
+                usuario a través de email a <strong>buscokompi@gmail.com</strong>.
             </p>
             <p>
                 El usuario manifiesta que todos los datos facilitados por él son ciertos y correctos, y se compromete a
@@ -42,8 +44,10 @@
             <h3>Retención de datos en conformidad a la LSSI
             </h3>
             <p>El titular informa de que, como prestador de servicio de alojamiento de datos y en virtud de lo
-                establecido en la Ley34/2002 de 11 de julio de Servicios de la Sociedad de la Información y de Comercio
-                Electrónico (LSSI), retiene por un periodo máximo de 12 meses la información imprescindible para
+                establecido en la <strong>Ley34/2002 de 11 de julio de Servicios de la Sociedad de la Información y de
+                    Comercio
+                    Electrónico (LSSI)</strong>, retiene por un periodo máximo de 12 meses la información imprescindible
+                para
                 identificar el origen de los datos alojados y el momento en que se inició la prestación del servicio. La
                 retención de estos datos no afecta al secreto de las comunicaciones y sólo podrán ser utilizados en el
                 marco de una investigación criminal o para la salvaguardia de la seguridad pública, poniéndose a
@@ -51,25 +55,29 @@
                 a las Fuerzas y Cuerpos del Estado se hará en virtud a lo dispuesto en la normativa sobre protección de
                 datos personales
             </p>
+
+
+            <p> Adoptaunkompi considera como objetivo básico garantizar la privacidad y confidencialidad de los datos
+                personales de sus Usuarios recabados a través de cualquier sistema que permita la transmisión de los
+                mismos.
+            </p>
+
+            <p>Adoptaunkompi manifiesta su compromiso de cumplimiento con la legislación española que en esta materia se
+                encuentre en cada momento vigente, en la actualidad, la <strong> Ley Orgánica 15/1999, de 13 de
+                    diciembre, de
+                    Protección de Datos de Carácter Personal</strong> y el nuevo Reglamento General Europeo de
+                Protección de Datos de
+                Carácter Personal
+            </p>
+
+            <p> Los datos recabados serán tratados con la finalidad de poder gestionar adecuadamente todo el proceso
+                relativo a la adopción de un animal en Adoptaunkompi.
+            </p>
+            <p> La legitimación se realiza a través de su consentimiento expreso.</p>
+            <p>Los datos no podrán cedidos a terceros salvo en los supuestos previstos en la normativa vigente sobre
+                protección de datos de carácter personal.
+            </p>
         </div>
-
-        <p> Adoptaunkompi considera como objetivo básico garantizar la privacidad y confidencialidad de los datos
-            personales de sus Usuarios recabados a través de cualquier sistema que permita la transmisión de los mismos.
-        </p>
-
-        <p>Adoptaunkompi manifiesta su compromiso de cumplimiento con la legislación española que en esta materia se
-            encuentre en cada momento vigente, en la actualidad, la Ley Orgánica 15/1999, de 13 de diciembre, de
-            Protección de Datos de Carácter Personal y el nuevo Reglamento General Europeo de Protección de Datos de
-            Carácter Personal
-        </p>
-
-        <p> Los datos recabados serán tratados con la finalidad de poder gestionar adecuadamente todo el proceso
-            relativo a la adopción de un animal en Madrid Salud.
-        </p>
-        <p> La legitimación se realiza a través de su consentimiento expreso.</p>
-        <p>Los datos no podrán cedidos a terceros salvo en los supuestos previstos en la normativa vigente sobre
-            protección de datos de carácter personal.
-        </p>
     </div>
     <FooterSection />
 
@@ -87,19 +95,36 @@ export default {
 </script>
 
 <style scoped>
-p,
-h1,
-h3 {
-    margin: 0 0 16px 0;
+p {
+    font-size: 18px;
 }
 
+h3 {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 25px;
+}
+
+h1 {
+    margin: 0 0 16px 0;
+    text-decoration: underline;
+    color: #334e6f;
+    font-weight: 580;
+
+}
 
 .main {
     padding: 120px 0 40px 0;
-    width: 50%;
+    width: 100%;
     justify-content: center;
     align-content: center;
     align-items: center;
+    background-color: var(--lightgrey);
+
+}
+
+.container {
+    width: 50%;
     margin-right: auto;
     margin-left: auto;
 }

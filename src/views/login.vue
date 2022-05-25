@@ -5,7 +5,7 @@
     <div class="container-login">
 
       <a to="../index.html">
-        <RouterLink to="/PrivacyPolicy">
+        <RouterLink to="/Aboutme">
           <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
         </RouterLink>
         <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
