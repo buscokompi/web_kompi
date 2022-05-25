@@ -10,7 +10,7 @@
         </RouterLink>
         <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       </a>
-      <DarkMode />
+      <!-- <DarkMode /> -->
       <div class="card-login">
         <div class="login">
           <p class="email">E-mail</p>
@@ -20,8 +20,10 @@
           <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
           <label for="toggle-password"></label>
         </div>
-        <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?
-        </a>
+        <p class="forgot-pass">
+          <a href="./PrivacyPolicy">Has olvidado tu contraseña?
+          </a>
+        </p>
         <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
 
         </div>
@@ -211,16 +213,16 @@ input:focus {
 }
 
 .forgot-pass {
-  align-self: left;
+  margin-top: 1rem;
   font-family: var(--text-font);
   font-size: 0.8rem;
-  width: 75%;
-  margin-right: 8rem;
-  margin-top: 1rem;
-  margin-left: 5rem;
+}
+
+.forgot-pass a {
+  margin-left: 1rem;
+  cursor: pointer;
   text-decoration: underline;
   color: var(--black);
-  cursor: pointer;
 }
 
 .button {
@@ -348,6 +350,7 @@ p {
     margin-top: 3rem;
   }
 
+
   .button,
   .card-login p {
     width: 75%;
@@ -360,10 +363,6 @@ p {
   .email,
   .pass {
     margin-left: 1rem;
-  }
-
-  .forgot-pass {
-    margin-left: 8rem;
   }
 
   .container-login {
@@ -427,9 +426,6 @@ p {
     margin-left: 1rem;
   }
 
-  .forgot-pass {
-    margin-left: 9rem;
-  }
 
   .register {
     margin-top: 25px;
