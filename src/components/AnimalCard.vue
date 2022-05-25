@@ -10,7 +10,7 @@
 
 
 <script>
-import { IdStore } from "../stores/IdStore";
+import { KompiStore } from '../stores/KompiStore.js';
 
 export default {
   name: "AnimalCard",
@@ -29,9 +29,16 @@ export default {
   methods: {
     //Al clicar en un animal, guarda su id en pinia y cambia la vista a Template
     clickAnimal() {
-      this.store = IdStore();
+      this.store = KompiStore();
       this.store.setId(this.id);
-      this.$router.push("/TemplatePageDog");
+      switch (this.specie) {
+        case "Perro":
+          this.$router.push("/TemplatePageDog");
+          break;
+        case "Roedor":
+          this.$router.push("/TemplatePageRodent");
+      }
+
     }
   }
 }
