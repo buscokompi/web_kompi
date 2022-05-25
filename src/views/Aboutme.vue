@@ -77,7 +77,7 @@ export default {
 h3 {
     margin-top: 5rem;
     font-size: x-large;
-    color: white;
+    color: var(--black);
 }
 
 h2 {
@@ -116,7 +116,7 @@ img {
         margin: 5rem 15rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         grid-gap: 10px;
     }
 
@@ -141,12 +141,11 @@ img {
     }
 
     .box {
-        margin: 5rem 6rem;
-        margin-bottom: -3rem;
+        margin: 5rem 10rem;
         width: 10rem;
-        height: 11rem;
+        height: 20rem;
     }
 
-
+    @media screen and (min-width: 1300px) {}
 }
 </style>

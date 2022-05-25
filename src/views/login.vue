@@ -12,13 +12,14 @@
       </a>
       <DarkMode />
       <div class="card-login">
-
-        <p class="email">E-mail</p>
-        <input class="input-email" placeholder="adoptaunkompi@gmail.com" v-model="email">
-        <p class="pass">Contraseña</p>
-        <input :type="fieldType" id="password" placeholder="BuscoKompi6." v-model="password" v-bind:class="visible" />
-        <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
-        <label for="toggle-password"></label>
+        <div class="login">
+          <p class="email">E-mail</p>
+          <input class="input-email" placeholder="adoptaunkompi@gmail.com" v-model="email">
+          <p class="pass">Contraseña</p>
+          <input :type="fieldType" id="password" placeholder="BuscoKompi6." v-model="password" v-bind:class="visible" />
+          <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
+          <label for="toggle-password"></label>
+        </div>
         <a class="forgot-pass" to="./forgot-password.html">Has olvidado tu contraseña?
         </a>
         <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
@@ -151,6 +152,10 @@ export default {
   display: none;
 }
 
+.login {
+  width: 95%
+}
+
 .logo {
   width: 8rem;
   margin: 3rem;
@@ -181,7 +186,7 @@ export default {
 }
 
 .email {
-  margin-left: -3rem;
+
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -201,7 +206,6 @@ input:focus {
 }
 
 .pass {
-  margin-left: -3rem;
   margin-top: 2rem;
   margin-bottom: -1px;
 }
@@ -325,14 +329,13 @@ p {
 
 }
 
-#toggle-password2+label {
+#toggle-password+label {
   text-indent: -9999px;
   display: inline-block;
   width: 20px;
   height: 20px;
   margin-left: -32px;
   cursor: pointer;
-  background-color: red;
 }
 
 .register {
@@ -350,7 +353,7 @@ p {
     width: 75%;
   }
 
-  input {
+  .login {
     width: 75%;
   }
 
@@ -385,7 +388,7 @@ p {
     display: block
   }
 
-  input,
+  .login,
   .button,
   .card-login p {
     width: 80%;
@@ -425,12 +428,13 @@ p {
   }
 
   .forgot-pass {
-    margin-left: 8rem;
+    margin-left: 9rem;
   }
 
   .register {
     margin-top: 25px;
   }
+
 
 
 }
