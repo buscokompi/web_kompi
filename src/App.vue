@@ -17,4 +17,5 @@ export default {
 /* Para importar el CSS global */
 @import './assets/base.css';
 @import './assets/base.scss';
+@import 'vue-select/dist/vue-select.css';
 </style>

@@ -1,4 +1,5 @@
 @import '../../node_modules/sweetalert2/src/variables.scss';
+@import '../../node_modules/vue-select/src/scss/global/_variables.scss';
 
 $swal2-font: var(--text-font);
 $swal2-button-font-weight: 600;
@@ -15,8 +16,7 @@ $swal2-confirm-button-color: var(--black);
 $swal2-cancel-button-border-radius: 3rem;
 $swal2-cancel-button-background-color: var(--green);
 $swal2-cancel-button-color: var(--white);
-
 $swal2-button-margin: 0 0.5rem;
 
-
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';
+@import '../../node_modules/vue-select/src/scss/vue-select.scss';

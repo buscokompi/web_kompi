@@ -7,16 +7,18 @@
       <h3 v-if="item.open"></h3>
       <p v-html="item.content" v-if="item.open"></p>
     </div>
+    <BaseSelect />
   </section>
 </template>
 
 <script>
+import BaseSelect from "./BaseSelect.vue";
 export default {
   data() {
     return {
       items: {
         q1: {
-          title: '¿Qué es Kompi?',
+          title: "¿Qué es Kompi?",
           content: `Es una plataforma destinada a la adopción de animales en España,
             en donde puedes encontrar animales para adoptar tanto de particulares como de protectoras
             y asociaciones. Aunque por motivos diferentes, todas los animales comparten que necesitan
@@ -25,7 +27,7 @@ export default {
           open: false
         },
         q2: {
-          title: '¿Cómo funciona?',
+          title: "¿Cómo funciona?",
           content: `La plataforma es muy fácil, sencilla e intuitiva por lo que cualquier persona podrá entrar y
             navegar en ella sin ningún problema. Es tan sencillo como buscar el tipo de mascota que te
             interesa haciendo uso de los filtros de búsqueda. Una vez sientas que hayas encontrado a tu
@@ -34,7 +36,7 @@ export default {
           open: false
         },
         q3: {
-          title: ' ¿Qué animales puedo encontrar / publicar?',
+          title: " ¿Qué animales puedo encontrar / publicar?",
           content: `Nuestra página web aloja a todo tipo de mascotas(legales), la oferta disponible depende del
             momento. Si estás buscando una mascota con ciertas características y no la
             encuentras, visítanos con regularidad ya que nuevos animales se unen a Kompi cada día.
@@ -44,33 +46,33 @@ export default {
           open: false
         },
         q4: {
-          title: '¿Es gratis?',
+          title: "¿Es gratis?",
           content: `<p>Kompi es totalmente gratuita. Lo único que tienes que hacer es registrarte tanto
             si quieres adoptar, como dar en adopción.</p>
           <p>Esta web está orientada a la adopción, no a la venta.</p>`,
           open: false
         },
         q5: {
-          title: '¿Por qué tengo que registrarme?',
+          title: "¿Por qué tengo que registrarme?",
           content: `El registro en nuestra web se solicita única y exclusivamente por seguridad.
             Sus datos no serán compartidos con terceros ya que
             serán almacenados únicamente en nuestra base de datos.`,
           open: false
         },
         q6: {
-          title: '¿Puedo editar una publicación? ¿Y eliminarla?',
+          title: "¿Puedo editar una publicación? ¿Y eliminarla?",
           content: `Sí, en el apartado de 'mi perfil' puede editar la información de su mascota, así como eliminarla.`,
           open: false
         },
         q7: {
-          title: '¿Si somos una asociación o protectora, podemos publicar adopciones?',
+          title: "¿Si somos una asociación o protectora, podemos publicar adopciones?",
           content: `<p>Sí, en Kompi no hay límite en el número de fichas de adopción a publicar.</p>
           <p>No olvides mandarnos un correo indicando el nombre de la asociación o protectora
             para añadiros como colaboradoras</p>`,
           open: false
         },
         q8: {
-          title: 'Requisitos mínimos para adoptar',
+          title: "Requisitos mínimos para adoptar",
           content: `          <p>
             Entre nuestros requisitos mínimos para adoptar o dar en adopción se encuentran:
           <ul>
@@ -83,8 +85,9 @@ export default {
           open: false
         }
       }
-    }
+    };
   },
+  components: { BaseSelect }
 }
 
 </script>
