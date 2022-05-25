@@ -37,6 +37,7 @@ logGoogle.addEventListener("click", async () => {
     .then((result) => {
       const user = result.user;
       console.log("Autenticado con google");
+      window.history.back();
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -48,8 +49,6 @@ logGoogle.addEventListener("click", async () => {
       console.log(credential);
       alert("Login invalido");
     });
-
-  window.history.back();
 });
 
 // Login con facebook
@@ -64,6 +63,7 @@ logFacebook.addEventListener("click", async () => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
+      window.history.back();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -75,8 +75,6 @@ logFacebook.addEventListener("click", async () => {
       console.log(email);
       console.log(credential);
     });
-
-  window.history.back();
 });
 
 // See password

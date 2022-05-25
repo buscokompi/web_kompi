@@ -7,10 +7,8 @@ const btnPass = document.querySelector(".btn");
 
 btnPass.addEventListener("click", () => {
   const email = document.querySelector(".input-email").value;
-  console.log("hola");
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      console.log("Email enviado");
       window.location.href = "../email-validated.html";
     })
     .catch((error) => {
@@ -18,5 +16,6 @@ btnPass.addEventListener("click", () => {
       const errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
+      alert("El email introducido no es correcto");
     });
 });

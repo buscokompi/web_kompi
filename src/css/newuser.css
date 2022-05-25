@@ -136,7 +136,7 @@ input:focus {
   font-weight: 600;
 }
 
-p {
+ p{
   font-family: var(--text-font);
   color: var(--black);
   font-size: 0.9rem;

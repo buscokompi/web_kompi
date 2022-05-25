@@ -12,6 +12,10 @@
 
 /* 1rem = 10px */
 
+textarea{
+  resize: none;
+}
+
 body {
   min-height: 100vh;
   box-sizing: border-box;
@@ -35,8 +39,8 @@ h1 {
   color: var(--black);
   font-family: var(--text-font);
   font-weight: 500;
-  font-size: 2.4rem;
-  margin: 6rem 1rem 1rem;
+  font-size: 1.5rem;
+  margin: 6rem 1rem 3rem;
   justify-self: left;
   width: 85%;
 }
@@ -77,10 +81,12 @@ a {
   font-size: 1em;
   font-weight: 600;
   transition: 0.5s ease-out;
+  border: 0px;
 }
 
 .button:hover {
   background: #cc9320;
+  border: 0px;
 }
 
 .topbar {
@@ -696,3 +702,4 @@ footer .copyright p {
     right: 19vw;
   }
 }
+

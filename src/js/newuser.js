@@ -55,7 +55,7 @@ btnContinue.addEventListener("click", async(e) => {
     phone: phoneUser
   });
 
-  window.location.href = "../index.html";
+  window.location.href = "../options-newuser.html";
 });
 
 function actualDate() {
