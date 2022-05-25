@@ -7,16 +7,10 @@ import { initFirebase } from '@/firebase/firebase.js'
 import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
+import { KompiStore } from "@/stores/KompiStore.js" // Almacen de pinia
 
 export default {
     name: "TemplatePage",
-    props: {
-        //Recibimos obligatoriamente el id del animal para buscarlo e la BBDD
-        AnimalId: {
-            type: String,
-            require: true
-        }
-    },
     data() {
         return {
             db: null,
@@ -25,6 +19,7 @@ export default {
             auth: null,
             animalInfo: null,
             arrayAnimales: [],
+            store: null,
 
             nombre_1: '',
             location_1: '',
@@ -77,12 +72,15 @@ export default {
             console.log(this.arrayAnimales);
         }
     },
+    created() {
+        this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
+    },
     mounted() {
         this.db = initFirebase()
         this.storage = getStorage(this.db)
         this.firestore = getFirestore(this.db)
         this.auth = getAuth()
-        getDoc(doc(this.firestore, `animals/DQQDuc8dfuRSdldHWt0f`))
+        getDoc(doc(this.firestore, `animals/${this.store.getId()}`))
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
@@ -93,31 +91,27 @@ export default {
                         .then(URL => {
                             this.rodent.Imagen1 = URL;
                         })
+                    // this.rodent.Ubicacion = `'${this.rodent.Ubicacion}'`
+                    console.log(this.rodent.Ubicacion);
                 }
             })
-        // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
-        const p = query(collection(this.firestore, 'animals'), where('Especie', '==', 'Perro'));
+        // Esto es para obtener cinco animales de la especie Perro para ponerlos en las tarjetas  de la ficha
+        const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`)); // 'Perro'
         getDocs(p)
             .then(element => {
-                // console.log(element)
+                console.log(element);
                 const aux = Math.floor(Math.random() * element.size);
                 for (let i = 0; i < 5; i++) {
                     this.arrayAnimales[i] = element._docs[(aux + i) % element.size].data();
                 }
 
-                // console.log(this.arrayAnimales[0])
-
-
                 this.nombre_1 = this.arrayAnimales[0].Nombre;
                 this.location_1 = this.arrayAnimales[0].Ubicacion;
                 getDownloadURL(ref(this.storage, this.arrayAnimales[0].Imagen1))
                     .then(e => {
-                        // console.log(e);
                         this.img_1 = e
-                        // console.log(this.img_1);
-                    })
 
-                // console.log(this.img_1);
+                    })
 
                 this.nombre_2 = this.arrayAnimales[1].Nombre;
                 this.location_2 = this.arrayAnimales[1].Ubicacion;
@@ -198,9 +192,9 @@ export default {
 
                 </div>
                 <div class="animal-data">
-                    <h3 v-show="false">Edad:</h3>
-                    <p v-show="false" class="age">{{ rodent.Edad }}</p>
-                    <div v-show="false" class="hr"></div>
+                    <h3>Edad:</h3>
+                    <p class="age">{{ rodent.Edad }}</p>
+                    <div class="hr"></div>
                     <h3>Raza:</h3>
                     <p class="breed">{{ rodent.Raza }}</p>
                     <div class="hr"></div>
@@ -250,11 +244,11 @@ export default {
 
                 <div class="group">
                     <!-- :img="arrayAnimales[0].Imagen1" -->
-                    <AnimalCard :name="nombre_1" :location="location_1" :img="img_1" />
-                    <AnimalCard :name="nombre_2" :location="location_2" :img="img_2" />
-                    <AnimalCard :name="nombre_3" :location="location_3" :img="img_3" />
-                    <AnimalCard :name="nombre_4" :location="location_4" :img="img_4" />
-                    <AnimalCard :name="nombre_5" :location="location_5" :img="img_5" />
+                    <AnimalCard :name="nombre_1" :location="location_1" :image="img_1" />
+                    <AnimalCard :name="nombre_2" :location="location_2" :image="img_2" />
+                    <AnimalCard :name="nombre_3" :location="location_3" :image="img_3" />
+                    <AnimalCard :name="nombre_4" :location="location_4" :image="img_4" />
+                    <AnimalCard :name="nombre_5" :location="location_5" :image="img_5" />
 
                     <!-- <AnimalCard :name="arrayAnimales[1].Nombre" :location="arrayAnimales[1].Ubicacion" />
                     <AnimalCard :name="arrayAnimales[2].Nombre" :location="arrayAnimales[2].Ubicacion" />

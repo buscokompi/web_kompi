@@ -147,6 +147,9 @@ nav {
 
 .view-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /*Solucion provisional*/
     /* position: absolute;
   top: 5rem;

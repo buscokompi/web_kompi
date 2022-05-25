@@ -2,9 +2,9 @@
     <main class="home">
         <h1>Mi perfil</h1>
         <div class="sections">
-            <RouterLink to="/TemplatePage">Sobre mí</RouterLink>
-            <RouterLink to="/">Perfil adoptante</RouterLink>
-            <RouterLink to="/">Perfil animal</RouterLink>
+            <RouterLink to="/NewAnimalForm/saludo">Sobre mí</RouterLink>
+            <RouterLink to="/NewAnimalForm/otroSaludo">Perfil adoptante</RouterLink>
+            <RouterLink to="/NewAnimalForm/formularioEjemplo">Perfil animal</RouterLink>
             <RouterLink to="/">Favoritos</RouterLink>
             <RouterLink to="/">Ajustes</RouterLink>
             <hr class="hr">
@@ -71,5 +71,13 @@ export default {
 
 .sections a:hover {
     cursor: pointer;
+}
+
+.profile-content {
+    width: 52vw;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 </style>
