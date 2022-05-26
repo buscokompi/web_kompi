@@ -25,7 +25,7 @@
                 </li>
                 <li v-show="sessionLog" class="display">
                     <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
-                    <p class="profile-name" @click="info">Perfil</p>
+                    <p class="profile-name">Perfil</p>
                     <ul class="profile">
                         <li>
                             <RouterLink class="link" to="/">Mi perfil</RouterLink>
@@ -89,7 +89,6 @@
 <script>
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import console from "console";
 const firebaseConfig = {
     apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
     authDomain: "web-kompi.firebaseapp.com",
@@ -117,9 +116,6 @@ export default {
         this.checkScreen();
     },
     methods: {
-        info() {
-            console.log("Hola pepe");
-        },
 
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
@@ -154,24 +150,24 @@ export default {
             this.mobileNav = false;
             return;
         },
-        // checkSession() {
-        //     console.log("usuario autenticado")
-        //     // const auth = getAuth();
-        //     // auth.onAuthStateChanged(function (user) {
-        //     //     if (user) {
-        //     //         this.sessionLog = true
-        //     //         console.log("usuario autenticado")
-        //     //     } else {
-        //     //         this.sessionLog = false
-        //     //         console.log("usuario no autenticado")
-        //     //     }
-        //     // });
-        // },
+        checkSession() {
+            const auth = getAuth();
+            auth.onAuthStateChanged((user) => {
+                console.log(user)
+                if (user) {
+                    this.sessionLog = true
+                    console.log("usuario autenticado")
+                } else {
+                    this.sessionLog = false
+                    console.log("usuario no autenticado")
+                }
+            })
+        },
     },
     mounted() {
-        // window.addEventListener("scroll", this.updateScroll);
-        // this.firebaseapp = initializeApp(firebaseConfig);
-        // this.checkSession();
+        window.addEventListener("scroll", this.updateScroll);
+        this.firebaseapp = initializeApp(firebaseConfig);
+        this.checkSession();
     },
 }
 </script>
