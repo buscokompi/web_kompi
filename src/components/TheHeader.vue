@@ -20,8 +20,23 @@
                     </RouterLink>
                 </li>
                 <li class="vertical-line"></li>
-                <li>
+                <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
+                </li>
+                <li v-show="sessionLog" class="display">
+                    <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
+                    <p class="profile-name" @click="info">Perfil</p>
+                    <ul class="profile">
+                        <li>
+                            <RouterLink class="link" to="/">Mi perfil</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/">Ajustes</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link signout" to="/">Cerrar sesión</RouterLink>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="burger">
@@ -40,7 +55,6 @@
                             <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
                         </li>
                     </ul>
-                    <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
                     <ul class="icons">
                         <li>
                             <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
@@ -73,6 +87,18 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import console from "console";
+const firebaseConfig = {
+    apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+    authDomain: "web-kompi.firebaseapp.com",
+    projectId: "web-kompi",
+    storageBucket: "web-kompi.appspot.com",
+    messagingSenderId: "556298514839",
+    appId: "1:556298514839:web:92e508e18c5685e99694d2",
+    measurementId: "G-93MGP34YQN"
+};
 export default {
     name: "TheHeader",
     data() {
@@ -81,18 +107,26 @@ export default {
             desktop: false,
             mobileNav: null,
             windowWidth: null,
+            auth: "",
+            firebaseapp: "",
+            sessionLog: true,
         };
     },
     created() {
         window.addEventListener("resize", this.checkScreen);
         this.checkScreen();
     },
-    mounter() {
-        window.addEventListener("scroll", this.updateScroll);
-    },
     methods: {
+        info() {
+            console.log("Hola pepe");
+        },
+
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
+
+        },
+        toggleDisplay() {
+            this.sessionLog = !this.sessionLog;
 
         },
 
@@ -119,9 +153,27 @@ export default {
             this.desktop = false;
             this.mobileNav = false;
             return;
-        }
+        },
+        // checkSession() {
+        //     console.log("usuario autenticado")
+        //     // const auth = getAuth();
+        //     // auth.onAuthStateChanged(function (user) {
+        //     //     if (user) {
+        //     //         this.sessionLog = true
+        //     //         console.log("usuario autenticado")
+        //     //     } else {
+        //     //         this.sessionLog = false
+        //     //         console.log("usuario no autenticado")
+        //     //     }
+        //     // });
+        // },
     },
-};
+    mounted() {
+        // window.addEventListener("scroll", this.updateScroll);
+        // this.firebaseapp = initializeApp(firebaseConfig);
+        // this.checkSession();
+    },
+}
 </script>
 
 <style scoped>
@@ -145,24 +197,10 @@ nav {
     align-items: center;
 }
 
-ul,
-.link {
+ul {
     list-style: none;
     text-decoration: none;
-    color: var(--black);
-    font-family: var(--text-font);
-    transition: color 0.5s;
-
 }
-
-.link {
-    cursor: pointer;
-}
-
-.link:hover {
-    color: var(--orange)
-}
-
 
 .logo {
     width: 7rem;
@@ -240,11 +278,7 @@ ul,
 }
 
 
-.list .link {
-    font-size: 2rem;
-    font-weight: 700;
-    width: fit-content;
-}
+
 
 
 
@@ -301,10 +335,6 @@ ul,
     right: 5rem;
 }
 
-.desktop .link {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
 
 .desktop img {
     width: 1rem;
@@ -318,5 +348,64 @@ ul,
     width: 0.1rem;
     background-color: var(--black);
     cursor: auto;
+}
+
+.display {
+    grid-auto-flow: column;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.display .profile {
+    background: var(--orange);
+    position: absolute;
+    top: 4rem;
+    right: -4.4rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem 2.5rem;
+    transition: 0.3s linear;
+    line-height: 2rem;
+}
+
+.desktop {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    align-items: center;
+    right: 8rem;
+}
+
+
+.desktop img {
+    width: 1rem;
+    transition: 0.1s;
+}
+
+.desktop .display img {
+    width: 1.6rem;
+}
+
+.desktop a:hover,
+.desktop .display p:hover {
+    color: var(--orange);
+}
+
+.desktop .profile a:hover {
+    color: var(--green);
+}
+
+a,
+.display li,
+.display p,
+.link {
+    color: var(--black);
+    font-family: var(--text-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.5s;
+    cursor: pointer;
 }
 </style>

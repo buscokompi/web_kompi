@@ -79,18 +79,18 @@
             </p>
         </div>
     </div>
-    <FooterSection />
+    <TheFooter />
 
 </template>
 
 <script>
 import TheHeader from "../components/TheHeader.vue"
-import FooterSection from "../components/FooterSection.vue"
+import TheFooter from "../components/TheFooter.vue"
 export default {
     name: "PrivacyPolicy",
     components: {
         TheHeader,
-        FooterSection
+        TheFooter
     }
 }
 </script>
