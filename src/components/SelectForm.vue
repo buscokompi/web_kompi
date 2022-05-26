@@ -13,7 +13,7 @@ export default {
 </template>
 
 
-<style>
+<style scoped>
 .question {
     width: fit-content;
     font-size: 1rem;

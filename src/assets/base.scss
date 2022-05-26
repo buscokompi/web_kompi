@@ -21,7 +21,8 @@ $swal2-button-margin: 0 0.5rem;
 //  Global Component Variables
 $vs-component-bg: none !default;
 $vs-component-line-height: 1.4 !default;
-$vs-component-placeholder-color: inherit !default;
+$vs-component-placeholder-color: var(--black) !default;
+$vs-component-width: fit-content;
 
 //  Active State
 $vs-state-active-bg: var(--orange) !default;
@@ -48,6 +49,7 @@ $vs-controls-color: var(--black) !default;
 $vs-controls-size: 1 !default;
 $vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
 
+
 //  Selected
 $vs-selected-bg: var(--green) !default;
 $vs-selected-border-color: $vs-border-color  !default;
@@ -64,6 +66,10 @@ $vs-dropdown-bg: var(--white);
 .vs--searchable .vs__dropdown-toggle,
 input {
     cursor: pointer !important;
+}
+
+.vs__dropdown-toggle{
+    width: 15rem;
 }
 
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';
