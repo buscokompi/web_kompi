@@ -21,8 +21,7 @@
           <label for="toggle-password"></label>
         </div>
         <p class="forgot-pass">
-          <a href="./PrivacyPolicy">Has olvidado tu contraseña?
-          </a>
+          <RouterLink class="link" to="/ForgotPassword">¿Has olvidado tu contraseña?</RouterLink>
         </p>
         <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
 

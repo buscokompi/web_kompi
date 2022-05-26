@@ -21,7 +21,7 @@
                 </li>
                 <li class="vertical-line"></li>
                 <li>
-                    <RouterLink class="link" to="/TemplatePageReptile">Iniciar sesión</RouterLink>
+                    <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
                 </li>
             </ul>
             <div class="burger">

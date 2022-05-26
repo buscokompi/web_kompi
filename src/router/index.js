@@ -57,6 +57,16 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path: "/Login",
+      name: "Login",
+      component: () => import("../views/login.vue")
+    },
+    {
+      path: "/ForgotPassword",
+      name: "ForgotPassword",
+      component: () => import("../views/ForgotPassword.vue")
+    },
   ]
 });
 
