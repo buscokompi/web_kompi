@@ -39,49 +39,41 @@ export default {
         const answersForm = [
             {
                 text1: "Me gustaría adoptar a",
-                text2: "",
                 options: ['no tengo preferencia', 'un perro', 'un gato', 'un ave', 'un roedor', 'un reptil'],
                 id: 1
             },
             {
                 text1: "Me gustaría adoptar a",
-                text2: "",
                 options: ['no tengo preferencia', 'una hembra', 'un macho'],
                 id: 2
             },
             {
                 text1: "Mi mascota ideal es",
-                text2: "",
                 options: ['no tengo preferencia', 'cachorro', 'joven', 'adulto', 'anciano'],
                 id: 3
             },
             {
                 text1: "Prefiero una mascota que sea",
-                text2: "",
                 options: ['no tengo preferencia', 'pequeña', 'mediana', 'grande', 'gigante'],
                 id: 4
             },
             {
                 text1: "Me gustaría que el nivel de actividad de la mascota sea",
-                text2: "",
                 options: ['no tengo preferencia', 'muy activo', 'activo', 'poco activo'],
                 id: 5
             },
             {
                 text1: "Mi vivienda es",
-                text2: "",
                 options: ['un piso', 'una casa', 'una casa con jardín'],
                 id: 6
             },
             {
                 text1: "Mi mascota deberá estar/tener",
-                text2: "",
                 options: ['no tengo preferencia', 'adiestrada', 'sus vacunas al día', 'microchip', 'todas las anteriores'],
                 id: 7
             },
             {
                 text1: "¿Adoptaría a una mascota con necesidades especiales?",
-                text2: "",
                 options: ['Estoy dispuesto/a', 'No estoy dispuesto/a'],
                 id: 8
             },
@@ -93,37 +85,31 @@ export default {
             // },
             {
                 text1: "Actualmente tengo",
-                text2: "",
                 options: ['ninguna mascota', 'un perro', 'un gato', 'un ave', 'un roedor', 'otro animal doméstico', 'varios'],
                 id: 10
             },
             {
                 text1: "Mi unidad familiar está compuesta por",
-                text2: "",
                 options: ['solo yo', 'mi pareja', 'mi pareja y mis hijos'],
                 id: 11
             },
             {
                 text1: "Mis hijos son",
-                text2: "",
                 options: ['no tengo hijos', 'menores de 10', 'mayores de 10', 'menores y mayores'],
                 id: 12
             },
             {
                 text1: "¿En mi contrato de arrendamiento hay restricción de animales?",
-                text2: "",
                 options: ['no hay restricciones', 'hay restricciones', 'tengo una propiedad'],
                 id: 13
             },
             {
                 text1: "¿Cuánto tiempo pasará el animal solo en casa?",
-                text2: "",
                 options: ['de 0 a 4 horas', 'de 5 a 8 horas', 'de 9 a 12 horas', '+12 horas'],
                 id: 14
             },
             {
                 text1: "¿Si me voy de vacaciones tengo quien cuide del animal?",
-                text2: "",
                 options: ['Sí', 'No'],
                 id: 15
             }]
@@ -270,7 +256,7 @@ export default {
                         <li>Proporcionarles alimentación y agua en consonancia al tipo de animal.</li>
                         <li>Responsabilizarse de los daños que ocasionen.</li>
                     </ul>
-                    <p>¿Está de acuerdo usted y puede cumplir con dichas obligaciones?</p>
+                    <p class="question-checkbox">¿Está de acuerdo usted y puede cumplir con dichas obligaciones?</p>
                     <label class="checkbox"><input type="checkbox" value="checkbox"> Estoy de acuerdo</label>
                 </div>
             </div>
@@ -303,6 +289,11 @@ img {
     text-align: center;
 }
 
+.questions {
+    display: flex;
+    flex-direction: column;
+}
+
 h1 {
     font-family: var(--text-font);
     font-size: 1.8rem;
@@ -325,26 +316,26 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     gap: 0.5rem;
 
 }
 
 .rules {
-    margin-top: 3rem;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
+    margin-top: 3rem;
+    margin-left: 1rem;
 }
 
 .rules p,
 ul {
-    font-family: var(--text-font);
     list-style: none;
-    font-size: 1rem;
-    line-height: 1.2rem;
-    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
 }
 
 ul {
@@ -356,7 +347,13 @@ li {
     margin-bottom: 0.8rem;
 }
 
+.question-checkbox {
+    font-weight: 600;
+}
+
 .checkbox {
+    font-size: 0.9rem;
+    font-weight: 600;
     display: flex;
     align-self: start;
 
@@ -367,10 +364,73 @@ li {
     margin: 4rem 0 5rem;
 }
 
+@media screen and (min-width: 767px) {
+    .questions {
+        display: flex;
 
-/* img {
-    width: 7rem;
-    margin-left: 7rem;
-} */
+        align-items: center;
+
+    }
+}
+
+@media screen and (min-width: 1170px) {
+
+    img {
+        width: 7rem;
+        margin-left: 9.5rem;
+    }
+
+    section {
+        align-items: flex-start;
+    }
+
+    .questions {
+        display: flex;
+        align-items: flex-start;
+
+    }
+
+    .form-user-container {
+        text-align: left;
+    }
+
+    h1 {
+        text-align: left;
+        margin: 2rem 0 1rem;
+    }
+
+    .subtitle {
+        margin-bottom: 2.5rem;
+    }
+
+    br {
+        display: none;
+    }
+
+    p {
+        flex-direction: row;
+    }
+
+    li {
+        margin-bottom: 0.4rem;
+    }
+
+    .rules {
+        max-width: 60rem;
+        margin: 2rem 0;
+    }
+
+    .button {
+        margin: 2rem 0 4rem;
+
+    }
+
+}
+
+@media screen and (min-width: 1300px) {
+    .form-user-container {
+        margin-left: 20rem;
+    }
+}
 </style>
 
