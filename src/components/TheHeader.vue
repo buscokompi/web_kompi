@@ -34,7 +34,7 @@
                             <RouterLink class="link" to="/">Ajustes</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link signout" to="/">Cerrar sesión</RouterLink>
+                            <RouterLink class="link" to="/" @click="closeSession">Cerrar sesión</RouterLink>
                         </li>
                     </ul>
                 </li>
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
     apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -128,6 +128,17 @@ export default {
 
         closeNav() {
             this.mobileNav = false;
+        },
+        closeSession() {
+            const auth = getAuth();
+            auth.then(() => {
+                console.log("Usuario deslogueado");
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
         },
 
         updateScroll() {
