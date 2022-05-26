@@ -9,11 +9,11 @@
       <p class="question1">¿Qué es lo que quieres hacer?</p>
     </div>
     <div class="card-options">
-      <RouterLink to="/FormUser">
+      <RouterLink class="adopt" to="/FormUser">
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink to="/NewAnimalForm">
+      <RouterLink class="give-in-adoption" to="/NewAnimalForm">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
