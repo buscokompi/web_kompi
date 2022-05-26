@@ -9,14 +9,14 @@
       <p class="question1">¿Qué es lo que quieres hacer?</p>
     </div>
     <div class="card-options">
-      <a href="./form-user.html" class="adopt">
+      <RouterLink to="/FormUser">
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
-      </a>
-      <a href="./formulario.html" class="give-in-adoption">
+      </RouterLink>
+      <RouterLink to="/NewAnimalForm">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
-      </a>
+      </RouterLink>
     </div>
 
   </div>

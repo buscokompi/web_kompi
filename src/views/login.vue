@@ -4,12 +4,10 @@
 
     <div class="container-login">
 
-      <a to="../index.html">
-        <RouterLink to="/Aboutme">
-          <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
-        </RouterLink>
-        <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
-      </a>
+      <RouterLink to="/">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+      </RouterLink>
+      <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       <!-- <DarkMode /> -->
       <div class="card-login">
         <div class="login">
@@ -33,8 +31,8 @@
           </span>
         </div>
       </div>
-      <p class="register">¿No tienes una cuenta? <RouterLink class="link-signin" to="/OptionsNewUser">Regístrate
-        </RouterLink>
+      <p class="register">¿No tienes una cuenta?
+        <RouterLink class="link-signin" to="/Signin">Regístrate</RouterLink>
       </p>
     </div>
   </div>

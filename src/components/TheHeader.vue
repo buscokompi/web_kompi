@@ -1,9 +1,9 @@
 <template>
     <header :class="{ 'scrolled-nav': scrolledNav }">
         <nav>
-            <a href="#">
+            <RouterLink to="/">
                 <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
-            </a>
+            </RouterLink>
             <ul v-show="desktop" class="desktop">
                 <li>
                     <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
@@ -12,7 +12,7 @@
                     <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
+                    <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"

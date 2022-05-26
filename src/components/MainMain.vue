@@ -4,17 +4,17 @@
     <h1>Mi raza favorita es: <br>Ad<img src="../assets/icons/icono_logo_blanco.svg" alt="logo letra 'o'" width="36"
         height="49">ptado</h1>
     <p>Kompi el buscador de animales más<br> grande de la red de España</p>
-    <BaseButton url="../views/CategoryPage.vue" text="Comenzar búsqueda"/>
+    <BaseButton url="../views/FilterAnimals" text="Comenzar búsqueda" />
   </main>
 
 </template>
 
 <script>
 import BaseButton from './BaseButton.vue'
-    export default {
+export default {
   components: { BaseButton },
 
-    }
+}
 </script>
 
 <style scoped>
@@ -22,11 +22,9 @@ import BaseButton from './BaseButton.vue'
   width: 100%;
   height: 100vh;
   background:
-    linear-gradient(
-      0deg,
+    linear-gradient(0deg,
       rgb(0 0 0 / 40%),
-      rgb(0 0 0 / 40%)
-    ),
+      rgb(0 0 0 / 40%)),
     url("../assets/images/fondo_web.svg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +35,8 @@ import BaseButton from './BaseButton.vue'
   flex-direction: column;
   text-align: center;
 }
-h1{
+
+h1 {
   color: var(--white);
   margin: 0 1rem;
 }
@@ -85,11 +84,12 @@ h1{
 
 
   .home h1 img {
-      width: 2rem;
+    width: 2rem;
   }
-      .home p {
-        font-size: 1.25rem;
-      }
+
+  .home p {
+    font-size: 1.25rem;
+  }
 
 }
 
@@ -99,7 +99,7 @@ h1{
   }
 
   .home h1 img {
-      width: 2.25rem;
+    width: 2.25rem;
     margin-bottom: -0.2rem;
   }
 
@@ -108,5 +108,4 @@ h1{
     font-size: 1.35rem;
   }
 }
-
 </style>

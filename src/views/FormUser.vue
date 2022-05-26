@@ -246,9 +246,9 @@ export default {
 
 <template>
     <section>
-        <a href="./index.html">
+        <RouterLink to="/">
             <img src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
-        </a>
+        </RouterLink>
         <div class="form-user-container">
             <h1>¡Encuentra a <br> tu mascota ideal!</h1>
             <p class="subtitle">Para ello, cuéntanos <br> un poco más sobre ti</p>

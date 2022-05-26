@@ -1,5 +1,5 @@
 <template>
-    <TopBar />
+    <TheHeader />
     <div class="container-all">
         <div class="main">
             <div class="container">
@@ -34,17 +34,18 @@
             </div>
         </div>
 
-        <FooterSection />
+        <TheFooter />
     </div>
 </template>
 
 <script>
-import TopBar from "../components/TopBar.vue"
-import FooterSection from "../components/FooterSection.vue"
+import TheHeader from "../components/TheHeader.vue"
+import TheFooter from "../components/TheFooter.vue"
 export default {
     name: "Aboutme",
     components: {
-        TopBar, FooterSection
+        TheHeader,
+        TheFooter
     }
 }
 </script>
@@ -64,7 +65,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../assets/images/Sobrenosotros.png);
+    background-image: url("../assets/images/Sobrenosotros.png");
     background-size: cover;
     background-position: center;
     width: 100vw;
