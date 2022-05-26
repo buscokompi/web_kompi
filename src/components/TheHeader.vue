@@ -6,7 +6,7 @@
             </RouterLink>
             <ul v-show="desktop" class="desktop">
                 <li>
-                    <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
+                    <RouterLink class="link" to="/TemplatePageDog">Adopción</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
