@@ -19,14 +19,14 @@ $swal2-cancel-button-color: var(--white);
 $swal2-button-margin: 0 0.5rem;
 
 //  Global Component Variables
-$vs-component-bg: none !default;
+$vs-component-bg: var(--white) !default;
 $vs-component-line-height: 1.4 !default;
-$vs-component-placeholder-color: var(--black) !default;
-$vs-component-width: fit-content;
+$vs-component-placeholder-color: none !default;
+
 
 //  Active State
 $vs-state-active-bg: var(--orange) !default;
-$vs-state-active-color: var(--green)  !default;
+$vs-state-active-color: var(--black)  !important;
 
 //  Deselect State
 $vs-state-deselect-bg: #fb5858 !default;
@@ -42,10 +42,10 @@ $vs-state-disabled-cursor: not-allowed !default;
 $vs-border-width: 1px !default;
 $vs-border-style: solid !default;
 $vs-border-radius: 1rem !default;
-$vs-border-color: map_get($vs-colors, 'lightest') !default;
+$vs-border-color: var(--grey) !default;
 
 //  Component Controls: Clear, Open Indicator
-$vs-controls-color: var(--black) !default;
+$vs-controls-color: var(--green) !default;
 $vs-controls-size: 1 !default;
 $vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
 
@@ -70,6 +70,28 @@ input {
 
 .vs__dropdown-toggle{
     width: 15rem;
+    border: 0.15rem solid var(--green) !important;    
+}
+
+.vs__dropdown-menu{
+    background-color: var(--green) !important;
+
+}
+
+.vs__dropdown-option{
+   padding: 1rem !important; 
+   color: white !important;
+
+}
+
+.v-select .vs__selected-options {
+    flex-wrap: nowrap;
+    padding: 0.2rem;
+    
+}
+
+.vs__selected{
+    color: var(--green) !important;
 }
 
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';

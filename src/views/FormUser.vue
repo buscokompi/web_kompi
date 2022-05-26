@@ -3,10 +3,11 @@ import SelectForm from '../components/SelectForm.vue';
 import { getFirestore, collection, getDocs, query, where, addDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import BaseButton from '../components/BaseButton.vue';
 
 export default {
     name: 'FormUser',
-    components: { SelectForm },
+    components: { SelectForm, BaseButton },
     setup() {
 
         const firebaseConfig = {
@@ -79,21 +80,21 @@ export default {
                 id: 7
             },
             {
-                text1: "Estoy",
-                text2: "a adoptar a una mascota con necesidades especiales",
-                options: ['dispuesto/a', 'no dispuesto/a'],
+                text1: "¿Adoptaría a una mascota con necesidades especiales?",
+                text2: "",
+                options: ['Estoy dispuesto/a', 'No estoy dispuesto/a'],
                 id: 8
             },
-            {
-                text1: "",
-                text2: "cuidador de un animal",
-                options: ['Es la primera vez que soy', 'Actualmente soy', 'Anteriormente fui'],
-                id: 9
-            },
+            // {
+            //     text1: "",
+            //     text2: "cuidador de un animal",
+            //     options: ['Es la primera vez que soy', 'Actualmente soy', 'Anteriormente fui'],
+            //     id: 9
+            // },
             {
                 text1: "Actualmente tengo",
                 text2: "",
-                options: ['ninguna mascota', 'un perro', 'un gato', 'un ave', 'un roedor', 'otro animal doméstico', 'varios de los mencionados anteriormente'],
+                options: ['ninguna mascota', 'un perro', 'un gato', 'un ave', 'un roedor', 'otro animal doméstico', 'varios'],
                 id: 10
             },
             {
@@ -109,21 +110,21 @@ export default {
                 id: 12
             },
             {
-                text1: "En mi casa",
-                text2: "en el contrato de arrendamiento",
-                options: ['no hay restricciones', 'hay restricciones'],
+                text1: "¿En mi contrato de arrendamiento hay restricción de animales?",
+                text2: "",
+                options: ['no hay restricciones', 'hay restricciones', 'tengo una propiedad'],
                 id: 13
             },
             {
-                text1: "La mascota pasará",
+                text1: "¿Cuánto tiempo pasará el animal solo en casa?",
                 text2: "",
-                options: ['de 2 a 5 horas sola en casa', 'de 5 a 8 horas sola en casa', 'de 8 a 12 horas sola en casa'],
+                options: ['de 0 a 4 horas', 'de 5 a 8 horas', 'de 9 a 12 horas', '+12 horas'],
                 id: 14
             },
             {
-                text1: "Si me voy de vacaciones",
+                text1: "¿Si me voy de vacaciones tengo quien cuide del animal?",
                 text2: "",
-                options: ['tengo en mi entorno a alguien que cuide del animal', 'no tengo a nadie que cuide del animal'],
+                options: ['Sí', 'No'],
                 id: 15
             }]
 
@@ -273,7 +274,7 @@ export default {
                     <label class="checkbox"><input type="checkbox" value="checkbox"> Estoy de acuerdo</label>
                 </div>
             </div>
-            <button class="btn-ver-animales">Iniciar búsqueda</button>
+            <BaseButton class="button" url="" text="Iniciar búsqueda" />
         </div>
     </section>
 </template>
@@ -282,19 +283,21 @@ export default {
 <style scoped>
 section {
     background-color: var(--light-grey-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
     width: 7rem;
-    margin-top: 2rem;
-    margin-left: 3rem;
+    margin-top: 3rem;
+
 }
 
 .form-user-container {
     width: 75vw;
-    display: flex;
-    flex-direction: column;
-    margin: 3.5rem auto;
+    margin: 2.5rem auto;
     font-family: var(--text-font);
     color: var(--black);
     text-align: center;
@@ -318,48 +321,52 @@ h1 {
 p {
     font-size: 1rem;
     font-weight: 600;
-    line-height: 2rem;
-
-}
-
-.question {
-    margin-bottom: 1rem;
+    line-height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
 
 }
 
 .rules {
     margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
 }
 
 .rules p,
-ul,
-.checkbox {
+ul {
     font-family: var(--text-font);
     list-style: none;
     font-size: 1rem;
     line-height: 1.2rem;
-    margin-top: 1rem;
     text-align: left;
 }
 
-button {
-    background-color: var(--orange);
-    padding: 0.8rem 2rem;
-    border-style: none;
-    border-radius: 2rem;
-    font-family: var(--text-font);
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background-color 0.7s ease;
-    display: flex;
-    margin-top: 3rem;
-    margin-bottom: 6rem;
+ul {
+    padding: 0;
+    line-height: 1.3rem;
 }
 
-button:hover {
-    background-color: #cc9320;
-    cursor: pointer;
+li {
+    margin-bottom: 0.8rem;
 }
+
+.checkbox {
+    display: flex;
+    align-self: start;
+
+}
+
+.button {
+    width: fit-content;
+    margin: 4rem 0 5rem;
+}
+
 
 /* img {
     width: 7rem;
