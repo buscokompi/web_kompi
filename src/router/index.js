@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import("../views/FilterAnimals.vue")
     },
     {
+      path: "/FormUser",
+      name: "FormUser",
+      component: () => import("../views/FormUser.vue")
+    },
+    {
       path: "/TemplatePageDog",
       name: "TemplateDog",
       component: () => import("../views/TemplateDogPage.vue")
