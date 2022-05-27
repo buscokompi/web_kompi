@@ -2,30 +2,23 @@
   <section v-if="desktop" class=" category">
 
     <div class="icon">
-      <div class="shadow">
-        <a href='./filter-animals.html?category="Perro"'> <img src="../assets/icons/icono_perro.svg" alt="perros"></a>
-      </div>
-      <div class="shadow">
-        <a href='./filter-animals.html?category="Gato"'><img src="../assets/icons/icono_gato.svg" alt="gatos"></a>
-      </div>
-      <div class="shadow">
-        <a href='./filter-animals.html?category="Ave"'> <img src="../assets/icons/icono_pajaro.svg" alt="pajaros"></a>
-      </div>
-      <div class="shadow">
-        <a href='./filter-animals.html?category="Roedor"'> <img src="../assets/icons/icono_roedor.svg"
-            alt="roedores"></a>
-      </div>
-      <div class="shadow">
-        <a href='./filter-animals.html?category="Reptil"'><img src="../assets/icons/icono_reptil.svg"
-            alt="reptiles"></a>
-      </div>
+      <CategoryButton image="/src/assets/icons/icono_perro.svg" specie="Perro" />
+      <CategoryButton image="/src/assets/icons/icono_gato.svg" specie="Gato" />
+      <CategoryButton image="/src/assets/icons/icono_pajaro.svg" specie="Ave" />
+      <CategoryButton image="/src/assets/icons/icono_roedor.svg" specie="Roedor" />
+      <CategoryButton image="/src/assets/icons/icono_reptil.svg" specie="Reptil" />
     </div>
 
   </section>
 </template>
 
 <script>
+import CategoryButton from './CategoryButton.vue';
 export default {
+  name: "MainCategory",
+  components: {
+    CategoryButton
+  },
   data() {
     return {
       desktop: false,

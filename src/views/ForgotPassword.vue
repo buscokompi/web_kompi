@@ -1,8 +1,8 @@
 <template>
   <div class="container-login">
-    <a href="./index.html">
+    <RouterLink to="/">
       <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
-    </a>
+    </RouterLink>
     <div class="text">
       <p>Indica tu e-mail y te enviaremos un enlace para restablecer la contraseña</p>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <TopBar />
+    <TheHeader />
     <div class="main">
         <div class="container">
             <h1>Política de Privacidad
@@ -79,17 +79,18 @@
             </p>
         </div>
     </div>
-    <FooterSection />
+    <TheFooter />
 
 </template>
 
 <script>
-import TopBar from "../components/TopBar.vue"
-import FooterSection from "../components/FooterSection.vue"
+import TheHeader from "../components/TheHeader.vue"
+import TheFooter from "../components/TheFooter.vue"
 export default {
     name: "PrivacyPolicy",
     components: {
-        TopBar, FooterSection
+        TheHeader,
+        TheFooter
     }
 }
 </script>

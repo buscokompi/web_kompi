@@ -7,7 +7,7 @@
       <h3 v-if="item.open"></h3>
       <p v-html="item.content" v-if="item.open"></p>
     </div>
-    <v-select :clearable="false" :options="['Canada', 'United States', 'hola', 'adios']" :full-width="true" />
+    <v-select options="countries" />
   </section>
 </template>
 

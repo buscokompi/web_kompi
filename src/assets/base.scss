@@ -72,7 +72,29 @@ input {
 }
 
 .vs__dropdown-toggle {
-    width: 10rem;
+    width: 15rem;
+    border: 0.15rem solid var(--green) !important;
+}
+
+.vs__dropdown-menu {
+    background-color: var(--green) !important;
+
+}
+
+.vs__dropdown-option {
+    padding: 1rem !important;
+    color: white !important;
+
+}
+
+.v-select .vs__selected-options {
+    flex-wrap: nowrap;
+    padding: 0.2rem;
+
+}
+
+.vs__selected {
+    color: var(--green) !important;
 }
 
 @import '../../node_modules/sweetalert2/src/sweetalert2.scss';
