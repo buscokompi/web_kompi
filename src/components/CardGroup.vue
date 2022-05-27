@@ -1,6 +1,7 @@
 <template>
   <div class="group">
-    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
+    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+      :specie="e.specie">
     </CardAnimal>
     <CardExtra />
   </div>
@@ -64,6 +65,7 @@ export default {
               urlfb: doc.data().Imagen1,
               name: doc.data().Nombre,
               race: doc.data().Raza,
+              specie: doc.data().Especie,
               location: doc.data().Ubicacion
             };
             this.animalsArr.push(animal);

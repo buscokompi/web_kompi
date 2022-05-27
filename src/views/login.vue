@@ -45,6 +45,7 @@ import { initializeApp } from "firebase/app";
 import DarkMode from "../components/DarkMode.vue";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
+import { KompiStore } from "../stores/KompiStore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -69,12 +70,16 @@ export default {
       fieldType: "password",
       modeStorage: ModeStorage(),
       darkMode: false,
-      lightMode: false
+      lightMode: false,
+
+      store: ""
     };
   },
   mounted() {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.auth = getAuth();
+
+    this.store = KompiStore();
   },
 
   watch: {
@@ -93,7 +98,8 @@ export default {
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
         .then((userCredential) => {
-          console.log("El usuario existe");
+          this.store.setEmail(this.email);
+          this.$router.push("/");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -109,7 +115,8 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.store.setEmail(user.email);
+          this.$router.push("/");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;

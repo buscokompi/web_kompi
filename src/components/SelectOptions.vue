@@ -1,21 +1,21 @@
 <template>
   <select>
     <option v-for="e in options" :key="e">{{ e }}</option>
-    <!--multiple-->
   </select>
 </template>
 
 <script>
+import { KompiStore } from '../stores/KompiStore'
 export default {
   name: "SelectOptions",
   props: {
     options: Array,
-    selected: String
+    selected: String,
   },
   data() {
     return {
       store: "",
-      def: this.options[1]
+      specie: "",
     }
   },
 }

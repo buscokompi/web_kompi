@@ -24,7 +24,7 @@
       <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
 
       <p>Especie</p>
-      <SelectOptions :options="specie" :selected="selSpecie" @change="onChange($event, 'Especie')" />
+      <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
 
       <p>Raza</p>
       <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
@@ -123,20 +123,28 @@ export default {
       specieStore: ""
     }
   },
-
-  //Al cargar la pagina, crea todas las card de los animales
   mounted() {
+    //Inicializacion de las variables de firebase y pinia
     this.firebaseapp = initializeApp(firebaseConfig);
     this.fs = getFirestore();
     this.storage = getStorage(this.firebaseapp);
-
     this.store = KompiStore();
-    this.selSpecie = { field: "Especie", value: this.store.getSpecie(), query: where("Especie", "==", this.store.getSpecie()) };
-    this.store.setSpecie("");
 
-    this.readAnimals();
+    this.getAnimals();
   },
   methods: {
+
+    /*Si hay una especie preseleccionada en pinia, lee los animales de esa especie,
+    si no, lee todos los animales de la base de datos*/
+    getAnimals() {
+      if (this.store.getSpecie()) {
+        this.selSpecie = { field: "Especie", value: this.store.getSpecie(), query: where("Especie", "==", this.store.getSpecie()) };
+        this.getFilters(this.checkFilters());
+        this.store.setSpecie("");
+      } else {
+        this.readAnimals();
+      }
+    },
 
     /* Llama a la base de datos de firestore y storage, coge todos los animales
     y sus imagenes y los muestra por pantalla*/
