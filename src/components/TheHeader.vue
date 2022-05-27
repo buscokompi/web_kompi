@@ -6,8 +6,16 @@
             </RouterLink>
             <ul v-show="desktop" class="desktop">
                 <li>
-                    <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
+                    <p class="link" @click="openAdoption">Adopción</p>
                 </li>
+                <ul class="display adoption" v-show="displayAdoption">
+                    <li>
+                        <RouterLink class="link" to="/">Adoptar</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink class="link" to="/">Poner en adopción</RouterLink>
+                    </li>
+                </ul>
                 <li>
                     <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                 </li>
@@ -23,7 +31,7 @@
                 <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
                 </li>
-                <li v-show="sessionLog" class="display" @click="displayOpen">
+                <li v-show="sessionLog" class="display" @click="openProfile">
                     <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
                     <p class="profile-name">{{ nameProfile }}</p>
                     <ul class="profile" v-show="displayProfile">
@@ -109,11 +117,12 @@ export default {
             windowWidth: null,
             auth: "",
             firebaseapp: "",
-            sessionLog: true,
-            displayProfile: false,
             nameProfile: "",
             emailProfile: "",
             fs: "",
+            sessionLog: true,
+            displayProfile: false,
+            displayAdoption: false,
         };
     },
     created() {
@@ -134,9 +143,11 @@ export default {
             this.sessionLog = !this.sessionLog;
 
         },
-        displayOpen() {
+        openProfile() {
             this.displayProfile = !this.displayProfile;
-            console.log(this.displayProfile)
+        },
+        openAdoption() {
+            this.displayAdoption = !this.displayAdoption;
         },
 
         closeNav() {
@@ -391,7 +402,7 @@ ul {
     gap: 0.4rem;
 }
 
-.display .profile {
+.profile {
     background: var(--orange);
     position: absolute;
     top: 4rem;
@@ -401,6 +412,17 @@ ul {
     padding: 2rem 2.5rem;
     transition: 0.3s linear;
     line-height: 2rem;
+}
+
+.adoption {
+    background: var(--orange);
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2.5rem;
+    position: fixed;
+    margin-bottom: -11.4rem;
+    flex-direction: column;
+
 }
 
 .desktop {
@@ -427,8 +449,15 @@ ul {
     color: var(--orange);
 }
 
-.desktop .profile a:hover {
-    color: var(--green);
+.desktop .profile a,
+.desktop .adoption a {
+    width: 100%;
+}
+
+.desktop .profile a:hover,
+.desktop .adoption a:hover {
+    color: var(--white);
+    background: var(--green);
 }
 
 a,
