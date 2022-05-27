@@ -78,7 +78,6 @@ export default {
     width: 25rem;
     justify-self: center;
   }
-
 }
 
 @media screen and (min-width: 1300px) {
@@ -86,6 +85,9 @@ export default {
   h2 {
     margin-top: 11rem;
   }
+}
+
+@media screen and (min-width: 1470px) {
 
   .more {
     visibility: hidden;

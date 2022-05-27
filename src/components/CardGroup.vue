@@ -110,7 +110,7 @@ export default {
 
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1470px) {
 
   .group {
     grid-template-columns: repeat(5, 1fr);
