@@ -19,31 +19,29 @@
     </div>
 
     <div class="filter">
-
       <p>Localidad</p>
-      <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
+      <SelectOptions :options="provinciasArr" v-model="location" @option:selected="onChange(location, 'Ubicacion')" />
 
       <p>Especie</p>
-      <SelectOptions :options="specie" v-model="variable" @change="onChange($event, 'Especie')" />
+      <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
 
       <p>Raza</p>
-      <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
+      <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+        @option:selected="onChange(race, 'Raza')" />
 
       <p>Sexo</p>
-      <SelectOptions :options="sex" @change="onChange($event, 'Sexo')" />
-      <!--<p>Edad</p>
-      <select name="select" class="sel-age">
-      </select>-->
+      <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+
       <p>Tamaño</p>
-      <SelectOptions :options="size" @change="onChange($event, 'Tamano')" />
-      <!--<p>Color</p>
-      <select name="select" class="sel-color">
-      </select>-->
+      <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+
       <p>Vacunas</p>
-      <SelectOptions :options="others" @change="onChange($event, 'Vacunacion')" />
+      <SelectOptions :options="othersArr" v-model="vaccination"
+        @option:selected="onChange(vaccination, 'Vacunacion')" />
 
       <p>Esterilización</p>
-      <SelectOptions :options="others" @change="onChange($event, 'Esterilizacion')" />
+      <SelectOptions :options="othersArr" v-model="sterilization"
+        @option:selected="onChange(sterilization, 'Esterilizacion')" />
 
       <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
 
@@ -87,22 +85,30 @@ export default {
   data() {
     return {
       //Variables con los arrays de opciones
-      options: optionsArr,
-      provincias: provinciasArr,
-      specie: specieArr,
-      races: ["Cualquiera"],
-      sex: sexArr,
-      size: sizeArr,
-      others: othersArr,
+      optionsArr: optionsArr,
+      provinciasArr: provinciasArr,
+      speciesArr: specieArr,
+      racesArr: ["Cualquiera"],
+      sexArr: sexArr,
+      sizeArr: sizeArr,
+      othersArr: othersArr,
 
       //Variables con el valor seleccionado de los select
       selLocation: "",
-      selSpecie: "Cualquiera",
+      selSpecie: "",
       selRace: "",
       selSex: "",
       selSize: "",
       selVaccination: "",
       selSterilization: "",
+
+      location: "Cualquiera",
+      specie: "Cualquiera",
+      race: "Cualquiera",
+      sex: "Cualquiera",
+      size: "Cualquiera",
+      vaccination: "Cualquiera",
+      sterilization: "Cualquiera",
 
       selCategory: "",
 
@@ -136,6 +142,10 @@ export default {
     this.getAnimals();
   },
   methods: {
+
+    hello() {
+      console.log(this.variable);
+    },
 
     /*Si hay una especie preseleccionada en pinia, lee los animales de esa especie,
     si no, lee todos los animales de la base de datos*/
@@ -177,13 +187,11 @@ export default {
     },
 
     //Cambia los valores de las query al cambiar de opcion
-    onChange(event, field) {
+    onChange(value, field) {
       let selValue = "";
 
-      console.log("hola");
-
-      if (event.target.value !== "Cualquiera") {
-        selValue = { field: field, value: event.target.value, query: where(field, "==", event.target.value) };
+      if (value !== "Cualquiera") {
+        selValue = { field: field, value: value, query: where(field, "==", value) };
       } else {
         selValue = "";
       }
@@ -194,7 +202,7 @@ export default {
           break;
         case "Especie":
           this.selSpecie = selValue;
-          this.changeRaces(event.target.value);
+          this.changeRaces(value);
           break;
         case "Raza":
           this.selRace = selValue;
@@ -221,23 +229,23 @@ export default {
           this.disableRace = true;
           break;
         case "Perro":
-          this.races = dogsracesArr;
+          this.racesArr = dogsracesArr;
           this.disableRace = false;
           break;
         case "Gato":
-          this.races = catsracesArr;
+          this.racesArr = catsracesArr;
           this.disableRace = false;
           break;
         case "Ave":
-          this.races = birdracesArr;
+          this.racesArr = birdracesArr;
           this.disableRace = false;
           break;
         case "Roedor":
-          this.races = rodentracesArr;
+          this.racesArr = rodentracesArr;
           this.disableRace = false;
           break;
         case "Reptil":
-          this.races = reptilracesArr;
+          this.racesArr = reptilracesArr;
           this.disableRace = false;
           break;
       }
