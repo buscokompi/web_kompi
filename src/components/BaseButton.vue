@@ -18,6 +18,10 @@ export default {
         value: {
             type: String,
             default: "",
+        },
+        bgColor: {
+            type: String,
+            default: "#cc9320"
         }
     },
     data() {
@@ -209,7 +213,7 @@ export default {
 
 <style scoped>
 .button {
-    background: var(--orange);
+    background: v-bind(bgColor);
     color: var(--black);
     padding: 0.8rem 2rem;
     display: inline-block;
@@ -222,6 +226,6 @@ export default {
 }
 
 .button:hover {
-    background: #cc9320;
+    background: v-bind(bgColor);
 }
 </style>

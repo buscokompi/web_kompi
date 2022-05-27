@@ -12,6 +12,13 @@
   --text-font: "Open Sans";
 }
 
+/* :root.dark-theme {
+  --white: #3f3d3b;
+  --hover-orange: #013a42;
+  --hover-green: #cc9320;
+  --black: #fff;
+} */
+
 body {
   min-height: 100vh;
   box-sizing: border-box;
@@ -73,6 +80,13 @@ a {
   margin: 0;
 }
 
+<<<<<<< HEAD
+=======
+.logo.dark-theme {
+  content: url("./icons/icono_logo_blanco.svg");
+}
+
+>>>>>>> juan/vue
 @media screen and (min-width: 767px) {
   h2 {
     font-size: 2.2rem;
