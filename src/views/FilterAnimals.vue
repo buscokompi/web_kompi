@@ -24,7 +24,7 @@
       <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
 
       <p>Especie</p>
-      <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
+      <SelectOptions :options="specie" :selected="selSpecie" @change="onChange($event, 'Especie')" />
 
       <p>Raza</p>
       <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
@@ -64,6 +64,7 @@ import { getFirestore, collection, getDocs, query, where } from "firebase/firest
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { KompiStore } from '../stores/KompiStore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -103,6 +104,8 @@ export default {
       selVaccination: "",
       selSterilization: "",
 
+      selCategory: "",
+
       //Variable para habilitar o deshabilitar el select de razas
       disableRace: true,
 
@@ -117,7 +120,7 @@ export default {
 
       //Variable de pinia
       store: "",
-      idStore: ""
+      specieStore: ""
     }
   },
 
@@ -126,6 +129,10 @@ export default {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.fs = getFirestore();
     this.storage = getStorage(this.firebaseapp);
+
+    this.store = KompiStore();
+    this.selSpecie = { field: "Especie", value: this.store.getSpecie(), query: where("Especie", "==", this.store.getSpecie()) };
+    this.store.setSpecie("");
 
     this.readAnimals();
   },

@@ -1,6 +1,7 @@
 <template>
   <select>
     <option v-for="e in options" :key="e">{{ e }}</option>
+    <!--multiple-->
   </select>
 </template>
 
@@ -9,10 +10,12 @@ export default {
   name: "SelectOptions",
   props: {
     options: Array,
+    selected: String
   },
   data() {
     return {
-      selected: "",
+      store: "",
+      def: this.options[1]
     }
   },
 }
