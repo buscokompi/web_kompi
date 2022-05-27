@@ -5,14 +5,17 @@
 </template>
 
 <script>
+import { KompiStore } from '../stores/KompiStore'
 export default {
   name: "SelectOptions",
   props: {
     options: Array,
+    selected: String,
   },
   data() {
     return {
-      selected: "",
+      store: "",
+      specie: "",
     }
   },
 }
