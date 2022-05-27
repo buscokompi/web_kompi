@@ -25,7 +25,7 @@
       </div>
 
       <div class="column three">
-        <p>Acerca de...</p>
+        <p>Acerca de</p>
         <a href="./404file.html">Política de privacidad</a>
         <a href="./404file.html">Términos y condiciones</a>
         <a href="./404file.html">Preguntas frecuentes</a>
@@ -34,7 +34,7 @@
 
     <div class="copyright">
       <hr class=" horizontal-line">
-      <p>© 2022. Todos los Derechos Reservados. <br>Desarrollado por Karmic Koala</p>
+      <p>© 2022 Todos los Derechos Reservados. <br>Desarrollado por Karmic Koala</p>
     </div>
 
   </footer>

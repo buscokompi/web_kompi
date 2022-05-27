@@ -32,3 +32,7 @@ export const sexArr = ["Cualquiera", "Macho", "Hembra"];
 export const sizeArr = ["Cualquiera", "Pequeño", "Mediano", "Grande"];
 
 export const othersArr = ["Cualquiera", "Si", "No"];
+
+export const ageArr = ["Cachorro/Cría", "Joven", "Adulto", "Anciano"];
+
+export const colorArr = ["Negro", "Blanco", "Marrón", "Beige", "Gris", "Bicolor", "Multicolor", "Rojo", "Naranja", "Azul", "Verde", "Amarillo"];

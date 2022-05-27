@@ -88,18 +88,26 @@ export default {
 .card p img {
   width: 1rem;
   height: 1rem;
-  margin-right: 0.2rem;
+  margin-right: 0.4rem;
   object-fit: contain;
 }
 
 .card h3 {
   grid-area: 6 / 1 / 7 / 2;
   margin-top: 1.2rem;
+  font-size: 1.3;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card p {
   grid-area: 7 / 1 / 9/ 2;
   width: 16rem;
-  margin-top: 0.3rem;
+  height: 3rem;
+  font-weight: 500;
 }
 </style>

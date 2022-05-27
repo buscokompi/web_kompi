@@ -1,7 +1,6 @@
 <template>
-  <select>
-    <option v-for="e in options" :key="e">{{ e }}</option>
-  </select>
+  <v-select placeholder="selecciona una opción" :options='options' :clearable="false">
+  </v-select>
 </template>
 
 <script>
