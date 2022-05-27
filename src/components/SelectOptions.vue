@@ -1,7 +1,10 @@
 <template>
-  <select>
+  <v-select :options='options' :clearable="false" v-model="variable" @option:selected="hello">
+  </v-select>
+  <button @click="hello">prueba</button>
+  <!--<select>
     <option v-for="e in options" :key="e">{{ e }}</option>
-  </select>
+  </select>-->
 </template>
 
 <script>
@@ -12,12 +15,18 @@ export default {
     options: Array,
     selected: String,
   },
-  data() {
+  data($emit) {
     return {
       store: "",
       specie: "",
+      variable: "selecciona una opcion",
     }
   },
+  methods: {
+    hello() {
+      console.log(this.variable);
+    }
+  }
 }
 </script>
 

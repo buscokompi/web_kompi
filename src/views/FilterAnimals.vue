@@ -24,7 +24,7 @@
       <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
 
       <p>Especie</p>
-      <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
+      <SelectOptions :options="specie" v-model="variable" @change="onChange($event, 'Especie')" />
 
       <p>Raza</p>
       <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
@@ -120,7 +120,10 @@ export default {
 
       //Variable de pinia
       store: "",
-      specieStore: ""
+      specieStore: "",
+
+
+      variable: ""
     }
   },
   mounted() {
@@ -176,6 +179,8 @@ export default {
     //Cambia los valores de las query al cambiar de opcion
     onChange(event, field) {
       let selValue = "";
+
+      console.log("hola");
 
       if (event.target.value !== "Cualquiera") {
         selValue = { field: field, value: event.target.value, query: where(field, "==", event.target.value) };
