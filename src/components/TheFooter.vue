@@ -4,22 +4,22 @@
     <div class="information">
 
       <div class="column two">
-        <a href="./index.html"><img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo"
-            width="74" height="22"></a>
+        <a href="./index.html"><img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo" width="74"
+            height="22"></a>
         <a href="mailto:buscokompi@gmail.com" class="mail">buscokompi@gmail.com</a>
         <div class="social">
           <a href="https://www.facebook.com/adoptaunkompi/"><img src="../assets/icons/icono_facebook.svg" width="21"
               height="21" alt="facebook"></a>
           <a href="https://www.instagram.com/adoptaunkompi"><img src="../assets/icons/icono_instagram.svg" width="21"
               height="21" alt="instagram"></a>
-          <a href="https://twitter.com/adoptaunkompi"><img src="../assets/icons/icono_twitter.svg" width="21" height="21"
-              alt="twitter"></a>
+          <a href="https://twitter.com/adoptaunkompi"><img src="../assets/icons/icono_twitter.svg" width="21"
+              height="21" alt="twitter"></a>
         </div>
       </div>
 
       <div class="column">
         <p>Información</p>
-        <a href="./404file.html">Sobre nosotros</a>
+        <RouterLink to="/AboutMe">Sobre nosotros</RouterLink>
         <a href="./filter-animals.html">Busca una mascota</a>
         <a href="./404file.html">Contáctanos</a>
       </div>
@@ -42,7 +42,7 @@
 
 <script>
 export default {
-    name: "TheFooter"
+  name: "TheFooter"
 }
 </script>
 
@@ -127,12 +127,14 @@ footer .copyright .horizontal-line {
 footer .copyright p {
   margin: 1rem;
 }
+
 @media screen and (min-width: 767px) {
 
-    br{
-        display: none;
-    }
-    footer {
+  br {
+    display: none;
+  }
+
+  footer {
     height: 40vh;
   }
 
@@ -167,7 +169,7 @@ footer .copyright p {
 }
 
 @media screen and (min-width: 1170px) {
-    footer .information {
+  footer .information {
     gap: 3vw;
     justify-content: flex-start;
     margin: 0 15vw;
@@ -184,7 +186,7 @@ footer .copyright p {
 }
 
 @media screen and (min-width: 1300px) {
-footer .information {
+  footer .information {
     margin: 0 19vw;
   }
 

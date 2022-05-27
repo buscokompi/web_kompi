@@ -1,20 +1,32 @@
 <template>
-  <select>
+  <v-select :options='options' :clearable="false" v-model="variable" @option:selected="hello">
+  </v-select>
+  <button @click="hello">prueba</button>
+  <!--<select>
     <option v-for="e in options" :key="e">{{ e }}</option>
-  </select>
+  </select>-->
 </template>
 
 <script>
+import { KompiStore } from '../stores/KompiStore'
 export default {
   name: "SelectOptions",
   props: {
     options: Array,
+    selected: String,
   },
-  data() {
+  data($emit) {
     return {
-      selected: "",
+      store: "",
+      specie: "",
+      variable: "selecciona una opcion",
     }
   },
+  methods: {
+    hello() {
+      console.log(this.variable);
+    }
+  }
 }
 </script>
 

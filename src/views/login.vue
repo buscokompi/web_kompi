@@ -4,12 +4,10 @@
 
     <div class="container-login">
 
-      <a to="../index.html">
-        <RouterLink to="/Aboutme">
-          <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
-        </RouterLink>
-        <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
-      </a>
+      <RouterLink to="/">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
+      </RouterLink>
+      <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       <!-- <DarkMode /> -->
       <div class="card-login">
         <div class="login">
@@ -21,8 +19,7 @@
           <label for="toggle-password"></label>
         </div>
         <p class="forgot-pass">
-          <a href="./PrivacyPolicy">Has olvidado tu contraseña?
-          </a>
+          <RouterLink class="link" to="/ForgotPassword">¿Has olvidado tu contraseña?</RouterLink>
         </p>
         <div class="button btn-login-email" @click="loginEmail()"><span>Continuar</span>
 
@@ -34,8 +31,8 @@
           </span>
         </div>
       </div>
-      <p class="register">¿No tienes una cuenta? <RouterLink class="link-signin" to="/OptionsNewUser">Regístrate
-        </RouterLink>
+      <p class="register">¿No tienes una cuenta?
+        <RouterLink class="link-signin" to="/Signin">Regístrate</RouterLink>
       </p>
     </div>
   </div>
@@ -48,6 +45,7 @@ import { initializeApp } from "firebase/app";
 import DarkMode from "../components/DarkMode.vue";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
+import { KompiStore } from "../stores/KompiStore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -72,12 +70,16 @@ export default {
       fieldType: "password",
       modeStorage: ModeStorage(),
       darkMode: false,
-      lightMode: false
+      lightMode: false,
+
+      store: ""
     };
   },
   mounted() {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.auth = getAuth();
+
+    this.store = KompiStore();
   },
 
   watch: {
@@ -96,7 +98,8 @@ export default {
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
         .then((userCredential) => {
-          console.log("El usuario existe");
+          this.store.setEmail(this.email);
+          this.$router.push("/");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -112,7 +115,8 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.store.setEmail(user.email);
+          this.$router.push("/");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;

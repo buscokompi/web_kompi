@@ -35,17 +35,19 @@ export default {
         case "Perro":
           this.$router.push("/TemplatePageDog");
           break;
+        case "Gato":
+          this.$router.push("/TemplatePageDog");
         case "Roedor":
           this.$router.push("/TemplatePageRodent");
+          break;
+        case "Ave":
+          this.$router.push("/TemplatePageBird");
+          break;
+        case "Reptil":
+          this.$router.push("/TemplatePageReptile");
       }
-
     },
   },
-  methods: {
-    clickAnimal() {
-      console.log(this.id);
-    }
-  }
 }
 </script>
 

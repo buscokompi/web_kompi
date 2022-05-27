@@ -8,6 +8,8 @@ import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "fi
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
 import { KompiStore } from "@/stores/KompiStore.js" // Almacen de pinia
+import CardGroup from '../components/CardGroup.vue'
+import TheHeader from '../components/TheHeader.vue'
 
 export default {
     name: "TemplatePage",
@@ -65,7 +67,9 @@ export default {
         CardAnimal,
         CardExtra,
         TheFooter,
-        BaseButton
+        BaseButton,
+        CardGroup,
+        TheHeader
     },
     methods: {
         info() {
@@ -94,7 +98,7 @@ export default {
                 }
             })
         // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
-        const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`));
+        /*const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`));
         getDocs(p)
             .then(element => {
                 const aux = Math.floor(Math.random() * element.size);
@@ -136,7 +140,7 @@ export default {
                     .then(e => {
                         this.img_5 = e
                     })
-            })
+            })*/
 
     },
 }
@@ -146,6 +150,7 @@ export default {
 <template>
     <div v-cloak class="body">
         <header class="header">
+            <TheHeader />
             <div class="header-carousel">
                 <div class="img-container">
                     <img class="img1" :src="this.reptile.Imagen1" alt="imagen1">
@@ -222,7 +227,7 @@ export default {
                     <p class="esterilized">{{ reptile.Esterilizacion }}</p>
                 </div>
                 <div class="adoption">
-                    <h3>¿Quieres adoptar o saber más sobre Nala?<br>
+                    <h3>¿Quieres adoptar o saber más sobre {{ reptile.Nombre }}?<br>
                         ¡Ponte en contacto con su cuidador!</h3>
 
                     <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />
@@ -238,11 +243,7 @@ export default {
                 <h2>Otros Kompis que encajan con tu búsqueda</h2>
 
                 <div class="group">
-                    <CardAnimal :name="nombre_1" :location="location_1" :image="img_1" />
-                    <CardAnimal :name="nombre_2" :location="location_2" :image="img_2" />
-                    <CardAnimal :name="nombre_3" :location="location_3" :image="img_3" />
-                    <CardAnimal :name="nombre_4" :location="location_4" :image="img_4" />
-                    <CardAnimal :name="nombre_5" :location="location_5" :image="img_5" />
+                    <CardGroup />
                 </div>
             </div>
         </section>

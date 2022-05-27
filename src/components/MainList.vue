@@ -7,12 +7,11 @@
       <h3 v-if="item.open"></h3>
       <p v-html="item.content" v-if="item.open"></p>
     </div>
-    <BaseSelect />
+    <v-select options="countries" />
   </section>
 </template>
 
 <script>
-import BaseSelect from "./BaseSelect.vue";
 export default {
   data() {
     return {
@@ -87,7 +86,7 @@ export default {
       }
     };
   },
-  components: { BaseSelect }
+  components: {}
 }
 
 </script>

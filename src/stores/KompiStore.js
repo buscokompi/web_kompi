@@ -5,7 +5,8 @@ export const KompiStore = defineStore({
   state: () => ({
     data: {
       id: "",
-      email: ""
+      email: "",
+      specie: ""
     }
   }),
   actions: {
@@ -16,14 +17,18 @@ export const KompiStore = defineStore({
     setEmail(email) {
       this.data.email = email;
     },
-
+    setSpecie(specie) {
+      this.data.specie = specie;
+    },
     // GETTERS
     getId() {
       return this.data.id;
     },
     getEmail() {
       return this.data.email;
+    },
+    getSpecie() {
+      return this.data.specie;
     }
-
   }
 });

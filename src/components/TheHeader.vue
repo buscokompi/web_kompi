@@ -1,9 +1,9 @@
 <template>
     <header :class="{ 'scrolled-nav': scrolledNav }">
         <nav>
-            <a href="#">
+            <RouterLink to="/">
                 <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
-            </a>
+            </RouterLink>
             <ul v-show="desktop" class="desktop">
                 <li>
                     <RouterLink class="link" to="/TemplatePageRodent">Adopción</RouterLink>
@@ -12,7 +12,7 @@
                     <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                 </li>
                 <li>
-                    <RouterLink class="link" to="/TemplatePageDog">Sobre nosotros</RouterLink>
+                    <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
                 </li>
                 <li>
                     <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"
@@ -20,8 +20,23 @@
                     </RouterLink>
                 </li>
                 <li class="vertical-line"></li>
-                <li>
-                    <RouterLink class="link" to="/TemplatePageReptile">Iniciar sesión</RouterLink>
+                <li v-show="!sessionLog">
+                    <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
+                </li>
+                <li v-show="sessionLog" class="display" @click="displayOpen">
+                    <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
+                    <p class="profile-name">{{ nameProfile }}</p>
+                    <ul class="profile" v-show="displayProfile">
+                        <li>
+                            <RouterLink class="link" to="/">Mi perfil</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/">Ajustes</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink class="link" to="/" @click="closeSession">Cerrar sesión</RouterLink>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="burger">
@@ -40,7 +55,6 @@
                             <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
                         </li>
                     </ul>
-                    <!-- <a href="./login.html" class="m-contact">Contáctanos</a> -->
                     <ul class="icons">
                         <li>
                             <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
@@ -73,6 +87,18 @@
 </template>
 
 <script>
+import { getAuth, signOut } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
+const firebaseConfig = {
+    apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+    authDomain: "web-kompi.firebaseapp.com",
+    projectId: "web-kompi",
+    storageBucket: "web-kompi.appspot.com",
+    messagingSenderId: "556298514839",
+    appId: "1:556298514839:web:92e508e18c5685e99694d2",
+    measurementId: "G-93MGP34YQN"
+};
 export default {
     name: "TheHeader",
     data() {
@@ -81,24 +107,66 @@ export default {
             desktop: false,
             mobileNav: null,
             windowWidth: null,
+            auth: "",
+            firebaseapp: "",
+            sessionLog: true,
+            displayProfile: false,
+            nameProfile: "",
+            emailProfile: "",
+            fs: "",
         };
     },
     created() {
         window.addEventListener("resize", this.checkScreen);
         this.checkScreen();
-    },
-    mounter() {
-        window.addEventListener("scroll", this.updateScroll);
+        this.firebaseapp = initializeApp(firebaseConfig);
+        this.checkSession();
+
+        this.fs = getFirestore()
     },
     methods: {
+
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
 
+        },
+        toggleDisplay() {
+            this.sessionLog = !this.sessionLog;
+
+        },
+        displayOpen() {
+            this.displayProfile = !this.displayProfile;
+            console.log(this.displayProfile)
         },
 
         closeNav() {
             this.mobileNav = false;
         },
+        async closeSession() {
+            const auth = getAuth();
+            await signOut(auth).then(() => {
+                console.log("Usuario deslogueado");
+                location.reload();
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
+        },
+
+        async getNameProfile(userEmail) {
+            const docRef = doc(this.fs, "usuarios", userEmail);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                this.nameProfile = docSnap.data().name;
+            } else {
+                this.nameProfile = userEmail;
+            }
+        },
+
+
 
         updateScroll() {
             const scrollPosition = window.scrollY;
@@ -119,9 +187,27 @@ export default {
             this.desktop = false;
             this.mobileNav = false;
             return;
-        }
+        },
+        checkSession() {
+            const auth = getAuth();
+            auth.onAuthStateChanged((user) => {
+                console.log(user)
+                if (user) {
+                    this.sessionLog = true
+                    console.log("usuario autenticado")
+                    this.emailProfile = user.email
+                    this.getNameProfile(this.emailProfile)
+                } else {
+                    this.sessionLog = false
+                    console.log("usuario no autenticado")
+                }
+            })
+        },
     },
-};
+    mounted() {
+        window.addEventListener("scroll", this.updateScroll);
+    },
+}
 </script>
 
 <style scoped>
@@ -145,24 +231,10 @@ nav {
     align-items: center;
 }
 
-ul,
-.link {
+ul {
     list-style: none;
     text-decoration: none;
-    color: var(--black);
-    font-family: var(--text-font);
-    transition: color 0.5s;
-
 }
-
-.link {
-    cursor: pointer;
-}
-
-.link:hover {
-    color: var(--orange)
-}
-
 
 .logo {
     width: 7rem;
@@ -240,11 +312,7 @@ ul,
 }
 
 
-.list .link {
-    font-size: 2rem;
-    font-weight: 700;
-    width: fit-content;
-}
+
 
 
 
@@ -301,10 +369,6 @@ ul,
     right: 5rem;
 }
 
-.desktop .link {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
 
 .desktop img {
     width: 1rem;
@@ -318,5 +382,70 @@ ul,
     width: 0.1rem;
     background-color: var(--black);
     cursor: auto;
+}
+
+.display {
+    grid-auto-flow: column;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.display .profile {
+    background: var(--orange);
+    position: absolute;
+    top: 4rem;
+    right: -4.4rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 2rem 2.5rem;
+    transition: 0.3s linear;
+    line-height: 2rem;
+}
+
+.desktop {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    align-items: center;
+    right: 8rem;
+}
+
+
+.desktop img {
+    width: 1rem;
+    transition: 0.1s;
+}
+
+.desktop .display img {
+    width: 1.6rem;
+}
+
+.desktop a:hover,
+.desktop .display p:hover,
+.dropdown .link:hover {
+    color: var(--orange);
+}
+
+.desktop .profile a:hover {
+    color: var(--green);
+}
+
+a,
+.display li,
+.display p,
+.link {
+    color: var(--black);
+    font-family: var(--text-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.dropdown .link {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 </style>
