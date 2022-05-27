@@ -23,10 +23,10 @@
                 <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
                 </li>
-                <li v-show="sessionLog" class="display">
+                <li v-show="sessionLog" class="display" @click="displayOpen">
                     <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
-                    <p class="profile-name">Perfil</p>
-                    <ul class="profile">
+                    <p class="profile-name">{{ nameProfile }}</p>
+                    <ul class="profile" v-show="displayProfile">
                         <li>
                             <RouterLink class="link" to="/">Mi perfil</RouterLink>
                         </li>
@@ -87,8 +87,9 @@
 </template>
 
 <script>
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
     authDomain: "web-kompi.firebaseapp.com",
@@ -109,11 +110,19 @@ export default {
             auth: "",
             firebaseapp: "",
             sessionLog: true,
+            displayProfile: false,
+            nameProfile: "",
+            emailProfile: "",
+            fs: "",
         };
     },
     created() {
         window.addEventListener("resize", this.checkScreen);
         this.checkScreen();
+        this.firebaseapp = initializeApp(firebaseConfig);
+        this.checkSession();
+
+        this.fs = getFirestore()
     },
     methods: {
 
@@ -125,14 +134,19 @@ export default {
             this.sessionLog = !this.sessionLog;
 
         },
+        displayOpen() {
+            this.displayProfile = !this.displayProfile;
+            console.log(this.displayProfile)
+        },
 
         closeNav() {
             this.mobileNav = false;
         },
-        closeSession() {
+        async closeSession() {
             const auth = getAuth();
-            auth.then(() => {
+            await signOut(auth).then(() => {
                 console.log("Usuario deslogueado");
+                location.reload();
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -140,6 +154,19 @@ export default {
                 console.log(errorMessage);
             });
         },
+
+        async getNameProfile(userEmail) {
+            const docRef = doc(this.fs, "usuarios", userEmail);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                this.nameProfile = docSnap.data().name;
+            } else {
+                this.nameProfile = userEmail;
+            }
+        },
+
+
 
         updateScroll() {
             const scrollPosition = window.scrollY;
@@ -168,6 +195,8 @@ export default {
                 if (user) {
                     this.sessionLog = true
                     console.log("usuario autenticado")
+                    this.emailProfile = user.email
+                    this.getNameProfile(this.emailProfile)
                 } else {
                     this.sessionLog = false
                     console.log("usuario no autenticado")
@@ -177,8 +206,6 @@ export default {
     },
     mounted() {
         window.addEventListener("scroll", this.updateScroll);
-        this.firebaseapp = initializeApp(firebaseConfig);
-        this.checkSession();
     },
 }
 </script>
@@ -395,7 +422,8 @@ ul {
 }
 
 .desktop a:hover,
-.desktop .display p:hover {
+.desktop .display p:hover,
+.dropdown .link:hover {
     color: var(--orange);
 }
 
@@ -414,5 +442,10 @@ a,
     text-decoration: none;
     transition: color 0.5s;
     cursor: pointer;
+}
+
+.dropdown .link {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 </style>
