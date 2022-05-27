@@ -82,16 +82,14 @@
                         </li>
                     </ul>
                     <div class="m-footer">
-                        <a href="./login.html">Iniciar sesión</a>
+                        <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
                     </div>
                 </div>
             </transition>
-            <div v-show="mobileNav" class="opacity"></div>
+            <div v-show="mobileNav" class="opacity">
+            </div>
         </nav>
     </header>
-    <div class="view-container">
-        <RouterView />
-    </div>
 </template>
 
 <script>
