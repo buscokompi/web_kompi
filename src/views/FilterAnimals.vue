@@ -36,8 +36,14 @@
       <p>Sexo</p>
       <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
 
+      <p>Edad</p>
+      <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
+
       <p>Tamaño</p>
       <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+
+      <p>Color</p>
+      <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
 
       <p>Vacunas</p>
       <SelectOptions :options="othersArr" v-model="vaccination"
@@ -46,6 +52,7 @@
       <p>Esterilización</p>
       <SelectOptions :options="othersArr" v-model="sterilization"
         @option:selected="onChange(sterilization, 'Esterilizacion')" />
+
 
       <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
 
@@ -65,7 +72,7 @@ import TheFooter from '../components/TheFooter.vue';
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
-import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr, ageArr, colorArr } from "../js/options.js"
 import { KompiStore } from '../stores/KompiStore';
 
 const firebaseConfig = {
@@ -96,6 +103,9 @@ export default {
       sexArr: sexArr,
       sizeArr: sizeArr,
       othersArr: othersArr,
+      age: ageArr,
+      color: colorArr,
+
 
       //Variables con el valor seleccionado de los select
       selLocation: "",
@@ -105,6 +115,8 @@ export default {
       selSize: "",
       selVaccination: "",
       selSterilization: "",
+      selAge: "",
+      selColor: "",
 
       location: "Cualquiera",
       specie: "Cualquiera",
@@ -113,6 +125,8 @@ export default {
       size: "Cualquiera",
       vaccination: "Cualquiera",
       sterilization: "Cualquiera",
+      age: "Cualquiera",
+      color: "Cualquiera",
 
       selCategory: "",
 
@@ -223,6 +237,12 @@ export default {
         case "Esterilizacion":
           this.selSterilization = selValue;
           break;
+        case "Edad":
+          this.selAge = selValue;
+          break;
+        case "Color":
+          this.selColor = selValue;
+          break;
       }
     },
 
@@ -291,7 +311,7 @@ export default {
 
     //Descarta las querys innecesarias y retorna un array con todas las querys funcionales
     checkFilters() {
-      const arrQuery = [this.selLocation, this.selSpecie, this.selRace, this.selSex, this.selSize, this.selVaccination, this.selSterilization];
+      const arrQuery = [this.selLocation, this.selSpecie, this.selRace, this.selSex, this.selSize, this.selVaccination, this.selSterilization, this.selAge, this.selColor];
       const arrQuery2 = [];
 
       arrQuery.forEach(e => {

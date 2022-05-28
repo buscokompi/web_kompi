@@ -52,38 +52,88 @@
             </div>
             <transition name="mobile-nav">
                 <div v-show="mobileNav" class="dropdown">
-                    <ul class="list">
-                        <li>
-                            <RouterLink class="link" to="/" @click="closeNav">Adopción</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/TemplatePage" @click="closeNav">Categorías</RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/" @click="closeNav">Sobre nosotros</RouterLink>
-                        </li>
-                    </ul>
-                    <ul class="icons">
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
-                                    alt="Facebook"></RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_instagram_yellow.svg"
-                                    alt="Instagram"></RouterLink>
-                        </li>
-                        <li>
-                            <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
-                                    alt="Twitter"></RouterLink>
-                        </li>
-                        <!-- <li>
+                    <div class="invisible" v-show="!sessionLog">
+                        <ul class="list">
+                            <li>
+                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                            </li>
+                        </ul>
+                        <ul class="icons">
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
+                                        alt="Facebook"></RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_instagram_yellow.svg"
+                                        alt="Instagram"></RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
+                                        alt="Twitter"></RouterLink>
+                            </li>
+                            <!-- <li>
                             <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg"
                                     alt="Favoritos"></RouterLink>
                         </li> -->
-                    </ul>
-                    <button>
-                        <RouterLink class="m-footer" to="/Login">Iniciar sesión</RouterLink>
-                    </button>
+                        </ul>
+                        <button>
+                            <RouterLink class="m-footer" to="/Login">Iniciar sesión</RouterLink>
+                        </button>
+                    </div>
+                    <div class="invisible" v-show="sessionLog">
+                        <ul class="list">
+                            <li>
+                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
+                            </li>
+
+                            <li>
+                                <RouterLink class="link" to="/FormUser">Formulario adoptante</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/NewAnimalForm/formularioEjemplo">Crear ficha animal
+                                </RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/">Ajustes</RouterLink>
+                            </li>
+                        </ul>
+                        <ul class="icons">
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_facebook_yellow.svg"
+                                        alt="Facebook"></RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_instagram_yellow.svg"
+                                        alt="Instagram"></RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
+                                        alt="Twitter"></RouterLink>
+                            </li>
+                            <!-- <li>
+                            <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg"
+                                    alt="Favoritos"></RouterLink>
+                        </li> -->
+                        </ul>
+                        <button @click="closeNav">
+                            <RouterLink @click="closeSession" class="m-footer" to="/">Cerrar sesión</RouterLink>
+                        </button>
+                    </div>
                 </div>
             </transition>
             <div v-show="mobileNav" class="opacity">
@@ -149,13 +199,10 @@ export default {
         async closeSession() {
             const auth = getAuth();
             await signOut(auth).then(() => {
-                console.log("Usuario deslogueado");
-                location.reload();
+                router.go("/");
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode);
-                console.log(errorMessage);
             });
         },
         async getNameProfile(userEmail) {
@@ -287,10 +334,14 @@ ul {
     right: 0;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 40% 45% 15%;
+    grid-template-rows: 70% 15% 15%;
     z-index: 5;
 }
 
+.invisible {
+    display: contents;
+    position: fixed;
+}
 
 .mobile-nav-enter-active,
 .mobile-nav-leave-active {
@@ -307,26 +358,22 @@ ul {
 }
 
 .list {
-    display: grid;
-    align-content: center;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    margin-top: 5rem;
+
 }
-
-
-
-
 
 
 
 .icons {
     display: grid;
-    width: 8rem;
+    width: 10rem;
     grid-auto-columns: repeat(4, 1fr);
     grid-auto-flow: column;
-    justify-items: center;
+    justify-items: start;
     transition: color 0.5s;
-    top: 24rem;
-    left: 2.4rem;
 }
 
 .icons a {
@@ -431,6 +478,7 @@ button {
     align-items: center;
     right: 8rem;
 }
+
 
 
 .desktop img {

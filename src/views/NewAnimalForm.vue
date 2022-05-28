@@ -1,42 +1,44 @@
 <template>
+    <TheHeader />
     <main class="home">
         <h1>Mi perfil</h1>
         <div class="sections">
             <RouterLink to="/NewAnimalForm/saludo">Sobre mí</RouterLink>
             <RouterLink to="/NewAnimalForm/otroSaludo">Perfil adoptante</RouterLink>
             <RouterLink to="/NewAnimalForm/formularioEjemplo">Perfil animal</RouterLink>
-            <RouterLink to="/">Favoritos</RouterLink>
+            <!-- <RouterLink to="/">Favoritos</RouterLink> -->
             <RouterLink to="/">Ajustes</RouterLink>
-            <hr class="hr">
-            <hr class="hr">
-            <hr class="hr">
-            <hr class="hr">
-            <hr class="hr">
         </div>
 
         <div class="profile-content">
             <RouterView />
         </div>
     </main>
+    <TheFooter />
 </template>
 
 <script>
+import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
 export default {
-    name: "NewAnimalForm"
-
+    name: "NewAnimalForm",
+    components: { TheHeader, TheFooter }
 }
 </script>
 
 <style scoped>
 .home {
-    width: 68vw;
-    height: 2000px;
-    background: var(--white);
+    width: 100vw;
+    background: var(--lightgrey);
     display: flex;
     flex-direction: column;
     align-items: center;
     /* margin: 30vh 10vh; */
     border-radius: 1rem;
+}
+
+h1 {
+    margin-top: 8rem;
 }
 
 .sections {
@@ -47,6 +49,8 @@ export default {
     align-items: center;
     justify-items: center;
     row-gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 0.1rem solid var(--black);
 }
 
 .sections .hr {
@@ -80,4 +84,10 @@ export default {
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (min-width: 767px) {}
+
+@media screen and (min-width: 1170px) {}
+
+@media screen and (min-width: 1300px) {}
 </style>
