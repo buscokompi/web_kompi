@@ -1,5 +1,6 @@
 <template>
   <section class="accordions">
+    <h2 ref="frequent-question">Preguntas frecuentes</h2>
     <div class="question" :class="[item.open ? 'open' : '']" @click="item.open = !item.open"
       v-for="(item, id) in items"> {{
           item.title
@@ -7,7 +8,6 @@
       <h3 v-if="item.open"></h3>
       <p v-html="item.content" v-if="item.open"></p>
     </div>
-    <v-select options="countries" />
   </section>
 </template>
 
@@ -86,12 +86,19 @@ export default {
       }
     };
   },
-  components: {}
+  components: {},
+  methods: {
+
+  }
 }
 
 </script>
 
 <style scoped>
+h2 {
+  margin-bottom: 2rem;
+}
+
 .accordions {
   width: 100vw;
   display: flex;
@@ -109,7 +116,7 @@ export default {
   background-color: white;
   border-radius: 2.4rem;
   border: 0.1rem solid var(--black);
-  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 25%);
+  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 25%);
   width: 75%;
   max-width: 42rem;
   height: fit-content;

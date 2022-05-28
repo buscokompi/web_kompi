@@ -6,41 +6,11 @@
   </div>
 
   <div class="searcher">
+
     <div class="filter-mobile">
       <p><img src="" alt="">Filtrar</p>
     </div>
-    <div class="filter">
 
-      <p>Localidad</p>
-      <SelectOptions :options="provincias" @change="onChange($event, 'Ubicacion')" />
-
-      <p>Especie</p>
-      <SelectOptions :options="specie" @change="onChange($event, 'Especie')" />
-
-      <p>Raza</p>
-      <SelectOptions :options="races" :disabled="disableRace === true" @change="onChange($event, 'Raza')" />
-
-      <p>Sexo</p>
-      <SelectOptions :options="sex" @change="onChange($event, 'Sexo')" />
-
-      <p>Tamaño</p>
-      <SelectOptions :options="size" @change="onChange($event, 'Tamano')" />
-
-      <p>Edad</p>
-      <SelectOptions :options="age" @change="onChange($event, 'Edad')" />
-
-      <p>Color</p>
-      <SelectOptions :options="color" @change="onChange($event, 'Color')" />
-
-      <p>Vacunas</p>
-      <SelectOptions :options="others" @change="onChange($event, 'Vacunacion')" />
-
-      <p>Esterilización</p>
-      <SelectOptions :options="others" @change="onChange($event, 'Esterilizacion')" />
-
-      <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
-
-    </div>
     <div class="results">
       <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
       <!--<SelectOptions :options="options" />-->
@@ -52,7 +22,34 @@
       </CardAnimal>
     </div>
 
+    <div class="filter">
+      <p>Localidad</p>
+      <SelectOptions :options="provinciasArr" v-model="location" @option:selected="onChange(location, 'Ubicacion')" />
 
+      <p>Especie</p>
+      <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
+
+      <p>Raza</p>
+      <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+        @option:selected="onChange(race, 'Raza')" />
+
+      <p>Sexo</p>
+      <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+
+      <p>Tamaño</p>
+      <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+
+      <p>Vacunas</p>
+      <SelectOptions :options="othersArr" v-model="vaccination"
+        @option:selected="onChange(vaccination, 'Vacunacion')" />
+
+      <p>Esterilización</p>
+      <SelectOptions :options="othersArr" v-model="sterilization"
+        @option:selected="onChange(sterilization, 'Esterilizacion')" />
+
+      <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
+
+    </div>
   </div>
   <TheFooter />
 </template>
@@ -68,7 +65,8 @@ import TheFooter from '../components/TheFooter.vue';
 import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
-import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr, ageArr, colorArr } from "../js/options.js"
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { KompiStore } from '../stores/KompiStore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -91,24 +89,32 @@ export default {
   data() {
     return {
       //Variables con los arrays de opciones
-      options: optionsArr,
-      provincias: provinciasArr,
-      specie: specieArr,
-      races: ["Cualquiera"],
-      sex: sexArr,
-      size: sizeArr,
-      others: othersArr,
-      age: ageArr,
-      color: colorArr,
+      optionsArr: optionsArr,
+      provinciasArr: provinciasArr,
+      speciesArr: specieArr,
+      racesArr: ["Cualquiera"],
+      sexArr: sexArr,
+      sizeArr: sizeArr,
+      othersArr: othersArr,
 
       //Variables con el valor seleccionado de los select
       selLocation: "",
-      selSpecie: "Cualquiera",
+      selSpecie: "",
       selRace: "",
       selSex: "",
       selSize: "",
       selVaccination: "",
       selSterilization: "",
+
+      location: "Cualquiera",
+      specie: "Cualquiera",
+      race: "Cualquiera",
+      sex: "Cualquiera",
+      size: "Cualquiera",
+      vaccination: "Cualquiera",
+      sterilization: "Cualquiera",
+
+      selCategory: "",
 
       //Variable para habilitar o deshabilitar el select de razas
       disableRace: true,
@@ -124,19 +130,38 @@ export default {
 
       //Variable de pinia
       store: "",
-      idStore: ""
+      specieStore: "",
+
+
+      variable: ""
     }
   },
-
-  //Al cargar la pagina, crea todas las card de los animales
   mounted() {
+    //Inicializacion de las variables de firebase y pinia
     this.firebaseapp = initializeApp(firebaseConfig);
     this.fs = getFirestore();
     this.storage = getStorage(this.firebaseapp);
+    this.store = KompiStore();
 
-    this.readAnimals();
+    this.getAnimals();
   },
   methods: {
+
+    hello() {
+      console.log(this.variable);
+    },
+
+    /*Si hay una especie preseleccionada en pinia, lee los animales de esa especie,
+    si no, lee todos los animales de la base de datos*/
+    getAnimals() {
+      if (this.store.getSpecie()) {
+        this.selSpecie = { field: "Especie", value: this.store.getSpecie(), query: where("Especie", "==", this.store.getSpecie()) };
+        this.getFilters(this.checkFilters());
+        this.store.setSpecie("");
+      } else {
+        this.readAnimals();
+      }
+    },
 
     /* Llama a la base de datos de firestore y storage, coge todos los animales
     y sus imagenes y los muestra por pantalla*/
@@ -166,11 +191,11 @@ export default {
     },
 
     //Cambia los valores de las query al cambiar de opcion
-    onChange(event, field) {
+    onChange(value, field) {
       let selValue = "";
 
-      if (event.target.value !== "Cualquiera") {
-        selValue = { field: field, value: event.target.value, query: where(field, "==", event.target.value) };
+      if (value !== "Cualquiera") {
+        selValue = { field: field, value: value, query: where(field, "==", value) };
       } else {
         selValue = "";
       }
@@ -181,7 +206,7 @@ export default {
           break;
         case "Especie":
           this.selSpecie = selValue;
-          this.changeRaces(event.target.value);
+          this.changeRaces(value);
           break;
         case "Raza":
           this.selRace = selValue;
@@ -208,23 +233,23 @@ export default {
           this.disableRace = true;
           break;
         case "Perro":
-          this.races = dogsracesArr;
+          this.racesArr = dogsracesArr;
           this.disableRace = false;
           break;
         case "Gato":
-          this.races = catsracesArr;
+          this.racesArr = catsracesArr;
           this.disableRace = false;
           break;
         case "Ave":
-          this.races = birdracesArr;
+          this.racesArr = birdracesArr;
           this.disableRace = false;
           break;
         case "Roedor":
-          this.races = rodentracesArr;
+          this.racesArr = rodentracesArr;
           this.disableRace = false;
           break;
         case "Reptil":
-          this.races = reptilracesArr;
+          this.racesArr = reptilracesArr;
           this.disableRace = false;
           break;
       }
@@ -280,7 +305,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 /*---Home---*/
 @import "../assets/base.css";

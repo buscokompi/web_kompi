@@ -1,6 +1,7 @@
 <template>
   <div class="group">
-    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id">
+    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+      :specie="e.specie">
     </CardAnimal>
     <CardExtra />
   </div>
@@ -64,6 +65,7 @@ export default {
               urlfb: doc.data().Imagen1,
               name: doc.data().Nombre,
               race: doc.data().Raza,
+              specie: doc.data().Especie,
               location: doc.data().Ubicacion
             };
             this.animalsArr.push(animal);
@@ -87,7 +89,6 @@ export default {
   margin: 4rem 0 5rem;
 }
 
-
 @media screen and (min-width: 767px) {
   .group {
     grid-template-columns: repeat(2, 1fr);
@@ -108,7 +109,7 @@ export default {
 
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1470px) {
 
   .group {
     grid-template-columns: repeat(5, 1fr);

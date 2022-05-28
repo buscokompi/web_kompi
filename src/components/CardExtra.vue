@@ -1,10 +1,10 @@
 <template>
     <div class="card-extra">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
-        <h3>+315 mascotas</h3>>
+        <h3>+300 mascotas</h3>
         <p>disponibles en kompi</p>
         <div class="footer">
-            <BaseButton url="../filter-animals.html" text="Ver más"/>
+            <BaseButton url="/FilterAnimals" text="Ver más" />
         </div>
     </div>
 </template>
@@ -12,7 +12,9 @@
 <script>
 import BaseButton from './BaseButton.vue'
 export default {
-    components: {BaseButton }
+    components: {
+        BaseButton
+    }
 
 }
 </script>
@@ -42,9 +44,10 @@ h3 {
     font-size: 1rem;
     grid-area: 9 / 1 / 10 / 2;
     font-weight: 700;
-        line-height: 0rem;
+    line-height: 0rem;
 
 }
+
 p {
     grid-area: 10 / 1 / 11 / 2;
     color: var(--white);
@@ -67,6 +70,5 @@ p {
     align-self: center;
 }
 
-@media screen and (min-width: 767px) {
-}
+@media screen and (min-width: 767px) {}
 </style>

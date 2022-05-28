@@ -18,6 +18,10 @@ export default {
         value: {
             type: String,
             default: "",
+        },
+        bgColor: {
+            type: String,
+            default: "#f9b22a"
         }
     },
     data() {
@@ -222,6 +226,7 @@ export default {
 }
 
 .button:hover {
-    background: #cc9320;
+    background: var(--hover-green);
+    color: var(--white);
 }
 </style>

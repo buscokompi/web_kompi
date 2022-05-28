@@ -89,8 +89,15 @@
           <p class="profile-name">Perfil</p>
           <ul class="profile">
             <li><a href="./404file.html">Mi perfil</a></li>
-            <li><a href="./404file.html">Ajustes</a></li>
-            <li class="signout">Cerrar sesión</li>
+            <li>
+              <RouterLink class="link" to="/">Mi perfil</RouterLink>
+            </li>
+            <li>
+              <RouterLink class="link" to="/">Ajustes</RouterLink>
+            </li>
+            <li>
+              <RouterLink class="link signout" to="/" @click="closeNav">Cerrar sesión</RouterLink>
+            </li>
           </ul>
         </li>
       </ul>
@@ -128,7 +135,8 @@
             alt="roedores"></a>
       </div>
       <div class="shadow">
-        <a href='./filter-animals.html?category="Reptil"'><img src="../assets/icons/icono_reptil.svg" alt="reptiles"></a>
+        <a href='./filter-animals.html?category="Reptil"'><img src="../assets/icons/icono_reptil.svg"
+            alt="reptiles"></a>
       </div>
     </div>
 
@@ -380,8 +388,8 @@
               height="21" alt="facebook"></a>
           <a href="https://www.instagram.com/adoptaunkompi"><img src="../assets/icons/icono_instagram.svg" width="21"
               height="21" alt="instagram"></a>
-          <a href="https://twitter.com/adoptaunkompi"><img src="../assets/icons/icono_twitter.svg" width="21" height="21"
-              alt="twitter"></a>
+          <a href="https://twitter.com/adoptaunkompi"><img src="../assets/icons/icono_twitter.svg" width="21"
+              height="21" alt="twitter"></a>
         </div>
       </div>
 

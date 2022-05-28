@@ -30,6 +30,10 @@ export default {
 
 }
 
+h2 {
+  margin-top: 6rem;
+}
+
 .text {
   margin: 1rem 6rem;
   font-size: 1rem;
@@ -46,9 +50,6 @@ export default {
     display: none;
   }
 
-  h2 {
-    margin-top: 6rem;
-  }
 
   .text {
     font-size: 1.1rem;
@@ -61,7 +62,7 @@ export default {
     justify-self: center;
     position: relative;
     width: 6rem;
-    margin-bottom: 9rem;
+    margin-bottom: 6rem;
   }
 
 }
@@ -75,7 +76,7 @@ export default {
   .text {
     margin: 1rem 2rem 1.4rem;
     font-size: 1.15rem;
-    width: 25rem;
+
     justify-self: center;
   }
 
@@ -86,6 +87,9 @@ export default {
   h2 {
     margin-top: 11rem;
   }
+}
+
+@media screen and (min-width: 1470px) {
 
   .more {
     visibility: hidden;

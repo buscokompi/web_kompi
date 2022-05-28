@@ -67,6 +67,7 @@ export default {
   cursor: pointer;
   background: var(--white);
   overflow: hidden;
+  margin: auto;
 }
 
 .img-container {

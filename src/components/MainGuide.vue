@@ -21,7 +21,8 @@
         </div>
         <img src="../assets/icons/icono_publica.svg" alt="Publicar" width="228" height="144">
         <h3>Publica una adopción</h3>
-        <p>Crea la publicación añadiendo características e información relevante de la mascota.<br> ¡No te olvides de las fotos!</p>
+        <p>Crea la publicación añadiendo características e información relevante de la mascota.<br> ¡No te olvides de
+          las fotos!</p>
       </div>
 
       <div class="step">
@@ -42,14 +43,13 @@
 
 <script>
 import BaseButton from './BaseButton.vue'
-    export default {
+export default {
   components: { BaseButton },
 
-    }
+}
 </script>
 
 <style scoped>
-
 .guide {
   width: 100%;
   height: fit-content;
@@ -97,17 +97,17 @@ import BaseButton from './BaseButton.vue'
 
 .guide .button {
   width: 7rem;
-  margin: 6rem 0 9rem;
+  margin: 6rem 0;
 }
 
 @media screen and (min-width: 767px) {
- br {
+  br {
     display: none;
   }
 }
 
 @media screen and (min-width: 1170px) {
-.guide {
+  .guide {
     display: grid;
     justify-items: center;
   }
@@ -137,8 +137,7 @@ import BaseButton from './BaseButton.vue'
   }
 
   .guide .button {
-    margin-bottom: 11rem;
+    margin-bottom: 6rem;
   }
 }
-
 </style>

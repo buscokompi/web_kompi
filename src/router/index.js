@@ -97,6 +97,16 @@ const router = createRouter({
       name: "AboutMe",
       component: () => import("../views/Aboutme.vue")
     },
+    {
+      path: "/PrivacyPolicy",
+      name: "PrivacyPolicy",
+      component: () => import("../views/PrivacyPolicy.vue")
+    },
+    {
+      path: "/Terms&Conditions",
+      name: "Terms&Conditions",
+      component: () => import("../views/Terms&Conditions.vue")
+    },
   ]
 });
 
