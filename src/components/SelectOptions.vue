@@ -1,11 +1,6 @@
 <template>
   <v-select :options='options' :clearable="false">
   </v-select>
-  <!--<v-select :options='options' :clearable="false" v-model="variable" @option:selected="hello">
-  </v-select>-->
-  <!--<select>
-    <option v-for="e in options" :key="e">{{ e }}</option>
-  </select>-->
 </template>
 
 <script>

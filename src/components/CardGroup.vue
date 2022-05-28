@@ -89,7 +89,6 @@ export default {
   margin: 4rem 0 5rem;
 }
 
-
 @media screen and (min-width: 767px) {
   .group {
     grid-template-columns: repeat(2, 1fr);

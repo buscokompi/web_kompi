@@ -22,11 +22,11 @@
                 <li>
                     <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
                 </li>
-                <li>
+                <!-- <li>
                     <RouterLink class="link" to="/TemplatePageBird"><img src="../assets/icons/corazon_icono.svg"
                             alt="favoritos">
                     </RouterLink>
-                </li>
+                </li> -->
                 <li class="vertical-line"></li>
                 <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
@@ -76,14 +76,14 @@
                             <RouterLink class="link" to="/"><img src="../assets/icons/icono_twitter_yellow.svg"
                                     alt="Twitter"></RouterLink>
                         </li>
-                        <li>
+                        <!-- <li>
                             <RouterLink class="link" to="/"><img src="../assets/icons/corazon_icono.svg"
                                     alt="Favoritos"></RouterLink>
-                        </li>
+                        </li> -->
                     </ul>
-                    <div class="m-footer">
-                        <RouterLink class="link" to="/">Iniciar sesión</RouterLink>
-                    </div>
+                    <button>
+                        <RouterLink class="m-footer" to="/Login">Iniciar sesión</RouterLink>
+                    </button>
                 </div>
             </transition>
             <div v-show="mobileNav" class="opacity">
@@ -128,18 +128,14 @@ export default {
         this.checkScreen();
         this.firebaseapp = initializeApp(firebaseConfig);
         this.checkSession();
-
-        this.fs = getFirestore()
+        this.fs = getFirestore();
     },
     methods: {
-
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
-
         },
         toggleDisplay() {
             this.sessionLog = !this.sessionLog;
-
         },
         openProfile() {
             this.displayProfile = !this.displayProfile;
@@ -147,7 +143,6 @@ export default {
         openAdoption() {
             this.displayAdoption = !this.displayAdoption;
         },
-
         closeNav() {
             this.mobileNav = false;
         },
@@ -163,20 +158,16 @@ export default {
                 console.log(errorMessage);
             });
         },
-
         async getNameProfile(userEmail) {
             const docRef = doc(this.fs, "usuarios", userEmail);
             const docSnap = await getDoc(docRef);
-
             if (docSnap.exists()) {
                 this.nameProfile = docSnap.data().name;
-            } else {
+            }
+            else {
                 this.nameProfile = userEmail;
             }
         },
-
-
-
         updateScroll() {
             const scrollPosition = window.scrollY;
             if (scrollPosition > 50) {
@@ -185,7 +176,6 @@ export default {
             }
             this.scrolledNav = false;
         },
-
         checkScreen() {
             this.windowWidth = window.innerWidth;
             if (this.windowWidth >= 1300) {
@@ -200,22 +190,24 @@ export default {
         checkSession() {
             const auth = getAuth();
             auth.onAuthStateChanged((user) => {
-                console.log(user)
+                console.log(user);
                 if (user) {
-                    this.sessionLog = true
-                    console.log("usuario autenticado")
-                    this.emailProfile = user.email
-                    this.getNameProfile(this.emailProfile)
-                } else {
-                    this.sessionLog = false
-                    console.log("usuario no autenticado")
+                    this.sessionLog = true;
+                    console.log("usuario autenticado");
+                    this.emailProfile = user.email;
+                    this.getNameProfile(this.emailProfile);
                 }
-            })
+                else {
+                    this.sessionLog = false;
+                    console.log("usuario no autenticado");
+                }
+            });
         },
     },
     mounted() {
         window.addEventListener("scroll", this.updateScroll);
     },
+    components: {}
 }
 </script>
 
@@ -275,7 +267,7 @@ ul {
 }
 
 .opacity {
-    z-index: -2;
+    z-index: 0;
     background: rgb(50 48 53/100%);
     opacity: 0.6;
     width: 100vw;
@@ -347,25 +339,34 @@ ul {
 }
 
 .icons img:hover {
-    filter: invert(95%) sepia(98%) saturate(6680%) hue-rotate(325deg) brightness(92%) contrast(112%);
+    filter: brightness(0) saturate(100%) invert(19%) sepia(9%) saturate(7096%) hue-rotate(149deg) brightness(91%) contrast(105%);
     border: 0.1rem solid var(--orange);
     border-radius: 25%;
 }
 
+button {
+    border: 0;
+    padding: 0;
+}
+
 .m-footer {
-    background: var(--orange);
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-
-.m-footer a {
+    background-color: var(--orange);
     font-family: var(--text-font);
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--black);
     text-decoration: none;
+}
+
+.m-footer:hover {
+    background-color: var(--green);
+    color: var(--white);
+    transition: all 0.5s;
 }
 
 
@@ -445,6 +446,10 @@ ul {
 .desktop .display p:hover,
 .dropdown .link:hover {
     color: var(--orange);
+}
+
+.dropdown .m-footer .link:hover {
+    color: var(--white);
 }
 
 .desktop .profile a,

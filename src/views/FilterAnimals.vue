@@ -1,11 +1,15 @@
 <template>
   <TheHeader />
   <div class="home">
-    <h1>¡Tú próxima mascota está esperandote!</h1>
-    <p>Te mostraremos los resultados más acordes a tu busqueda</p>
+    <h1>¡Tú próxima mascota está esperándote!</h1>
+    <p>Te mostraremos los resultados más acordes a tu búsqueda</p>
   </div>
 
   <div class="searcher">
+
+    <div class="filter-mobile">
+      <p><img src="" alt="">Filtrar</p>
+    </div>
 
     <div class="results">
       <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
@@ -249,7 +253,6 @@ export default {
           this.disableRace = false;
           break;
       }
-      console.log(specie)
     },
 
     //Aplica las querys de los filtros de los select cambiados
@@ -301,7 +304,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 /*---Home---*/
 @import "../assets/base.css";
@@ -311,21 +313,27 @@ export default {
   height: 40vh;
   background: var(--green);
   display: flex;
-  justify-content: end;
+  align-items: center;
   flex-direction: column;
   gap: 0.4rem;
-  text-align: center;
+  text-align: left;
 }
 
 .home h1 {
+  width: 75vw;
+  font-family: var(--text-font);
   font-size: 1.5rem;
+  color: var(--white);
+  margin-top: 6.8rem;
 }
 
 .home p {
+  width: 75vw;
   font-size: 1rem;
   font-weight: 600;
   color: var(--white);
-  margin: 1rem 2rem 1.5rem;
+  margin-top: 0.5rem;
+
 }
 
 /*---Buscador---*/
@@ -338,6 +346,18 @@ export default {
   text-align: center;
 }
 
+/* .filter {
+  display: none;
+} */
+
+.filter-mobile {
+  width: 16rem;
+  height: 3rem;
+  background-color: var(--grey);
+  border-radius: 1rem;
+  margin-top: 3rem;
+}
+
 .group {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -347,15 +367,17 @@ export default {
   margin-bottom: 5rem;
 }
 
+
+
 .results {
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .results p {
-  font-size: 1.7rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 

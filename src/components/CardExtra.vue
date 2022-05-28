@@ -1,7 +1,7 @@
 <template>
     <div class="card-extra">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Kompi Logo" width="88" height="88">
-        <h3>+315 mascotas</h3>
+        <h3>+300 mascotas</h3>
         <p>disponibles en kompi</p>
         <div class="footer">
             <BaseButton url="/FilterAnimals" text="Ver más" />

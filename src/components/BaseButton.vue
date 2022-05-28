@@ -21,7 +21,7 @@ export default {
         },
         bgColor: {
             type: String,
-            default: "#cc9320"
+            default: "#f9b22a"
         }
     },
     data() {
@@ -213,7 +213,7 @@ export default {
 
 <style scoped>
 .button {
-    background: v-bind(bgColor);
+    background: var(--orange);
     color: var(--black);
     padding: 0.8rem 2rem;
     display: inline-block;
@@ -226,6 +226,7 @@ export default {
 }
 
 .button:hover {
-    background: v-bind(bgColor);
+    background: var(--hover-green);
+    color: var(--white);
 }
 </style>
