@@ -253,7 +253,6 @@ export default {
           this.disableRace = false;
           break;
       }
-      console.log(specie)
     },
 
     //Aplica las querys de los filtros de los select cambiados

@@ -7,9 +7,7 @@ export default {
 </script>
 
 <template>
-    <p>{{ label1 }} <v-select placeholder="selecciona una opción" name="" class="question" :options='formOptions'
-            :clearable="false">
-        </v-select>
+    <p>{{ label1 }} <v-select class="question" :options='formOptions' :clearable="false"></v-select>
     </p>
 </template>
 
