@@ -4,6 +4,32 @@
             <p>Nombre*</p>
             <input v-model="data.Nombre" type="text" class="input">
         </div>
+        <p>Localidad</p>
+        <SelectOptions :options="provinciasArr" v-model="location" @option:selected="onChange(location, 'Ubicacion')" />
+
+        <p>Especie</p>
+        <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
+
+        <p>Raza</p>
+        <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+            @option:selected="onChange(race, 'Raza')" />
+
+        <p>Sexo</p>
+        <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+
+        <p>Tamaño</p>
+        <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+
+        <p>Vacunas</p>
+        <SelectOptions :options="othersArr" v-model="vaccination"
+            @option:selected="onChange(vaccination, 'Vacunacion')" />
+
+        <p>Esterilización</p>
+        <SelectOptions :options="othersArr" v-model="sterilization"
+            @option:selected="onChange(sterilization, 'Esterilizacion')" />
+
+        <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
+
         <div class="age">
             <p>Edad*</p>
             <input v-model="data.Edad" type="text" class="input">
@@ -11,19 +37,10 @@
         <div class="weight">
             <p>Tamaño*</p>
             <input v-model="data.Tamano" type="text" class="input">
-            <!--<select name="Tamano" class="input">
-          <option value="pequenio">Pequeño</option>
-          <option value="mediano">Mediano</option>
-          <option value="grande">Grande</option>;
-        </select>-->
         </div>
         <div class="microchip">
             <p>Microchip*</p>
             <input v-model="data.Microchip" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
         </div>
         <div class="location">
             <p>Peso*</p>
@@ -32,10 +49,6 @@
         <div class="gender">
             <p>Sexo*</p>
             <input v-model="data.Sexo" type="text" class="input">
-            <!--<select class="input">
-            <option value="macho">Macho</option>
-            <option value="hembra">Hembra</option>
-          </select>-->
         </div>
         <div class="color">
             <p>Color*</p>
@@ -44,10 +57,6 @@
         <div class="vaccination">
             <p>Vacunas*</p>
             <input v-model="data.Vacunacion" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
         </div>
         <div class="species">
             <p>Especie*</p>
@@ -64,18 +73,10 @@
         <div class="sterilized">
             <p>Esterilización*</p>
             <input v-model="data.Esterilizacion" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
         </div>
         <div class="certificate">
             <p>Certificado ppp*</p>
             <input v-model="data.Certificado_ppp" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
         </div>
         <div class="description">
             <p>Descripción*</p>
@@ -94,8 +95,13 @@
     </div>
 </template>
 <script>
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+//Imports de los metodos de firebase
+import { getFirestore, collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { KompiStore } from '../stores/KompiStore';
+
 import { getAuth } from "firebase/auth";
 import { initFirebase } from '@/firebase/firebase.js'
 export default {
