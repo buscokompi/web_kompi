@@ -107,11 +107,6 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue")
     },
-    {
-      path: "/FormAnimals",
-      name: "FormAnimals",
-      component: () => import("../views/formularioEjemplo.vue")
-    },
   ]
 });
 
