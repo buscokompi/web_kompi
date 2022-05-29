@@ -44,7 +44,7 @@ $vs-state-disabled-cursor: not-allowed !default;
 //  Borders
 $vs-border-width: 1px !default;
 $vs-border-style: solid !default;
-$vs-border-radius: 1.3rem;
+$vs-border-radius: 0.3rem !default;
 $vs-border-color: map_get($vs-colors, 'lightest') !default;
 
 //  Component Controls: Clear, Open Indicator

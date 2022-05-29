@@ -127,7 +127,7 @@ export default {
 </template>
 
 
-<style scoped>
+<style lang="scss" scoped>
 section {
     background-color: var(--light-grey-color);
     display: flex;

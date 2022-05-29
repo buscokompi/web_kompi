@@ -103,8 +103,8 @@ export default {
       sexArr: sexArr,
       sizeArr: sizeArr,
       othersArr: othersArr,
-      age: ageArr,
-      color: colorArr,
+      ageArr: ageArr,
+      colorArr: colorArr,
 
 
       //Variables con el valor seleccionado de los select

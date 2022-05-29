@@ -1,68 +1,73 @@
 <template>
+
     <form class="formulario">
+        <div class="title">
+            <h1>Ficha animal</h1>
+            <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal. Puedes
+                editarla en cualquier momento.</p>
+        </div>
         <div class="name">
             <p>Nombre*</p>
             <input v-model="data.Nombre" type="text" class="input">
         </div>
-        <p>Nombre*</p>
-        <v-select />
-        <div>
+        <div class="location">
             <p>Localidad*</p>
             <SelectOptions :options="provinciasArr" v-model="location"
                 @option:selected="onChange(location, 'Ubicacion')" />
         </div>
-        <div>
+        <div class="species">
             <p>Especie*</p>
             <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
         </div>
-        <div>
+        <div class="breed">
             <p>Raza*</p>
             <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
                 @option:selected="onChange(race, 'Raza')" />
         </div>
-        <div>
+        <div class="gender">
             <p>Sexo*</p>
             <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
         </div>
-        <div>
+        <div class="age">
             <p>Edad*</p>
             <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
         </div>
-        <div>
+        <div class="size">
             <p>Tamaño*</p>
             <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
         </div>
         <!-- <p>Peso*</p>
         <SelectOptions :options="weightArr" v-model="weight" @option:selected="onChange(weight, 'Peso')" /> -->
-        <div>
+        <div class="color">
             <p>Color*</p>
             <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
         </div>
-        <div>
+        <div class="vaccination">
             <p>Vacunas*</p>
             <SelectOptions :options="othersArr" v-model="vaccination"
                 @option:selected="onChange(vaccination, 'Vacunacion')" />
         </div>
-        <div>
+        <div class="sterilization">
             <p>Esterilización*</p>
             <SelectOptions :options="othersArr" v-model="sterilization"
                 @option:selected="onChange(sterilization, 'Esterilizacion')" />
         </div>
-        <div>
+        <div class="certificate">
             <p>Certificado PPP*</p>
             <SelectOptions :options="othersArr" v-model="sterilization"
                 @option:selected="onChange(sterilization, 'Esterilizacion')" />
+        </div>
+
+        <div class="description">
+            <p>Descripción*</p>
+            <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
+                class="textarea"></textarea>
         </div>
         <div class="images">
             <p>Sube una foto*</p>
             <div class="uploadImages">
                 <input @change="TakePhoto($event)" class="fileinput" type="file" accept="image/*">
             </div>
-        </div>
-        <div class="description">
-            <p>Descripción*</p>
-            <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
-                class="textarea"></textarea>
         </div>
     </form>
     <div class="save">
@@ -135,23 +140,32 @@ export default {
 }
 </script>
 <style scoped>
+h1 {
+    color: var(--black);
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+}
+
+p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
 .formulario {
     width: 70vw;
     background: var(--white);
-    margin-top: 1rem;
+    margin-top: 8rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1.5rem;
 }
 
-select {
-    background: var(--lightgrey);
-    width: 90%;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    font-family: var(--text-font);
-    border: none;
-    cursor: pointer;
-}
-
-input {
+input,
+.textarea {
     height: 2.5rem;
     appearance: none;
     border-radius: 0.3rem;
@@ -159,7 +173,15 @@ input {
     font-family: var(--text-font);
     width: 15rem;
     border: 0.15rem solid var(--green);
+
 }
+
+.textarea {
+    resize: none;
+    height: 15rem;
+}
+
+
 
 
 .fileinput::-webkit-file-upload-button {
@@ -167,7 +189,7 @@ input {
 }
 
 .fileinput {
-    color: transparent;
+    color: var(--grey);
     cursor: pointer;
 }
 
@@ -179,109 +201,44 @@ input {
 
     .formulario {
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(21, 1fr);
-        grid-column-gap: 2rem;
-        grid-row-gap: 0;
+        grid-template-columns: repeat(3, 33%);
+        grid-template-rows: repeat(3, auto);
+
     }
 
-    .name {
-        width: 18rem;
-        grid-area: 1 / 1 / 3 / 5;
-        font-family: var(--text-font);
-    }
+    .name {}
 
-    .location {
-        width: 18rem;
-        grid-area: 3 / 1 / 5 / 5;
-    }
+    .location {}
 
-    .species {
-        width: 18rem;
-        grid-area: 5 / 1 / 7 / 5;
+    .species {}
 
-        /* grid-column: 3/5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
-    }
+    .age {}
 
-    .age {
-        width: 9rem;
-        grid-area: 1 / 5 / 3 / 7;
+    .gender {}
 
-        /* grid-column: 5/6;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
-    }
+    .breed {}
 
-    .gender {
-        width: 9rem;
-        grid-area: 3 / 5 / 5 / 7;
-    }
+    .weight {}
 
-    .breed {
-        width: 9rem;
-        grid-area: 5 / 5 / 7 / 7;
-    }
+    .color {}
 
-    .weight {
-        width: 9rem;
-        grid-area: 1 / 7 / 3 / 9;
-    }
+    .hair {}
 
-    .color {
-        width: 9rem;
-        grid-area: 3 / 7 / 5 / 9;
-    }
+    .microchip {}
 
-    .hair {
-        width: 9rem;
-        grid-area: 5 / 7 / 7 / 9;
-    }
+    .vaccination {}
 
-    .microchip {
-        width: 9rem;
-        grid-area: 1 / 9 / 3 / 11;
-    }
+    .sterilized {}
 
-    .vaccination {
-        width: 9rem;
-        grid-area: 3 / 9 / 5 / 11;
-    }
+    .certificate {}
 
-    .sterilized {
-        width: 9rem;
-        grid-area: 5 / 9 / 7 / 11;
-    }
-
-    .certificate {
-        width: 9rem;
-        grid-area: 7 / 1 / 9 / 3;
-    }
-
-    .images {
-        grid-area: 9 / 1 / 11 / 11;
+    .images input,
+    .textarea {
         width: 100%;
     }
 
-    .description {
-        grid-area: 11 / 1 / 20 / 11;
-    }
 
-    .description textarea {
-        background: var(--lightgrey);
-        border-radius: 0.5rem;
-        border: none;
-        width: 100%;
-        height: 100%;
-    }
 
-    .formulario .button {
-        grid-area: 22 / 1 / 24 / 11;
-    }
+    .formulario .button {}
 }
 </style>
