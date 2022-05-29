@@ -28,8 +28,8 @@ $vs-component-placeholder-color: inherit !default;
 $vs-component-cursor: pointer;
 
 //  Active State
-$vs-state-active-bg: var(--green) !default;
-$vs-state-active-color: #fff !default;
+$vs-state-active-bg: var(--orange) !important;
+$vs-state-active-color: var(--black) !important;
 
 //  Deselect State
 $vs-state-deselect-bg: #fb5858 !default;
@@ -44,11 +44,11 @@ $vs-state-disabled-cursor: not-allowed !default;
 //  Borders
 $vs-border-width: 1px !default;
 $vs-border-style: solid !default;
-$vs-border-radius: 2rem !default;
+$vs-border-radius: 1.3rem;
 $vs-border-color: map_get($vs-colors, 'lightest') !default;
 
 //  Component Controls: Clear, Open Indicator
-$vs-controls-color: map_get($vs-colors, 'light') !default;
+$vs-controls-color: var(--green) !important;
 $vs-controls-size: 1 !default;
 $vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
 
@@ -72,20 +72,33 @@ input {
 }
 
 .vs__dropdown-toggle {
-    width: 15rem;
+    width: 15.5rem;
     border: 0.15rem solid var(--green) !important;
 }
 
-.vs__dropdown-menu{
+.vs__dropdown-menu {
     background-color: var(--lightgrey) !important;
 
 }
 
-.vs__dropdown-option{
-   padding: 1rem !important; 
-   color: var(--green) !important;
+.vs__dropdown-option:hover,
+{
+background-color: var(--orange) !important;
+color: var(--black) !important;
+}
+
+.vs__dropdown-option {
+    padding: 1rem !important;
+    color: var(--green) !important;
 
 }
+
+.vs__actions {
+    margin-right: 0.8rem !important;
+    margin-top: 0.2rem;
+}
+
+
 
 .v-select .vs__selected-options {
     flex-wrap: nowrap;
@@ -98,12 +111,12 @@ input {
 }
 
 @media screen and (min-width: 1170px) {
-    
-    .vs__dropdown-option{
-        padding: 0.5rem 1rem !important;     
-     }
 
-     .v-select .vs__selected-options {
+    .vs__dropdown-option {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .v-select .vs__selected-options {
         padding: 0;
 
     }

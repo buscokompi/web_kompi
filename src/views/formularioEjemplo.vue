@@ -154,12 +154,11 @@ select {
 input {
     height: 2.5rem;
     appearance: none;
-    border-radius: 0.5rem;
-    background: var(--lightgrey);
+    border-radius: 0.3rem;
+    background: var(--white);
     font-family: var(--text-font);
-    width: 100%;
-    border: none;
-    padding: 0;
+    width: 15rem;
+    border: 0.15rem solid var(--green);
 }
 
 
