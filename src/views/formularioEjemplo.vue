@@ -1,77 +1,82 @@
 <template>
-
-    <form class="formulario">
+    <div class="container">
         <div class="title">
             <h1>Ficha animal</h1>
-            <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal. Puedes
+            <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal.
+                Puedes
                 editarla en cualquier momento.</p>
         </div>
-        <div class="name">
-            <p>Nombre*</p>
-            <input v-model="data.Nombre" type="text" class="input">
-        </div>
-        <div class="location">
-            <p>Localidad*</p>
-            <SelectOptions :options="provinciasArr" v-model="location"
-                @option:selected="onChange(location, 'Ubicacion')" />
-        </div>
-        <div class="species">
-            <p>Especie*</p>
-            <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
-        </div>
-        <div class="breed">
-            <p>Raza*</p>
-            <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
-                @option:selected="onChange(race, 'Raza')" />
-        </div>
-        <div class="gender">
-            <p>Sexo*</p>
-            <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
-        </div>
-        <div class="age">
-            <p>Edad*</p>
-            <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
-        </div>
-        <div class="size">
-            <p>Tamaño*</p>
-            <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
-        </div>
-        <!-- <p>Peso*</p>
-        <SelectOptions :options="weightArr" v-model="weight" @option:selected="onChange(weight, 'Peso')" /> -->
-        <div class="color">
-            <p>Color*</p>
-            <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
-        </div>
-        <div class="vaccination">
-            <p>Vacunas*</p>
-            <SelectOptions :options="othersArr" v-model="vaccination"
-                @option:selected="onChange(vaccination, 'Vacunacion')" />
-        </div>
-        <div class="sterilization">
-            <p>Esterilización*</p>
-            <SelectOptions :options="othersArr" v-model="sterilization"
-                @option:selected="onChange(sterilization, 'Esterilizacion')" />
-        </div>
-        <div class="certificate">
-            <p>Certificado PPP*</p>
-            <SelectOptions :options="othersArr" v-model="sterilization"
-                @option:selected="onChange(sterilization, 'Esterilizacion')" />
-        </div>
-
-        <div class="description">
-            <p>Descripción*</p>
-            <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
-                class="textarea"></textarea>
-        </div>
-        <div class="images">
-            <p>Sube una foto*</p>
-            <div class="uploadImages">
-                <input @change="TakePhoto($event)" class="fileinput" type="file" accept="image/*">
+        <form class="formulario">
+            <div class="name">
+                <p>Nombre*</p>
+                <input v-model="data.Nombre" type="text" class="input">
             </div>
-        </div>
-    </form>
-    <div class="save">
-        <BaseButton @click="addAnimal" text="Guardar" />
+            <div class="location">
+                <p>Localidad*</p>
+                <SelectOptions :options="provinciasArr" v-model="location"
+                    @option:selected="onChange(location, 'Ubicacion')" />
+            </div>
+            <div class="species">
+                <p>Especie*</p>
+                <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
+            </div>
+            <div class="breed">
+                <p>Raza*</p>
+                <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+                    @option:selected="onChange(race, 'Raza')" />
+            </div>
+            <div class="gender">
+                <p>Sexo*</p>
+                <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+            </div>
+            <div class="age">
+                <p>Edad*</p>
+                <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
+            </div>
+            <div class="size">
+                <p>Tamaño*</p>
+                <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+            </div>
+            <div class="color">
+                <p>Color*</p>
+                <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
+            </div>
+            <div class="microchip">
+                <p>Microchip*</p>
+                <SelectOptions :options="othersArr" v-model="vaccination"
+                    @option:selected="onChange(vaccination, 'Vacunacion')" />
+            </div>
+            <div class="vaccination">
+                <p>Vacunas*</p>
+                <SelectOptions :options="othersArr" v-model="vaccination"
+                    @option:selected="onChange(vaccination, 'Vacunacion')" />
+            </div>
+            <div class="sterilization">
+                <p>Esterilización*</p>
+                <SelectOptions :options="othersArr" v-model="sterilization"
+                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
+            </div>
+            <div class="certificate">
+                <p>Certificado PPP*</p>
+                <SelectOptions :options="othersArr" v-model="sterilization"
+                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
+            </div>
+
+            <div class="description">
+                <p>Descripción*</p>
+                <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
+                    class="textarea"></textarea>
+            </div>
+            <div class="images">
+                <p>Sube una foto*</p>
+                <div class="uploadImages">
+                    <input @change="TakePhoto($event)" class="fileinput" type="file" accept="image/*">
+                </div>
+            </div>
+            <div class="save">
+                <BaseButton @click="addAnimal" text="Guardar" />
+            </div>
+        </form>
     </div>
 </template>
 <script>
@@ -144,6 +149,7 @@ h1 {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 1.3rem;
+    margin-bottom: 0.5rem;
 }
 
 p {
@@ -153,15 +159,20 @@ p {
     font-weight: 600;
 }
 
+.container {
+    background: var(--white);
+    padding: 3rem;
+    margin-top: 6rem;
+}
+
+
 .formulario {
     width: 70vw;
-    background: var(--white);
-    margin-top: 8rem;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 input,
@@ -201,36 +212,75 @@ input,
 
     .formulario {
         display: grid;
-        grid-template-columns: repeat(3, 33%);
-        grid-template-rows: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr) 3fr repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
 
     }
 
-    .name {}
+    .name {
+        grid-area: 1 / 1 / 2 / 2;
+    }
 
-    .location {}
+    .location {
+        grid-area: 1 / 2 / 2 / 3;
+    }
 
-    .species {}
+    .species {
+        grid-area: 1 / 3 / 2 / 4;
+    }
 
-    .age {}
+    .breed {
+        grid-area: 2 / 1 / 3 / 2;
+    }
 
-    .gender {}
+    .gender {
+        grid-area: 2 / 2 / 3 / 3;
+    }
 
-    .breed {}
+    .age {
+        grid-area: 2 / 3 / 3 / 4;
+    }
 
-    .weight {}
+    .size {
+        grid-area: 3 / 1 / 4 / 2;
+    }
 
-    .color {}
+    .color {
+        grid-area: 3 / 2 / 4 / 3;
+    }
 
-    .hair {}
+    .microchip {
+        grid-area: 3 / 3 / 4 / 4;
+    }
 
-    .microchip {}
+    .vaccination {
+        grid-area: 4 / 1 / 5 / 2;
+    }
 
-    .vaccination {}
+    .sterilized {
+        grid-area: 4 / 2 / 5 / 3;
+    }
 
-    .sterilized {}
+    .certificate {
+        grid-area: 4 / 3 / 5 / 4;
+    }
 
-    .certificate {}
+    .description {
+        grid-area: 5 / 1 / 6 / 4;
+    }
+
+    .images {
+        grid-area: 6 / 1 / 7 / 4;
+    }
+
+    .save {
+        grid-area: 7 / 2 / 8 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .images input,
     .textarea {
@@ -239,6 +289,6 @@ input,
 
 
 
-    .formulario .button {}
+
 }
 </style>
