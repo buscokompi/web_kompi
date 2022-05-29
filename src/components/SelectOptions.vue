@@ -15,7 +15,7 @@ export default {
     return {
       store: "",
       specie: "",
-      variable: "selecciona una opcion",
+      variable: "selecciona una opción",
     }
   },
   methods: {

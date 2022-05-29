@@ -33,9 +33,9 @@ export default {
 
             answers: answersForm,
 
-            questions: ["selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion",
-                "selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion",
-                "selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion", "selecciona una opcion"]
+            questions: ["selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción",
+                "selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción",
+                "selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción", "selecciona una opción"]
 
         }
     },
@@ -127,7 +127,7 @@ export default {
 </template>
 
 
-<style scoped>
+<style lang="scss" scoped>
 section {
     background-color: var(--light-grey-color);
     display: flex;

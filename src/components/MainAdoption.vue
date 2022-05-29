@@ -79,7 +79,6 @@ h2 {
 
     justify-self: center;
   }
-
 }
 
 @media screen and (min-width: 1300px) {

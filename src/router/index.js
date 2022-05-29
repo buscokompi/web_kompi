@@ -87,11 +87,7 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue")
     },
-    {
-      path: "/NewAnimalForm",
-      name: "NewAnimalForm",
-      component: () => import("../views/NewAnimalForm.vue")
-    },
+
     {
       path: "/AboutMe",
       name: "AboutMe",

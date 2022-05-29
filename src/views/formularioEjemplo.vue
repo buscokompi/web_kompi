@@ -1,82 +1,63 @@
 <template>
+
     <form class="formulario">
+        <div class="title">
+            <h1>Ficha animal</h1>
+            <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal. Puedes
+                editarla en cualquier momento.</p>
+        </div>
         <div class="name">
             <p>Nombre*</p>
             <input v-model="data.Nombre" type="text" class="input">
         </div>
-        <div class="age">
-            <p>Edad*</p>
-            <input v-model="data.Edad" type="text" class="input">
-        </div>
-        <div class="weight">
-            <p>Tamaño*</p>
-            <input v-model="data.Tamano" type="text" class="input">
-            <!--<select name="Tamano" class="input">
-          <option value="pequenio">Pequeño</option>
-          <option value="mediano">Mediano</option>
-          <option value="grande">Grande</option>;
-        </select>-->
-        </div>
-        <div class="microchip">
-            <p>Microchip*</p>
-            <input v-model="data.Microchip" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
-        </div>
         <div class="location">
-            <p>Peso*</p>
-            <input v-model="data.Peso" type="text" class="input">
-        </div>
-        <div class="gender">
-            <p>Sexo*</p>
-            <input v-model="data.Sexo" type="text" class="input">
-            <!--<select class="input">
-            <option value="macho">Macho</option>
-            <option value="hembra">Hembra</option>
-          </select>-->
-        </div>
-        <div class="color">
-            <p>Color*</p>
-            <input v-model="data.Color" type="text" class="input">
-        </div>
-        <div class="vaccination">
-            <p>Vacunas*</p>
-            <input v-model="data.Vacunacion" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
+            <p>Localidad*</p>
+            <SelectOptions :options="provinciasArr" v-model="location"
+                @option:selected="onChange(location, 'Ubicacion')" />
         </div>
         <div class="species">
             <p>Especie*</p>
-            <input v-model="data.Especie" type="text" class="input">
+            <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
         </div>
         <div class="breed">
             <p>Raza*</p>
-            <input v-model="data.Raza" type="text" class="input">
+            <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+                @option:selected="onChange(race, 'Raza')" />
         </div>
-        <div class="hair">
-            <p>Pelo*</p>
-            <input v-model="data.Pelo" type="text" class="input">
+        <div class="gender">
+            <p>Sexo*</p>
+            <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
         </div>
-        <div class="sterilized">
+        <div class="age">
+            <p>Edad*</p>
+            <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
+        </div>
+        <div class="size">
+            <p>Tamaño*</p>
+            <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+        </div>
+        <!-- <p>Peso*</p>
+        <SelectOptions :options="weightArr" v-model="weight" @option:selected="onChange(weight, 'Peso')" /> -->
+        <div class="color">
+            <p>Color*</p>
+            <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
+        </div>
+        <div class="vaccination">
+            <p>Vacunas*</p>
+            <SelectOptions :options="othersArr" v-model="vaccination"
+                @option:selected="onChange(vaccination, 'Vacunacion')" />
+        </div>
+        <div class="sterilization">
             <p>Esterilización*</p>
-            <input v-model="data.Esterilizacion" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
+            <SelectOptions :options="othersArr" v-model="sterilization"
+                @option:selected="onChange(sterilization, 'Esterilizacion')" />
         </div>
         <div class="certificate">
-            <p>Certificado ppp*</p>
-            <input v-model="data.Certificado_ppp" type="text" class="input">
-            <!--<select class="input">
-            <option value="sí">Si</option>
-            <option value="no">No</option>
-          </select>-->
+            <p>Certificado PPP*</p>
+            <SelectOptions :options="othersArr" v-model="sterilization"
+                @option:selected="onChange(sterilization, 'Esterilizacion')" />
         </div>
+
         <div class="description">
             <p>Descripción*</p>
             <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
@@ -90,16 +71,28 @@
         </div>
     </form>
     <div class="save">
-        <button @click="addAnimal" class="button">Guardar</button>
+        <BaseButton @click="addAnimal" text="Guardar" />
     </div>
 </template>
 <script>
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import SelectOptions from '../components/SelectOptions.vue'
+import BaseButton from '../components/BaseButton.vue'
+
+//Imports de los metodos de firebase
+import { getFirestore, collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr } from "../js/options.js"
+import { KompiStore } from '../stores/KompiStore';
+
 import { getAuth } from "firebase/auth";
 import { initFirebase } from '@/firebase/firebase.js'
 export default {
     name: "formularioEjemplo",
+    components: {
+        SelectOptions,
+        BaseButton,
+    },
     data() {
         return {
             firebaseapp: initFirebase(),
@@ -147,150 +140,105 @@ export default {
 }
 </script>
 <style scoped>
-.profile-content {
-    width: 52vw;
-    margin: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1 {
+    color: var(--black);
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+}
+
+p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--black);
+    font-weight: 600;
 }
 
 .formulario {
-    height: 100vh;
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(21, 1fr);
-    grid-column-gap: 2rem;
-    grid-row-gap: 0;
+    width: 70vw;
+    background: var(--white);
+    margin-top: 8rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1.5rem;
 }
 
-select {
-    background: var(--lightgrey);
-    width: 90%;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    font-family: var(--text-font);
-    border: none;
-    cursor: pointer;
-}
-
-input {
+input,
+.textarea {
     height: 2.5rem;
     appearance: none;
-    border-radius: 0.5rem;
-    background: var(--lightgrey);
+    border-radius: 0.3rem;
+    background: var(--white);
     font-family: var(--text-font);
-    width: 100%;
-    border: none;
-    padding: 0;
+    width: 15rem;
+    border: 0.15rem solid var(--green);
+
 }
 
-.name {
-    width: 18rem;
-    grid-area: 1 / 1 / 3 / 5;
-    font-family: var(--text-font);
+.textarea {
+    resize: none;
+    height: 15rem;
 }
 
-.location {
-    width: 18rem;
-    grid-area: 3 / 1 / 5 / 5;
-}
 
-.species {
-    width: 18rem;
-    grid-area: 5 / 1 / 7 / 5;
 
-    /* grid-column: 3/5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
-}
-
-.age {
-    width: 9rem;
-    grid-area: 1 / 5 / 3 / 7;
-
-    /* grid-column: 5/6;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
-}
-
-.gender {
-    width: 9rem;
-    grid-area: 3 / 5 / 5 / 7;
-}
-
-.breed {
-    width: 9rem;
-    grid-area: 5 / 5 / 7 / 7;
-}
-
-.weight {
-    width: 9rem;
-    grid-area: 1 / 7 / 3 / 9;
-}
-
-.color {
-    width: 9rem;
-    grid-area: 3 / 7 / 5 / 9;
-}
-
-.hair {
-    width: 9rem;
-    grid-area: 5 / 7 / 7 / 9;
-}
-
-.microchip {
-    width: 9rem;
-    grid-area: 1 / 9 / 3 / 11;
-}
-
-.vaccination {
-    width: 9rem;
-    grid-area: 3 / 9 / 5 / 11;
-}
-
-.sterilized {
-    width: 9rem;
-    grid-area: 5 / 9 / 7 / 11;
-}
-
-.certificate {
-    width: 9rem;
-    grid-area: 7 / 1 / 9 / 3;
-}
-
-.images {
-    grid-area: 9 / 1 / 11 / 11;
-    width: 100%;
-}
-
-.description {
-    grid-area: 11 / 1 / 20 / 11;
-}
-
-.description textarea {
-    background: var(--lightgrey);
-    border-radius: 0.5rem;
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-
-.formulario .button {
-    grid-area: 22 / 1 / 24 / 11;
-}
 
 .fileinput::-webkit-file-upload-button {
     display: none;
 }
 
 .fileinput {
-    color: transparent;
+    color: var(--grey);
     cursor: pointer;
+}
+
+@media screen and (min-width: 767px) {}
+
+@media screen and (min-width: 1170px) {}
+
+@media screen and (min-width: 1300px) {
+
+    .formulario {
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+        grid-template-rows: repeat(3, auto);
+
+    }
+
+    .name {}
+
+    .location {}
+
+    .species {}
+
+    .age {}
+
+    .gender {}
+
+    .breed {}
+
+    .weight {}
+
+    .color {}
+
+    .hair {}
+
+    .microchip {}
+
+    .vaccination {}
+
+    .sterilized {}
+
+    .certificate {}
+
+    .images input,
+    .textarea {
+        width: 100%;
+    }
+
+
+
+    .formulario .button {}
 }
 </style>
