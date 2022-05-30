@@ -43,20 +43,11 @@ const router = createRouter({
       path: "/NewAnimalForm",
       name: "NewAnimalForm",
       component: () => import("../views/NewAnimalForm.vue"),
-      children: [
-        {
-          path: "saludo",
-          component: () => import("../views/NewAnimalForm.vue")
-        },
-        {
-          path: "otroSaludo",
-          component: () => import("../views/NewAnimalForm.vue")
-        },
-        {
-          path: "formularioEjemplo",
-          component: () => import("../views/formularioEjemplo.vue")
-        }
-      ]
+    },
+    {
+      path: "/FormCard",
+      name: "FormCard",
+      component: () => import("../views/FormCard.vue")
     },
     {
       path: "/Login",
@@ -83,12 +74,6 @@ const router = createRouter({
       name: "OptionsNewUser",
       component: () => import("../views/OptionsNewUser.vue")
     },
-    {
-      path: "/FormUser",
-      name: "FormUser",
-      component: () => import("../views/FormUser.vue")
-    },
-
     {
       path: "/AboutMe",
       name: "AboutMe",
