@@ -20,10 +20,10 @@
 
         <div>
           <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
-            id="password" type="password" required="required"
+            id="password" :type="type_1" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password" />
-          <label for="toggle-password"></label>
+          <label @click="toggleClicked" for="toggle-password"></label>
         </div>
 
 
@@ -35,17 +35,17 @@
 
         <div>
           <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
-            id="password2" type="password" required="required"
+            id="password2" :type="type_2" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password2" />
-          <label for="toggle-password2"></label>
+          <label @click="toggleClicked2" for="toggle-password2"></label>
         </div>
 
 
 
         <span id='message'></span>
 
-        <button type="submit" class="button btn-signin-email">Continuar</button>
+        <button @click.prevent="signin" type="submit" class="button btn-signin-email">Continuar</button>
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
@@ -67,33 +67,26 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initFirebase } from '@/firebase/firebase.js'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
-  authDomain: "web-kompi.firebaseapp.com",
-  projectId: "web-kompi",
-  storageBucket: "web-kompi.appspot.com",
-  messagingSenderId: "556298514839",
-  appId: "1:556298514839:web:92e508e18c5685e99694d2",
-  measurementId: "G-93MGP34YQN"
-};
 export default {
   name: "Singin",
   data() {
     return {
       firebaseapp: "",
-      auth: "",
+      auth: null,
       email: "",
       password: "",
       passwordCheck: "",
       visible: "visible",
       fieldType: "password",
+      type_1: "password", // se aplicó para poner el type text o password para que se muestre la contraseña o no
+      type_2: "password"
     }
   },
   mounted() {
-    this.firebaseapp = initializeApp(firebaseConfig);
+    this.firebaseapp = initFirebase() // Inicizaliza la BBDD
     this.auth = getAuth();
 
   },
@@ -102,16 +95,14 @@ export default {
       if (this.password !== this.passwordCheck) {
         alert("Comprueba que la contraseña sea correcta");
       } else {
-        // signInFirebase(email, password);
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
-            console.log("usuario registrado");
-          }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-            alert("invalido");
+            console.log(userCredential.user);
+            this.$router.push("/NewUser");
+          })
+          .catch((error) => {
+            console.log(error.code);
+            console.log(error.message);
           });
       }
     },
@@ -134,6 +125,29 @@ export default {
           console.log(credential);
           alert("Login invalido");
         });
+    },
+
+    info() {
+      console.log(this.email);
+      console.log(this.password);
+      console.log(this.passwordCheck);
+    },
+
+    toggleClicked() {
+      password.classList.toggle("visible");
+      if (this.type_1 == "password") {
+        this.type_1 = "text"
+      } else {
+        this.type_1 = "password";
+      }
+    },
+    toggleClicked2() {
+      password2.classList.toggle("visible");
+      if (this.type_2 == "password") {
+        this.type_2 = "text"
+      } else {
+        this.type_2 = "password";
+      }
     }
   }
 }
