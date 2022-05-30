@@ -3,62 +3,64 @@
         <form class="formulario">
             <div class="name">
                 <p>Nombre*</p>
-                <input v-model="name" type="text" class="input">
+                <input v-model="data.Nombre" type="text" class="input">
             </div>
             <div class="location">
                 <p>Localidad*</p>
-                <SelectOptions :options="provinciasArr" v-model="location"
+                <SelectOptions :options="provinciasArr" v-model="data.Ubicacion"
                     @option:selected="onChange(location, 'Ubicacion')" />
             </div>
             <div class="species">
                 <p>Especie*</p>
-                <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
+                <SelectOptions :options="speciesArr" v-model="data.Especie"
+                    @option:selected="onChange(data.Especie, 'Especie')" />
             </div>
             <div class="breed">
                 <p>Raza*</p>
-                <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+                <SelectOptions :options="racesArr" v-model="data.Raza" :disabled="disableRace === true"
                     @option:selected="onChange(race, 'Raza')" />
             </div>
             <div class="gender">
                 <p>Sexo*</p>
-                <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+                <SelectOptions :options="sexArr" v-model="data.Sexo" @option:selected="onChange(sex, 'Sexo')" />
             </div>
             <div class="age">
                 <p>Edad*</p>
-                <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
+                <SelectOptions :options="ageArr" v-model="data.Edad" @option:selected="onChange(age, 'Edad')" />
             </div>
             <div class="size">
                 <p>Tamaño*</p>
-                <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+                <SelectOptions :options="sizeArr" v-model="data.Tamano" @option:selected="onChange(size, 'Tamano')" />
             </div>
             <div class="color">
                 <p>Color*</p>
-                <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
+                <SelectOptions :options="colorArr" v-model="data.Color" @option:selected="onChange(color, 'Color')" />
             </div>
             <div class="microchip">
                 <p>Microchip*</p>
-                <SelectOptions :options="othersArr" v-model="vaccination"
+                <SelectOptions :options="othersArr" v-model="data.Microchip"
                     @option:selected="onChange(vaccination, 'Vacunacion')" />
             </div>
             <div class="vaccination">
                 <p>Vacunas*</p>
-                <SelectOptions :options="othersArr" v-model="vaccination"
+                <SelectOptions :options="othersArr" v-model="data.Vacunacion"
                     @option:selected="onChange(vaccination, 'Vacunacion')" />
             </div>
             <div class="sterilization">
                 <p>Esterilización*</p>
-                <SelectOptions :options="othersArr" v-model="sterilization"
+                <SelectOptions :options="othersArr" v-model="data.Esterilizacion"
                     @option:selected="onChange(sterilization, 'Esterilizacion')" />
             </div>
             <div class="certificate">
                 <p>Certificado PPP*</p>
-                <SelectOptions :options="othersArr" v-model="sterilization"
+                <SelectOptions :options="othersArr" v-model="data.Certificado_ppp"
                     @option:selected="onChange(sterilization, 'Esterilizacion')" />
             </div>
 
             <div class="description">
                 <p>Descripción*</p>
-                <textarea v-model="description" name="" placeholder="Deja una descripción." class="textarea"></textarea>
+                <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
+                    class="textarea"></textarea>
             </div>
             <div class="images">
                 <p>Sube una foto*</p>
@@ -161,6 +163,27 @@ export default {
             store: "",
             specieStore: "",
 
+            data: {
+                Nombre: "",
+                Ubicacion: "Cualquiera",
+                Edad: "Cualquiera",
+                Tamano: "Cualquiera",
+                Microchip: "Cualquiera",
+                Peso: "Cualquiera",
+                Sexo: "Cualquiera",
+                Color: "Cualquiera",
+                Vacunacion: "Cualquiera",
+                Especie: "Cualquiera",
+                Raza: "Cualquiera",
+                Pelo: "Cualquiera",
+                Esterilizacion: "Cualquiera",
+                Certificado_ppp: "Cualquiera",
+                Descripcion: "",
+                Imagen1: ""
+            },
+            archivo: null,
+
+
 
             variable: ""
         }
@@ -177,7 +200,7 @@ export default {
         async addAnimal() {
             this.subirFoto();
             const imagen1 = "gs://web-kompi.appspot.com/animals/" + this.archivo.name;
-            this.imagen1 = imagen1;
+            this.data.Imagen1 = imagen1;
             await addDoc(collection(this.fs, "animals"), this.data);
         },
         subirFoto() {
@@ -193,10 +216,6 @@ export default {
         hello() {
             console.log(this.variable);
         },
-
-
-
-
 
         //Cambia los valores de las query al cambiar de opcion
         onChange(value, field) {
