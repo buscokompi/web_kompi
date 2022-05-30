@@ -60,16 +60,16 @@
                     <div class="invisible" v-show="!sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="./src/views/Adoptar">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="./src/views/Adopcion">Dar en adopción</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                                <RouterLink class="link" to="./src/views/FilterAnimals">Categorías</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                                <RouterLink class="link" to="./src/views/Aboutme">Sobre nosotros</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">

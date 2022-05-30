@@ -6,7 +6,7 @@
                 <h1>GUÍA DE ADOPCIÓN DE MASCOTA</h1>
             </div>
 
-            <h2>¿COMO PONER EN ADOPCIÓN A TU KOMPI?</h2>
+            <h2>¿COMO DAR EN ADOPCIÓN A TU KOMPI?</h2>
             <p> Si tienes duda de como poner en adopción a tu Kompi, aquí te lo explicaremos paso a paso</p>
 
         </div>

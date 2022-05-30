@@ -19,9 +19,9 @@
       <div class="column">
         <p>Información</p>
         <RouterLink to="/AboutMe">Sobre nosotros</RouterLink>
-        <a href="./filter-animals.html">Busca una mascota</a>
-        <a href="./404file.html">Adopta una mascota</a>
-        <a href="./404file.html">Publica una mascota</a>
+        <RouterLink to="to=./src/views/FilterAnimals">Busca una mascota</RouterLink>
+        <RouterLink to="./src/views/Adoptar">Adopta una mascota</RouterLink>
+        <RouterLink to="./src/views/Adopcion">Publica una mascota</RouterLink>
       </div>
 
       <div class="column three">
