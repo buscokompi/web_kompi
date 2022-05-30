@@ -8,7 +8,7 @@
                 <li>
                     <p class="link" @click="openAdoption">Adopción</p>
                 </li>
-                <ul class="display adoption" v-show="displayAdoption">
+                <ul class="display adoption" @mouseout="close" v-show="displayAdoption">
                     <li>
                         <RouterLink class="link" to="/">Adoptar</RouterLink>
                     </li>
@@ -61,7 +61,7 @@
                                 <RouterLink class="link" to="/">Dar en adopción</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                                <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                             </li>
                             <li>
                                 <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
@@ -192,6 +192,13 @@ export default {
         },
         openAdoption() {
             this.displayAdoption = !this.displayAdoption;
+        },
+
+        close() {
+            setTimeout(() => {
+                this.displayAdoption = false;
+            }, 1000);
+
         },
         closeNav() {
             this.mobileNav = false;

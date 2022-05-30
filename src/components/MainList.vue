@@ -1,6 +1,6 @@
 <template>
-  <section class="accordions">
-    <h2 ref="frequent-question">Preguntas frecuentes</h2>
+  <section id="frequentquestion" class="accordions">
+    <h2>Preguntas frecuentes</h2>
     <div class="question" :class="[item.open ? 'open' : '']" @click="item.open = !item.open"
       v-for="(item, id) in items"> {{
           item.title

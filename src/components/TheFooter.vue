@@ -19,7 +19,7 @@
       <div class="column">
         <p>Información</p>
         <RouterLink to="/AboutMe">Sobre nosotros</RouterLink>
-        <a href="./filter-animals.html">Busca una mascota</a>
+        <RouterLink to="/FilterAnimals">Busca una mascota</RouterLink>
         <a href="./404file.html">Adopta una mascota</a>
         <a href="./404file.html">Publica una mascota</a>
       </div>
@@ -28,10 +28,7 @@
         <p>Acerca de</p>
         <RouterLink to="/PrivacyPolicy">Política de privacidad</RouterLink>
         <RouterLink to="/Terms&Conditions">Términos y condiciones</RouterLink>
-        <RouterLink to="{
-        name: 'MainPage',
-        hash: '#frequent-question'}" @click="scrollToAnchorPoint('frequent-question')">Preguntas frecuentes
-        </RouterLink>
+        <RouterLink to="/#frequentquestion">Preguntas frecuentes</RouterLink>
         <!-- <a href=" ./404file.html">Preguntas frecuentes</a> -->
       </div>
     </div>
@@ -46,8 +43,13 @@
 
 <script>
 export default {
-  name: "TheFooter"
+  name: "TheFooter",
+
 }
+
+
+
+
 </script>
 
 <style scoped>

@@ -32,9 +32,6 @@ export default {
         }
     },
     methods: {
-        info() {
-            console.log("Hola mundo")
-        },
         generic() {
             switch (this.buttonValue) {
                 case "alertLogin":

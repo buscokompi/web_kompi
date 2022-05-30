@@ -45,7 +45,7 @@
 
         <span id='message'></span>
 
-        <button type="submit" class="button btn-signin-email">Continuar</button>
+        <BaseButton text="Continuar" :value="buttonAlert" @click="signin" class="button btn-signin-email" />
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
@@ -60,7 +60,6 @@
       <p class="register">¿Ya tienes una cuenta?
         <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
       </p>
-      <a href="maito:kevichu4@gmail.com">epepepepepe</a>
     </div>
 
   </div>
@@ -69,6 +68,7 @@
 <script>
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import BaseButton from "../components/BaseButton.vue";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -81,6 +81,7 @@ const firebaseConfig = {
 };
 export default {
   name: "Singin",
+  components: { BaseButton },
   data() {
     return {
       firebaseapp: "",
@@ -90,6 +91,7 @@ export default {
       passwordCheck: "",
       visible: "visible",
       fieldType: "password",
+      buttonAlert: "alertSignin",
     }
   },
   mounted() {
@@ -98,6 +100,7 @@ export default {
 
   },
   methods: {
+
     async signin() {
       if (this.password !== this.passwordCheck) {
         alert("Comprueba que la contraseña sea correcta");
@@ -105,6 +108,7 @@ export default {
         // signInFirebase(email, password);
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
+            this.buttonAlert = "";
             console.log("usuario registrado");
           }).catch((error) => {
             const errorCode = error.code;
@@ -135,6 +139,7 @@ export default {
           alert("Login invalido");
         });
     }
+
   }
 }
 
