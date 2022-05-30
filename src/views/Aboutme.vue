@@ -99,7 +99,7 @@
                                 src="../assets/icons/github.svg" alt="icono github"></a>
                     </div>
                 </div>
-                <div class="card"><img class="foto" src="../assets/images/foto_juan.jpg" alt="foto Juan">
+                <div class="card"><img class="foto" src="../assets/images/foto_josefer.jpg" alt="foto Juan">
                     <div class="text-card">
                         <p class="textabout">Jose Fernando Álvarez Romero</p>
                         <a href="https://www.linkedin.com/in/jose-fernando-alvarez/" target="_blank"> <img class="icon"

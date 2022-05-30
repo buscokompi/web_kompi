@@ -4,16 +4,21 @@
             <RouterLink to="/">
                 <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
             </RouterLink>
+
+
+
+
+
             <ul v-show="desktop" class="desktop">
                 <li>
                     <p class="link" @click="openAdoption">Adopción</p>
                 </li>
                 <ul class="display adoption" v-show="displayAdoption">
                     <li>
-                        <RouterLink class="link" to="/">Adoptar</RouterLink>
+                        <RouterLink class="link" to="./src/views/Adoptar">Adoptar</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="link" to="/">Poner en adopción</RouterLink>
+                        <RouterLink class="link" to="./src/views/Adopcion">Poner en adopción</RouterLink>
                     </li>
                 </ul>
                 <li>
@@ -144,6 +149,7 @@
 
 <script>
 import { getAuth, signOut } from "firebase/auth";
+// import DropdownMenu from '@innologica/vue-dropdown-menu'
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
 const firebaseConfig = {
