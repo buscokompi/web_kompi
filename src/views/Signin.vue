@@ -1,6 +1,6 @@
 <template>
   <div class="containerall">
-    <img class="img-dog-login" src="../assets/images/foto_perro.svg">
+    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
 
     <div class="container-login">
 
