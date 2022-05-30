@@ -181,6 +181,22 @@ export default {
         this.fs = getFirestore();
     },
     methods: {
+        show: function () {
+            this.showInside = true
+        },
+        hide: function () {
+            console.log('hide')
+            this.showInside = false
+        },
+
+        events: {
+            closeEvent: function () {
+                console.log('close event called')
+                this.hide()
+            }
+        },
+        // de aqui hacia arriba funcion para que cierre el menu...........
+
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
         },
