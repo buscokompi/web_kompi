@@ -104,6 +104,7 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue")
     },
+
   ],
 
   scrollBehavior(to, from, savedPosition) {
@@ -115,7 +116,8 @@ const router = createRouter({
       };
     }
     return { top: 0 };
-  }
+  },
+
 });
 
 export default router;

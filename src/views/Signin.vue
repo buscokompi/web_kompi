@@ -67,7 +67,7 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import BaseButton from "../components/BaseButton.vue";
 
 const firebaseConfig = {
@@ -103,19 +103,20 @@ export default {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        alert("Comprueba que la contraseña sea correcta");
+        this.buttonAlert = "alertSignin";
       } else {
         // signInFirebase(email, password);
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
             this.buttonAlert = "";
+            this.$router.push("/NewUser");
             console.log("usuario registrado");
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode);
             console.log(errorMessage);
-            alert("invalido");
+            this.buttonAlert = "alertSignin";
           });
       }
     },
