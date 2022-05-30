@@ -103,6 +103,12 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue")
     },
+
+    {
+      path: "/EmailProve",
+      name: "EmailProve",
+      component: () => import("../views/emailProve.vue")
+    },
   ]
 });
 

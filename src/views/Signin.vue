@@ -45,7 +45,7 @@
 
         <span id='message'></span>
 
-        <button type="submit" class="button btn-signin-email">Continuar</button>
+        <button class="button btn-signin-email" @click.prevent="signin">Continuar</button>
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
@@ -68,7 +68,7 @@
 
 <script>
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -80,7 +80,7 @@ const firebaseConfig = {
   measurementId: "G-93MGP34YQN"
 };
 export default {
-  name: "Singin",
+  name: "Signin",
   data() {
     return {
       firebaseapp: "",
