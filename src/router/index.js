@@ -104,7 +104,10 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue")
     },
-
+    {
+      path: "/:pathMach(.)",
+      component: () => import("../views/Error404.vue")
+    },
   ],
 
   scrollBehavior(to, from, savedPosition) {

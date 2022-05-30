@@ -97,7 +97,6 @@ export default {
   mounted() {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.auth = getAuth();
-
   },
   methods: {
 
@@ -116,7 +115,7 @@ export default {
             const errorMessage = error.message;
             console.log(errorCode);
             console.log(errorMessage);
-            this.buttonAlert = "alertSignin";
+            this.buttonAlert = "";
           });
       }
     },
