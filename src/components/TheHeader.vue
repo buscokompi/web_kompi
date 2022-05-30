@@ -105,7 +105,7 @@
                                 <RouterLink class="link" to="/FormUser">Formulario adoptante</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/NewAnimalForm/formularioEjemplo">Crear ficha animal
+                                <RouterLink class="link" to="/FormCard">Crear ficha animal
                                 </RouterLink>
                             </li>
                             <li>
