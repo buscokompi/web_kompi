@@ -46,7 +46,7 @@ import TheFooter from '../components/TheFooter.vue';
 import SelectForm from '../components/SelectForm.vue';
 import SelectOptions from '../components/SelectOptions.vue';
 import BaseButton from '../components/BaseButton.vue';
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { answersForm } from "../js/options.js";
@@ -89,7 +89,8 @@ export default {
         this.firebaseapp = initializeApp(firebaseConfig);
         this.fs = getFirestore();
         this.checkUser();
-        // this.getDataForm();
+        this.printUser();
+
     },
 
     methods: {
@@ -113,32 +114,37 @@ export default {
             })
         },
 
-        getDataForm() {
-            getDoc(doc(this.fs, `userform/${this.userEmail}`))
-                .then(snap => {
-                    if (snap.exists()) {
-                        this.questions[0] = snap.data().answer1;
-                        this.questions[1] = snap.data().answer2;
-                        this.questions[2] = snap.data().answer3;
-                        this.questions[3] = snap.data().answer4;
-                        this.questions[4] = snap.data().answer5;
-                        this.questions[5] = snap.data().answer6;
-                        this.questions[6] = snap.data().answer7;
-                        this.questions[7] = snap.data().answer8;
-                        this.questions[8] = snap.data().answer9;
-                        this.questions[9] = snap.data().answer10;
-                        this.questions[10] = snap.data().answer11;
-                        this.questions[11] = snap.data().answer12;
-                        this.questions[12] = snap.data().answer13;
-                        this.questions[13] = snap.data().answer14;
-                        this.questions[14] = snap.data().answer15;
-                    }
-                })
-        },
-
-        onChange() {
+        printUser() {
             console.log(this.userEmail);
         },
+
+        //Recoge los datos del formulario de un usuario
+        async getDataForm(userEmail) {
+            const docRef = doc(this.fs, "userform", userEmail);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                this.questions[0] = docSnap.data().answer1;
+                this.questions[1] = docSnap.data().answer2;
+                this.questions[2] = docSnap.data().answer3;
+                this.questions[3] = docSnap.data().answer4;
+                this.questions[4] = docSnap.data().answer5;
+                this.questions[5] = docSnap.data().answer6;
+                this.questions[6] = docSnap.data().answer7;
+                this.questions[7] = docSnap.data().answer8;
+                this.questions[8] = docSnap.data().answer9;
+                this.questions[9] = docSnap.data().answer10;
+                this.questions[10] = docSnap.data().answer11;
+                this.questions[11] = docSnap.data().answer12;
+                this.questions[12] = docSnap.data().answer13;
+                this.questions[13] = docSnap.data().answer14;
+                this.questions[14] = docSnap.data().answer15;
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("no va");
+            }
+        },
+
+        //Comprueba que haya un usuario logueado
         checkUser() {
             const auth = getAuth();
 
@@ -146,11 +152,15 @@ export default {
                 if (user) {
                     this.userEmail = user.email;
                     console.log(this.userEmail);
+
+                    this.getDataForm(user.email);
                 } else {
                     this.$router.push("/Signin");
                 }
             });
         },
+
+        //Comprueba que el checkbox este activo para poder continuar
         changeView() {
             if (this.$refs.checkbox.checked) {
                 this.addAnswerDataBase();
