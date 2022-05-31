@@ -28,10 +28,13 @@
                 <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
                 </li>
-                <li v-show="sessionLog" class="display" @click="openProfile">
+                <li v-show="sessionLog" class="display">
                     <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
-                    <p class="profile-name">{{ nameProfile }}</p>
-                    <ul class="profile" v-show="displayProfile">
+                    <p @mouseover="displayProfile = true" @mouseleave="displayProfile = false" class="profile-name">{{
+                            nameProfile
+                    }}</p>
+                    <ul class="adoption" v-if="displayProfile">
+                        <li class="white"></li>
                         <li>
                             <RouterLink class="link" to="/">Mi perfil</RouterLink>
                         </li>
@@ -170,25 +173,23 @@ export default {
         this.fs = getFirestore();
     },
     methods: {
+        //Menú hamburguesa
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
         },
+        //Modifica la barra de navegación si la sesión está iniciada
         toggleDisplay() {
             this.sessionLog = !this.sessionLog;
         },
+        //Desplegable del usuario
         openProfile() {
             this.displayProfile = !this.displayProfile;
         },
+        //Desplegable de la sección de adopción
         openAdoption() {
             this.displayAdoption = !this.displayAdoption;
         },
 
-        close() {
-            setTimeout(() => {
-                this.displayAdoption = false;
-            }, 1000);
-
-        },
         closeNav() {
             this.mobileNav = false;
         },

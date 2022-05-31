@@ -30,7 +30,7 @@
                         <li>Responsabilizarse de los daños que ocasionen.</li>
                     </ul>
                     <p class="question-checkbox">¿Está de acuerdo usted y puede cumplir con dichas obligaciones?</p>
-                    <label class="checkbox"><input ref="checkbox" type="checkbox" value="checkbox"> Estoy de
+                    <label class="checkbox"><input checked ref="checkbox" type="checkbox" value="checkbox"> Estoy de
                         acuerdo</label>
                 </div>
             </div>
@@ -89,11 +89,11 @@ export default {
         this.firebaseapp = initializeApp(firebaseConfig);
         this.fs = getFirestore();
         this.checkUser();
-        this.printUser();
 
     },
 
     methods: {
+        //Introduce en la bbdd las nuevas respuestas 
         async addAnswerDataBase() {
             await setDoc(doc(this.fs, "userform", this.userEmail), {
                 answer1: this.questions[0],
@@ -112,10 +112,6 @@ export default {
                 answer14: this.questions[13],
                 answer15: this.questions[14],
             })
-        },
-
-        printUser() {
-            console.log(this.userEmail);
         },
 
         //Recoge los datos del formulario de un usuario
@@ -163,7 +159,25 @@ export default {
         //Comprueba que el checkbox este activo para poder continuar
         changeView() {
             if (this.$refs.checkbox.checked) {
-                this.addAnswerDataBase();
+                this.$swal({
+                    title: "¿Quieres guardar los cambios?",
+                    showCancelButton: "true",
+                    confirmButtonText: "Guardar",
+                    cancelButtonText: "Cancelar",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.addAnswerDataBase();
+                        this.$swal({
+                            title: "Cambios confirmados",
+                            text: "Los datos han sido actualizados correctamente.",
+                            icon: "success",
+                            timer: 1500,
+                            showConfirmButton: false,
+
+                        })
+                    }
+
+                });
             } else {
                 this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
             }
