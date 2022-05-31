@@ -1,4 +1,5 @@
 <template>
+    <TheHeader />
     <section>
         <main>
             <h1>Ficha animal</h1>
@@ -8,13 +9,18 @@
         </main>
         <BaseForm />
     </section>
+    <TheFooter />
 </template>
 <script>
 import BaseForm from '../components/BaseForm.vue';
+import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
 export default {
     name: "FormCard",
     components: {
-        BaseForm
+        BaseForm,
+        TheHeader,
+        TheFooter
     },
 }
 </script>

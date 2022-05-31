@@ -33,10 +33,10 @@ export default {
       this.store.setId(this.id);
       switch (this.specie) {
         case "Perro":
-          this.$router.push("/TemplatePageDog");
+          this.$router.push("/TemplateDogPage");
           break;
         case "Gato":
-          this.$router.push("/TemplatePageDog");
+          this.$router.push("/TemplatePage");
         case "Roedor":
           this.$router.push("/TemplatePageRodent");
           break;
