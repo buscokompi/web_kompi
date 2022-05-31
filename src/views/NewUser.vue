@@ -50,7 +50,6 @@
         <RouterLink class="link" to="/OptionsNewUser">Opciones nuevo usuario</RouterLink>
 
       </form>
-      <p class="session">¿Ya tienes una cuenta? <a class="link-signin" href="">Inicia sesión</a></p>
     </div>
 
   </div>
@@ -128,21 +127,45 @@ export default {
       this.birthdateUser = `${anioActual}-${mesActual}-${hoy}`
     },
     async sendUserData() {
-      await setDoc(doc(this.fs, "usuarios", this.userEmail), {
-        name: this.nameUser,
-        surnames: this.surnameUser,
-        nif: this.dniUser,
-        birthdate: this.birthdateUser,
-        province: this.provinceUser,
-        location: this.locationUser,
-        direction: this.directionUser,
-        phone: this.phoneUser
-      });
       if (this.$refs.name.validity.valid && this.$refs.subname.validity.valid && this.$refs.dni.validity.valid && this.$refs.date.validity.valid && this.$refs.location.validity.valid && this.$refs.direction.validity.valid && this.$refs.number.validity.valid) {
+        /*await setDoc(doc(this.fs, "usuarios", this.userEmail), {
+          name: this.nameUser,
+          surnames: this.surnameUser,
+          nif: this.dniUser,
+          birthdate: this.birthdateUser,
+          province: this.provinceUser,
+          location: this.locationUser,
+          direction: this.directionUser,
+          phone: this.phoneUser
+        });*/
 
-        this.$router.push("/OptionsNewUser");
+        this.$swal({
+          title: "¡Gracias!",
+          text: "Tu cuenta ha sido creada correctamente",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        // this.$router.push("/OptionsNewUser");
+      } else {
+        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
       }
     },
+    checkInputs() {
+      if (true) {
+        sendUserData();
+        this.$swal({
+          title: "¡Gracias!",
+          text: "Tu cuenta ha sido creada correctamente",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: true,
+        });
+      } else {
+        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
+      }
+    },
+
     checkUser() {
       const auth = getAuth();
 

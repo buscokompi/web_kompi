@@ -1,6 +1,6 @@
 <template>
   <div class="containerall">
-    <img class="img-dog-login" src="../assets/images/foto_perro.svg">
+    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
 
     <div class="container-login">
 
@@ -47,8 +47,9 @@
 
         <span id='message'></span>
 
-        <BaseButton text="Continuar" :value="buttonAlert" @click="signin" class="button btn-signin-email" />
-
+        <div @click="signin">
+          <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+        </div>
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
             src="../assets/icons/google_icono.svg"><span>Regístrate
@@ -86,7 +87,7 @@ export default {
       fieldType: "password",
       type_1: "password",
       type_2: "password",
-      buttonAlert: "alertSignin",
+      buttonAlert: "",
     }
   },
   mounted() {
@@ -97,17 +98,15 @@ export default {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        this.buttonAlert = "alertSignin";
+        this.$swal("Error", "Las contraseñas no coinciden.", "error");
       } else {
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
-            this.buttonAlert = "";
             this.$router.push("/NewUser");
-            console.log("usuario registrado");
           }).catch((error) => {
-            console.log(error.code);
-            console.log(error.message);
-            this.buttonAlert = "";
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
           });
       }
     },
@@ -118,24 +117,14 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.$router.push("/NewUser");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
         });
-    },
-
-    info() {
-      console.log(this.email);
-      console.log(this.password);
-      console.log(this.passwordCheck);
     },
 
     toggleClicked() {
@@ -156,8 +145,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <style scoped>
@@ -599,7 +586,5 @@ input:focus {
   ::placeholder {
     font-size: 1.5rem;
   }
-
-
 }
 </style>
