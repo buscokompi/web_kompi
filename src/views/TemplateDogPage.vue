@@ -1,6 +1,4 @@
 <script>
-import CardAnimal from '@/components/CardAnimal.vue'
-import CardExtra from '@/components/CardExtra.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
@@ -66,8 +64,6 @@ export default {
         }
     },
     components: {
-        CardAnimal,
-        CardExtra,
         TheFooter,
         BaseButton,
         CardGroup,
@@ -209,11 +205,11 @@ export default {
                     <h2>Color:</h2>
                     <p class="color">{{ dog.Color }}</p>
                 </div>
-
+                <!--
                 <div class="data">
                     <h2>Pelo:</h2>
                     <p class="hair">{{ dog.Pelo }}</p>
-                </div>
+                </div> -->
 
                 <div class="data">
                     <h2>Microchip:</h2>
@@ -237,8 +233,8 @@ export default {
 
             </div>
             <div class="adoption">
-                <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
-                    ¡Ponte en contacto con su cuidador!</p>
+                <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?</p>
+                <p> ¡Ponte en contacto con su cuidador!</p>
 
                 <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
             </div>
@@ -257,6 +253,7 @@ export default {
 p {
     font-size: 1rem;
 }
+
 
 h1 {
     font-family: var(--text-font);
@@ -319,7 +316,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 0 1.8rem;
+    width: 83%;
+    align-self: center;
 }
 
 .name {
@@ -334,11 +332,18 @@ main {
 
 }
 
+.publish-date p {
+    font-size: 1rem;
+}
+
 /* PUBLISH DATE */
 
 .publish-date {
-    margin: 5.5rem 0 0 1.8rem;
+    margin-top: 7rem;
+    width: 83%;
+    align-self: center;
 }
+
 
 
 /* CONTENT */
@@ -347,30 +352,69 @@ main {
 .description {
     margin-top: 1rem;
     padding: 0 1.8rem;
+    width: 83%;
+    align-self: center;
+}
+
+.description h2 {
+    margin-bottom: 0.5rem;
 }
 
 .animal-data {
-    margin: 2rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-row-gap: 1rem;
     justify-content: center;
-    padding: 0 1.8rem;
+    align-self: center;
+    margin: 2rem 0;
+    padding: 2rem 1.8rem;
+    background-color: var(--lightgrey);
+    border-radius: 0.8rem;
+    width: 75%;
 }
+
+
 
 
 .adoption {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1rem 0 4rem 0;
+    align-self: center;
     text-align: center;
+    gap: 0.5rem;
+    margin: 0 1rem 4rem;
+    padding: 2rem 1.8rem;
+    background-color: var(--orange);
+    border-radius: 0.8rem;
+    width: 75%;
+
 }
 
 .adoption p {
     font-size: 1rem;
-    margin-bottom: 2rem;
+    font-weight: 700;
+    width: 90%;
+
+}
+
+.other-kompis {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.other-kompis p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 1rem -2rem;
+    text-align: center;
+}
+
+.button {
+    background-color: var(--white);
+    margin-top: 1rem;
 }
 
 
@@ -378,322 +422,155 @@ main {
 
 /* <!-- -----------------------------CARD------------------------- --> */
 
-.other-kompis p {
-    font-size: 1rem;
-    margin: 0 1rem -2rem;
-    text-align: center;
-}
 
 
 
-@media screen and (min-width: 359px) {
-
-    .info,
-    .publish-date {
-        padding: 0 1rem;
-    }
-
-}
 
 @media screen and (min-width: 767px) {
 
+    .details,
+    .publish-date,
+    .description {
+        width: 83%;
+    }
+
+    .publish-date {
+        margin-top: 4.2rem;
+        text-align: right;
+    }
+
+
     .animal-data {
-        background-color: var(--lightgrey);
+        justify-items: center;
+        padding: 3rem 2rem;
+    }
+
+    .adoption {
+        padding: 3rem 2rem;
+
+    }
+
+    .adoption p {
+        font-size: 1.2rem;
     }
 
     .data {
+        padding-bottom: 0.5rem;
         display: flex;
         gap: 0.6rem;
         border-bottom: solid 0.1rem var(--black);
         width: 80%;
     }
 
-    .adoption {}
+    .other-kompis {
+        margin-top: 3rem;
+    }
+
+    .other-kompis p {
+        font-size: 1.5rem;
+        margin-bottom: -0.5rem;
+    }
+
 }
 
 @media screen and (min-width: 1170px) {}
 
 @media screen and (min-width: 1300px) {
 
-    main {
-        width: 100%;
-        height: calc(6.5 / 8 * 90vh);
-        background-color: var(--green);
-        overflow-x: hidden;
-        position: relative;
-        padding: 0 12.5rem;
-        z-index: 1;
-        /* margin-top: 5rem; */
-    }
-
-    .carousel {
-        width: 200%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        transition: all 0.5s ease;
-    }
 
     .img-container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 12.5rem;
-    }
-
-    .img-container img {
-        height: 100%;
-    }
-
-    .layer-1-buttons {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-        display: flex;
-        justify-content: space-between;
-        background: transparent;
-        padding: 0 12.5rem;
-    }
-
-    .arrow-container {
+        width: auto;
+        max-width: 50%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .arrow-container img {
-        width: 6.25rem;
-    }
-
-    .info {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        /* z-index: 2; */
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 0 12.5rem;
+    .body {
+        background-color: var(--lightgrey);
     }
 
     .details {
-        margin: 0 10rem 2rem;
-        width: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-    }
-
-    .name {
         color: var(--white);
-        font-family: var(--title-font);
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
+        align-self: center;
+        position: relative;
+        top: -8rem;
+        width: 50%;
     }
-
-    .location {
-        color: var(--white);
-        font-family: var(--text-font);
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .save-share {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 5rem;
-    }
-
-    .save {
-        color: var(--white);
-        font-family: var(--text-font);
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    .share {
-        color: var(--white);
-        font-family: var(--text-font);
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    /* PUBLISH DATE */
 
     .publish-date {
-        width: 85%;
-        height: calc(0.75 / 8 * 100vh);
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        background-color: var(--lightgrey);
-    }
-
-    .publish-date p {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    /* CONTENT */
-
-    .prueba {
-        width: 100%;
-        height: 37.5rem;
-        background-color: lightgreen;
-    }
-
-    .content {
-        width: 100%;
-        background-color: var(--lightgrey);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 12.5rem;
-        gap: 2rem;
+        margin-top: 3rem;
+        width: 77%;
     }
 
     .info {
-        width: 100%;
-        height: 100vh;
         display: grid;
-        grid-template-columns: 60% 40%;
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 2fr 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        justify-items: center;
+        width: 82%;
+        align-self: center;
     }
 
     .description {
-        width: 60%;
-        height: 80%;
-        background-color: var(--white);
-        grid-row: 1/4;
-        border-radius: 0.93rem;
+        grid-area: 1 / 1 / 3 / 2;
+        background: var(--white);
+        padding: 3rem 2rem;
+        margin: 2rem;
+        align-self: auto;
+        border-radius: 0.8rem;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 4rem 5rem;
-        margin: 0 -5rem 0 10rem;
-    }
-
-    .description h2 {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0;
-        padding-bottom: 1.25rem;
+        align-items: center;
+        gap: 1.5rem;
     }
 
     .description p {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.43rem;
+        width: 87%;
+    }
+
+    .description h2 {
+        width: 90%;
     }
 
     .animal-data {
-        width: 68%;
-        height: 70%;
+        grid-area: 1 / 2 / 2 / 3;
         background-color: var(--white);
-        border-radius: 0.93rem;
-        grid-row: 1/3;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
+        align-self: auto;
+        margin: 2rem;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        padding: 4.375rem;
-        margin-right: -5rem;
+        justify-content: flex-start;
+        gap: 1rem;
     }
 
-    .animal-data h2 {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0;
-    }
-
-    .animal-data p {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 1rem;
-        font-weight: 400;
-        margin: 0;
-    }
-
-    .animal-data .hr {
-        width: 100%;
-        height: 1px;
-        border: 1px solid grey;
-        grid-column: 1/3;
+    .data {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     .adoption {
-        width: 68%;
-        height: 65%;
-        background-color: var(--orange);
-        border-radius: 0.93rem;
-        grid-row: 3/4;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 4.375rem;
-        text-align: center;
+        grid-area: 2 / 2 / 3 / 3;
+        align-self: auto;
+        margin: 0 0 2rem;
     }
-
-    .adoption h2 {
-        color: var(--black);
-        font-family: var(--text-font);
-        font-size: 1.2rem;
-        font-weight: 600;
-    }
-
-
-
-
-    /* <!-- -----------------------------CARD------------------------- --> */
 
     .other-kompis {
-        width: 100%;
-        height: fit-content;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        text-align: center;
+        margin-top: 5rem;
     }
 
-
-    .group {
-        position: relative;
-        width: auto;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        gap: 4rem;
-        margin: 4rem 0 5rem;
+    .other-kompis p {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
+
 }
 </style>

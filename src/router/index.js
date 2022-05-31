@@ -20,13 +20,13 @@ const router = createRouter({
     },
 
     {
-      path: "/TemplatePage",
+      path: "/TemplateCatPage",
       name: "TemplateCat",
-      component: () => import("../views/TemplatePage.vue")
+      component: () => import("../views/TemplateCatPage.vue")
     },
     {
       path: "/TemplateDogPage",
-      name: "TemplateCat",
+      name: "TemplateDoge",
       component: () => import("../views/TemplateDogPage.vue")
     },
     {

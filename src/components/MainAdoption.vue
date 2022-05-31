@@ -4,7 +4,6 @@
     <h2>Animales <br>en adopción</h2>
     <p class="text">Aquí tienes algunas de las últimas mascotas en adopción</p>
     <CardGroup />
-    <BaseButton class="more" url="/TemplatePage" text="Ver más" />
 
   </section>
 </template>
@@ -40,10 +39,7 @@ h2 {
   font-weight: 500;
 }
 
-.more {
-  visibility: hidden;
-  opacity: 0;
-}
+
 
 @media screen and (min-width: 767px) {
   br {
@@ -56,14 +52,7 @@ h2 {
     font-weight: 500;
   }
 
-  .more {
-    visibility: visible;
-    opacity: 1;
-    justify-self: center;
-    position: relative;
-    width: 6rem;
-    margin-bottom: 6rem;
-  }
+
 
 }
 
@@ -85,14 +74,6 @@ h2 {
 
   h2 {
     margin-top: 11rem;
-  }
-}
-
-@media screen and (min-width: 1470px) {
-
-  .more {
-    visibility: hidden;
-    opacity: 0;
   }
 }
 </style>

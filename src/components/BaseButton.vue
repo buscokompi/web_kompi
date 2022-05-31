@@ -19,7 +19,7 @@ export default {
             type: String,
             default: "",
         },
-        bgColor: {
+        BgColor: {
             type: String,
             default: "#f9b22a"
         }
@@ -28,6 +28,7 @@ export default {
         return {
             buttonUrl: this.url,
             buttonText: this.text,
+            buttonBgColor: this.BgColor
         }
     },
     methods: {

@@ -1,15 +1,7 @@
-<template>
-  <div class="group">
-    <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
-      :specie="e.specie">
-    </CardAnimal>
-    <CardExtra />
-  </div>
-</template>
-
 <script>
 import CardAnimal from "./CardAnimal.vue";
 import CardExtra from "./CardExtra.vue";
+import BaseButton from "./BaseButton.vue";
 
 import { getFirestore, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -28,7 +20,8 @@ const firebaseConfig = {
 export default {
   components: {
     CardAnimal,
-    CardExtra
+    CardExtra,
+    BaseButton
   },
   data() {
     return {
@@ -78,15 +71,34 @@ export default {
 }
 </script>
 
+<template>
+  <div class="body">
+    <div class="group">
+      <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+        :specie="e.specie">
+      </CardAnimal>
+      <CardExtra />
+    </div>
+    <BaseButton class="more" url="/FilterAnimals" text="Ver más" />
+  </div>
+</template>
+
 <style scoped>
+.body {
+  margin: 4rem auto 5rem;
+}
+
 .group {
-  position: relative;
-  width: auto;
+  width: fit-content;
   display: grid;
   justify-content: center;
   align-content: center;
-  gap: 4rem;
-  margin: 4rem 0 5rem;
+  gap: 4rem 3rem;
+  margin-bottom: 3rem;
+}
+
+.more {
+  display: none;
 }
 
 @media screen and (min-width: 767px) {
@@ -98,6 +110,16 @@ export default {
     display: none;
   }
 
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .more {
+    display: inline-block;
+  }
+
 
 }
 
@@ -106,6 +128,7 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
+
 
 }
 
@@ -119,6 +142,10 @@ export default {
 
   .group .card-extra {
     display: grid;
+  }
+
+  .more {
+    display: none;
   }
 
 
