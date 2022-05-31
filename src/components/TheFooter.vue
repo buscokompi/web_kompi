@@ -20,8 +20,8 @@
         <p>Información</p>
         <RouterLink to="/AboutMe">Sobre nosotros</RouterLink>
         <RouterLink to="/FilterAnimals">Busca una mascota</RouterLink>
-        <a href="./404file.html">Adopta una mascota</a>
-        <a href="./404file.html">Publica una mascota</a>
+        <RouterLink to="/AdoptInfo">Adopta una mascota</RouterLink>
+        <RouterLink to="/GiveAdoptionInfo">Publica una mascota</RouterLink>
       </div>
 
       <div class="column three">

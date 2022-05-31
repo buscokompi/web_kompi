@@ -86,7 +86,17 @@ const router = createRouter({
     {
       path: "/AboutMe",
       name: "AboutMe",
-      component: () => import("../views/Aboutme.vue")
+      component: () => import("../views/AboutMe.vue")
+    },
+    {
+      path: "/GiveAdoptionInfo",
+      name: "GiveAdoptionInfo",
+      component: () => import("../views/GiveAdoptionInfo.vue")
+    },
+    {
+      path: "/AdoptInfo",
+      name: "AdoptInfo",
+      component: () => import("../views/AdoptInfo.vue")
     },
     {
       path: "/PrivacyPolicy",

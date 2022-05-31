@@ -11,10 +11,10 @@
                     <ul class="adoption" v-if="displayAdoption">
                         <li class="white"></li>
                         <li>
-                            <RouterLink class="link" to="/">Adoptar</RouterLink>
+                            <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link" to="/">Poner en adopción</RouterLink>
+                            <RouterLink class="link" to="/GiveAdoptionInfo">Poner en adopción</RouterLink>
                         </li>
                     </ul>
                 </li>
@@ -54,16 +54,16 @@
                     <div class="invisible" v-show="!sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="/GiveAdoptionInfo">Dar en adopción</RouterLink>
                             </li>
                             <li>
                                 <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                                <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">
@@ -87,10 +87,10 @@
                     <div class="invisible" v-show="sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="/GiveAdoptionInfo">Dar en adopción</RouterLink>
                             </li>
                             <li>
                                 <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
@@ -102,9 +102,6 @@
                             <li>
                                 <RouterLink class="link" to="/FormCard">Crear ficha animal
                                 </RouterLink>
-                            </li>
-                            <li>
-                                <RouterLink class="link" to="/">Ajustes</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">
