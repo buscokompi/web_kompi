@@ -18,6 +18,9 @@ export default {
       store: "",
     }
   },
+  mounted() {
+    console.log(this.image);
+  },
   methods: {
     goFilters() {
       this.store = KompiStore();
