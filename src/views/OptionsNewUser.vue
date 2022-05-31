@@ -24,10 +24,8 @@
 </template>
 
 <script>
-import DarkMode from '../components/DarkMode.vue';
 export default {
   name: "login",
-  components: { DarkMode }
 }
 
 </script>
