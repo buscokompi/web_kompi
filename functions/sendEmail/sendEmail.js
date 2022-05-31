@@ -4,7 +4,7 @@
   try {
     const client = require("@sendgrid/mail");
 
-    client.setApiKey("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");
+    client.setApiKey("");
 
     const message = {
       to: "joseferalvarezromero@gmail.com",
@@ -34,7 +34,7 @@ module.exports = { handler }; */
 
 const client = require("@sendgrid/mail");
 
-client.setApiKey("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");
+client.setApiKey("");
 
 const message = {
   to: "joseferalvarezromero@gmail.com",
