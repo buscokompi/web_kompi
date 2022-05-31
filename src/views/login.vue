@@ -1,13 +1,14 @@
 <template>
   <div class="app">
-    <img class="img-dog-login" src="../assets/images/foto_perro.jpg" alt="Fotografía perro Pug">
+    <img class="img-dog-login" src="../assets/images/foto_perro.svg" alt="Fotografía perro Pug">
 
     <div class="container-login">
 
       <RouterLink to="/">
         <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
       </RouterLink>
-
+      <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
+      <!-- <DarkMode /> -->
       <div class="card-login">
         <div class="login">
           <p class="email">E-mail</p>
@@ -41,6 +42,7 @@
 <script>
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import DarkMode from "../components/DarkMode.vue";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
 import { KompiStore } from "../stores/KompiStore";
@@ -67,6 +69,8 @@ export default {
       visible: "visible",
       fieldType: "password",
       modeStorage: ModeStorage(),
+      darkMode: false,
+      lightMode: false,
 
       store: ""
     };
@@ -79,10 +83,17 @@ export default {
   },
 
   watch: {
-
+    modeStorage() {
+      this.darkMode = this.modeStorage.darkMode
+      this.lightMode = !this.modeStorage.darkMode
+    }
   },
 
   methods: {
+    info() {
+      console.log(this.modeStorage)
+      this.darkMode = false
+    },
 
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
@@ -93,7 +104,9 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          this.$swal("Error", "El email o contraseña son incorrectos", "error");
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert("Login invalido");
         });
     },
     async loginGoogle() {
@@ -113,7 +126,7 @@ export default {
           console.log(errorMessage);
           console.log(email);
           console.log(credential);
-          this.$swal("Error", "El email o contraseña son incorrectos", "error");
+          alert("Login invalido");
         });
     },
     seePassword() {
@@ -126,7 +139,7 @@ export default {
       }
     }
   },
-  components: { PrivacyPolicy },
+  components: { DarkMode, PrivacyPolicy },
 
 }
 
@@ -134,6 +147,7 @@ export default {
 
 <style scoped>
 .app {
+  display: flex;
   flex-direction: row;
   margin: 0;
   background-color: #fff;
@@ -385,8 +399,13 @@ p {
   }
 
   .card-login {
-    width: 28rem;
-    height: 40rem;
+    width: 60%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1.9rem;
+    background-color: var(--white);
   }
 
   .btn-login-email {
