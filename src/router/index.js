@@ -18,9 +18,15 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue")
     },
+
     {
-      path: "/TemplatePageDog",
-      name: "TemplateDog",
+      path: "/TemplatePage",
+      name: "TemplateCat",
+      component: () => import("../views/TemplatePage.vue")
+    },
+    {
+      path: "/TemplateDogPage",
+      name: "TemplateCat",
       component: () => import("../views/TemplateDogPage.vue")
     },
     {
@@ -88,7 +94,23 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue")
     },
-  ]
+    {
+      path: "/:pathMach(.)",
+      component: () => import("../views/Error404.vue")
+    },
+  ],
+
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to);
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    }
+    return { top: 0 };
+  },
+
 });
 
 export default router;

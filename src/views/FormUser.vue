@@ -74,6 +74,7 @@ export default {
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     this.userEmail = user.email;
+                    console.log(this.userEmail);
                 } else {
                     console.log("el usuario no esta logueado");
                 }

@@ -49,6 +49,13 @@ export default {
         openAdoption() {
             this.displayAdoption = !this.displayAdoption;
         },
+
+        close() {
+            setTimeout(() => {
+                this.displayAdoption = false;
+            }, 1000);
+
+        },
         closeNav() {
             this.mobileNav = false;
         },

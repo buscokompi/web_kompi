@@ -9,7 +9,7 @@ export default {
     props: {
         url: {
             type: String,
-            default: "#",
+            default: "",
         },
         text: {
             type: String,
@@ -28,15 +28,11 @@ export default {
         return {
             buttonUrl: this.url,
             buttonText: this.text,
-            buttonValue: this.value
         }
     },
     methods: {
-        info() {
-            console.log("Hola mundo")
-        },
         generic() {
-            switch (this.buttonValue) {
+            switch (this.value) {
                 case "alertLogin":
                     this.alertLogin();
                     break;
@@ -72,6 +68,8 @@ export default {
                     break;
                 case "alertContactFormUser":
                     this.alertContactFormUser();
+                    break;
+                case "":
                     break;
                 default:
                     break;
