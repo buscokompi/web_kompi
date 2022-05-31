@@ -33,8 +33,8 @@
                     <p @mouseover="displayProfile = true" @mouseleave="displayProfile = false" class="profile-name">{{
                             nameProfile
                     }}</p>
-                    <ul class="adoption" v-if="displayProfile">
-                        <li class="white"></li>
+                    <ul class="profile" v-if="displayProfile">
+                        <li class="white-profile"></li>
                         <li>
                             <RouterLink class="link" to="/">Mi perfil</RouterLink>
                         </li>
@@ -449,14 +449,26 @@ button {
 
 .profile {
     background: var(--orange);
-    position: absolute;
     top: 4rem;
-    right: -4.4rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 2rem 2.5rem;
+    padding: 0;
     transition: 0.3s linear;
     line-height: 2rem;
+    width: 9rem;
+    height: 9rem;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.white-profile {
+    width: 100%;
+    height: 1rem;
+    background: var(--white);
+    z-index: 1;
+    margin-bottom: 1rem;
+    padding: 0;
+
 }
 
 .adoption {
