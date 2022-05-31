@@ -33,7 +33,6 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "emailjs": "^4.0.0",
     "firebase": "^9.6.11",
     "pinia": "^2.0.13",
     "sass": "^1.52.1",
