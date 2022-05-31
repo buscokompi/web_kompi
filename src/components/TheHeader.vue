@@ -4,16 +4,21 @@
             <RouterLink to="/">
                 <img class="logo" src="../assets/icons/version_primario_logo.svg" alt="Kompi Logo">
             </RouterLink>
+
+
+
+
+
             <ul v-show="desktop" class="desktop">
                 <li>
                     <p class="link" @click="openAdoption">Adopción</p>
                 </li>
                 <ul class="display adoption" @mouseout="close" v-show="displayAdoption">
                     <li>
-                        <RouterLink class="link" to="/">Adoptar</RouterLink>
+                        <RouterLink class="link" to="./src/views/Adoptar">Adoptar</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="link" to="/">Poner en adopción</RouterLink>
+                        <RouterLink class="link" to="./src/views/Adopcion">Poner en adopción</RouterLink>
                     </li>
                 </ul>
                 <li>
@@ -55,16 +60,16 @@
                     <div class="invisible" v-show="!sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="./src/views/Adoptar">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="./src/views/Adopcion">Dar en adopción</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
+                                <RouterLink class="link" to="./src/views/FilterAnimals">Categorías</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                                <RouterLink class="link" to="./src/views/Aboutme">Sobre nosotros</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">
@@ -144,6 +149,7 @@
 
 <script>
 import { getAuth, signOut } from "firebase/auth";
+// import DropdownMenu from '@innologica/vue-dropdown-menu'
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
 const firebaseConfig = {
@@ -181,6 +187,22 @@ export default {
         this.fs = getFirestore();
     },
     methods: {
+        show: function () {
+            this.showInside = true
+        },
+        hide: function () {
+            console.log('hide')
+            this.showInside = false
+        },
+
+        events: {
+            closeEvent: function () {
+                console.log('close event called')
+                this.hide()
+            }
+        },
+        // de aqui hacia arriba funcion para que cierre el menu...........
+
         toggleMenu() {
             this.mobileNav = !this.mobileNav;
         },

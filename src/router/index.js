@@ -95,11 +95,22 @@ const router = createRouter({
       component: () => import("../views/Terms&Conditions.vue")
     },
     {
+      path: "/Adopcion",
+      name: "Adopcion",
+      component: () => import("../views/Adopcion.vue")
+    },
+
+    {
+      path: "/Adoptar",
+      name: "Adoptar",
+      component: () => import("../views/Adoptar.vue")
+    },
+    {
       path: "/:pathMach(.)",
       component: () => import("../views/Error404.vue")
     },
-  ],
 
+  ],
   scrollBehavior(to, from, savedPosition) {
     console.log(to);
     if (to.hash) {
@@ -110,7 +121,6 @@ const router = createRouter({
     }
     return { top: 0 };
   },
-
 });
 
 export default router;

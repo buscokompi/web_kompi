@@ -1,6 +1,6 @@
 <template>
   <div class="containerall">
-    <img class="img-dog-login" src="../assets/images/foto_perro.svg">
+    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
 
     <div class="container-login">
 
@@ -52,10 +52,7 @@
             src="../assets/icons/google_icono.svg"><span>Regístrate
             con Google</span></div>
 
-        <RouterLink class="link" to="/NewUser">NewUser</RouterLink>
 
-        <!-- <div class="button btn-signin-facebook"><img class="facebook"
-                        src="../assets/icons/facebook_icono.svg"><span>Regístrate con Facebook</span></div> -->
       </form>
       <p class="register">¿Ya tienes una cuenta?
         <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
