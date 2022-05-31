@@ -152,164 +152,142 @@ export default {
 
 
 <template>
-    <div v-cloak class="body">
-        <header class="header">
-            <TheHeader />
-            <div class="header-carousel">
+    <TheHeader />
+    <section v-cloak class="body">
+        <main>
+            <div class="carousel">
                 <div class="img-container">
                     <img class="img1" :src="this.dog.Imagen1" alt="imagen1">
                 </div>
-                <div class="img-container">
-                    <img class="img2" src="" alt="imagen2">
-                </div>
             </div>
-            <!-- <div class="layer-1-buttons">
-                <div class="arrow-container">
-                    <img class="back" src="./assets/left-arrow.png" alt="flecha-back">
-                </div>
-                <div class="arrow-container">
-                    <img class="next" src="./assets/right-arrow.png" alt="flecha-next">
-                </div>
-            </div> -->
+
             <div class="info">
-                <div class="name-lodogion">
-                    <h2 class="name">{{ dog.Nombre }}</h2>
-                    <p class="lodogion">{{ dog.Ubicacion }}</p>
+                <div class="details">
+                    <h1 class="name">{{ dog.Nombre }}</h1>
+                    <p class="location">{{ dog.Ubicacion }}</p>
                 </div>
-                <!-- <div class="save-share">
-                    <h3 class="save">Guardar</h3>
-                    <h3 class="share">Compartir</h3>
-                </div> -->
             </div>
-        </header>
+        </main>
 
         <section class="publish-date">
             <p @click="info">Publicado 04/05/2022</p>
         </section>
 
-        <section class="content">
-            <div class="animal-info">
-                <div class="description">
-                    <h3>Descripción</h3>
-                    <p>
-                        {{ dog.Descripcion }}
-                    </p>
+        <div class="info">
+            <div class="description">
+                <h2>Descripción</h2>
+                <p>
+                    {{ dog.Descripcion }}
+                </p>
 
-                </div>
-                <div class="animal-data">
-                    <h3>Edad:</h3>
+            </div>
+            <div class="animal-data">
+                <div class="data">
+                    <h2>Edad:</h2>
                     <p class="age">{{ dog.Edad }}</p>
-                    <div class="hr"></div>
-                    <h3>Raza:</h3>
+                </div>
+                <div class="data">
+                    <h2>Raza:</h2>
                     <p class="breed">{{ dog.Raza }}</p>
-                    <div class="hr"></div>
-                    <h3>Sexo:</h3>
+                </div>
+                <div class="data">
+                    <h2>Sexo:</h2>
                     <p class="gender">{{ dog.Sexo }}</p>
-                    <div class="hr"></div>
-                    <h3>Tamaño:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Tamaño:</h2>
                     <p class="size">{{ dog.Tamano }}</p>
-                    <div class="hr"></div>
-                    <h3>Peso:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Peso:</h2>
                     <p class="weight">{{ dog.Peso }}</p>
-                    <div class="hr"></div>
-                    <h3>Color:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Color:</h2>
                     <p class="color">{{ dog.Color }}</p>
-                    <div class="hr"></div>
-                    <h3>Pelo:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Pelo:</h2>
                     <p class="hair">{{ dog.Pelo }}</p>
-                    <div class="hr"></div>
-                    <h3>Microchip:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Microchip:</h2>
                     <p class="microchip">{{ dog.Microchip }}</p>
-                    <div class="hr"></div>
-                    <h3>Vacunación:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Vacunación:</h2>
                     <p class="vaccination">{{ dog.Vacunacion }}</p>
-                    <div class="hr"></div>
-                    <h3>Certificado ppp:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Certificado ppp:</h2>
                     <p class="certified">{{ dog.Certificado_ppp }}</p>
-                    <div class="hr"></div>
-                    <h3>Esterilizado:</h3>
+                </div>
+
+                <div class="data">
+                    <h2>Esterilizado:</h2>
                     <p class="esterilized">{{ dog.Esterilizacion }}</p>
                 </div>
-                <div class="adoption">
-                    <h3>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
-                        ¡Ponte en contacto con su cuidador!</h3>
 
-                    <BaseButton bgColor="white" url="/TemplatePageBird" text="CONTACTAR" />
-                    <!-- <div class="adoption-link-container">
-                        <a href="./404file.html">CONTACTAR</a>
-                    </div> -->
-                </div>
             </div>
+            <div class="adoption">
+                <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
+                    ¡Ponte en contacto con su cuidador!</p>
 
-
-            <div class="other-kompis">
-
-                <h2>Otros Kompis que encajan con tu búsqueda</h2>
-
-                <div class="group">
-                    <CardGroup />
-                </div>
+                <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
             </div>
-        </section>
+        </div>
 
-        <TheFooter />
 
-    </div>
+        <div class="other-kompis">
+            <p>Otros Kompis que encajan con tu búsqueda</p>
+            <CardGroup />
+        </div>
+    </section>
+    <TheFooter />
 </template>
 
 <style scoped>
-.body {
-    min-height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    background-color: var(--lightgrey);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+p {
+    font-size: 1rem;
 }
 
-h3,
-p {
+h1 {
     font-family: var(--text-font);
 }
 
-ul {
-    list-style: none;
-    margin: 0;
+h2 {
+    font-size: 1rem;
 }
 
-a {
-    text-decoration: none;
-    margin: 0;
+.body {
+    display: flex;
+    flex-direction: column;
+    color: var(--black);
+    font-family: var(--title-font);
 }
-
 
 /* CAROUSEL */
-.header {
+
+main {
+    margin-top: 5rem;
     width: 100%;
-    height: calc(6.5 / 8 * 90vh);
+    height: calc(6.5 / 9 * 90vh);
     background-color: var(--green);
-    overflow-x: hidden;
-    position: relative;
-    padding: 0 12.5rem;
-    z-index: 1;
-    /* margin-top: 5rem; */
 }
 
-.header-carousel {
-    width: 200%;
+.carousel {
+    width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    transition: all 0.5s ease;
 }
 
 .img-container {
@@ -318,570 +296,394 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 12.5rem;
 }
 
 .img-container img {
-    height: 100%;
-}
-
-.layer-1-buttons {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    background: transparent;
-    padding: 0 12.5rem;
-}
+    object-fit: cover;
 
-.arrow-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.arrow-container img {
-    width: 6.25rem;
 }
 
 .info {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* z-index: 2; */
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0 12.5rem;
+    flex-direction: column;
+    color: var(--black);
+    font-family: var(--title-font);
+    margin: 0 .8rem;
 }
 
-.info .name-lodogion {
-    margin: 0 10rem 2rem;
-    width: 80%;
+
+.details {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 
-.name-lodogion .name {
-    color: var(--white);
-    font-family: var(--title-font);
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
+.name {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.name-lodogion .lodogion {
-    color: var(--white);
-    font-family: var(--text-font);
-    font-size: 16px;
+.location {
+    font-size: 1rem;
     font-weight: 600;
-}
-
-.info .save-share {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 5rem;
-}
-
-.save-share .save {
-    color: var(--white);
-    font-family: var(--text-font);
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.save-share .share {
-    color: var(--white);
-    font-family: var(--text-font);
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
 }
 
 /* PUBLISH DATE */
 
 .publish-date {
-    width: 85%;
-    height: calc(0.75 / 8 * 100vh);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: var(--lightgrey);
+    margin: 5.5rem 0 0 1.5rem;
 }
 
-.publish-date p {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 16px;
-    font-weight: 500;
-}
 
 /* CONTENT */
 
-.prueba {
-    width: 100%;
-    height: 37.5rem;
-    background-color: lightgreen;
+
+.description {
+    margin-top: 1rem;
 }
 
-.content {
-    width: 100%;
-    background-color: var(--lightgrey);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 12.5rem;
-    gap: 2rem;
-}
-
-.content .animal-info {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: repeat(3, 1fr);
-}
-
-.animal-info .description {
-    width: 60%;
-    height: 80%;
-    background-color: var(--white);
-    grid-row: 1/4;
-    border-radius: 0.93rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 4rem 5rem;
-    margin: 0 -5rem 0 10rem;
-}
-
-.description h3 {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0;
-    padding-bottom: 1.25rem;
-}
-
-.description p {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.43rem;
-}
-
-.animal-info .animal-data {
-    width: 68%;
-    height: 70%;
-    background-color: var(--white);
-    border-radius: 0.93rem;
-    grid-row: 1/3;
+.animal-data {
+    margin: 2rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-row-gap: 1rem;
     justify-content: center;
-    align-items: center;
-    padding: 4.375rem;
-    margin-right: -5rem;
 }
 
-.animal-data h3 {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0;
-}
 
-.animal-data p {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-}
-
-.animal-data .hr {
-    width: 100%;
-    height: 1px;
-    border: 1px solid grey;
-    grid-column: 1/3;
-}
-
-.animal-info .adoption {
-    width: 68%;
-    height: 65%;
-    background-color: var(--orange);
-    border-radius: 0.93rem;
-    grid-row: 3/4;
+.adoption {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 0 4.375rem;
+    margin: 1rem 0 4rem 0;
     text-align: center;
 }
 
-.adoption h3 {
-    color: var(--black);
-    font-family: var(--text-font);
-    font-size: 1.2rem;
-    font-weight: 600;
+.adoption p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
 }
 
-.adoption .adoption-link-container {
-    width: 10.625rem;
-    height: 3.125rem;
-    background-color: var(--white);
-    border-radius: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5rem;
-}
 
-.adoption-link-container a {
-    color: var(--black);
-    text-decoration: none;
-    font-family: var(--text-font);
-    font-size: 16px;
-    font-weight: 700;
-}
 
-.adoption-link-container:hover {
-    background-color: var(--lightgrey);
-}
 
 /* <!-- -----------------------------CARD------------------------- --> */
 
-.content .other-kompis {
-    width: 100%;
-    height: fit-content;
-    display: grid;
-    justify-content: center;
-    align-content: center;
+.other-kompis p {
+    font-size: 1rem;
+    margin: 0 1rem -2rem;
     text-align: center;
 }
 
 
-.other-kompis .group {
-    position: relative;
-    width: auto;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    gap: 4rem;
-    margin: 4rem 0 5rem;
+
+@media screen and (min-width: 359px) {
+
+    .info,
+    .publish-date {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
 }
 
-
 @media screen and (min-width: 767px) {
-    .home p {
-        font-size: 1.1rem;
-    }
+    .data {
+        display: flex;
+        gap: 0.6rem;
 
-    .home h1 img {
-        width: 2rem;
     }
+}
 
-    .other-kompis .text {
-        font-size: 1.1rem;
-        font-weight: 500;
-    }
+@media screen and (min-width: 1170px) {}
 
-    .topbar .logo {
-        left: 4rem;
-    }
+@media screen and (min-width: 1300px) {
 
-    .topbar .burger-img {
-        right: 5rem;
-    }
-
-    .other-kompis .group {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .other-kompis .group .card-extra {
-        display: none;
-    }
-
-    .other-kompis .more {
-        visibility: visible;
-        opacity: 1;
-        justify-self: center;
+    main {
+        width: 100%;
+        height: calc(6.5 / 8 * 90vh);
+        background-color: var(--green);
+        overflow-x: hidden;
         position: relative;
-        width: 6rem;
-        margin-bottom: 9rem;
+        padding: 0 12.5rem;
+        z-index: 1;
+        /* margin-top: 5rem; */
     }
 
-    .counter {
+    .carousel {
+        width: 200%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        transition: all 0.5s ease;
+    }
+
+    .img-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 12.5rem;
+    }
+
+    .img-container img {
+        height: 100%;
+    }
+
+    .layer-1-buttons {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        display: flex;
+        justify-content: space-between;
+        background: transparent;
+        padding: 0 12.5rem;
+    }
+
+    .arrow-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrow-container img {
+        width: 6.25rem;
+    }
+
+    .info {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* z-index: 2; */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0 12.5rem;
+    }
+
+    .details {
+        margin: 0 10rem 2rem;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .name {
+        color: var(--white);
+        font-family: var(--title-font);
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .location {
+        color: var(--white);
+        font-family: var(--text-font);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .save-share {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         gap: 5rem;
     }
 
-    .counter .number {
-        font-size: 3rem;
-    }
-
-    .counter p {
-        font-size: 1.2rem;
-    }
-
-    footer {
-        height: 40vh;
-    }
-
-    footer .column p {
-        margin-bottom: 1rem;
-    }
-
-    footer p {
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    footer a {
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    footer .information {
-        flex-direction: row;
-        gap: 6rem;
-    }
-
-    footer .information .two {
-        order: 1;
-        margin-top: -1rem;
-    }
-
-    footer .information .column {
-        text-align: left;
-        line-height: 1.5rem;
-        width: 12rem;
-    }
-
-    .copyright br {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 1170px) {
-    /* h1 {
-        font-size: 3.5rem;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-    }
-
-    p {
-        font-size: 1rem;
-    } */
-
-    .topbar .logo {
-        left: 4rem;
-    }
-
-    .topbar .burger-img {
-        right: 5rem;
-    }
-
-    .home p {
-        font-size: 1.25rem;
-    }
-
-    .home h1 img {
-        width: 2rem;
-    }
-
-    .other-kompis .text {
-        margin: 1rem 2rem 1.4rem;
-        font-size: 1.15rem;
-        width: 25rem;
-        justify-self: center;
-    }
-
-    .dogegory {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .other-kompis .group {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-    }
-
-    .guide {
-        display: grid;
-        justify-items: center;
-    }
-
-    .guide .group {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .list .container .question {
-        gap: 1rem;
-    }
-
-    .list .container .answer ul {
-        font-size: 1rem;
-    }
-
-    footer .information {
-        gap: 3vw;
-        justify-content: flex-start;
-        margin: 0 15vw;
-    }
-
-    footer .information .column {
-        width: 13rem;
-    }
-
-    footer .information .two {
-        position: absolute;
-        right: 15vw;
-    }
-}
-
-@media screen and (min-width: 1300px) {
-    /* h1 {
-        font-size: 4rem;
-    } */
-
-    .topbar .logo {
-        left: 10rem;
-    }
-
-    .topbar .burger-img {
-        display: none;
-    }
-
-    .topbar .burger.active {
-        visibility: hidden;
-        opacity: 0;
-    }
-
-    .topbar .desktop {
-        display: flex;
-        gap: 2rem;
-        position: absolute;
-        align-items: center;
-        right: 8rem;
-    }
-
-    .topbar .desktop a,
-    .topbar .desktop .display li,
-    .topbar .desktop .display p {
-        color: var(--black);
+    .save {
+        color: var(--white);
         font-family: var(--text-font);
-        font-size: 0.9rem;
+        font-size: 16px;
         font-weight: 600;
         text-decoration: none;
-        transition: color 0.5s;
-        cursor: pointer;
     }
 
-    .topbar .desktop img {
-        width: 1rem;
-        transition: 0.1s;
+    .share {
+        color: var(--white);
+        font-family: var(--text-font);
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
     }
 
-    .topbar .desktop .display img {
-        width: 1.6rem;
-    }
+    /* PUBLISH DATE */
 
-    .topbar .desktop .vertical-line {
-        display: inline-block;
-        height: 3rem;
-        width: 0.1rem;
-        background-color: var(--black);
-    }
-
-    .topbar .desktop a:hover,
-    .topbar .desktop .display p:hover {
-        color: var(--orange);
-    }
-
-    .topbar .desktop .profile a:hover {
-        color: var(--green);
-    }
-
-    .topbar .desktop .display {
-        display: none;
-        grid-auto-flow: column;
-        gap: 0.4rem;
-        align-items: center;
-    }
-
-    .topbar .desktop .display .profile {
-        background: var(--orange);
-        position: absolute;
-        top: 4rem;
-        right: -4.4rem;
-        width: fit-content;
-        height: fit-content;
-        padding: 2rem 2.5rem;
-        visibility: hidden;
-        opacity: 0;
-        transition: 0.3s linear;
-        line-height: 2rem;
-    }
-
-    .topbar .desktop .display.active .profile {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .home p {
-        font-size: 1.35rem;
-    }
-
-    .home h1 img {
-        width: 2.25rem;
-    }
-
-    .dogegory .icon .shadow {
-        width: 7rem;
-        height: 7rem;
-    }
-
-    .dogegory .icon img {
-        width: 3.2rem;
-        height: 4.5;
-    }
-
-    .other-kompis .group {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 2.5rem;
-        margin-bottom: 6rem;
-    }
-
-    .other-kompis .group .card-extra {
+    .publish-date {
+        width: 85%;
+        height: calc(0.75 / 8 * 100vh);
         display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: var(--lightgrey);
     }
 
-    footer .information {
-        margin: 0 19vw;
+    .publish-date p {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 16px;
+        font-weight: 500;
     }
 
-    footer .information .two {
-        right: 19vw;
+    /* CONTENT */
+
+    .prueba {
+        width: 100%;
+        height: 37.5rem;
+        background-color: lightgreen;
+    }
+
+    .content {
+        width: 100%;
+        background-color: var(--lightgrey);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 12.5rem;
+        gap: 2rem;
+    }
+
+    .info {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .description {
+        width: 60%;
+        height: 80%;
+        background-color: var(--white);
+        grid-row: 1/4;
+        border-radius: 0.93rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 4rem 5rem;
+        margin: 0 -5rem 0 10rem;
+    }
+
+    .description h2 {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+        padding-bottom: 1.25rem;
+    }
+
+    .description p {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.43rem;
+    }
+
+    .animal-data {
+        width: 68%;
+        height: 70%;
+        background-color: var(--white);
+        border-radius: 0.93rem;
+        grid-row: 1/3;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        padding: 4.375rem;
+        margin-right: -5rem;
+    }
+
+    .animal-data h2 {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .animal-data p {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .animal-data .hr {
+        width: 100%;
+        height: 1px;
+        border: 1px solid grey;
+        grid-column: 1/3;
+    }
+
+    .adoption {
+        width: 68%;
+        height: 65%;
+        background-color: var(--orange);
+        border-radius: 0.93rem;
+        grid-row: 3/4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 4.375rem;
+        text-align: center;
+    }
+
+    .adoption h2 {
+        color: var(--black);
+        font-family: var(--text-font);
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+
+
+
+    /* <!-- -----------------------------CARD------------------------- --> */
+
+    .other-kompis {
+        width: 100%;
+        height: fit-content;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+    }
+
+
+    .group {
+        position: relative;
+        width: auto;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        gap: 4rem;
+        margin: 4rem 0 5rem;
     }
 }
 </style>
