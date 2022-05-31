@@ -10,6 +10,7 @@ import { getAuth } from "firebase/auth"
 import { KompiStore } from "@/stores/KompiStore.js" // Almacen de pinia
 import CardGroup from '../components/CardGroup.vue'
 import TheHeader from '../components/TheHeader.vue'
+import { sendEmail } from '../../functions/sendEmail/sendEmail'
 
 export default {
     name: "TemplatePage",
@@ -77,7 +78,7 @@ export default {
         info() {
             const counter = useCounterStore();
             console.log(counter.counter);
-        }
+        },
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
@@ -145,7 +146,7 @@ export default {
                         this.img_5 = e
                     })
             })*/
-
+        sendEmail();
     },
 }
 </script>
@@ -240,7 +241,7 @@ export default {
                 <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
                     ¡Ponte en contacto con su cuidador!</p>
 
-                <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
+                <BaseButton url="/TemplatePageBird" text="CONTACTAR" @click="sEmail()" />
             </div>
         </div>
 
