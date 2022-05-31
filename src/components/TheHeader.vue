@@ -341,7 +341,7 @@ ul {
 
 .mobile-nav-enter-active,
 .mobile-nav-leave-active {
-    transition: 0.5s ease all;
+    transition: 1s ease all;
 }
 
 .mobile-nav-enter-from,
@@ -352,8 +352,6 @@ ul {
 .mobile-nav-enter-to {
     transform: translateX(0);
 }
-
-
 
 .list {
     display: flex;

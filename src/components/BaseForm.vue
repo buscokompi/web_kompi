@@ -317,8 +317,6 @@ p {
     background: var(--lightgrey);
     padding: 3rem 0.5rem;
     width: 100vw;
-    border-radius: 1rem;
-    margin-bottom: 10rem;
 
 
 }
@@ -368,7 +366,7 @@ input,
 
 @media screen and (min-width: 767px) {
     .card {
-        width: 33rem;
+        width: 35rem;
         padding: 2rem 3rem;
     }
 
@@ -376,7 +374,8 @@ input,
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(6, 1fr) 4fr 1fr;
-
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
     }
 
     .description {

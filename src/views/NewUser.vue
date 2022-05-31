@@ -11,40 +11,40 @@
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
         <p>Nombre <span>*</span></p>
-        <input v-model="nameUser" class="input-name" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
+        <input v-model="nameUser" class="input-name" required="required" ref="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
           title="Debes poner más de una letra.">
         <p>Apellidos <span>*</span></p>
-        <input v-model="surnameUser" class="input-surname" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-          title="Debes poner más de una letra.">
+        <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
 
         <div class="double-input">
           <div class="input-container">
             <p>DNI, NIE, Pasaporte <span>*</span></p>
-            <input v-model="dniUser" class="input-dni" required="required" pattern="[0-9]{8}[A-Za-z]{1}]"
+            <input v-model="dniUser" class="input-dni" required="required" ref="dni" pattern="[0-9]{8}[A-Za-z]{1}]"
               title="Debes poner 8 números y una letra.">
           </div>
           <div class="input-container input-container-date">
             <p>Fecha de nacimiento <span>*</span></p>
-            <input v-model="birthdateUser" class="input input-birthdate" type="date" required="required">
+            <input v-model="birthdateUser" class="input input-birthdate" ref="date" type="date" required="required">
           </div>
-          <div class="input-container input-container-province">
+          <div>
             <p>Provincia <span>*</span></p>
             <SelectOptions :options="provincias" class="select"></SelectOptions>
           </div>
           <div class="input-container">
             <p>Localidad <span>*</span></p>
-            <input class="input input-location" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
+            <input class="input input-location" required="required" ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
               title="Debes poner tu localidad.">
           </div>
         </div>
 
         <p>Dirección <span>*</span></p>
-        <input v-model="directionUser" class="input-direction" required="required"
+        <input v-model="directionUser" class="input-direction" ref="direction" required="required"
           pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
         <p>Número de teléfono <span>*</span></p>
-        <input v-model="phoneUser" class="input-phone" required="required" pattern="+?{,3}[0-9]{9,}"
+        <input v-model="phoneUser" class="input-phone" required="required" ref="number" pattern="+?{,3}[0-9]{9,}"
           title="Debes poner un numéro de teléfono valido.">
-        <button @click.prevent="checkInputs" type="submit"
+        <button @click.prevent="sendUserData" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
 
         <RouterLink class="link" to="/OptionsNewUser">Opciones nuevo usuario</RouterLink>
@@ -138,24 +138,11 @@ export default {
         direction: this.directionUser,
         phone: this.phoneUser
       });
-      // this.$router.push("/OptionsNewUser");
-    },
+      if (this.$refs.name.validity.valid && this.$refs.subname.validity.valid && this.$refs.dni.validity.valid && this.$refs.date.validity.valid && this.$refs.location.validity.valid && this.$refs.direction.validity.valid && this.$refs.number.validity.valid) {
 
-    checkInputs() {
-      if (true) {
-        sendUserData();
-        this.$swal({
-          title: "¡Gracias!",
-          text: "Tu cuenta ha sido creada correctamente",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: false,
-        });
-      } else {
-        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
+        this.$router.push("/OptionsNewUser");
       }
     },
-
     checkUser() {
       const auth = getAuth();
 
@@ -163,7 +150,7 @@ export default {
         if (user) {
           this.userEmail = user.email;
         } else {
-          this.$router.push("/Signin");
+          console.log("el usuario no esta logueado");
         }
       });
     }
@@ -187,15 +174,16 @@ export default {
 }
 
 .select {
-  margin: 0px;
-  padding: 0.5rem;
-  border-radius: 0.75rem;
-  border: var(--grey) 0.06rem solid;
-  font-family: var(--text-font);
-  font-size: 1rem;
-  height: 2.7rem;
-
+  appearance: none;
+  display: flex;
+  padding: 0 0 4px 0;
+  background: none;
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
+  white-space: normal;
+  width: 13.5rem;
 }
+
 
 .container-login {
   display: flex;

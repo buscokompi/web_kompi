@@ -104,7 +104,9 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          this.$swal("Error", "El email o contraseña son incorrectos", "error");
+          console.log(errorCode);
+          console.log(errorMessage);
+          alert("Login invalido");
         });
     },
     async loginGoogle() {
@@ -124,7 +126,7 @@ export default {
           console.log(errorMessage);
           console.log(email);
           console.log(credential);
-          this.$swal("Error", "El email o contraseña son incorrectos", "error");
+          alert("Login invalido");
         });
     },
     seePassword() {
@@ -145,6 +147,7 @@ export default {
 
 <style scoped>
 .app {
+  display: flex;
   flex-direction: row;
   margin: 0;
   background-color: #fff;
@@ -396,8 +399,13 @@ p {
   }
 
   .card-login {
-    width: 28rem;
-    height: 40rem;
+    width: 60%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1.9rem;
+    background-color: var(--white);
   }
 
   .btn-login-email {
