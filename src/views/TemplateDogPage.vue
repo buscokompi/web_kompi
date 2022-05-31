@@ -311,7 +311,6 @@ main {
     flex-direction: column;
     color: var(--black);
     font-family: var(--title-font);
-    margin: 0 .8rem;
 }
 
 
@@ -320,6 +319,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 0 1.8rem;
 }
 
 .name {
@@ -331,12 +331,13 @@ main {
 .location {
     font-size: 1rem;
     font-weight: 600;
+
 }
 
 /* PUBLISH DATE */
 
 .publish-date {
-    margin: 5.5rem 0 0 1.5rem;
+    margin: 5.5rem 0 0 1.8rem;
 }
 
 
@@ -345,6 +346,7 @@ main {
 
 .description {
     margin-top: 1rem;
+    padding: 0 1.8rem;
 }
 
 .animal-data {
@@ -354,6 +356,7 @@ main {
     grid-template-rows: repeat(6, 1fr);
     grid-row-gap: 1rem;
     justify-content: center;
+    padding: 0 1.8rem;
 }
 
 
@@ -387,18 +390,25 @@ main {
 
     .info,
     .publish-date {
-        margin-left: 2rem;
-        margin-right: 2rem;
+        padding: 0 1rem;
     }
 
 }
 
 @media screen and (min-width: 767px) {
+
+    .animal-data {
+        background-color: var(--lightgrey);
+    }
+
     .data {
         display: flex;
         gap: 0.6rem;
-
+        border-bottom: solid 0.1rem var(--black);
+        width: 80%;
     }
+
+    .adoption {}
 }
 
 @media screen and (min-width: 1170px) {}
