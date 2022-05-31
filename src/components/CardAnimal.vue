@@ -33,18 +33,18 @@ export default {
       this.store.setId(this.id);
       switch (this.specie) {
         case "Perro":
-          this.$router.push("/TemplateDogPage");
+          this.$router.push("/TemplateDog");
           break;
         case "Gato":
-          this.$router.push("/TemplatePage");
+          this.$router.push("/TemplateCat");
         case "Roedor":
-          this.$router.push("/TemplatePageRodent");
+          this.$router.push("/TemplateRodent");
           break;
         case "Ave":
-          this.$router.push("/TemplatePageBird");
+          this.$router.push("/TemplateBird");
           break;
         case "Reptil":
-          this.$router.push("/TemplatePageReptile");
+          this.$router.push("/TemplateReptile");
       }
     },
   },

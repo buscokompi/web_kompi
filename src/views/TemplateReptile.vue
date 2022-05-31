@@ -1,16 +1,109 @@
+
+<template>
+    <TheHeader />
+    <section v-cloak class="body">
+        <main>
+            <div class="carousel">
+                <div class="img-container">
+                    <img class="img1" :src="this.reptile.Imagen1" alt="imagen1">
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="details">
+                    <h1 class="name">{{ reptile.Nombre }}</h1>
+                    <p class="location">{{ reptile.Ubicacion }}</p>
+                </div>
+            </div>
+        </main>
+
+        <section class="publish-date">
+            <p @click="info">Publicado 04/05/2022</p>
+        </section>
+
+        <div class="info">
+            <div class="description">
+                <h2>Descripción</h2>
+                <p>
+                    {{ reptile.Descripcion }}
+                </p>
+
+            </div>
+            <div class="animal-data">
+                <div class="data">
+                    <h2>Edad:</h2>
+                    <p class="age">{{ reptile.Edad }}</p>
+                </div>
+                <div class="data">
+                    <h2>Raza:</h2>
+                    <p class="breed">{{ reptile.Raza }}</p>
+                </div>
+                <div class="data">
+                    <h2>Sexo:</h2>
+                    <p class="gender">{{ reptile.Sexo }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Tamaño:</h2>
+                    <p class="size">{{ reptile.Tamano }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Peso:</h2>
+                    <p class="weight">{{ reptile.Peso }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Color:</h2>
+                    <p class="color">{{ reptile.Color }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Microchip:</h2>
+                    <p class="microchip">{{ reptile.Microchip }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Vacunación:</h2>
+                    <p class="vaccination">{{ reptile.Vacunacion }}</p>
+                </div>
+
+                <div class="data">
+                    <h2>Esterilizado:</h2>
+                    <p class="esterilized">{{ reptile.Esterilizacion }}</p>
+                </div>
+
+            </div>
+            <div class="adoption">
+                <p>¿Quieres adoptar o saber más sobre {{ reptile.Nombre }}?</p>
+                <p> ¡Ponte en contacto con su cuidador!</p>
+
+                <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
+            </div>
+        </div>
+
+
+        <div class="other-kompis">
+            <p>Otros Kompis que encajan con tu búsqueda</p>
+            <CardGroup />
+        </div>
+    </section>
+    <TheFooter />
+</template>
+
 <script>
-import TheFooter from '@/components/TheFooter.vue'
-import BaseButton from '@/components/BaseButton.vue'
 import { initFirebase } from '@/firebase/firebase.js'
 import { getFirestore, getDoc, doc, collection, getDocs, query, where } from "firebase/firestore/lite"
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { getAuth } from "firebase/auth"
 import { KompiStore } from "@/stores/KompiStore.js" // Almacen de pinia
-import CardGroup from '../components/CardGroup.vue'
 import TheHeader from '../components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+import CardGroup from '../components/CardGroup.vue'
+import BaseButton from '@/components/BaseButton.vue'
 
 export default {
-    name: "TemplatePage",
+    name: "TemplateReptile",
     data() {
         return {
             db: null,
@@ -41,7 +134,7 @@ export default {
             location_5: '',
             img_5: '',
 
-            dog: {
+            reptile: {
                 Nombre: '',
                 Ubicacion: '',
                 Edad: '',
@@ -57,28 +150,24 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
-            },
-
-            store: ""
+            }
 
         }
     },
     components: {
+        TheHeader,
         TheFooter,
-        BaseButton,
         CardGroup,
-        TheHeader
+        BaseButton
     },
     methods: {
         info() {
-            const counter = useCounterStore();
-            console.log(counter.counter);
+            console.log(this.reptile)
         }
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
     },
-
     mounted() {
         this.db = initFirebase()
         this.storage = getStorage(this.db)
@@ -88,12 +177,12 @@ export default {
             .then(snap => {
                 if (snap.exists()) {
                     this.animalInfo = snap.data();
-                    for (const element in this.dog) {
-                        this.dog[element] = this.animalInfo[element]
+                    for (const element in this.reptile) {
+                        this.reptile[element] = this.animalInfo[element]
                     }
-                    getDownloadURL(ref(this.storage, this.dog.Imagen1))
+                    getDownloadURL(ref(this.storage, this.reptile.Imagen1))
                         .then(URL => {
-                            this.dog.Imagen1 = URL;
+                            this.reptile.Imagen1 = URL;
                         })
                 }
             })
@@ -145,109 +234,6 @@ export default {
     },
 }
 </script>
-
-
-<template>
-    <TheHeader />
-    <section v-cloak class="body">
-        <main>
-            <div class="carousel">
-                <div class="img-container">
-                    <img class="img1" :src="this.dog.Imagen1" alt="imagen1">
-                </div>
-            </div>
-
-            <div class="info">
-                <div class="details">
-                    <h1 class="name">{{ dog.Nombre }}</h1>
-                    <p class="location">{{ dog.Ubicacion }}</p>
-                </div>
-            </div>
-        </main>
-
-        <section class="publish-date">
-            <p @click="info">Publicado 04/05/2022</p>
-        </section>
-
-        <div class="info">
-            <div class="description">
-                <h2>Descripción</h2>
-                <p>
-                    {{ dog.Descripcion }}
-                </p>
-
-            </div>
-            <div class="animal-data">
-                <div class="data">
-                    <h2>Edad:</h2>
-                    <p class="age">{{ dog.Edad }}</p>
-                </div>
-                <div class="data">
-                    <h2>Raza:</h2>
-                    <p class="breed">{{ dog.Raza }}</p>
-                </div>
-                <div class="data">
-                    <h2>Sexo:</h2>
-                    <p class="gender">{{ dog.Sexo }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Tamaño:</h2>
-                    <p class="size">{{ dog.Tamano }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Peso:</h2>
-                    <p class="weight">{{ dog.Peso }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Color:</h2>
-                    <p class="color">{{ dog.Color }}</p>
-                </div>
-                <!--
-                <div class="data">
-                    <h2>Pelo:</h2>
-                    <p class="hair">{{ dog.Pelo }}</p>
-                </div> -->
-
-                <div class="data">
-                    <h2>Microchip:</h2>
-                    <p class="microchip">{{ dog.Microchip }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Vacunación:</h2>
-                    <p class="vaccination">{{ dog.Vacunacion }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Certificado ppp:</h2>
-                    <p class="certified">{{ dog.Certificado_ppp }}</p>
-                </div>
-
-                <div class="data">
-                    <h2>Esterilizado:</h2>
-                    <p class="esterilized">{{ dog.Esterilizacion }}</p>
-                </div>
-
-            </div>
-            <div class="adoption">
-                <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?</p>
-                <p> ¡Ponte en contacto con su cuidador!</p>
-
-                <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
-            </div>
-        </div>
-
-
-        <div class="other-kompis">
-            <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
-        </div>
-    </section>
-    <TheFooter />
-</template>
 
 <style scoped>
 p {
@@ -571,6 +557,7 @@ main {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
+
 
 }
 </style>

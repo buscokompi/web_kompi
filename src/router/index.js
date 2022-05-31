@@ -20,29 +20,29 @@ const router = createRouter({
     },
 
     {
-      path: "/TemplateCatPage",
+      path: "/TemplateCat",
       name: "TemplateCat",
-      component: () => import("../views/TemplateCatPage.vue")
+      component: () => import("../views/TemplateCat.vue")
     },
     {
-      path: "/TemplateDogPage",
+      path: "/TemplateDog",
       name: "TemplateDoge",
-      component: () => import("../views/TemplateDogPage.vue")
+      component: () => import("../views/TemplateDog.vue")
     },
     {
-      path: "/TemplatePageReptile",
+      path: "/TemplateReptile",
       name: "TemplateReptile",
-      component: () => import("../views/TemplateReptilePage.vue")
+      component: () => import("../views/TemplateReptile.vue")
     },
     {
-      path: "/TemplatePageBird",
+      path: "/TemplateBird",
       name: "TemplateBird",
-      component: () => import("../views/TemplateBirdPage.vue")
+      component: () => import("../views/TemplateBird.vue")
     },
     {
-      path: "/TemplatePageRodent",
+      path: "/TemplateRodent",
       name: "TemplateRodent",
-      component: () => import("../views/TemplateRodentPage.vue")
+      component: () => import("../views/TemplateRodent.vue")
     },
     {
       path: "/NewAnimalForm",
