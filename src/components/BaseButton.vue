@@ -9,7 +9,7 @@ export default {
     props: {
         url: {
             type: String,
-            default: "#",
+            default: "",
         },
         text: {
             type: String,

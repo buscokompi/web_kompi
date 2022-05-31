@@ -45,7 +45,9 @@
 
         <span id='message'></span>
 
-        <BaseButton text="Continuar" :value="buttonAlert" @click="signin" class="button btn-signin-email" />
+        <div @click="signin">
+          <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+        </div>
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
@@ -82,9 +84,14 @@ export default {
       passwordCheck: "",
       visible: "visible",
       fieldType: "password",
-      buttonAlert: "alertSignin",
+      buttonAlert: "",
     }
   },
+  // computed: {
+  //   getButtonAlert() {
+  //     return this.buttonAlert
+  //   },
+  // },
   mounted() {
     this.firebaseapp = initFirebase() // Inicizaliza la BBDD
     this.auth = getAuth();
@@ -93,11 +100,10 @@ export default {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        this.buttonAlert = "alertSignin";
+        this.$swal("Error", "El email que has introducido es inválido o ya existe.", "error");
       } else {
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
-            this.buttonAlert = "";
             this.$router.push("/NewUser");
             console.log("usuario registrado");
           }).catch((error) => {
@@ -106,9 +112,45 @@ export default {
             console.log(errorCode);
             console.log(errorMessage);
             this.buttonAlert = "";
+
           });
       }
     },
+
+
+
+
+    // async signin(){
+    //   if (this.password !== this.passwordCheck) {}
+    //     this.buttonAlert = "alertSignin";
+    //     console.log(shaoooo);
+    // }
+
+    //     async signin() {
+    //   if (this.password !== this.passwordCheck) {
+    //     // this.setButtonAlert("alertSignin");
+    //     this.buttonAlert = "alertSignin";
+    //   } else {
+    //     // signInFirebase(email, password);
+    //     await createUserWithEmailAndPassword(this.auth, this.email, this.password)
+    //       .then((userCredential) => {
+    //         this.$router.push("/NewUser");
+    //         console.log("usuario registrado");
+    //       )}.catch((error) => {
+    //         const errorCode = error.code;
+    //         const errorMessage = error.message;
+    //         console.log(errorCode);
+    //         console.log(errorMessage);
+    //         this.buttonAlert = "";
+
+    //       });
+    //   }
+    // },
+
+    async setButtonAlert(alert) {
+      this.buttonAlert = alert
+    },
+
     async loginGoogle() {
       const provider = new GoogleAuthProvider();
       this.auth.languageCode = "es";
