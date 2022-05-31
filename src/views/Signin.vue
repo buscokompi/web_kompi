@@ -45,10 +45,12 @@
 
         <span id='message'></span>
 
-        <BaseButton text="Continuar" :value="buttonAlert" @click="signin" class="button btn-signin-email" />
+        <div @click="signin">
+          <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+        </div>
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-        <div class="button btn-signin-google"><img class="google"
+        <div @click="loginGoogle" class="button btn-signin-google"><img class="google"
             src="../assets/icons/google_icono.svg"><span>Regístrate
             con Google</span></div>
 
@@ -79,9 +81,10 @@ export default {
       passwordCheck: "",
       visible: "visible",
       fieldType: "password",
-      buttonAlert: "alertSignin",
+      buttonAlert: "",
     }
   },
+
   mounted() {
     this.firebaseapp = initFirebase() // Inicizaliza la BBDD
     this.auth = getAuth();
@@ -90,22 +93,24 @@ export default {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        this.buttonAlert = "alertSignin";
+        this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
       } else {
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
-            this.buttonAlert = "";
             this.$router.push("/NewUser");
-            console.log("usuario registrado");
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-            this.buttonAlert = "";
+            this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
+
           });
       }
     },
+
+    async setButtonAlert(alert) {
+      this.buttonAlert = alert
+    },
+
     async loginGoogle() {
       const provider = new GoogleAuthProvider();
       this.auth.languageCode = "es";
@@ -113,17 +118,13 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.$router.push("/NewUser");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
         });
     },
 
