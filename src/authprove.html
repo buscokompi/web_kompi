@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase-login-test</title>
+</head>
+<body>
+
+  <h1>Esto es una prueba de login con firebase</h1>
+
+  <div class="container">
+    <button class="signin">Sign in</button>
+    <button class="btn-login-email">Log in</button>
+    <button class="logout">Log out</button>
+    <button class="logGoogle">Log in with Google</button>
+    <button class="logFacebook">Log in with Facebook</button>
+  </div>
+
+  <input type="text" class="email" placeholder="email">
+  <input type="text" class="password" placeholder="contraseña">
+
+  <div class="inputAnimals">
+    <input type="text" class="nameAnimal" placeholder="nombre">
+    <input type="text" class="ageAnimal" placeholder="edad">
+    <input type="text" class="raceAnimal" placeholder="raza">
+    <input type="text" class="sexAnimal" placeholder="sexo">
+    <button class="addAnimal">Añade el nuevo animal</button>
+  </div>
+
+  <div>
+    <button class="muestraanimales">Mostrar animales</button>
+  </div>
+
+  <input class="fileinput" type="file" value="Subir archivo" accept="image/*">
+  <button class="upload">Subir imagen</button>
+  <button class="showimages">Ver imagenes</button>
+
+  <div class="animales"></div>
+
+  <!--Firebase scripts-->
+  <script src="./js/fbstorage.js" type="module"></script>
+  <script src="./js/fbfirestore.js" type="module"></script>
+  <script src="./js/authprove.js" type="module"></script>
+
+</body>
+</html>

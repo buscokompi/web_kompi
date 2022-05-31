@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/newuser.css">
+  <!--Font-Family: Dosis -->
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700;800&display=swap" rel="stylesheet">
+    <!--Font-Family: Open Sans and Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Kompi | Registro</title>
+  <link rel="icon" href="./assets/icons/icono_logo.svg">
+</head>
+<body>
+  <img class="img-dog-login" src="./assets/images/foto_perro.svg" alt="Fotografía perro Pug">
+
+  <div class="container-login">
+
+    <a href="./index.html">
+      <img class="logo" src="./assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+    </a>
+
+    <form class="card-login">
+      <!-- <p class="p-title">Regístrate</p> -->
+      <p>Nombre <span>*</span></p>
+      <input class="input-name" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+      <p>Apellidos <span>*</span></p>
+      <input class="input-surname" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+
+      <div class="double-input">
+        <div class="input-container">
+          <p>DNI, NIE, Pasaporte <span>*</span></p>
+          <input class="input-dni" required="required" pattern="[0-9]{8}[A-Za-z]{1}]" title="Debes poner 8 números y una letra.">
+        </div>
+        <div class="input-container input-container-date">
+          <p>Fecha de nacimiento <span>*</span></p>
+          <input class="input input-birthdate" type="date" required="required">
+        </div>
+        <div class="input-container input-container-province">
+          <p>Provincia <span>*</span></p>
+          <select name="select" class="form-control"></select>
+        </div>
+        <div class="input-container">
+          <p>Localidad <span>*</span></p>
+          <input class="input input-location" required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner tu localidad.">
+        </div>
+      </div>
+
+      <p>Dirección <span>*</span></p>
+      <input class="input-direction" required="required" pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
+      <p>Número de teléfono <span>*</span></p>
+      <input class="input-phone" required="required" pattern="+?{,3}[0-9]{9,}" title="Debes poner un numéro de teléfono valido.">
+      <button type="submit" class="button btn-login-email btn-continue">Continuar</button>
+    </form>
+    <p>¿Ya tienes una cuenta? <a class="link-signin" href="./login.html">Inicia sesión</a></p>
+  </div>
+
+  <script type="module" src="./js/newuser.js"></script>
+
+</body>
+</html>
