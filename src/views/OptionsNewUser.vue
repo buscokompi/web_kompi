@@ -3,7 +3,6 @@
   <div class="options-container">
 
     <div class="progress-bar"></div>
-    <DarkMode />
     <div class="title">
       <h1>¡Bienvenido/a a Kompi!</h1>
       <p class="question1">¿Qué es lo que quieres hacer?</p>
@@ -13,7 +12,7 @@
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink to="/formularioEjemplo">
+      <RouterLink to="/FormCard">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
@@ -24,10 +23,8 @@
 </template>
 
 <script>
-import DarkMode from '../components/DarkMode.vue';
 export default {
   name: "login",
-  components: { DarkMode }
 }
 
 </script>

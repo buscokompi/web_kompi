@@ -18,7 +18,11 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue")
     },
-
+    {
+      path: "/FormUserEdit",
+      name: "FormUserEdit",
+      component: () => import("../views/FormUserEdit.vue")
+    },
     {
       path: "/TemplatePage",
       name: "TemplateCat",

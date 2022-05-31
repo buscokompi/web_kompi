@@ -1,3 +1,8 @@
+<template>
+    <p>{{ label1 }} <v-select class="question" :options='formOptions' :clearable="false"></v-select>
+    </p>
+</template>
+
 <script>
 export default {
     name: 'SelectForm',
@@ -5,12 +10,6 @@ export default {
     props: { label1: String, formOptions: Array }
 }
 </script>
-
-<template>
-    <p>{{ label1 }} <v-select class="question" :options='formOptions' :clearable="false"></v-select>
-    </p>
-</template>
-
 
 <style scoped>
 .question {
