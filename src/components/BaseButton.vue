@@ -9,7 +9,7 @@ export default {
     props: {
         url: {
             type: String,
-            default: "#",
+            default: "",
         },
         text: {
             type: String,
@@ -28,15 +28,11 @@ export default {
         return {
             buttonUrl: this.url,
             buttonText: this.text,
-            buttonValue: this.value
         }
     },
     methods: {
-        info() {
-            console.log("Hola mundo")
-        },
         generic() {
-            switch (this.buttonValue) {
+            switch (this.value) {
                 case "alertLogin":
                     this.alertLogin();
                     break;
@@ -48,6 +44,9 @@ export default {
                     break;
                 case "alertSignin":
                     this.alertSignin();
+                    break;
+                case "alertNewUserError":
+                    this.alertNewUserError();
                     break;
                 case "alertNewuser":
                     this.alertNewuser();
@@ -73,6 +72,8 @@ export default {
                 case "alertContactFormUser":
                     this.alertContactFormUser();
                     break;
+                case "":
+                    break;
                 default:
                     break;
             }
@@ -89,6 +90,9 @@ export default {
         },
         alertSignin() {
             this.$swal("Error", "El email que has introducido es inválido o ya existe.", "error");
+        },
+        alertNewUserError() {
+            this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
         },
         alertNewuser() {
             this.$swal({

@@ -48,16 +48,13 @@ export default {
     sendEmail() {
       sendPasswordResetEmail(this.auth, this.email)
         .then(() => {
-          //Esta parte debe llevar a la view email validated
-          console.log(this.email + " email enviado correctamente");
+          this.$swal("¡Gracias!", "Hemos enviado un correo a la dirección electrónica que nos has facilitado. Revisa tu bandeja de entrada o spam", "success");
         })
         .catch((error) => {
           //Si el usuario es incorrecto, imprime el error por consola
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert("El email introducido no es correcto");
+          this.$swal("Error", "El email introducido no es correcto", "error");
         });
     }
   }

@@ -20,10 +20,10 @@
 
         <div>
           <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
-            id="password" type="password" required="required"
+            id="password" :type="type_1" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password" />
-          <label for="toggle-password"></label>
+          <label @click="toggleClicked" for="toggle-password"></label>
         </div>
 
 
@@ -35,19 +35,22 @@
 
         <div>
           <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
-            id="password2" type="password" required="required"
+            id="password2" :type="type_2" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password2" />
-          <label for="toggle-password2"></label>
+          <label @click="toggleClicked2" for="toggle-password2"></label>
         </div>
 
 
 
         <span id='message'></span>
 
-        <button type="submit" class="button btn-signin-email">Continuar</button>
+        <div @click="signin">
+          <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+        </div>
 
-        <div class="button btn-signin-google"><img class="google"
+        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
+        <div @click="loginGoogle" class="button btn-signin-google"><img class="google"
             src="../assets/icons/google_icono.svg"><span>Regístrate
             con Google</span></div>
 
@@ -62,54 +65,52 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, browserSessionPersistence, setPersistence, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initFirebase } from '@/firebase/firebase.js';
+import BaseButton from "../components/BaseButton.vue";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
-  authDomain: "web-kompi.firebaseapp.com",
-  projectId: "web-kompi",
-  storageBucket: "web-kompi.appspot.com",
-  messagingSenderId: "556298514839",
-  appId: "1:556298514839:web:92e508e18c5685e99694d2",
-  measurementId: "G-93MGP34YQN"
-};
 export default {
   name: "Singin",
+  components: { BaseButton },
   data() {
     return {
       firebaseapp: "",
-      auth: "",
+      auth: null,
       email: "",
       password: "",
       passwordCheck: "",
       visible: "visible",
       fieldType: "password",
+      buttonAlert: "",
     }
   },
-  mounted() {
-    this.firebaseapp = initializeApp(firebaseConfig);
-    this.auth = getAuth();
 
+  mounted() {
+    this.firebaseapp = initFirebase() // Inicizaliza la BBDD
+    this.auth = getAuth();
   },
   methods: {
+
     async signin() {
       if (this.password !== this.passwordCheck) {
-        alert("Comprueba que la contraseña sea correcta");
+        this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
       } else {
-        // signInFirebase(email, password);
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
-            console.log("usuario registrado");
+            this.$router.push("/NewUser");
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-            alert("invalido");
+            this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
+
           });
       }
     },
+
+    async setButtonAlert(alert) {
+      this.buttonAlert = alert
+    },
+
     async loginGoogle() {
       const provider = new GoogleAuthProvider();
       this.auth.languageCode = "es";
@@ -117,22 +118,40 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.$router.push("/NewUser");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
         });
+    },
+
+    info() {
+      console.log(this.email);
+      console.log(this.password);
+      console.log(this.passwordCheck);
+    },
+
+    toggleClicked() {
+      password.classList.toggle("visible");
+      if (this.type_1 == "password") {
+        this.type_1 = "text"
+      } else {
+        this.type_1 = "password";
+      }
+    },
+    toggleClicked2() {
+      password2.classList.toggle("visible");
+      if (this.type_2 == "password") {
+        this.type_2 = "text"
+      } else {
+        this.type_2 = "password";
+      }
     }
   }
 }
-
 
 </script>
 

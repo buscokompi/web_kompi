@@ -13,7 +13,7 @@
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink to="/NewAnimalForm">
+      <RouterLink to="/formularioEjemplo">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>

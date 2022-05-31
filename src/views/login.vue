@@ -93,9 +93,7 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert("Login invalido");
+          this.$swal("Error", "El email o contraseña son incorrectos", "error");
         });
     },
     async loginGoogle() {
@@ -115,7 +113,7 @@ export default {
           console.log(errorMessage);
           console.log(email);
           console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email o contraseña son incorrectos", "error");
         });
     },
     seePassword() {

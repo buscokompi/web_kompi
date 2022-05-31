@@ -4,7 +4,8 @@
     <div class="information">
 
       <div class="column two">
-        <a href="./index.html"><img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo" width="65"></a>
+        <RouterLink to="./"> <img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo" width="65">
+        </RouterLink>
         <a href="mailto:adoptaunkompi@gmail.com" class="mail">adoptaunkompi@gmail.com</a>
         <div class="social">
           <a href="https://www.facebook.com/adoptaunkompi/"><img src="../assets/icons/icono_facebook.svg" width="21"
@@ -28,10 +29,7 @@
         <p>Acerca de</p>
         <RouterLink to="/PrivacyPolicy">Política de privacidad</RouterLink>
         <RouterLink to="/Terms&Conditions">Términos y condiciones</RouterLink>
-        <RouterLink to="{
-        name: 'MainPage',
-        hash: '#frequent-question'}" @click="scrollToAnchorPoint('frequent-question')">Preguntas frecuentes
-        </RouterLink>
+        <RouterLink to="/#frequentquestion">Preguntas frecuentes</RouterLink>
         <!-- <a href=" ./404file.html">Preguntas frecuentes</a> -->
       </div>
     </div>
@@ -46,8 +44,10 @@
 
 <script>
 export default {
-  name: "TheFooter"
+  name: "TheFooter",
+
 }
+
 </script>
 
 <style scoped>

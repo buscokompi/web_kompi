@@ -18,9 +18,15 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue")
     },
+
     {
-      path: "/TemplatePageDog",
-      name: "TemplateDog",
+      path: "/TemplatePage",
+      name: "TemplateCat",
+      component: () => import("../views/TemplatePage.vue")
+    },
+    {
+      path: "/TemplateDogPage",
+      name: "TemplateCat",
       component: () => import("../views/TemplateDogPage.vue")
     },
     {
@@ -42,20 +48,11 @@ const router = createRouter({
       path: "/NewAnimalForm",
       name: "NewAnimalForm",
       component: () => import("../views/NewAnimalForm.vue"),
-      children: [
-        {
-          path: "saludo",
-          component: () => import("../views/NewAnimalForm.vue")
-        },
-        {
-          path: "otroSaludo",
-          component: () => import("../views/NewAnimalForm.vue")
-        },
-        {
-          path: "formularioEjemplo",
-          component: () => import("../views/formularioEjemplo.vue")
-        }
-      ]
+    },
+    {
+      path: "/FormCard",
+      name: "FormCard",
+      component: () => import("../views/FormCard.vue")
     },
     {
       path: "/Login",
@@ -83,12 +80,6 @@ const router = createRouter({
       component: () => import("../views/OptionsNewUser.vue")
     },
     {
-      path: "/FormUser",
-      name: "FormUser",
-      component: () => import("../views/FormUser.vue")
-    },
-
-    {
       path: "/AboutMe",
       name: "AboutMe",
       component: () => import("../views/Aboutme.vue")
@@ -113,7 +104,11 @@ const router = createRouter({
       path: "/Adoptar",
       name: "Adoptar",
       component: () => import("../views/Adoptar.vue")
-    }
+    },
+    {
+      path: "/:pathMach(.)",
+      component: () => import("../views/Error404.vue")
+    },
 
   ],
   scrollBehavior(to, from, savedPosition) {
