@@ -44,7 +44,7 @@
         <p>Número de teléfono <span>*</span></p>
         <input v-model="phoneUser" class="input-phone" required="required" pattern="+?{,3}[0-9]{9,}"
           title="Debes poner un numéro de teléfono valido.">
-        <button @click.prevent="sendUserData" type="submit"
+        <button @click.prevent="checkInputs" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
 
         <RouterLink class="link" to="/OptionsNewUser">Opciones nuevo usuario</RouterLink>
@@ -138,8 +138,24 @@ export default {
         direction: this.directionUser,
         phone: this.phoneUser
       });
-      this.$router.push("/OptionsNewUser");
+      // this.$router.push("/OptionsNewUser");
     },
+
+    checkInputs() {
+      if (true) {
+        sendUserData();
+        this.$swal({
+          title: "¡Gracias!",
+          text: "Tu cuenta ha sido creada correctamente",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } else {
+        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
+      }
+    },
+
     checkUser() {
       const auth = getAuth();
 
@@ -147,7 +163,7 @@ export default {
         if (user) {
           this.userEmail = user.email;
         } else {
-          console.log("el usuario no esta logueado");
+          this.$router.push("/Signin");
         }
       });
     }
