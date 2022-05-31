@@ -7,8 +7,7 @@
       <RouterLink to="/">
         <img class="logo" src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi Negro">
       </RouterLink>
-      <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
-      <!-- <DarkMode /> -->
+
       <div class="card-login">
         <div class="login">
           <p class="email">E-mail</p>
@@ -42,7 +41,6 @@
 <script>
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import DarkMode from "../components/DarkMode.vue";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
 import { KompiStore } from "../stores/KompiStore";
@@ -69,8 +67,6 @@ export default {
       visible: "visible",
       fieldType: "password",
       modeStorage: ModeStorage(),
-      darkMode: false,
-      lightMode: false,
 
       store: ""
     };
@@ -83,17 +79,10 @@ export default {
   },
 
   watch: {
-    modeStorage() {
-      this.darkMode = this.modeStorage.darkMode
-      this.lightMode = !this.modeStorage.darkMode
-    }
+
   },
 
   methods: {
-    info() {
-      console.log(this.modeStorage)
-      this.darkMode = false
-    },
 
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
@@ -139,7 +128,7 @@ export default {
       }
     }
   },
-  components: { DarkMode, PrivacyPolicy },
+  components: { PrivacyPolicy },
 
 }
 

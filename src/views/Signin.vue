@@ -11,7 +11,7 @@
       <form class="card-login">
 
         <div>
-          <p>E-mail <span>*</span></p>
+          <p class="email">E-mail <span>*</span></p>
           <input v-model="email" class="input-email" type="email" required="required"
             placeholder="adoptaunkompi@gmail.com">
 
@@ -47,7 +47,6 @@
 
         <button type="submit" class="button btn-signin-email">Continuar</button>
 
-        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
         <div class="button btn-signin-google"><img class="google"
             src="../assets/icons/google_icono.svg"><span>Regístrate
             con Google</span></div>
@@ -162,18 +161,23 @@ export default {
 
 .logo {
   width: 8rem;
-  margin: 2rem 0px;
+  margin: 3rem;
   cursor: pointer;
 }
 
 .card-login {
   display: flex;
   width: 28rem;
-  height: 100%;
+  height: 65%;
   flex-direction: column;
   border-radius: 1.9rem;
   padding: 2rem 5rem 2.5rem;
   background-color: white;
+}
+
+.email {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .input-email {
@@ -182,6 +186,7 @@ export default {
 
 #password {
   width: 27rem;
+  margin-bottom: 0.80rem;
 }
 
 
@@ -189,13 +194,6 @@ export default {
   color: var(--black);
   font-family: var(--text-font);
 }
-
-/* .p-title {
-  text-align: center;
-  font-family: var(--text-font);
-  font-size: 2rem;
-  margin-top: -1rem;
-} */
 
 input {
   padding: 0.5rem;
@@ -255,7 +253,7 @@ input:focus {
   border: var(--grey) 0.06rem solid;
   color: var(--black);
   margin-bottom: 1rem;
-  margin-top: rem;
+  margin-top: 2rem;
 }
 
 .btn-login-google:hover {
@@ -340,6 +338,7 @@ input:focus {
   font-family: var(--text-font);
   color: var(--black);
   font-size: 0.9rem;
+  margin-top: 3rem;
 }
 
 .forgot-pass {
@@ -410,10 +409,6 @@ input:focus {
   display: none;
 }
 
-/* .pass {
-  margin-top: 2rem;
-  margin-bottom: -1px;
-} */
 
 #toggle-password2+label {
   text-indent: -9999px;
@@ -448,9 +443,6 @@ input:focus {
 
 
   }
-
-
-
 }
 
 
@@ -478,6 +470,11 @@ input:focus {
     font-size: x-large;
   }
 
+  .email {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
   .input-email {
     width: 44rem;
     height: 3rem;
@@ -503,7 +500,6 @@ input:focus {
     margin-left: 12rem;
   }
 
-
   .register {
     font-size: 1.5rem;
   }
@@ -511,7 +507,6 @@ input:focus {
   ::placeholder {
     font-size: 1.5rem;
   }
-
 
 }
 </style>
