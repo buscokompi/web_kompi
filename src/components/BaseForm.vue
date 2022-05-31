@@ -1,3 +1,80 @@
+<template>
+    <div class="card">
+        <form class="formulario">
+            <div class="name">
+                <p>Nombre*</p>
+                <input v-model="data.Nombre" type="text" class="input">
+            </div>
+            <div class="location">
+                <p>Localidad*</p>
+                <SelectOptions :options="provinciasArr" v-model="data.Ubicacion"
+                    @option:selected="onChange(location, 'Ubicacion')" />
+            </div>
+            <div class="species">
+                <p>Especie*</p>
+                <SelectOptions :options="speciesArr" v-model="data.Especie"
+                    @option:selected="onChange(data.Especie, 'Especie')" />
+            </div>
+            <div class="breed">
+                <p>Raza*</p>
+                <SelectOptions :options="racesArr" v-model="data.Raza" :disabled="disableRace === true"
+                    @option:selected="onChange(race, 'Raza')" />
+            </div>
+            <div class="gender">
+                <p>Sexo*</p>
+                <SelectOptions :options="sexArr" v-model="data.Sexo" @option:selected="onChange(sex, 'Sexo')" />
+            </div>
+            <div class="age">
+                <p>Edad*</p>
+                <SelectOptions :options="ageArr" v-model="data.Edad" @option:selected="onChange(age, 'Edad')" />
+            </div>
+            <div class="size">
+                <p>Tamaño*</p>
+                <SelectOptions :options="sizeArr" v-model="data.Tamano" @option:selected="onChange(size, 'Tamano')" />
+            </div>
+            <div class="color">
+                <p>Color*</p>
+                <SelectOptions :options="colorArr" v-model="data.Color" @option:selected="onChange(color, 'Color')" />
+            </div>
+            <div class="microchip">
+                <p>Microchip*</p>
+                <SelectOptions :options="othersArr" v-model="data.Microchip"
+                    @option:selected="onChange(vaccination, 'Vacunacion')" />
+            </div>
+            <div class="vaccination">
+                <p>Vacunas*</p>
+                <SelectOptions :options="othersArr" v-model="data.Vacunacion"
+                    @option:selected="onChange(vaccination, 'Vacunacion')" />
+            </div>
+            <div class="sterilization">
+                <p>Esterilización*</p>
+                <SelectOptions :options="othersArr" v-model="data.Esterilizacion"
+                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
+            </div>
+            <div class="certificate">
+                <p>Certificado PPP*</p>
+                <SelectOptions :options="othersArr" v-model="data.Certificado_ppp"
+                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
+            </div>
+
+            <div class="description">
+                <p>Descripción*</p>
+                <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
+                    class="textarea"></textarea>
+            </div>
+            <div class="images">
+                <p>Sube una foto*</p>
+                <div class="uploadImages">
+                    <input @change="TakePhoto($event)" class="fileinput" type="file" accept="image/*">
+                </div>
+            </div>
+        </form>
+        <div class="save">
+            <BaseButton @click="addAnimal" text="Guardar" />
+        </div>
+    </div>
+</template>
+
 <script>
 import SelectOptions from '../components/SelectOptions.vue'
 import BaseButton from '../components/BaseButton.vue'
@@ -228,83 +305,6 @@ export default {
 }
 </script>
 
-<template>
-    <div class="card">
-        <form class="formulario">
-            <div class="name">
-                <p>Nombre*</p>
-                <input v-model="data.Nombre" type="text" class="input">
-            </div>
-            <div class="location">
-                <p>Localidad*</p>
-                <SelectOptions :options="provinciasArr" v-model="data.Ubicacion"
-                    @option:selected="onChange(location, 'Ubicacion')" />
-            </div>
-            <div class="species">
-                <p>Especie*</p>
-                <SelectOptions :options="speciesArr" v-model="data.Especie"
-                    @option:selected="onChange(data.Especie, 'Especie')" />
-            </div>
-            <div class="breed">
-                <p>Raza*</p>
-                <SelectOptions :options="racesArr" v-model="data.Raza" :disabled="disableRace === true"
-                    @option:selected="onChange(race, 'Raza')" />
-            </div>
-            <div class="gender">
-                <p>Sexo*</p>
-                <SelectOptions :options="sexArr" v-model="data.Sexo" @option:selected="onChange(sex, 'Sexo')" />
-            </div>
-            <div class="age">
-                <p>Edad*</p>
-                <SelectOptions :options="ageArr" v-model="data.Edad" @option:selected="onChange(age, 'Edad')" />
-            </div>
-            <div class="size">
-                <p>Tamaño*</p>
-                <SelectOptions :options="sizeArr" v-model="data.Tamano" @option:selected="onChange(size, 'Tamano')" />
-            </div>
-            <div class="color">
-                <p>Color*</p>
-                <SelectOptions :options="colorArr" v-model="data.Color" @option:selected="onChange(color, 'Color')" />
-            </div>
-            <div class="microchip">
-                <p>Microchip*</p>
-                <SelectOptions :options="othersArr" v-model="data.Microchip"
-                    @option:selected="onChange(vaccination, 'Vacunacion')" />
-            </div>
-            <div class="vaccination">
-                <p>Vacunas*</p>
-                <SelectOptions :options="othersArr" v-model="data.Vacunacion"
-                    @option:selected="onChange(vaccination, 'Vacunacion')" />
-            </div>
-            <div class="sterilization">
-                <p>Esterilización*</p>
-                <SelectOptions :options="othersArr" v-model="data.Esterilizacion"
-                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
-            </div>
-            <div class="certificate">
-                <p>Certificado PPP*</p>
-                <SelectOptions :options="othersArr" v-model="data.Certificado_ppp"
-                    @option:selected="onChange(sterilization, 'Esterilizacion')" />
-            </div>
-
-            <div class="description">
-                <p>Descripción*</p>
-                <textarea v-model="data.Descripcion" name="" placeholder="Deja una descripción."
-                    class="textarea"></textarea>
-            </div>
-            <div class="images">
-                <p>Sube una foto*</p>
-                <div class="uploadImages">
-                    <input @change="TakePhoto($event)" class="fileinput" type="file" accept="image/*">
-                </div>
-            </div>
-        </form>
-        <div class="save">
-            <BaseButton @click="addAnimal" text="Guardar" />
-        </div>
-    </div>
-</template>
-
 <style scoped>
 p {
     margin-bottom: 0.8rem;
@@ -396,6 +396,14 @@ input,
         justify-self: end;
     }
 
+    .species,
+    .gender,
+    .size,
+    .microchip,
+    .sterilization {
+        justify-self: baseline;
+    }
+
     .images input {
         width: 99%;
     }
@@ -456,6 +464,7 @@ input,
     }
 
     .size {
+        justify-self: baseline;
         grid-area: 3 / 1 / 4 / 2;
     }
 
@@ -490,7 +499,11 @@ input,
 
     .description {
         grid-area: 5 / 1 / 6 / 4;
+        padding-top: 1rem;
+
     }
+
+
 
     .images {
         grid-area: 6 / 1 / 7 / 4;

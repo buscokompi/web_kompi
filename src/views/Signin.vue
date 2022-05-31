@@ -20,10 +20,10 @@
 
         <div>
           <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
-            id="password" type="password" required="required"
+            id="password" :type="type_1" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password" />
-          <label for="toggle-password"></label>
+          <label @click="toggleClicked" for="toggle-password"></label>
         </div>
 
 
@@ -35,10 +35,10 @@
 
         <div>
           <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
-            id="password2" type="password" required="required"
+            id="password2" :type="type_2" required="required"
             pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
           <input type="checkbox" id="toggle-password2" />
-          <label for="toggle-password2"></label>
+          <label @click="toggleClicked2" for="toggle-password2"></label>
         </div>
 
 
@@ -50,7 +50,7 @@
         </div>
 
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-        <div class="button btn-signin-google"><img class="google"
+        <div @click="loginGoogle" class="button btn-signin-google"><img class="google"
             src="../assets/icons/google_icono.svg"><span>Regístrate
             con Google</span></div>
 
@@ -68,26 +68,17 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { initFirebase } from '@/firebase/firebase.js';
 import BaseButton from "../components/BaseButton.vue";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
-  authDomain: "web-kompi.firebaseapp.com",
-  projectId: "web-kompi",
-  storageBucket: "web-kompi.appspot.com",
-  messagingSenderId: "556298514839",
-  appId: "1:556298514839:web:92e508e18c5685e99694d2",
-  measurementId: "G-93MGP34YQN"
-};
 export default {
   name: "Singin",
   components: { BaseButton },
   data() {
     return {
       firebaseapp: "",
-      auth: "",
+      auth: null,
       email: "",
       password: "",
       passwordCheck: "",
@@ -96,66 +87,28 @@ export default {
       buttonAlert: "",
     }
   },
-  // computed: {
-  //   getButtonAlert() {
-  //     return this.buttonAlert
-  //   },
-  // },
+
   mounted() {
-    this.firebaseapp = initializeApp(firebaseConfig);
+    this.firebaseapp = initFirebase() // Inicizaliza la BBDD
     this.auth = getAuth();
   },
   methods: {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        this.$swal("Error", "El email que has introducido es inválido o ya existe.", "error");
+        this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
       } else {
-        // signInFirebase(email, password);
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
             this.$router.push("/NewUser");
-            console.log("usuario registrado");
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-            this.buttonAlert = "";
+            this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
 
           });
       }
     },
-
-
-
-
-    // async signin(){
-    //   if (this.password !== this.passwordCheck) {}
-    //     this.buttonAlert = "alertSignin";
-    //     console.log(shaoooo);
-    // }
-
-    //     async signin() {
-    //   if (this.password !== this.passwordCheck) {
-    //     // this.setButtonAlert("alertSignin");
-    //     this.buttonAlert = "alertSignin";
-    //   } else {
-    //     // signInFirebase(email, password);
-    //     await createUserWithEmailAndPassword(this.auth, this.email, this.password)
-    //       .then((userCredential) => {
-    //         this.$router.push("/NewUser");
-    //         console.log("usuario registrado");
-    //       )}.catch((error) => {
-    //         const errorCode = error.code;
-    //         const errorMessage = error.message;
-    //         console.log(errorCode);
-    //         console.log(errorMessage);
-    //         this.buttonAlert = "";
-
-    //       });
-    //   }
-    // },
 
     async setButtonAlert(alert) {
       this.buttonAlert = alert
@@ -168,113 +121,40 @@ export default {
       await signInWithPopup(this.auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log("Autenticado con google");
+          this.$router.push("/NewUser");
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
         });
-    }
+    },
 
+    info() {
+      console.log(this.email);
+      console.log(this.password);
+      console.log(this.passwordCheck);
+    },
+
+    toggleClicked() {
+      password.classList.toggle("visible");
+      if (this.type_1 == "password") {
+        this.type_1 = "text"
+      } else {
+        this.type_1 = "password";
+      }
+    },
+    toggleClicked2() {
+      password2.classList.toggle("visible");
+      if (this.type_2 == "password") {
+        this.type_2 = "text"
+      } else {
+        this.type_2 = "password";
+      }
+    }
   }
 }
-
-// const signInButton = document.querySelector(".btn-signin-email");
-// const logGoogle = document.querySelector(".btn-signin-google");
-// const logFacebook = document.querySelector(".btn-signin-facebook");
-// const inputPassword = document.getElementById("password2");
-// // Evento on click que coge el nombre de usuario y contraseña y lo registra en la base de datos de firebase
-// signInButton.addEventListener("click", async (e) => {
-//     e.preventDefault();
-
-//     const email = document.querySelector(".input-email").value;
-//     const password = document.querySelector(".input-password").value;
-//     const passwordCheck = document.querySelector(".input-password").value;
-
-//     check();
-
-//     if (password !== passwordCheck) {
-//         alert("Comprueba que la contraseña sea correcta");
-//     } else {
-//         // signInFirebase(email, password);
-//         await createUserWithEmailAndPassword(auth, email, password)
-//             .then((userCredential) => {
-//                 console.log("usuario registrado");
-//                 window.location.href = "newuser.html";
-//             }).catch((error) => {
-//                 const errorCode = error.code;
-//                 const errorMessage = error.message;
-//                 console.log(errorCode);
-//                 console.log(errorMessage);
-//                 alert("invalido");
-//             });
-//     }
-// });
-// // Login con google
-
-
-// logGoogle.addEventListener("click", () => {
-//     logInGoogle();
-// });
-
-
-// // Login con facebook
-// logFacebook.addEventListener("click", () => {
-//     logInFacebook();
-// });
-
-// const check = function () {
-//     console.log(document.getElementById("password").value);
-//     console.log(document.getElementById("password2").value);
-//     if (document.getElementById("password").value ==
-//         document.getElementById("password2").value) {
-//         document.getElementById("message").style.color = "green";
-//         document.getElementById("message").innerHTML = "Las contraseñas coinciden";
-//     } else {
-//         document.getElementById("message").style.color = "red";
-//         document.getElementById("message").innerHTML = "Las contraseñas no coinciden. Inténtalo de nuevo.";
-//     }
-// };
-
-// // Codigo para cuando se teclee la contraseña se verifique, ver si coinciden ambas contraseñas
-
-// const checkPassword = document.querySelector(".input-password");
-// checkPassword.addEventListener("keyup", check);
-
-// // See first password
-// const password = document.getElementById("password");
-// const togglePassword = document.getElementById("toggle-password");
-// togglePassword.addEventListener("click", toggleClicked);
-
-// function toggleClicked() {
-//     password.classList.toggle("visible");
-//     if (this.checked) {
-//         password.type = "text";
-//     } else {
-//         password.type = "password";
-//     }
-// }
-
-// // See second password
-// const password2 = document.getElementById("password2");
-// const togglePassword2 = document.getElementById("toggle-password2");
-// togglePassword2.addEventListener("click", toggleClicked2);
-
-// function toggleClicked2() {
-//     password2.classList.toggle("visible");
-//     if (this.checked) {
-//         password2.type = "text";
-//     } else {
-//         password2.type = "password";
-//     }
-// }
-// inputPassword.addEventListener("keyup", check);
 
 </script>
 

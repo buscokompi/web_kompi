@@ -44,7 +44,8 @@
         <p>Número de teléfono <span>*</span></p>
         <input v-model="phoneUser" class="input-phone" required="required" pattern="+?{,3}[0-9]{9,}"
           title="Debes poner un numéro de teléfono valido.">
-        <button type="submit" class="button btn-login-email btn-continue">Continuar</button>
+        <button @click.prevent="checkInputs" type="submit"
+          class="button btn-login-email btn-continue">Continuar</button>
 
         <RouterLink class="link" to="/OptionsNewUser">Opciones nuevo usuario</RouterLink>
 
@@ -56,27 +57,10 @@
 </template>
 
 <script>
-import {
-  initializeApp
-} from "firebase/app";
-import {
-  getFirestore,
-  setDoc,
-  doc
-} from "firebase/firestore";
-import {
-  getAuth
-} from "firebase/auth";
+import { initFirebase } from '@/firebase/firebase.js'
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import SelectOptions from "../components/SelectOptions.vue";
-const firebaseConfig = {
-  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
-  authDomain: "web-kompi.firebaseapp.com",
-  projectId: "web-kompi",
-  storageBucket: "web-kompi.appspot.com",
-  messagingSenderId: "556298514839",
-  appId: "1:556298514839:web:92e508e18c5685e99694d2",
-  measurementId: "G-93MGP34YQN"
-};
 
 
 export default {
@@ -89,7 +73,7 @@ export default {
       firebaseapp: null,
       auth: null,
       fs: null,
-      userEmail: "",
+      userEmail: null,
       html: "",
       // inputs formulario
       nameUser: "",
@@ -117,16 +101,10 @@ export default {
 
   },
   mounted() {
-    this.firebaseapp = initializeApp(firebaseConfig);
+    this.firebaseapp = initFirebase();
     this.auth = getAuth();
     this.fs = getFirestore();
-    this.auth.onAuthStateChanged(function (user) {
-      if (user) {
-        this.userEmail = user.email;
-      } else {
-        console.log("el usuario no esta logueado");
-      }
-    });
+    this.checkUser();
 
   },
   methods: {
@@ -150,7 +128,7 @@ export default {
       this.birthdateUser = `${anioActual}-${mesActual}-${hoy}`
     },
     async sendUserData() {
-      await setDoc(doc(fs, "usuarios", userEmail), {
+      await setDoc(doc(this.fs, "usuarios", this.userEmail), {
         name: this.nameUser,
         surnames: this.surnameUser,
         nif: this.dniUser,
@@ -159,6 +137,34 @@ export default {
         location: this.locationUser,
         direction: this.directionUser,
         phone: this.phoneUser
+      });
+      // this.$router.push("/OptionsNewUser");
+    },
+
+    checkInputs() {
+      if (true) {
+        sendUserData();
+        this.$swal({
+          title: "¡Gracias!",
+          text: "Tu cuenta ha sido creada correctamente",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } else {
+        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
+      }
+    },
+
+    checkUser() {
+      const auth = getAuth();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.userEmail = user.email;
+        } else {
+          this.$router.push("/Signin");
+        }
       });
     }
   }

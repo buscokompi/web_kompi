@@ -1,3 +1,7 @@
+<template>
+  <RouterView />
+</template>
+
 <script>
 
 // import { RouterLink, RouterView } from 'vue-router'
@@ -7,10 +11,6 @@ export default {
   }
 }
 </script>
-
-<template>
-  <RouterView />
-</template>
 
 <style lang="scss">
 /* Para importar las fuentes de google */

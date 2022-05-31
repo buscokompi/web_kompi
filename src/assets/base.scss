@@ -2,7 +2,13 @@
 @import '../../node_modules/vue-select/src/scss/global/_variables.scss';
 
 $swal2-font: var(--text-font);
+$swal2-title-font-size: 1.5em !important;
 $swal2-button-font-weight: 600;
+$swal2-title-margin: 1rem !important;
+$swal2-success: var(--green) !important;
+$swal2-success-border: var(--green) !important;
+$swal2-error: #D11149 !important;
+
 //popup
 $swal2-background: var(--white);
 $swal2-border-radius: 2rem;
@@ -88,6 +94,8 @@ color: var(--black) !important;
 }
 
 .vs__dropdown-option {
+    font-family: var(--text-font);
+
     padding: 1rem !important;
     color: var(--green) !important;
 
@@ -107,6 +115,7 @@ color: var(--black) !important;
 }
 
 .vs__selected {
+    font-family: var(--text-font);
     color: var(--green) !important;
 }
 

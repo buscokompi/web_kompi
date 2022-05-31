@@ -46,6 +46,9 @@ export default {
                 case "alertSignin":
                     this.alertSignin();
                     break;
+                case "alertNewUserError":
+                    this.alertNewUserError();
+                    break;
                 case "alertNewuser":
                     this.alertNewuser();
                     break;
@@ -88,6 +91,9 @@ export default {
         },
         alertSignin() {
             this.$swal("Error", "El email que has introducido es inválido o ya existe.", "error");
+        },
+        alertNewUserError() {
+            this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
         },
         alertNewuser() {
             this.$swal({
