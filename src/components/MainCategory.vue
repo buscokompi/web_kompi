@@ -2,11 +2,11 @@
   <section v-if="desktop" class=" category">
 
     <div class="icon">
-      <CategoryButton image="/src/assets/icons/icono_perro.svg" specie="Perro" />
-      <CategoryButton image="/src/assets/icons/icono_gato.svg" specie="Gato" />
-      <CategoryButton image="/src/assets/icons/icono_pajaro.svg" specie="Ave" />
-      <CategoryButton image="/src/assets/icons/icono_roedor.svg" specie="Roedor" />
-      <CategoryButton image="/src/assets/icons/icono_reptil.svg" specie="Reptil" />
+      <CategoryButton image="@assets/icons/icono_perro.svg" specie="Perro" />
+      <CategoryButton image="@assets/icons/icono_gato.svg" specie="Gato" />
+      <CategoryButton image="@assets/icons/icono_pajaro.svg" specie="Ave" />
+      <CategoryButton image="@assets/icons/icono_roedor.svg" specie="Roedor" />
+      <CategoryButton image="@assets/icons/icono_reptil.svg" specie="Reptil" />
     </div>
 
   </section>
