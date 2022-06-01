@@ -1,7 +1,21 @@
 <template>
-  <div class="shadow" @click="goFilters()">
-    <img :src="image" alt="perros">
+
+  <div class="shadow" @click="goFilters('Perro')">
+    <img src="../assets/icons/icono_perro.svg" alt="perros">
   </div>
+  <div class="shadow" @click="goFilters('Gato')">
+    <img src="../assets/icons/icono_gato.svg" alt="gatos">
+  </div>
+  <div class="shadow" @click="goFilters('Ave')">
+    <img src="../assets/icons/icono_pajaro.svg" alt="pajaros">
+  </div>
+  <div class="shadow" @click="goFilters('Roedor')">
+    <img src="../assets/icons/icono_roedor.svg" alt="roedores">
+  </div>
+  <div class="shadow" @click="goFilters('Reptil')">
+    <img src="../assets/icons/icono_reptil.svg" alt="reptiles">
+  </div>
+
 </template>
 
 <script>
@@ -9,19 +23,18 @@ import { KompiStore } from '../stores/KompiStore.js';
 
 export default {
   name: "CategoryButton",
-  props: {
-    image: String,
-    specie: String
-  },
   data() {
     return {
       store: "",
     }
   },
+  mounted() {
+    console.log(this.image);
+  },
   methods: {
-    goFilters() {
+    goFilters(specie) {
       this.store = KompiStore();
-      this.store.setSpecie(this.specie);
+      this.store.setSpecie(specie);
       this.$router.push("/FilterAnimals");
     }
   }

@@ -1,16 +1,24 @@
+<template>
+  <RouterView />
+</template>
+
 <script>
 
 // import { RouterLink, RouterView } from 'vue-router'
 export default {
   name: "App",
+  metainfo: {
+    title: "Kompi",
+    meta: [
+      { charset: 'urf-8' },
+      { name: 'description', content: 'El portal de confianza para la adopción gratuita de animales en España. Busca el más próximo a ti y adopta fácilmente a tu nueva mascota.' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    ]
+  },
   components: {
   }
 }
 </script>
-
-<template>
-  <RouterView />
-</template>
 
 <style lang="scss">
 /* Para importar las fuentes de google */

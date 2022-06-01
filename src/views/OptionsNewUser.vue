@@ -12,7 +12,7 @@
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink class="give-in-adoption" to="/formularioEjemplo">
+      <RouterLink class="give-in-a" to="/formularioEjemplo">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
