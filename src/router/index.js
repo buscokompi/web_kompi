@@ -382,7 +382,7 @@ const router = createRouter({
       }
     },
     {
-      path: "/:pathMach(.)",
+      path: "/:pathMach(.*)*",
       component: () => import("../views/Error404.vue"),
       meta: {
         title: "Error 404",
