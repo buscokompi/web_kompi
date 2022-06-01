@@ -8,11 +8,11 @@
       <p class="question1">¿Qué es lo que quieres hacer?</p>
     </div>
     <div class="card-options">
-      <RouterLink to="/FormUser">
+      <RouterLink to="/FormUser" class="adopt">
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink to="/FormCard">
+      <RouterLink class="give-in-adoption" to="/FormCard">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
@@ -41,7 +41,7 @@ export default {
 
 h1 {
   font-family: var(--text-font);
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--black);
   text-align: center;
@@ -50,7 +50,7 @@ h1 {
 
 p {
   font-family: var(--text-font);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   margin-top: 0.5rem;
@@ -149,6 +149,7 @@ a:hover {
     width: 30rem;
   }
 }
+
 
 @media screen and (min-width: 1170px) {
   .card-options {

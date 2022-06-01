@@ -9,7 +9,7 @@ export default {
     props: {
         url: {
             type: String,
-            default: "",
+            default: "#",
         },
         text: {
             type: String,
@@ -19,7 +19,7 @@ export default {
             type: String,
             default: "",
         },
-        bgColor: {
+        BgColor: {
             type: String,
             default: "#f9b22a"
         }
@@ -28,6 +28,7 @@ export default {
         return {
             buttonUrl: this.url,
             buttonText: this.text,
+            buttonBgColor: this.BgColor
         }
     },
     methods: {
@@ -44,9 +45,6 @@ export default {
                     break;
                 case "alertSignin":
                     this.alertSignin();
-                    break;
-                case "alertNewUserError":
-                    this.alertNewUserError();
                     break;
                 case "alertNewuser":
                     this.alertNewuser();
@@ -90,9 +88,6 @@ export default {
         },
         alertSignin() {
             this.$swal("Error", "El email que has introducido es inválido o ya existe.", "error");
-        },
-        alertNewUserError() {
-            this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
         },
         alertNewuser() {
             this.$swal({

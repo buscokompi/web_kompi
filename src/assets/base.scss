@@ -94,6 +94,8 @@ color: var(--black) !important;
 }
 
 .vs__dropdown-option {
+    font-family: var(--text-font);
+
     padding: 1rem !important;
     color: var(--green) !important;
 
@@ -113,6 +115,7 @@ color: var(--black) !important;
 }
 
 .vs__selected {
+    font-family: var(--text-font);
     color: var(--green) !important;
 }
 

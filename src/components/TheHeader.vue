@@ -8,13 +8,13 @@
                 <li @mouseover="displayAdoption = true" @mouseleave="displayAdoption = false">
                     <p class="link">Adopción
                     </p>
-                    <ul class="display adoption" v-if="displayAdoption">
+                    <ul class="adoption" v-if="displayAdoption">
                         <li class="white"></li>
                         <li>
-                            <RouterLink class="link" to="/">Adoptar</RouterLink>
+                            <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link" to="/">Poner en adopción</RouterLink>
+                            <RouterLink class="link" to="/GiveAdoptionInfo">Poner en adopción</RouterLink>
                         </li>
                     </ul>
                 </li>
@@ -28,18 +28,17 @@
                 <li v-show="!sessionLog">
                     <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
                 </li>
-                <li v-show="sessionLog" class="display">
+                <li v-show="sessionLog" class="display" @mouseover="displayProfile = true"
+                    @mouseleave="displayProfile = false">
                     <img src="../assets/icons/user.svg" alt="Mi perfil" width="26" height="26">
-                    <p @mouseover="displayProfile = true" @mouseleave="displayProfile = false" class="profile-name">{{
-                            nameProfile
-                    }}</p>
+                    <p class="profile-name">{{ nameProfile }}</p>
                     <ul class="profile" v-if="displayProfile">
                         <li class="white-profile"></li>
                         <li>
-                            <RouterLink class="link" to="/">Mi perfil</RouterLink>
+                            <RouterLink class="link" to="/FormUserEdit">Formulario adoptante</RouterLink>
                         </li>
                         <li>
-                            <RouterLink class="link" to="/">Ajustes</RouterLink>
+                            <RouterLink class="link" to="/FormCard">Crear ficha animal</RouterLink>
                         </li>
                         <li>
                             <RouterLink class="link" to="/" @click="closeSession">Cerrar sesión</RouterLink>
@@ -55,16 +54,16 @@
                     <div class="invisible" v-show="!sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="/GiveAdoptionInfo">Dar en adopción</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                                <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Sobre nosotros</RouterLink>
+                                <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">
@@ -88,10 +87,10 @@
                     <div class="invisible" v-show="sessionLog">
                         <ul class="list">
                             <li>
-                                <RouterLink class="link" to="/">Adoptar</RouterLink>
+                                <RouterLink class="link" to="/AdoptInfo">Adoptar</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/">Dar en adopción</RouterLink>
+                                <RouterLink class="link" to="/GiveAdoptionInfo">Dar en adopción</RouterLink>
                             </li>
                             <li>
                                 <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
@@ -103,9 +102,6 @@
                             <li>
                                 <RouterLink class="link" to="/FormCard">Crear ficha animal
                                 </RouterLink>
-                            </li>
-                            <li>
-                                <RouterLink class="link" to="/">Ajustes</RouterLink>
                             </li>
                         </ul>
                         <ul class="icons">
@@ -342,7 +338,7 @@ ul {
 
 .mobile-nav-enter-active,
 .mobile-nav-leave-active {
-    transition: 0.5s ease all;
+    transition: 1s ease all;
 }
 
 .mobile-nav-enter-from,
@@ -353,8 +349,6 @@ ul {
 .mobile-nav-enter-to {
     transform: translateX(0);
 }
-
-
 
 .list {
     display: flex;
@@ -447,47 +441,78 @@ button {
     gap: 0.4rem;
 }
 
-.profile {
-    background: var(--orange);
-    top: 4rem;
-    padding: 0;
-    transition: 0.3s linear;
-    line-height: 2rem;
-    width: 9rem;
-    height: 9rem;
-    display: flex;
-    position: fixed;
-    flex-direction: column;
-    justify-items: center;
-}
-
-.white-profile {
-    width: 100%;
-    height: 1rem;
-    background: var(--white);
-    z-index: 1;
-    margin-bottom: 1rem;
-    padding: 0;
-
-}
-
 .adoption {
     width: 12rem;
-    height: 8rem;
-    background: var(--orange);
+    height: 10.5rem;
+    position: absolute;
     display: flex;
-    position: fixed;
     flex-direction: column;
-    justify-items: center;
+    background: var(--orange);
     padding: 0;
+    bottom: -9.6rem;
+    margin-left: -3.7rem;
+
 }
 
-.white {
+.profile {
+    width: 14rem;
+    height: 12.6rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2.3rem;
+    padding: 0;
+    background: var(--orange);
+    margin-left: -2rem;
+}
+
+.desktop li:first-child p:first-child:hover {
+    color: var(--orange);
+    transition: 0.5s;
+}
+
+.adoption .link,
+.profile .link {
     width: 100%;
-    height: 1.9rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.adoption li:first-child:hover,
+.profile li:first-child:hover {
     background: var(--white);
-    z-index: 1;
-    margin-bottom: 1rem;
+}
+
+.adoption li:nth-child(2),
+.profile li:nth-child(2) {
+    margin-top: 1.5rem;
+
+}
+
+.adoption p:hover {
+    color: var(--orange);
+}
+
+.adoption li:hover,
+.profile li:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+li .white-profile,
+li .white {
+    width: 100%;
+    height: 1.7rem;
+    background: var(--white);
+    padding: 0;
+
+}
+
+li .white {
+    height: 1.9rem;
 
 }
 

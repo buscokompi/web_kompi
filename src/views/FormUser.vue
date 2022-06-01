@@ -126,6 +126,14 @@ export default {
         changeView() {
             if (this.$refs.checkbox.checked) {
                 this.addAnswerDataBase();
+                this.$swal({
+                    title: "¡Gracias!",
+                    text: "Los datos han sido guardados correctamente.",
+                    icon: "success",
+                    timer: 1800,
+                    showConfirmButton: false,
+
+                })
                 this.$router.push("/FilterAnimals");
             } else {
                 this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
