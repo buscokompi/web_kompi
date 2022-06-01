@@ -63,6 +63,7 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
+                Propietario: ""
             },
 
             store: "",
@@ -93,21 +94,8 @@ export default {
         },
 
         sendEmail() {
-            console.log(this.templateparams);
-
-            emailjs.send("service_wk4o34r", "template_2w8ldct", this.templateparams, "G_EMyGv_3eAspWWRT")
-                .then((result) => {
-                    console.log("Funciona", result.text);
-                }, (error) => {
-                    console.log("No va", error.text);
-                });
-        },
-
-        onVerify(e) {
-            console.log(e);
-            this.verifyKey = e;
-        },
-
+            this.$router.push("/CapchaContact");
+        }
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
@@ -125,6 +113,8 @@ export default {
                     for (const element in this.dog) {
                         this.dog[element] = this.animalInfo[element]
                     }
+                    this.store.setEmail(this.dog.Propietario.id);
+
                     getDownloadURL(ref(this.storage, this.dog.Imagen1))
                         .then(URL => {
                             this.dog.Imagen1 = URL;
@@ -274,10 +264,6 @@ export default {
 
                 <BaseButton text="CONTACTAR" @click="sendEmail()" />
             </div>
-
-            <VueRecapcha ref="recaptcha" @verify="onVerify" sitekey="6LdJvTcgAAAAAA8CHfY8c-PyGdUeP1Xo9bR1VOhn">
-            </VueRecapcha>
-
 
             <div class="other-kompis">
                 <p>Otros Kompis que encajan con tu búsqueda</p>

@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/pruebacapcha.vue")
+      component: () => import("../views/MainPage.vue")
     },
     {
       path: "/FilterAnimals",
@@ -104,6 +104,11 @@ const router = createRouter({
       path: "/Adoptar",
       name: "Adoptar",
       component: () => import("../views/Adoptar.vue")
+    },
+    {
+      path: "/CapchaContact",
+      name: "CapchaContact",
+      component: () => import("../views/pruebaview.vue")
     },
     {
       path: "/:pathMach(.)",
