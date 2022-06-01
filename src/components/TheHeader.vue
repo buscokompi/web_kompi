@@ -151,7 +151,7 @@ export default {
                     <ul class="display adoption" v-if="displayAdoption">
                         <li class="white"></li>
                         <li>
-                            <RouterLink class="link" to="./src/views/Adoptar">Adoptar</RouterLink>
+                            <RouterLink class="link" to="OptionsNewUser">Adoptar</RouterLink>
                         </li>
                         <li>
                             <RouterLink class="link" to="./src/views/Adopcion">Poner en adopción</RouterLink>
