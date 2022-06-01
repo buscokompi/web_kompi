@@ -35,7 +35,7 @@
       </div>
 
     </div>
-    <BaseButton url="/TemplatePage" text="Leer más" />
+    <BaseButton url="/GiveAdoptionInfo" text="Leer más" />
 
   </section>
 

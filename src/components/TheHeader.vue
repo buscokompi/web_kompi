@@ -60,7 +60,7 @@
                                 <RouterLink class="link" to="/GiveAdoptionInfo">Dar en adopción</RouterLink>
                             </li>
                             <li>
-                                <RouterLink class="link" to="/TemplatePage">Categorías</RouterLink>
+                                <RouterLink class="link" to="/FilterAnimals">Categorías</RouterLink>
                             </li>
                             <li>
                                 <RouterLink class="link" to="/AboutMe">Sobre nosotros</RouterLink>
