@@ -16,7 +16,7 @@ const router = createRouter({
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "El portal de confianza para la adopción gratuita de animales en España. Busca el más próximo a ti y adopta fácilmente a tu nueva mascota."
           }
         ]
       }
@@ -26,15 +26,15 @@ const router = createRouter({
       name: "FilterAnimals",
       component: () => import("../views/FilterAnimals.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Animales",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Elige quien sera tu proximo Kompi, en una gran variedad de mascotas."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Elige quien sera tu proximo Kompi, en una gran variedad de mascotas."
           }
         ]
       }
@@ -44,15 +44,15 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Formulario Usuario",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Rellena el formulario para hacer una busqueda más exacta de el Kompi."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Rellena el formulario para hacer una busqueda más exacta de el Kompi."
           }
         ]
       }
@@ -62,15 +62,15 @@ const router = createRouter({
       name: "FormUserEdit",
       component: () => import("../views/FormUserEdit.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Editar Formulario Usuario",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Edita tu usuario por si has tenido algun error un perfil."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Edita tu usuario por si has tenido algun error un perfil."
           }
         ]
       }
@@ -80,15 +80,15 @@ const router = createRouter({
       name: "TemplateCat",
       component: () => import("../views/TemplateCat.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Gatos",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Felino."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Felino.."
           }
         ]
       }
@@ -98,15 +98,15 @@ const router = createRouter({
       name: "TemplateDoge",
       component: () => import("../views/TemplateDog.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Perros",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Perro."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Perro."
           }
         ]
       }
@@ -116,15 +116,15 @@ const router = createRouter({
       name: "TemplateReptile",
       component: () => import("../views/TemplateReptile.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Reptiles",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Reptil."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Reptil."
           }
         ]
       }
@@ -134,15 +134,15 @@ const router = createRouter({
       name: "TemplateBird",
       component: () => import("../views/TemplateBird.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Aves",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Ave."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Ave."
           }
         ]
       }
@@ -152,15 +152,15 @@ const router = createRouter({
       name: "TemplateRodent",
       component: () => import("../views/TemplateRodent.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Categoria Roedores",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Roedor."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Mira y elige tu Kompi Roedor.."
           }
         ]
       }
@@ -170,15 +170,15 @@ const router = createRouter({
       name: "NewAnimalForm",
       component: () => import("../views/NewAnimalForm.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Formulario nuevo Kompi",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Agrega a tu Kompi para darlo en Adopción."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Agrega a tu Kompi para darlo en Adopción."
           }
         ]
       }
@@ -188,15 +188,15 @@ const router = createRouter({
       name: "FormCard",
       component: () => import("../views/FormCard.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Formulario nuevo Kompi",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Agrega a tu Kompi para darlo en Adopción."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Agrega a tu Kompi para darlo en Adopción."
           }
         ]
       }
@@ -206,15 +206,15 @@ const router = createRouter({
       name: "Login",
       component: () => import("../views/login.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Iniciar Sesión",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Inicia tu sesión y navega con mas facilidad por la página."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Inicia tu sesión y navega con mas facilidad por la página."
           }
         ]
       }
@@ -224,15 +224,15 @@ const router = createRouter({
       name: "Signin",
       component: () => import("../views/Signin.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Registrarse en Kompi",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Crea tu cuenta y para registrate en la página."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Crea tu cuenta y para registrate en la página."
           }
         ]
       }
@@ -242,15 +242,15 @@ const router = createRouter({
       name: "ForgotPassword",
       component: () => import("../views/ForgotPassword.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Olvidaste tu contraseña",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Has olvidado tu contraseña,no te preocupes nosotors te ayudamos. "
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Has olvidado tu contraseña,no te preocupes nosotors te ayudamos."
           }
         ]
       }
@@ -260,15 +260,15 @@ const router = createRouter({
       name: "NewUser",
       component: () => import("../views/NewUser.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Nuevo Usuario",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Crea tu perfil de usuario y navega con el. "
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Crea tu perfil de usuario y navega con el."
           }
         ]
       }
@@ -278,15 +278,15 @@ const router = createRouter({
       name: "OptionsNewUser",
       component: () => import("../views/OptionsNewUser.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Opciones de Usuario",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Elige entre dar en adopción o adoptar a un Kompi. "
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Elige entre dar en adopción o adoptar a un Kompi."
           }
         ]
       }
@@ -296,15 +296,15 @@ const router = createRouter({
       name: "AboutMe",
       component: () => import("../views/AboutMe.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Sobre Nosotros",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Conoce más de nuestra pagina y de nuestro equipo."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Conoce más de nuestra pagina y de nuestro equipo."
           }
         ]
       }
@@ -314,15 +314,15 @@ const router = createRouter({
       name: "GiveAdoptionInfo",
       component: () => import("../views/GiveAdoptionInfo.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Guía de Adopción",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Guía paso de dar en adopción tu Kompi."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Guía paso de dar en adopción tu Kompi."
           }
         ]
       }
@@ -332,15 +332,15 @@ const router = createRouter({
       name: "AdoptInfo",
       component: () => import("../views/AdoptInfo.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Guía de Adopción",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Guía paso de adoptar tu Kompi."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Guía paso de adoptar tu Kompi."
           }
         ]
       }
@@ -350,15 +350,15 @@ const router = createRouter({
       name: "PrivacyPolicy",
       component: () => import("../views/PrivacyPolicy.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Politica y Privacidad",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Nuestras Politicas y privacidad de la página."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Nuestras Politicas y privacidad de la página."
           }
         ]
       }
@@ -368,15 +368,15 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Terminos y Condiciones",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "Nuestros Terminos y Condiciones de la página."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "Nuestros Terminos y Condiciones de la página."
           }
         ]
       }
@@ -385,15 +385,15 @@ const router = createRouter({
       path: "/:pathMach(.)",
       component: () => import("../views/Error404.vue"),
       meta: {
-        title: "Home Page - Example App",
+        title: "Error 404",
         metaTags: [
           {
             name: "description",
-            content: "The home page of our example app."
+            content: "La página no se ha encontrado o no existe."
           },
           {
             property: "og:description",
-            content: "The home page of our example app."
+            content: "La página no se ha encontrado o no existe."
           }
         ]
       }
