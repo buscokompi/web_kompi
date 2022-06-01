@@ -398,10 +398,6 @@ const router = createRouter({
         ]
       }
     },
-    {
-      path: "/*",
-      redirect: "/"
-    },
   ],
 
   scrollBehavior(to, from, savedPosition) {
