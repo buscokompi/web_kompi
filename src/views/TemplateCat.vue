@@ -82,7 +82,7 @@
                 <p>¿Quieres adoptar o saber más sobre {{ cat.Nombre }}?</p>
                 <p> ¡Ponte en contacto con su cuidador!</p>
 
-                <BaseButton url="/TemplatePageBird" text="CONTACTAR" />
+                <BaseButton url="/ViewCaptcha" text="CONTACTAR" />
             </div>
         </div>
 
