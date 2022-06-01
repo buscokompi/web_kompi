@@ -3,3 +3,13 @@
 # to = "/"
 # status = 301
 # force = true
+[[redirects]]
+from = "/*"
+force = true
+status = 200
+
+[[redirects]]
+from = "/*"
+to = "/"
+force = true
+status = 302
