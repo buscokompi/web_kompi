@@ -96,7 +96,7 @@ export default {
 
     async signin() {
       if (this.password !== this.passwordCheck) {
-        this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
+        this.$swal("Error", "Las contraseñas no coinciden", "error");
       } else {
         await createUserWithEmailAndPassword(this.auth, this.email, this.password)
           .then((userCredential) => {
@@ -129,12 +129,6 @@ export default {
           const credential = GoogleAuthProvider.credentialFromError(error);
           this.$swal("Error", "El email que has introducido es inválido o ya existe", "error");
         });
-    },
-
-    info() {
-      console.log(this.email);
-      console.log(this.password);
-      console.log(this.passwordCheck);
     },
 
     toggleClicked() {
