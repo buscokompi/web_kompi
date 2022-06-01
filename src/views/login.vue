@@ -42,7 +42,6 @@
 <script>
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import DarkMode from "../components/DarkMode.vue";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
 import { ModeStorage } from "@/stores/ModeStorage.js"
 import { KompiStore } from "../stores/KompiStore";
@@ -69,8 +68,6 @@ export default {
       visible: "visible",
       fieldType: "password",
       modeStorage: ModeStorage(),
-      darkMode: false,
-      lightMode: false,
 
       store: ""
     };
@@ -82,18 +79,7 @@ export default {
     this.store = KompiStore();
   },
 
-  watch: {
-    modeStorage() {
-      this.darkMode = this.modeStorage.darkMode
-      this.lightMode = !this.modeStorage.darkMode
-    }
-  },
-
   methods: {
-    info() {
-      console.log(this.modeStorage)
-      this.darkMode = false
-    },
 
     async loginEmail() {
       await signInWithEmailAndPassword(this.auth, this.email, this.password)
@@ -139,7 +125,7 @@ export default {
       }
     }
   },
-  components: { DarkMode, PrivacyPolicy },
+  components: { PrivacyPolicy },
 
 }
 
