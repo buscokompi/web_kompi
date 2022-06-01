@@ -67,7 +67,7 @@ a p {
 .card-options {
   margin-top: 2rem;
   height: 20rem;
-  width: 60%;
+  width: 80%;
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -76,6 +76,8 @@ a p {
 .adopt,
 .give-in-adoption {
   width: 10rem;
+  height: 20rem;
+
 }
 
 .card-options p {
@@ -122,9 +124,34 @@ a:hover {
   color: var(--white);
 }
 
+@media screen and (max-width: 499px) {
+  .card-options {
+    width: 10rem;
+    height: 26rem;
+    margin-right: 4rem;
+  }
+
+  .give-in-adoption,
+  .adopt {
+    width: 14rem;
+  }
+
+
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .question1 {
+    font-size: 1.3rem;
+  }
+
+}
+
 @media screen and (min-width: 500px) {
   .card-options {
     width: 20rem;
+    height: 35rem;
   }
 
   .give-in-adoption,
@@ -133,7 +160,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: 830px) {
+@media screen and (min-width: 840px) {
   .card-options {
     width: 50rem;
     flex-direction: row;
@@ -141,12 +168,13 @@ a:hover {
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    gap: 8rem;
+
   }
 
   .give-in-adoption,
   .adopt {
-    width: 30rem;
+    width: 20rem;
+
   }
 }
 

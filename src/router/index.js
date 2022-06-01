@@ -109,6 +109,11 @@ const router = createRouter({
       component: () => import("../views/Terms&Conditions.vue")
     },
     {
+      path: "/ViewCaptcha",
+      name: "ViewCaptcha",
+      component: () => import("../views/ViewCaptcha.vue")
+    },
+    {
       path: "/:pathMach(.)",
       component: () => import("../views/Error404.vue")
     },
