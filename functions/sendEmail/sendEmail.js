@@ -1,10 +1,9 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-/* const handler = async(event) => {
-
+const handler = async(event) => {
   try {
     const client = require("@sendgrid/mail");
 
-    client.setApiKey("");
+    client.setApiKey(process.env.SENDGRID_API_KEY);
 
     const message = {
       to: "joseferalvarezromero@gmail.com",
@@ -18,9 +17,11 @@
       .then((response) => {
         console.log(response[0].statusCode);
         console.log(response[0].handler);
+        console.log("Esta funcionando");
       })
       .catch(error => {
         console.error(error);
+        console.log("no esta funcionando");
       });
     return {
       statusCode: 200,
@@ -30,18 +31,18 @@
   }
 };
 
-module.exports = { handler }; */
+module.exports = { handler };
 
-const client = require("@sendgrid/mail");
+/* const client = require("@sendgrid/mail");
 
-client.setApiKey("");
+client.setApiKey("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");
 
 const message = {
   to: "joseferalvarezromero@gmail.com",
   from: "buscokompi@gmail.com",
   subject: "Hola mamahuevo",
   text: "Hola mamahuevox2",
-  // html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+  html: "<strong>and easy to do anywhere, even with Node.js</strong>",
 };
 
 export function sendEmail() {
@@ -52,4 +53,4 @@ export function sendEmail() {
       console.log("mail send");
     }
   });
-}
+} */
