@@ -87,7 +87,7 @@
                 <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?</p>
                 <p> ¡Ponte en contacto con su cuidador!</p>
 
-                <BaseButton url="" text=" CONTACTAR" />
+                <BaseButton @click="checkUser" text=" CONTACTAR" />
             </div>
         </div>
 
@@ -175,6 +175,47 @@ export default {
         info() {
             const counter = useCounterStore();
             console.log(counter.counter);
+        },
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.$swal({
+                        text: "Le enviaremos al cuidador del animal tus datos de contacto y las respuestas del formulario que has rellenado previamente. Si estás de acuerdo haz click en CONTACTAR.",
+                        showCancelButton: "true",
+                        confirmButtonText: "Contactar",
+                        cancelButtonText: "Volver atrás"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$router.push("/ViewCaptcha");
+                        }
+
+                    });
+                } else {
+                    this.$swal({
+                        text: "Para poder ponerte en contacto con el cuidador del animal debes iniciar sesión previamente.",
+                        showCancelButton: "true",
+                        confirmButtonText: "Iniciar sesión",
+                        cancelButtonText: "Volver atrás",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$router.push({
+                                path: '/Login',
+                            })
+                        }
+
+                    });
+                }
+            });
+        },
+
+        async checkForm(user) {
+            const docRef = doc(this.fs, "userform", user);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+
+            }
         }
     },
     created() {

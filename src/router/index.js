@@ -382,6 +382,11 @@ const router = createRouter({
       }
     },
     {
+      path: "/ViewCaptcha",
+      name: "ViewCaptcha",
+      component: () => import("../views/ViewCaptcha.vue")
+    },
+    {
       path: "/:pathMach(.*)*",
       component: () => import("../views/Error404.vue"),
       meta: {
