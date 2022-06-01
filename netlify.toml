@@ -1,5 +1,5 @@
 [[redirects]]
 from = "/*"
-to = ""
+to = "https://app.adoptaunkompi.com"
 status = 301
 force = true
