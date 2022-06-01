@@ -43,7 +43,6 @@
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import PrivacyPolicy from "./PrivacyPolicy.vue";
-import { ModeStorage } from "@/stores/ModeStorage.js"
 import { KompiStore } from "../stores/KompiStore";
 
 const firebaseConfig = {
@@ -67,7 +66,6 @@ export default {
       firebaseapp: "",
       visible: "visible",
       fieldType: "password",
-      modeStorage: ModeStorage(),
 
       store: ""
     };
