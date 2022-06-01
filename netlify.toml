@@ -1,3 +1,5 @@
 [[redirects]]
 from = "/FilterAnimals"
 to = "https://app.adoptaunkompi.com/FilterAnimals"
+status = 301
+force = true
