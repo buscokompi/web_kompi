@@ -1,4 +1,6 @@
 <script>
+import { VueRecaptcha } from 'vue-recaptcha';
+
 import CardAnimal from '@/components/CardAnimal.vue'
 import CardExtra from '@/components/CardExtra.vue'
 import TheFooter from '@/components/TheFooter.vue'
@@ -10,10 +12,11 @@ import { getAuth } from "firebase/auth"
 import { KompiStore } from "@/stores/KompiStore.js" // Almacen de pinia
 import CardGroup from '../components/CardGroup.vue'
 import TheHeader from '../components/TheHeader.vue'
-import { sendEmail } from '../../functions/sendEmail/sendEmail'
+import emailjs from "@emailjs/browser";
+
 
 export default {
-    name: "TemplatePage",
+    name: "TemplateDogPage",
     data() {
         return {
             db: null,
@@ -62,7 +65,15 @@ export default {
                 Imagen1: '',
             },
 
-            store: ""
+            store: "",
+
+            verifyKey: "",
+
+            templateparams: {
+                user_email: "joseferalvarezromero@gmail.com",
+                client_email: "jrm3301@gmail.com",
+                "g-recaptcha-response": this.verifyKey,
+            }
 
         }
     },
@@ -72,13 +83,31 @@ export default {
         TheFooter,
         BaseButton,
         CardGroup,
-        TheHeader
+        TheHeader,
+        VueRecaptcha
     },
     methods: {
         info() {
             const counter = useCounterStore();
             console.log(counter.counter);
         },
+
+        sendEmail() {
+            console.log(this.templateparams);
+
+            emailjs.send("service_wk4o34r", "template_2w8ldct", this.templateparams, "G_EMyGv_3eAspWWRT")
+                .then((result) => {
+                    console.log("Funciona", result.text);
+                }, (error) => {
+                    console.log("No va", error.text);
+                });
+        },
+
+        onVerify(e) {
+            console.log(e);
+            this.verifyKey = e;
+        },
+
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
@@ -146,7 +175,6 @@ export default {
                         this.img_5 = e
                     })
             })*/
-        sendEmail();
     },
 }
 </script>
@@ -154,6 +182,9 @@ export default {
 
 <template>
     <TheHeader />
+
+    <VueRecaptcha sitekey="6Ld5mTcgAAAAAERozGsnUwLpBMQ3yFkCFY_7eR3X" ref="recaptcha" />
+
     <section v-cloak class="body">
         <main>
             <div class="carousel">
@@ -241,14 +272,17 @@ export default {
                 <p>¿Quieres adoptar o saber más sobre {{ dog.Nombre }}?<br>
                     ¡Ponte en contacto con su cuidador!</p>
 
-                <BaseButton url="/TemplatePageBird" text="CONTACTAR" @click="sEmail()" />
+                <BaseButton text="CONTACTAR" @click="sendEmail()" />
             </div>
-        </div>
+
+            <VueRecapcha ref="recaptcha" @verify="onVerify" sitekey="6LdJvTcgAAAAAA8CHfY8c-PyGdUeP1Xo9bR1VOhn">
+            </VueRecapcha>
 
 
-        <div class="other-kompis">
-            <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <div class="other-kompis">
+                <p>Otros Kompis que encajan con tu búsqueda</p>
+                <CardGroup />
+            </div>
         </div>
     </section>
     <TheFooter />

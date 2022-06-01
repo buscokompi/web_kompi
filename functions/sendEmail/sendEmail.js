@@ -10,7 +10,7 @@ const handler = async(event) => {
       from: "buscokompi@gmail.com",
       subject: "Hola mamahuevo",
       text: "Hola mamahuevox2",
-      // html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+      html: "<strong>and easy to do anywhere, even with Node.js</strong>",
     };
     client
       .send(message)
@@ -45,12 +45,10 @@ const message = {
   html: "<strong>and easy to do anywhere, even with Node.js</strong>",
 };
 
-export function sendEmail() {
-  client.send(message, function(err, info) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("mail send");
-    }
-  });
-} */
+client.send(message, function(err, info) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("mail send");
+  }
+}); */
