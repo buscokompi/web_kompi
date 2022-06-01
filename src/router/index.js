@@ -22,7 +22,7 @@ const router = createRouter({
       }
     },
     {
-      path: "/FilterAnimals",
+      path: "/FilterAnimals/:pathMatch(.*)*",
       name: "FilterAnimals",
       component: () => import("../views/FilterAnimals.vue"),
       meta: {
