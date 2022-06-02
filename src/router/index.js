@@ -160,11 +160,7 @@ const router = createRouter({
           },
           {
             property: "og:description",
-<<<<<<< HEAD
-            content: "Mira y elige tu Kompi Roedor.."
-=======
             content: "Busca y elige a tu próximo roedor."
->>>>>>> atteneri
           }
         ]
       }
