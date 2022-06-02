@@ -341,7 +341,7 @@ input:-webkit-autofill:active {
 }
 
 #toggle-password+label {
-  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -351,7 +351,6 @@ input:-webkit-autofill:active {
 
 #toggle-password+label.visible {
   background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
-  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
 
 }
 
