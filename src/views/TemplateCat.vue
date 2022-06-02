@@ -89,7 +89,7 @@
 
         <div class="other-kompis">
             <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <CardGroup specie="Gato" />
         </div>
     </section>
     <TheFooter />
@@ -155,6 +155,7 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
+                Propietario: ""
             }
 
         }
@@ -217,6 +218,7 @@ export default {
                     for (const element in this.cat) {
                         this.cat[element] = this.animalInfo[element]
                     }
+                    this.store.setEmail(this.cat.Propietario.id);
                     getDownloadURL(ref(this.storage, this.cat.Imagen1))
                         .then(URL => {
                             this.cat.Imagen1 = URL;

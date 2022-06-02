@@ -84,7 +84,7 @@
 
         <div class="other-kompis">
             <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <CardGroup specie="Roedor" />
         </div>
     </section>
     <TheFooter />
@@ -148,7 +148,8 @@ export default {
                 Certificado_ppp: '',
                 Esterilizacion: '',
                 Descripcion: '',
-                Imagen1: ''
+                Imagen1: '',
+                Propietario: ""
             }
 
         }
@@ -209,6 +210,7 @@ export default {
                     for (const element in this.rodent) {
                         this.rodent[element] = this.animalInfo[element]
                     }
+                    this.store.setEmail(this.rodent.Propietario.id);
                     getDownloadURL(ref(this.storage, this.rodent.Imagen1))
                         .then(URL => {
                             this.rodent.Imagen1 = URL;

@@ -23,8 +23,30 @@
 </template>
 
 <script>
+import { initFirebase } from '@/firebase/firebase.js'
+import { getAuth } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+  authDomain: "web-kompi.firebaseapp.com",
+  projectId: "web-kompi",
+  storageBucket: "web-kompi.appspot.com",
+  messagingSenderId: "556298514839",
+  appId: "1:556298514839:web:92e508e18c5685e99694d2",
+  measurementId: "G-93MGP34YQN"
+};
+
 export default {
   name: "login",
+  data() {
+    return {
+      firebaseapp: null,
+    }
+  },
+  mounted() {
+    this.firebaseapp = initFirebase(firebaseConfig);
+    this.checkUser();
+  },
   methods: {
     checkUser() {
       const auth = getAuth();

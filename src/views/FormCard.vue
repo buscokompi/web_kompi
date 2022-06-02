@@ -15,12 +15,16 @@
 import BaseForm from '../components/BaseForm.vue';
 import TheHeader from '../components/TheHeader.vue';
 import TheFooter from '../components/TheFooter.vue';
+import { getAuth } from 'firebase/auth';
 export default {
     name: "FormCard",
     components: {
         BaseForm,
         TheHeader,
         TheFooter
+    },
+    mounted() {
+        this.checkUser();
     },
     methods: {
         //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado

@@ -81,16 +81,12 @@ export default {
     this.firebaseapp = initializeApp(firebaseConfig);
     this.fs = getFirestore();
     this.checkUser();
-    this.getUserForm();
-
-    console.log(this.ownerAnimalEmail);
-
+    this.templateparams.user_email = this.ownerAnimalEmail;
   },
   methods: {
 
     onVerify(e) {
       this.verifyKey = e;
-      console.log(e);
 
     },
     sendEmail() {
@@ -117,6 +113,7 @@ export default {
         if (user) {
           this.userEmail = user.email;
           this.getDataForm(user.email);
+          this.getUserForm(user.email);
         } else {
           this.$router.push("/Signin");
         }
@@ -162,15 +159,13 @@ export default {
     },
 
     async getUserForm(userEmail) {
-      const docRef = doc(this.fs, "usuarios", this.ownerAnimalEmail);
+      const docRef = doc(this.fs, "usuarios", userEmail);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         this.templateparams.client_email = this.ownerAnimalEmail;
         this.templateparams.client_name = docSnap.data().name;
         this.templateparams.client_phone = docSnap.data().phone;
       } else {
-        // doc.data() will be undefined in this case
-        console.log("no va");
       }
     },
   },

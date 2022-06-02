@@ -21,68 +21,98 @@
                 <h2>Nuestro equipo</h2>
                 <div class="parent">
 
+
                     <div class="card">
-                        <img class="foto" src="../assets/images/foto_atte.png" alt="foto Atteneri">
+                        <img class="foto" src="../assets/images/foto_atte.png" alt="foto Juan">
                         <div class="text-card">
-                            <p class="textabout">Atteneri González Mendoza </p>
-                            <a href="https://www.linkedin.com/in/atteneri-gonzalez-mendoza/" target="_blank"> <img
-                                    class="icon" src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
-
-                            <a href="https://github.com/AtteneriG" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                            <p class="textabout">Atteneri</p>
+                            <p class="textabout">González Mendoza</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/atteneri-gonzalez-mendoza/" target="_blank"> <img
+                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/AtteneriG" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card"> <img class="foto" src="../assets/images/foto_kevin.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Kevin Jerónimo Martín</p>
-                            <a href="https://www.linkedin.com/in/kevin-jer%C3%B3nimo-mart%C3%ADn-449594231/"
-                                target="_blank">
-                                <img class="icon" src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
 
-                            <a href="https://github.com/kevichu4" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                    <div class="card">
+                        <img class="foto" src="../assets/images/foto_alexis.jpg" alt="foto Juan">
+                        <div class="text-card">
+                            <p class="textabout">Alexis</p>
+                            <p class="textabout">Plettener Nguyen</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/alexis-plettener-nguyen/" target="_blank"> <img
+                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/alexxispn" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card"><img class="foto" src="../assets/images/foto_alexis.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Alexis Plettener Nguyen</p>
-                            <a href="https://github.com/alexxispn" target="_blank"> <img class="icon"
-                                    src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
 
-                            <a href="https://github.com/alexxispn" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                    <div class="card">
+                        <img class="foto" src="../assets/images/foto_jose.png" alt="foto Juan">
+                        <div class="text-card">
+                            <p class="textabout">Jose Fernando</p>
+                            <p class="textabout">Álvarez Romero</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/jose-fernando-alvarez/" target="_blank"> <img
+                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/JoseFerAlvarez" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card"><img class="foto" src="../assets/images/foto_antonio.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Antonio Bogallo Fernandez </p>
-                            <a href="https://www.linkedin.com/in/antonio-bogallo/" target="_blank"> <img class="icon"
-                                    src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
 
-                            <a href="https://github.com/AntonioBogallo" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                    <div class="card">
+                        <img class="foto" src="../assets/images/foto_juan.jpg" alt="foto Juan">
+                        <div class="text-card">
+                            <p class="textabout">Juan Gabriel</p>
+                            <p class="textabout">Rivero Martel</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/juan-gabriel-rivero-martel-7ab0a6ba/"
+                                    target="_blank"> <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/JuanGabrielRivero" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card"><img class="foto" src="../assets/images/foto_juan.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Juan Gabriel Rivero Martel</p>
-                            <a href="https://www.linkedin.com/in/atteneri-gonzalez-mendoza/" target="_blank"> <img
-                                    class="icon" src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
 
-                            <a href="https://github.com/JuanGabrielRivero" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                    <div class="card">
+                        <img class="foto" src="../assets/images/foto_kevin.jpg" alt="foto Juan">
+                        <div class="text-card">
+                            <p class="textabout">Kevin</p>
+                            <p class="textabout">Jerónimo Martín</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/kevin-jer%C3%B3nimo-mart%C3%ADn-449594231/"
+                                    target="_blank"> <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/kevichu4" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card"><img class="foto" src="../assets/images/foto_jose.png" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Jose Fernando Álvarez Romero</p>
-                            <a href="https://www.linkedin.com/in/jose-fernando-alvarez/" target="_blank"> <img
-                                    class="icon" src="../assets/icons/linkedin.svg" alt="icono linkedin"></a>
 
-                            <a href="https://github.com/JoseFerAlvarez" target="_blank"> <img class="icon"
-                                    src="../assets/icons/github.svg" alt="icono github"></a>
+                    <div class="card">
+                        <img class="foto" src="../assets/images/foto_antonio.jpg" alt="foto Juan">
+                        <div class="text-card">
+                            <p class="textabout">Antonio</p>
+                            <p class="textabout">Bogallo Fernandez</p>
+                            <div class="rrhh">
+                                <a href="https://www.linkedin.com/in/antonio-bogallo/" target="_blank"> <img
+                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                        alt="icono linkedin"></a>
+                                <a href="https://github.com/AntonioBogallo" target="_blank"> <img class="icon"
+                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
@@ -147,36 +177,29 @@ h2 {
 }
 
 .containerteam {
-    background: var(--lightgrey);
+    background: var(--green);
 }
 
 
 .card {
     display: flex;
-    width: 14rem;
-    height: 20rem;
-    margin-bottom: 3rem;
-    margin-top: 2rem;
-    background: var(--orange);
+    flex-direction: column;
+    width: 15rem;
+    height: 23rem;
+    background: rgb(255, 247, 228);
+    background: linear-gradient(0deg, rgba(255, 247, 228, 1) 0%, rgba(245, 245, 245, 1) 48%, rgba(255, 255, 255, 1) 100%);
+    border-radius: 20px;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    transition: all 2s ease;
-    border-radius: 5%;
-
-}
-
-.text-card {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-
+    box-shadow: 0.2rem 0.2rem 7px;
+    margin-bottom: 3rem;
 }
 
 .textabout {
-    width: 3rem;
-    font-weight: 600;
+    text-align: center;
+    font-family: var(--text-font);
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .icon {
@@ -185,30 +208,11 @@ h2 {
     margin-top: 1rem;
 }
 
-.card:hover {
-    width: 17rem;
-    height: 21rem;
-    box-shadow: 0px 4px 4px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-
-}
-
-/* .foto {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    background-size: cover;
-} */
 .foto {
-    height: 10rem;
-    width: 10rem;
+    width: 10.5rem;
+    height: 10.5rem;
     border-radius: 50%;
-    background-size: cover;
-}
-
-.foto:hover {
-    height: 12rem;
-    width: 12rem;
-
+    object-fit: cover;
 }
 
 .container-all {
@@ -242,6 +246,20 @@ img {
     justify-content: center;
 }
 
+.rrhh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.6rem;
+}
+
+.icon {
+    margin-top: 2rem;
+    width: 1.8rem;
+}
+
+/*Card alternativa*/
+
 
 
 @media screen and (min-width: 767px) {}
@@ -273,7 +291,7 @@ img {
 
     .parent {
         display: grid;
-        grid-template-columns: repeat(3, 33rem);
+        grid-template-columns: repeat(3, 35rem);
         grid-template-rows: repeat(2, 1fr);
 
     }

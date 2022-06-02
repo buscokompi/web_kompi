@@ -3,7 +3,7 @@ import CardAnimal from "./CardAnimal.vue";
 import CardExtra from "./CardExtra.vue";
 import BaseButton from "./BaseButton.vue";
 
-import { getFirestore, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, orderBy, limit, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 
@@ -23,12 +23,19 @@ export default {
     CardExtra,
     BaseButton
   },
+  props: {
+    specie: {
+      type: String,
+      default: "Perro"
+    }
+  },
   data() {
     return {
       animalsArr: [],
       firebaseapp: null,
       fs: null,
-      storage: null
+      storage: null,
+      aux: this.specie,
     }
   },
   mounted() {
@@ -42,11 +49,10 @@ export default {
     /* Llama a la base de datos de firestore y storage, coge todos los animales
     y sus imagenes y los muestra por pantalla*/
     async readAnimals() {
-      const animalRef = (collection(this.fs, "animals"));
-
-      const q = query(animalRef, limit(4));
-
+      const q = query(collection(this.fs, 'animals'), where('Especie', '==', `${this.aux}`), limit(4));
       const animals = await getDocs(q);
+      console.log(animals);
+
 
       animals.forEach(async (doc) => {
 
