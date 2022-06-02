@@ -156,7 +156,7 @@ export default {
       const docRef = doc(this.fs, "usuarios", userEmail);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        this.templateparams.client_email = this.ownerAnimalEmail;
+        this.templateparams.client_email = userEmail;
         this.templateparams.client_name = docSnap.data().name;
         this.templateparams.client_phone = docSnap.data().phone;
       } else {
