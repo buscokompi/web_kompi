@@ -1,73 +1,3 @@
-<template>
-  <div class="containerall">
-    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
-
-    <div class="container-login">
-
-      <RouterLink to="/">
-        <img class="logo" src="../assets/icons/version_negro_logo.svg">
-      </RouterLink>
-
-      <form class="card-login">
-
-        <div>
-          <p class="email">E-mail <span>*</span></p>
-          <input v-model="email" class="input-email" type="email" required="required"
-            placeholder="adoptaunkompi@gmail.com">
-
-          <p class="pass">Contraseña <span>*</span></p>
-        </div>
-
-        <div>
-          <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
-            id="password" :type="type_1" required="required"
-            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
-          <input type="checkbox" id="toggle-password" />
-          <label @click="toggleClicked" for="toggle-password"></label>
-        </div>
-
-
-        <p class="text-pass">Utiliza ocho caracteres como mínimo con una mayuscula, una minúscula, un número y un
-          caracter
-          especial</p>
-
-
-
-
-        <div>
-          <p>Verifica tu contraseña <span>*</span></p>
-          <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
-            id="password2" :type="type_2" required="required"
-            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
-          <input type="checkbox" id="toggle-password2" />
-          <label @click="toggleClicked2" for="toggle-password2"></label>
-        </div>
-
-
-
-        <span id='message'></span>
-
-        <div @click="signin">
-          <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
-        </div>
-        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-        <div class="button btn-signin-google"><img class="google"
-            src="../assets/icons/google_icono.svg"><span>Regístrate
-            con Google</span></div>
-
-        <RouterLink class="link" to="/NewUser">NewUser</RouterLink>
-
-        <!-- <div class="button btn-signin-facebook"><img class="facebook"
-                        src="../assets/icons/facebook_icono.svg"><span>Regístrate con Facebook</span></div> -->
-      </form>
-      <p class="register">¿Ya tienes una cuenta?
-        <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
-      </p>
-    </div>
-
-  </div>
-</template>
-
 <script>
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initFirebase } from '@/firebase/firebase.js';
@@ -147,14 +77,75 @@ export default {
 }
 </script>
 
+<template class="body">
+  <div class="containerall">
+    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
+
+    <div class="container-login">
+
+      <RouterLink to="/">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg">
+      </RouterLink>
+
+      <form class="card-login">
+
+        <div class="field">
+          <p class="email">E-mail*</p>
+          <input v-model="email" class="input-email" type="email" required="required"
+            placeholder="adoptaunkompi@gmail.com">
+        </div>
+
+
+        <div class="field">
+          <p>Contraseña*</p>
+          <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
+            id="password" :type="type_1" required="required"
+            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+          <input type="checkbox" id="toggle-password" />
+          <label @click="toggleClicked" for="toggle-password"></label>
+        </div>
+
+        <p class="text-pass">Utiliza ocho caracteres como mínimo con una mayúscula, una minúscula, un número y
+          un caracter especial
+        </p>
+
+        <div class="field">
+          <p>Verifica tu contraseña <span>*</span></p>
+          <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
+            id="password2" :type="type_2" required="required"
+            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+          <div><input type="checkbox" id="toggle-password2" />
+            <label @click="toggleClicked2" for="toggle-password2"></label>
+          </div>
+        </div>
+
+        <div>
+          <div @click="signin">
+            <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+          </div>
+        </div>
+        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
+        <div class="button btn-signin-google"><img class="google" src="../assets/icons/google_icono.svg">Regístrate
+          con Google</div>
+
+
+      </form>
+      <p class="register">¿Ya tienes una cuenta?
+        <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
+      </p>
+    </div>
+
+  </div>
+</template>
+
 <style scoped>
 .containerall {
   display: flex;
   flex-direction: row;
   margin: 0;
-  background-color: #fff;
+  background-color: var(--white);
   justify-content: center;
-  height: 100vh;
+  width: 100vw;
 
 }
 
@@ -168,41 +159,40 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background: var(--lightgrey);
-
+  width: 90%;
 }
 
 .logo {
-  width: 8rem;
-  margin: 2.6rem;
-  margin-top: -0.1rem;
+  width: 7rem;
+  margin: 3rem 0 1rem;
   cursor: pointer;
 }
 
 
 .card-login {
-  /* margin-left: 8rem;
-  display: flex;
-  width: 28rem;
-  height: 60%;
-  flex-direction: column;
-  border-radius: 1.9rem;*/
-
-  padding-top: 4rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  width: 90%;
+  justify-items: center;
+  width: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
   background-color: white;
 }
 
-.input-email {
-  width: 14rem;
+.field {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  height: 5rem;
 }
 
-#password {
-  width: 14rem;
+.field p {
+  width: 70vw;
+  margin: 1rem 0 0;
+  text-align: left;
 }
 
 
@@ -212,23 +202,14 @@ export default {
 
 }
 
-.text-pass {
-  margin: 5% 15%;
-}
-
-/* .p-title {
-  text-align: center;
-  font-family: var(--text-font);
-  font-size: 2rem;
-  margin-top: -1rem;
-} */
-
 input {
-  padding: 0.5rem;
+  min-width: 13rem;
+  width: 70vw;
+  height: 2.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
-  font-size: 1rem;
 }
 
 input:focus {
@@ -236,76 +217,54 @@ input:focus {
   outline-color: var(--black);
 }
 
+.text-pass {
+  width: 70vw;
+}
+
 .button {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 1.5rem;
-  width: 14rem;
+  min-width: 13rem;
+  width: 70vw;
+  height: 2.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.8rem;
-  border: 0;
-  font-size: 1rem;
-  font-family: var(--text-font);
-  font-weight: 600;
-  transition: background-color 0.7s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .button img {
   object-fit: contain;
-  margin-right: 1.5rem;
+  margin: 0 0.4rem 0 0rem;
 }
 
-.btn-login-email {
-  background-color: var(--orange);
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  justify-content: center;
-}
-
-.button span {
-  color: var(--black);
-  pointer-events: none;
-}
 
 /* BOTONES SIGN IN */
 
-.btn-signin-email {
-  background-color: var(--orange);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  justify-content: center;
-}
 
-.btn-signin-email:hover {
-  background-color: #cc9320;
-}
+
+
 
 .btn-signin-google {
   background-color: var(--white);
-  border: var(--grey) 0.06rem solid;
   color: var(--black);
-  margin-bottom: 1rem;
-  height: 2.5rem;
-  width: 18rem;
+  margin: 1rem 0;
+  border: 0.1rem solid var(--grey);
+  font-family: var(--text-font);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .btn-signin-google:hover {
   background-color: #bebebe;
 }
 
-.btn-signin-google span {
-  color: var(--black);
-}
 
-.link-signin {
-  color: var(--green);
-  font-family: var(--text-font);
-  font-weight: 600;
-}
 
 .google {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.2rem;
+  height: 1.2rem;
   margin-left: 5%;
 }
 
@@ -315,26 +274,18 @@ input:focus {
   margin-left: 20%;
 }
 
+.link {
+  font-family: var(--text-font);
+  color: var(--green);
+}
+
 .register {
-  font-family: var(--text-font);
-  color: var(--black);
-  font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
-.forgot-pass {
-  font-family: var(--text-font);
-  font-size: 0.8rem;
-}
 
-.forgot-pass a {
-  text-decoration: underline;
-  color: var(--black);
-}
 
-#message {
-  font-family: var(--text-font);
-  font-size: 0.9rem;
-}
+
 
 #comment {
   font-family: var(--text-font);
@@ -343,19 +294,33 @@ input:focus {
 
 /* see first password */
 
-#password {
-  margin-top: 1rem;
+#password,
+#password2 {
   background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
   background-position: 97% center;
   background-repeat: no-repeat;
+
 }
 
-#password.visible {
+
+
+#password.visible,
+#password2.visible {
   background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
 }
 
-#toggle-password {
+#toggle-password,
+#toggle-password2 {
   display: none;
+}
+
+#toggle-password+label,
+#toggle-password2+label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: -1.8rem 0.9rem 0.5rem 0;
+  align-self: flex-end;
 }
 
 .email {
@@ -363,228 +328,109 @@ input:focus {
   margin-bottom: 1rem;
 }
 
-.pass {
-  margin-top: 2rem;
-  margin-bottom: -1px;
-}
-
-#toggle-password+label {
-  text-indent: -9999px;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: -32px;
-  cursor: pointer;
-}
-
-/* see second password */
-
-#password2 {
-  margin-top: 1rem;
-  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
-  background-position: 97% center;
-  background-repeat: no-repeat;
-}
-
-#password2.visible {
-  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
-}
-
-#toggle-password2 {
-  display: none;
-}
 
 
-#toggle-password2+label {
-  text-indent: -9999px;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-left: -32px;
-  cursor: pointer;
-}
 
-@media screen and (min-width: 500px) {
-  .container-login {
-    width: 100%;
+@media screen and (min-width: 767px) {
+
+  .logo {
+    margin: 5rem 0 4rem
   }
+
+  -bottom: 2rem;
 
   .card-login {
-    width: 60%;
-    height: 70%;
+    width: 75%;
+    padding: 4rem 0;
     display: flex;
-    align-items: center;
-    flex-direction: column;
     border-radius: 1.9rem;
     background-color: var(--white);
+    gap: 0.5rem;
   }
 
-  .input-email {
-    width: 21rem;
+  .button,
+  input,
+  .field p,
+  .text-pass {
+    width: 20rem;
   }
 
-  #password {
-    width: 21rem;
+  .button:first-child {
+    margin-top: 3rem;
   }
 
-  .button {
-    height: 1.5rem;
-    width: 18rem;
+  .register {
+    margin: 3rem 0;
   }
-
-
-  .card-login p {
-    width: 75%;
-  }
-
-  .btn-signin-google {
-    background-color: var(--white);
-    border: var(--grey) 0.06rem solid;
-    color: var(--black);
-    margin-bottom: 1rem;
-    height: 2.5rem;
-    width: 22rem;
-  }
-
 
 
 }
 
-
-@media screen and (min-width: 1000px) {
-
-  .container-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    width: 75%;
-
-
-  }
-
-}
 
 @media screen and (min-width: 1170px) {
+
   .img-dog-login {
     display: block;
-    width: 44.5%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
+  .containerall {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 3.5fr;
+    grid-template-rows: 1fr;
+  }
+
   .container-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
+    width: auto;
+    height: 100%;
+    margin-bottom: 0;
   }
 
   .card-login {
-    width: 55%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 1.9rem;
-    background-color: var(--white);
+    width: 70%;
+    gap: 0.7rem
   }
 
-  .input-email {
-    width: 30rem;
+
+  .field {
+    width: 10vw;
   }
 
-  #password {
-    width: 30rem;
+  .field:nth-child(4) p {
+    margin-top: 0.5rem;
   }
 
-  .button {
-    height: 1.5rem;
-    width: 27rem;
+  .text-pass {
+    margin-top: -0.5rem;
+    font-size: 0.8rem;
   }
-
-  .btn-signin-google {
-    background-color: var(--white);
-    border: var(--grey) 0.06rem solid;
-    color: var(--black);
-    margin-bottom: 1rem;
-    height: 2.5rem;
-    width: 30rem;
-  }
-
-  .register {
-    margin-top: 1rem;
-  }
-
-  .google {
-    width: 1.8rem;
-    height: 1.8rem;
-    margin-left: 20%;
-  }
-
 
 
 }
 
 
-@media screen and (min-width: 2100px) {
-
+@media screen and (min-width: 1440px) {
   .logo {
-    width: 15rem;
-    margin: 4rem 0px;
-    cursor: pointer;
+    margin: 4rem 0 3rem;
   }
+
+  .containerall {
+    background: var(--lightgrey)
+  }
+
 
   .card-login {
-    display: flex;
-    width: 45rem;
-    height: 70%;
-    flex-direction: column;
-    border-radius: 1.9rem;
-    padding: 2rem 8rem 0px;
-    background-color: white;
+    width: 32rem;
+    background: var(--white);
+    padding: 3.4rem 0;
   }
 
-  .card-login p {
-    color: var(--black);
-    font-family: var(--text-font);
-
-  }
-
-  .input-email {
-    width: 44rem;
-    height: 3rem;
-  }
-
-  #password {
-    width: 44rem;
-  }
-
-  .button {
-    height: 4.5rem;
-    border-radius: 0.8rem;
-    border: 0;
-    font-size: 1.5rem;
-    font-family: var(--text-font);
-    font-weight: 600;
-    transition: background-color 0.7s ease;
-  }
-
-  .button img {
-    object-fit: contain;
-    margin-right: 1.5rem;
-    margin-left: 12rem;
-  }
-
-
-  .register {
-    font-size: 1.5rem;
-  }
-
-  ::placeholder {
-    font-size: 1.5rem;
+  .desktop {
+    margin-bottom: 0;
   }
 }
 </style>

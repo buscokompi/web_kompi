@@ -166,24 +166,6 @@ const router = createRouter({
       }
     },
     {
-      path: "/NewAnimalForm",
-      name: "NewAnimalForm",
-      component: () => import("../views/NewAnimalForm.vue"),
-      meta: {
-        title: "Formulario nuevo Kompi",
-        metaTags: [
-          {
-            name: "description",
-            content: "Agrega a tu Kompi para darlo en Adopción."
-          },
-          {
-            property: "og:description",
-            content: "Agrega a tu Kompi para darlo en Adopción."
-          }
-        ]
-      }
-    },
-    {
       path: "/FormCard",
       name: "FormCard",
       component: () => import("../views/FormCard.vue"),
