@@ -23,7 +23,7 @@
               v-bind:class="visible" />
             <div>
               <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
-              <label for="toggle-password"></label>
+              <label for="toggle-password" v-bind:class="visible"></label>
             </div>
           </div>
         </div>
@@ -213,6 +213,7 @@ input {
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
   transition: all 1s;
+  font-size: 1rem;
 
 }
 
@@ -255,6 +256,8 @@ input:-webkit-autofill:active {
   transition: all 1s;
   font-family: var(--text-font);
   font-weight: 600;
+  color: var(--black);
+  font-size: 0.9rem;
 }
 
 .button img {
@@ -287,7 +290,7 @@ input:-webkit-autofill:active {
   margin: 1rem 0;
   border: 0.1rem solid var(--grey);
   font-family: var(--text-font);
-  font-size: 0.93rem;
+  font-size: 0.9rem;
 }
 
 
@@ -320,8 +323,8 @@ input:-webkit-autofill:active {
 }
 
 .google {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 
@@ -331,15 +334,6 @@ input:-webkit-autofill:active {
   flex-direction: row;
 }
 
-#password {
-  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
-  background-position: 97% center;
-  background-repeat: no-repeat;
-}
-
-#password.visible {
-  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
-}
 
 #toggle-password {
   display: none;
@@ -347,12 +341,17 @@ input:-webkit-autofill:active {
 }
 
 #toggle-password+label {
+  background-image: url("https://img.icons8.com/material-outlined/20/000000/invisible.png");
   display: inline-block;
   width: 20px;
   height: 20px;
   cursor: pointer;
-  position: absolute;
-  margin: 0.7rem 0 0 -1.8rem;
+  margin: 1rem 0 0 -2.2rem;
+}
+
+#toggle-password+label.visible {
+  background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
+
 }
 
 .register {
@@ -377,11 +376,31 @@ input:-webkit-autofill:active {
     gap: 0.5rem;
   }
 
+  .btn-login-google,
+  .button {
+    font-size: 1rem;
+  }
+
+  .google {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
   .button,
   input,
   .field p,
   .forgot-pass {
-    width: 20rem;
+    width: 27rem;
+  }
+
+  .button,
+  input {
+    min-height: 3rem;
+  }
+
+
+  input::placeholder {
+    font-size: 1rem;
   }
 
   .forgot-pass {
@@ -438,7 +457,7 @@ input:-webkit-autofill:active {
 @media screen and (min-width: 1440px) {
 
   .logo {
-    margin: 4rem 0 3rem;
+    margin: 3.5rem 0 2.5rem;
   }
 
   .container-login {
@@ -449,7 +468,8 @@ input:-webkit-autofill:active {
   .card-login {
     width: 32rem;
     background: var(--white);
-    padding: 5.4rem 0;
+    padding: 5rem 3rem;
+    gap: 1.5rem
   }
 
 

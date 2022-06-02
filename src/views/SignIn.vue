@@ -220,6 +220,8 @@ input {
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
   transition: all 1s;
+  font-size: 1rem;
+
 }
 
 input:focus {
@@ -360,7 +362,22 @@ input:focus {
   input,
   .field p,
   .text-pass {
-    width: 20rem;
+    width: 27rem;
+  }
+
+  .google {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .button,
+  input {
+    min-height: 3rem;
+  }
+
+
+  input::placeholder {
+    font-size: 1rem;
   }
 
   .button:first-child {
@@ -378,11 +395,12 @@ input:focus {
 @media screen and (min-width: 1170px) {
 
   .img-dog-login {
-    display: block;
+    display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
   }
+
 
   .containerall {
     height: 100vh;
@@ -394,7 +412,7 @@ input:focus {
 
   .container-login {
     width: auto;
-    height: 100%;
+    height: 100vh;
     margin-bottom: 0;
   }
 
@@ -413,9 +431,10 @@ input:focus {
   }
 
   .text-pass {
-    margin-top: -0.5rem;
     font-size: 0.8rem;
   }
+
+
 
 
 }
@@ -423,7 +442,7 @@ input:focus {
 
 @media screen and (min-width: 1440px) {
   .logo {
-    margin: 4rem 0 3rem;
+    margin: 3.5rem 0 2.5rem;
   }
 
   .containerall {
@@ -434,7 +453,12 @@ input:focus {
   .card-login {
     width: 32rem;
     background: var(--white);
-    padding: 3.4rem 0;
+    padding: 3rem;
+    gap: 1.5rem
+  }
+
+  .text-pass {
+    margin-top: -0.8rem;
   }
 }
 </style>
