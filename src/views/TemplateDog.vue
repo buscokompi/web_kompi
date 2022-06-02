@@ -159,6 +159,7 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
+                Propietario: ""
             },
 
             store: ""
@@ -224,6 +225,9 @@ export default {
                     for (const element in this.dog) {
                         this.dog[element] = this.animalInfo[element]
                     }
+                    this.store.setEmail(this.dog.Propietario.id);
+                    console.log(this.dog.Propietario.id);
+
                     getDownloadURL(ref(this.storage, this.dog.Imagen1))
                         .then(URL => {
                             this.dog.Imagen1 = URL;

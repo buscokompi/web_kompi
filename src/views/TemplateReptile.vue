@@ -150,6 +150,7 @@ export default {
                 Esterilizacion: '',
                 Descripcion: '',
                 Imagen1: '',
+                Propietario: ""
             }
 
         }
@@ -209,6 +210,7 @@ export default {
                     for (const element in this.reptile) {
                         this.reptile[element] = this.animalInfo[element]
                     }
+                    this.store.setEmail(this.reptile.Propietario.id);
                     getDownloadURL(ref(this.storage, this.reptile.Imagen1))
                         .then(URL => {
                             this.reptile.Imagen1 = URL;
