@@ -52,7 +52,8 @@
           </div>
         </div>
         <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-        <div class="button btn-signin-google"><img class="google" src="../assets/icons/google_icono.svg">Regístrate
+        <div class="button btn-signin-google" @click="loginGoogle()"><img class="google"
+            src="../assets/icons/google_icono.svg">Regístrate
           con Google</div>
 
 
