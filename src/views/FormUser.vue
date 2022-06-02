@@ -108,21 +108,6 @@ export default {
                 answer15: this.questions[14],
             })
         },
-        onChange() {
-            console.log(this.userEmail);
-        },
-        checkUser() {
-            const auth = getAuth();
-
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    this.userEmail = user.email;
-                    console.log(this.userEmail);
-                } else {
-                    this.$router.push("/Signin");
-                }
-            });
-        },
         changeView() {
             if (this.$refs.checkbox.checked) {
                 this.addAnswerDataBase();
@@ -138,7 +123,21 @@ export default {
             } else {
                 this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
             }
-        }
+        },
+
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.userEmail = user.email;
+
+                } else {
+                    this.$router.push("/Login");
+                }
+            });
+        },
 
     },
 }

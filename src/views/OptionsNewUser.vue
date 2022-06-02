@@ -25,6 +25,20 @@
 <script>
 export default {
   name: "login",
+  methods: {
+    checkUser() {
+      const auth = getAuth();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.userEmail = user.email;
+
+        } else {
+          this.$router.push("/Login");
+        }
+      });
+    },
+  },
 }
 
 </script>

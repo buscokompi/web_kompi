@@ -11,8 +11,8 @@
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
         <p>Nombre <span>*</span></p>
-        <input v-model="nameUser" class="input-name" required="required" ref="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-          title="Debes poner más de una letra.">
+        <input v-model="nameUser" class="input-name" ref="name"
+          v-validate="{ required: true, regex: [a - zA - ZñÑáéíóúÁÉÍÓÚ\s] }" , title="Debes poner más de una letra.">
         <p>Apellidos <span>*</span></p>
         <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
           pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
