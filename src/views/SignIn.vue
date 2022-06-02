@@ -11,14 +11,14 @@
       <form class="card-login">
 
         <div class="field">
-          <p class="email">E-mail*</p>
+          <p class="email">E-mail<span>*</span></p>
           <input v-model="email" class="input-email" type="email" required="required"
             placeholder="adoptaunkompi@gmail.com">
         </div>
 
 
         <div class="field">
-          <p>Contraseña*</p>
+          <p>Contraseña<span>*</span></p>
           <div class="see">
             <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
               id="password" :type="type_1" required="required"
@@ -35,7 +35,7 @@
         </p>
 
         <div class="field">
-          <p>Verifica tu contraseña <span>*</span></p>
+          <p>Verifica tu contraseña<span>*</span></p>
           <div class="see">
             <input v-model="passwordCheck" name="password2" class="input-password input-email"
               placeholder="Buscokompi6." id="password2" :type="type_2" required="required"
@@ -200,7 +200,6 @@ export default {
   align-items: center;
   text-align: left;
   height: 5rem;
-  transition: all 1s;
 }
 
 .field p {
@@ -219,7 +218,7 @@ input {
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
-  transition: all 1s;
+
   font-size: 1rem;
 
 }

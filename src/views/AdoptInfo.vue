@@ -1,123 +1,84 @@
 <template>
     <TheHeader />
-    <div class="containerall">
-        <div class="main">
-            <div class="header">
-                <h1>GUÍA DE ADOPCIÓN DE MASCOTA</h1>
-            </div>
+    <section>
+        <div class="img"></div>
+        <div class="adopt">
+            <p>ADOPCIÓN SEGURA A TRAVÉS DE KOMPI</p>
+            <h1>Adopta a tu nueva mascota fácilmente</h1>
+            <p>Kompi es una plataforma gratuita dedicada a la adopción de animales con cobertura total dentro del
+                territorio español. Destinada a los amantes de los animales o aquellos que sueñan con tener un compañero
+                de vida peludo, ponemos a su disposición un buscador capaz de filtrar por características físicas o
+                preferencias sobre el animal que se desea adoptar. </p>
 
-            <h2>¿COMO ADOPTAR A TU KOMPI?</h2>
-            <p> Si tienes duda de como Adoptar a un Kompi, aquí te lo explicaremos paso a paso</p>
+            <p>A diferencia de otras páginas de adopción, nosotros valoramos su privacidad. Por lo que la gestión de
+                datos se tramitará de informa interna. Es el motivo por el que exigimos a nuestros usuarios que se
+                registren previamente.</p>
+
+            <p>A diferencia de otras páginas de adopción, nosotros valoramos su privacidad. Por lo que la gestión de
+                datos se tramitará de informa interna. Es el motivo por el que exigimos a nuestros usuarios que se
+                registren previamente.</p>
+        </div>
+        <div class="steps">
 
         </div>
-
-        <div class="container">
-            <h2>Registrate en la página</h2>
-            <p>Primero tendras que registrarte en la página para crear una cuenta la que usaras tanto para ver los Kompi
-                que estan en adopción como para adoptar a tu proximo Kompi, para ello tienes que ir a <a
-                    @click="changeView">Registrate</a> </p>
-
-            <h2>Rellena tus Datos</h2>
-            <p>Después de haberte registrado tendrás que rellenar tus datos personales (
-                Nombre, Apellido, Localidad,etc.) para crear tu ficha de usuario que sera muy importante para tu perfil
-                de la pagína para adoptar, aquí te dejamos el formulario que hay quye rellenar.
-            </p>
-
-            <h2>Formulario de elección de tu Kompi</h2>
-            <p>Ya creado tanto tu cuenta como tu perfil, ahora tendra que rellenar un formulario que agilizara su
-                elección de Kompi, donde podra especificar el prototipo de Kompi que deseas para hacer una busqueda
-                concreta de él. </p>
-
-
+        <h3>REQUISITOS MÍNIMOS PARA LA ADOPCIÓN EN KOMPI</h3>
+        <div class="requirements">
+            <p></p>
+            <p></p>
+            <p></p>
         </div>
-    </div>
-
+        <BaseButton text="Adopta" url="/FilterAnimals" />
+    </section>
     <TheFooter />
-
 </template>
 
 <script>
-import TheHeader from "../components/TheHeader.vue"
-import TheFooter from "../components/TheFooter.vue"
+import TheHeader from '../components/TheHeader.vue'
+import TheFooter from '../components/TheFooter.vue'
+import BaseButton from '../components/BaseButton.vue'
+
 export default {
-    name: "AdoptInfo",
+    name: 'Adoptar',
     components: {
         TheHeader,
+        BaseButton,
         TheFooter
     },
-    methods: {
-        changeView() {
-            this.$router.push("/Signin")
-        }
-    }
 }
 </script>
 
 <style scoped>
-.containerall {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.img {
     background-image: url("../assets/images//imgSleapingCat.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 100vw;
     height: 45vh;
-
-
 }
 
-.header h1 {
-    margin-top: 5rem;
-    margin-left: 3rem;
-}
-
-.main {
+.adopt {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-top: 3rem;
+    text-align: left;
+    margin: 0 2rem;
+}
 
+h1 {
+    font-family: var(--text-font);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2rem;
 
 }
 
+p {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
-
-
-.main h2 {
-    font-size: x-large;
-    margin-top: 2rem !important;
-    margin-bottom: 2rem;
-}
-
-.main p {
-    margin: 0px 3rem;
-}
-
-
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 60vw;
-    margin: 3rem 0px;
-}
-
-.container h2 {
-    font-size: x-large;
-    margin-top: 1.5rem;
-    margin-bottom: 2.5rem;
-}
-
-a {
-    color: blue;
-    cursor: pointer;
 }
 </style>
