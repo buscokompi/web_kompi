@@ -202,6 +202,14 @@ export default {
             const imagen1 = "gs://web-kompi.appspot.com/animals/" + this.archivo.name;
             this.data.Imagen1 = imagen1;
             await addDoc(collection(this.fs, "animals"), this.data);
+
+            this.$swal({
+                title: "¡Gracias!",
+                text: "La ficha del animal ha sido creada correctamente.",
+                icon: "success",
+                timer: 1500,
+                showConfirmButton: false,
+            });
         },
         subirFoto() {
             const refImg = ref(this.storage, "animals/" + this.archivo.name);
@@ -212,11 +220,6 @@ export default {
             this.archivo = event.target.files[0]
             console.log(this.archivo);
         },
-
-        hello() {
-            console.log(this.variable);
-        },
-
         //Cambia los valores de las query al cambiar de opcion
         onChange(value, field) {
             let selValue = "";
