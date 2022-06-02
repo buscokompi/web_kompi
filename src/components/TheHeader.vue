@@ -26,7 +26,7 @@
                 </li>
                 <li class="vertical-line"></li>
                 <li v-show="!sessionLog">
-                    <RouterLink class="link" to="/Login">Iniciar sesión</RouterLink>
+                    <RouterLink class="link" to="/LogIn">Iniciar sesión</RouterLink>
                 </li>
                 <li v-show="sessionLog" class="display" @mouseover="displayProfile = true"
                     @mouseleave="displayProfile = false">
@@ -81,7 +81,7 @@
                             </li>
                         </ul>
                         <button>
-                            <RouterLink class="m-footer" to="/Login">Iniciar sesión</RouterLink>
+                            <RouterLink class="m-footer" to="/LogIn">Iniciar sesión</RouterLink>
                         </button>
                     </div>
                     <div class="invisible" v-show="sessionLog">

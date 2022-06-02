@@ -10,44 +10,53 @@
 
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
-        <p>Nombre <span>*</span></p>
-        <input v-model="nameUser" class="input-name" required="required" ref="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-          title="Debes poner más de una letra.">
-        <p>Apellidos <span>*</span></p>
-        <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
-          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+        <p>Nombre*</p>
+        <input :style="inputName" v-model="nameUser" class="input-name" ref="name" required="required"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra." @input="validateInput('name',
+          this.$refs.name.validity.valid)">
+
+        <p>Apellidos*</p>
+        <input :style="inputSurname" v-model="surnameUser" class="input-surname" required="required" ref="subname"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra." @input="validateInput('surname',
+          this.$refs.subname.validity.valid)">
 
         <div class="double-input">
           <div class="input-container">
-            <p>DNI, NIE, Pasaporte <span>*</span></p>
-            <input v-model="dniUser" class="input-dni" required="required" ref="dni" pattern="[0-9]{8}[A-Za-z]{1}]"
-              title="Debes poner 8 números y una letra.">
+            <p>DNI, NIE, Pasaporte*</p>
+            <input :style="inputDNI" v-model="dniUser" class="input-dni" required="required" ref="dni"
+              pattern="[0-9]{8}[A-Za-z]{1}" title="Debes poner 8 números y una letra." @input="validateInput('dni',
+              this.$refs.dni.validity.valid)">
           </div>
           <div class="input-container input-container-date">
-            <p>Fecha de nacimiento <span>*</span></p>
-            <input v-model="birthdateUser" class="input input-birthdate" ref="date" type="date" required="required">
+            <p>Fecha de nacimiento*</p>
+            <input :style="inputDate" v-model="birthdateUser" class="input input-birthdate" ref="date" type="date"
+              required="required" @input="validateInput('date',
+              this.$refs.date.validity.valid)">
           </div>
           <div>
-            <p>Provincia <span>*</span></p>
-            <SelectOptions :options="provincias" class="select"></SelectOptions>
+            <p>Provincia*</p>
+            <select>
+              <option v-for="e in provincias" :key="e">{{ e }}</option>
+            </select>
           </div>
           <div class="input-container">
-            <p>Localidad <span>*</span></p>
-            <input class="input input-location" required="required" ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-              title="Debes poner tu localidad.">
+            <p>Localidad*</p>
+            <input :style="inputLocation" v-model="locationUser" class="input input-location" required="required"
+              ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner tu localidad." @input="validateInput('location',
+              this.$refs.location.validity.valid)">
           </div>
         </div>
 
-        <p>Dirección <span>*</span></p>
-        <input v-model="directionUser" class="input-direction" ref="direction" required="required"
-          pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
-        <p>Número de teléfono <span>*</span></p>
-        <input v-model="phoneUser" class="input-phone" required="required" ref="number" pattern="+?{,3}[0-9]{9,}"
-          title="Debes poner un numéro de teléfono valido.">
+        <p>Dirección*</p>
+        <input :style="inputDirection" v-model="directionUser" class="input-direction" ref="direction"
+          required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección." @input="validateInput('direction',
+          this.$refs.direction.validity.valid)">
+        <p>Número de teléfono*</p>
+        <input :style="inputPhone" v-model="phoneUser" class="input-phone" required="required" ref="number"
+          pattern="[0-9]{9,}" title="Debes poner un numéro de teléfono valido." @input="validateInput('number',
+          this.$refs.number.validity.valid)">
         <button @click.prevent="sendUserData" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
-
-        <RouterLink class="link" to="/OptionsNewUser">Opciones nuevo usuario</RouterLink>
 
       </form>
     </div>
@@ -96,6 +105,22 @@ export default {
         "Toledo",
         "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
       ],
+
+      inputName: "",
+      inputSurname: "",
+      inputDNI: "",
+      inputDate: "",
+      inputLocation: "",
+      inputDirection: "",
+      inputPhone: "",
+
+      inputTrue: {
+        border: "var(--grey) 0.1rem solid",
+      },
+
+      inputFalse: {
+        border: "red 0.1rem solid",
+      }
     }
 
   },
@@ -105,8 +130,62 @@ export default {
     this.fs = getFirestore();
     this.checkUser();
 
+    this.inputName = this.inputTrue;
+    this.inputSurname = this.inputTrue;
+    this.inputDNI = this.inputTrue;
+    this.inputDate = this.inputTrue;
+    this.inputLocation = this.inputTrue;
+    this.inputDirection = this.inputTrue;
+    this.inputPhone = this.inputTrue;
+
   },
   methods: {
+    validateInput(value, valid) {
+      switch (value) {
+        case "name":
+          if (valid) {
+            this.inputName = this.inputTrue;
+          } else {
+            this.inputName = this.inputFalse;
+          }
+          break;
+        case "surname":
+          if (valid) {
+            this.inputSurname = this.inputTrue;
+          } else {
+            this.inputSurname = this.inputFalse;
+          }
+          break;
+        case "dni":
+          if (valid) {
+            this.inputDNI = this.inputTrue;
+          } else {
+            this.inputDNI = this.inputFalse;
+          }
+          break;
+        case "location":
+          if (valid) {
+            this.inputLocation = this.inputTrue;
+          } else {
+            this.inputLocation = this.inputFalse;
+          }
+          break;
+        case "direction":
+          if (valid) {
+            this.inputDirection = this.inputTrue;
+          } else {
+            this.inputDirection = this.inputFalse;
+          }
+          break;
+        case "number":
+          if (valid) {
+            this.inputPhone = this.inputTrue;
+          } else {
+            this.inputPhone = this.inputFalse;
+          }
+          break;
+      }
+    },
 
     actualDate() {
       const fecha = new Date();
@@ -128,7 +207,8 @@ export default {
     },
     async sendUserData() {
       if (this.$refs.name.validity.valid && this.$refs.subname.validity.valid && this.$refs.dni.validity.valid && this.$refs.date.validity.valid && this.$refs.location.validity.valid && this.$refs.direction.validity.valid && this.$refs.number.validity.valid) {
-        /*await setDoc(doc(this.fs, "usuarios", this.userEmail), {
+
+        await setDoc(doc(this.fs, "usuarios", this.userEmail), {
           name: this.nameUser,
           surnames: this.surnameUser,
           nif: this.dniUser,
@@ -137,7 +217,7 @@ export default {
           location: this.locationUser,
           direction: this.directionUser,
           phone: this.phoneUser
-        });*/
+        });
 
         this.$swal({
           title: "¡Gracias!",
@@ -146,26 +226,11 @@ export default {
           timer: 1500,
           showConfirmButton: false,
         });
-        // this.$router.push("/OptionsNewUser");
+        this.$router.push("/OptionsNewUser");
       } else {
         this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
       }
     },
-    checkInputs() {
-      if (true) {
-        sendUserData();
-        this.$swal({
-          title: "¡Gracias!",
-          text: "Tu cuenta ha sido creada correctamente",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: true,
-        });
-      } else {
-        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
-      }
-    },
-
     checkUser() {
       const auth = getAuth();
 
@@ -185,10 +250,16 @@ export default {
 .containeruser {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  margin: 0;
+  background-color: var(--white);
+  justify-content: center;
   width: 100vw;
-  background-color: #f5f5f5;
-  box-sizing: border-box;
+}
+
+.logo {
+  width: 7rem;
+  margin: 3rem 0 1rem;
+  cursor: pointer;
 }
 
 .img-dog-login {
@@ -196,55 +267,70 @@ export default {
 
 }
 
-.select {
+select {
   appearance: none;
-  display: flex;
-  padding: 0 0 4px 0;
   background: none;
-  border: 1px solid rgba(60, 60, 60, 0.26);
-  border-radius: 4px;
   white-space: normal;
-  width: 13.5rem;
+  min-width: 13rem;
+  width: 16.3rem;
+  min-height: 2.7rem;
+  border-radius: 0.8rem;
+  border: var(--grey) 0.1rem solid;
+  font-family: var(--text-font);
+  transition: all 1s;
+  padding: 0 0.5rem;
+
 }
 
 
 .container-login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100vh;
-  height: 100vh;
+  height: 100%;
+  width: 90%;
 }
 
-.logo {
-  width: 8rem;
-  margin: 2rem 0px;
-  cursor: pointer;
 
-}
 
 .card-login {
+  padding: 0.5rem;
   display: flex;
-  width: 28rem;
-  height: 80%;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
-  padding: 2rem 5rem 2.5rem;
-  background-color: white;
 }
 
 .card-login p {
+  width: 15rem;
   color: var(--black);
   font-family: var(--text-font);
+  margin-top: 0.5rem;
+}
+
+.double-input p {
+  margin-left: 0.5rem;
 }
 
 input {
-  padding: 0.5rem;
-  border-radius: 0.75rem;
-  border: var(--grey) 0.06rem solid;
+  border: 0;
+  min-width: 13rem;
+  width: 15rem;
+  min-height: 2.5rem;
+  padding: 0 0.5rem;
+  border-radius: 0.8rem;
   font-family: var(--text-font);
+  transition: all 1s;
   font-size: 1rem;
+}
+
+;
+
+input:focus {
+  color: var(--black);
+  outline-color: var(--black);
 }
 
 .form-control {
@@ -257,43 +343,34 @@ input {
   background-color: white;
 }
 
-input:focus {
-  color: var(--black);
-  outline-color: var(--black);
-}
 
 .form-control:focus {
   color: var(--black);
   outline-color: var(--black);
 }
 
-.input-container input {
-  width: 12.3rem;
-  height: 1.5rem;
-}
 
-.double-input {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
-}
 
 .button {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  width: 16rem;
   height: 3rem;
-  border-radius: 0.75rem;
+  padding: 0 0.5rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
+  transition: all 1s;
   border: 0;
-  font-size: 1rem;
-  font-family: var(--text-font);
+  color: var(--black);
   font-weight: 600;
-  transition: background-color 0.7s ease;
+  font-size: 1rem;
 }
 
 .button img {
   object-fit: contain;
-  margin-right: 1.5rem;
+  margin: 0 0.4rem 0 0rem;
 }
 
 .btn-login-email {
@@ -354,22 +431,87 @@ input::-webkit-calendar-picker-indicator::after {
   margin-top: -1rem;
 }
 
+@media screen and (min-width: 767px) {
 
-@media screen and (min-width: 1100px) {
+  .logo {
+    margin: 4rem 0 0
+  }
+
+
+  .card-login {
+    width: 75%;
+    padding: 2rem 0;
+    display: flex;
+    border-radius: 1.9rem;
+    background-color: var(--white);
+    gap: 0.2rem;
+  }
+
+  input,
+  .card-login p {
+    width: 27rem;
+  }
+
+  .button {
+    width: 28rem;
+  }
+
+  select {
+    width: 28.2rem;
+  }
+
+}
+
+@media screen and (min-width: 1170px) {
   .img-dog-login {
-    display: block;
-    width: 45%;
-    height: 100%;
+    display: flex;
+    width: 100%;
+    height: 100vh;
     object-fit: cover;
   }
 
-  .container-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
+  .containeruser {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 3.5fr;
+    grid-template-rows: 1fr;
+  }
 
+  .container-login {
+    width: auto;
+    height: 100vh;
+    margin-bottom: 0;
+
+  }
+
+  .double-input {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 0.5rem;
+    width: 28rem;
+  }
+
+  .double-input input,
+  .input-container,
+  .input-dni input {
+
+    min-width: none;
+    width: 70%;
+    padding: 0 0.1rem;
+    justify-self: left;
+  }
+
+  .double-input p {
+    width: 100%;
+  }
+
+
+
+  select {
+    width: 13.5rem;
+    justify-self: left;
   }
 
 
@@ -377,57 +519,21 @@ input::-webkit-calendar-picker-indicator::after {
 }
 
 
-@media screen and (min-width: 2100px) {
+@media screen and (min-width: 1440px) {
 
   .logo {
-    width: 15rem;
-    margin: 4rem 0px;
-    cursor: pointer;
+    margin: 3.5rem 0 2.5rem;
+  }
+
+  .containeruser {
+    background: var(--lightgrey)
   }
 
   .card-login {
-    display: flex;
-    width: 45rem;
-    height: 70%;
-    flex-direction: column;
-    border-radius: 1.9rem;
-    padding: 2rem 8rem 0px;
-    background-color: white;
-  }
-
-  .card-login p {
-    font-size: x-large;
-  }
-
-  input {
-    width: 44rem;
-    height: 2rem;
-  }
-
-  .button {
-    height: 4.0rem;
-    font-size: x-large;
-  }
-
-  .button img {
-    object-fit: contain;
-    margin-right: 1.5rem;
-    margin-left: 12rem;
-  }
-
-  .input-container input {
-    width: 20.0rem;
-    height: 2rem;
-    margin-right: 2rem;
-  }
-
-  .select {
-    width: 21.5rem;
-    height: 3.3rem;
-  }
-
-  .session {
-    font-size: x-large;
+    width: 32rem;
+    background: var(--white);
+    padding: 3.5rem;
+    gap: 0.5rem;
   }
 
 }

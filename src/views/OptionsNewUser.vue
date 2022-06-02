@@ -12,7 +12,7 @@
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink class="give-in-adoption" to="/formularioEjemplo">
+      <RouterLink class="give-in-adoption" to="/FormCard">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
@@ -23,8 +23,44 @@
 </template>
 
 <script>
+import { initFirebase } from '@/firebase/firebase.js'
+import { getAuth } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
+  authDomain: "web-kompi.firebaseapp.com",
+  projectId: "web-kompi",
+  storageBucket: "web-kompi.appspot.com",
+  messagingSenderId: "556298514839",
+  appId: "1:556298514839:web:92e508e18c5685e99694d2",
+  measurementId: "G-93MGP34YQN"
+};
+
 export default {
   name: "login",
+  data() {
+    return {
+      firebaseapp: null,
+    }
+  },
+  mounted() {
+    this.firebaseapp = initFirebase(firebaseConfig);
+    this.checkUser();
+  },
+  methods: {
+    checkUser() {
+      const auth = getAuth();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.userEmail = user.email;
+
+        } else {
+          this.$router.push("/Login");
+        }
+      });
+    },
+  },
 }
 
 </script>
@@ -41,7 +77,7 @@ export default {
 
 h1 {
   font-family: var(--text-font);
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--black);
   text-align: center;
@@ -50,7 +86,7 @@ h1 {
 
 p {
   font-family: var(--text-font);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   margin-top: 0.5rem;
@@ -177,6 +213,7 @@ a:hover {
 
   }
 }
+
 
 @media screen and (min-width: 1170px) {
   .card-options {

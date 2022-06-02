@@ -108,29 +108,36 @@ export default {
                 answer15: this.questions[14],
             })
         },
-        onChange() {
-            console.log(this.userEmail);
+        changeView() {
+            if (this.$refs.checkbox.checked) {
+                this.addAnswerDataBase();
+                this.$swal({
+                    title: "¡Gracias!",
+                    text: "Los datos han sido guardados correctamente.",
+                    icon: "success",
+                    timer: 1800,
+                    showConfirmButton: false,
+
+                })
+                this.$router.push("/FilterAnimals");
+            } else {
+                this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
+            }
         },
+
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
         checkUser() {
             const auth = getAuth();
 
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     this.userEmail = user.email;
-                    console.log(this.userEmail);
+
                 } else {
-                    this.$router.push("/Signin");
+                    this.$router.push("/Login");
                 }
             });
         },
-        changeView() {
-            if (this.$refs.checkbox.checked) {
-                this.addAnswerDataBase();
-                this.$router.push("/FilterAnimals");
-            } else {
-                this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
-            }
-        }
 
     },
 }

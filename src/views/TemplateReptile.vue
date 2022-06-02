@@ -78,14 +78,14 @@
                 <p>¿Quieres adoptar o saber más sobre {{ reptile.Nombre }}?</p>
                 <p> ¡Ponte en contacto con su cuidador!</p>
 
-                <BaseButton url="/ViewCaptcha" text="CONTACTAR" />
+                <BaseButton @click="checkUser" text="CONTACTAR" />
             </div>
         </div>
 
 
         <div class="other-kompis">
             <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <CardGroup specie="Reptil" />
         </div>
     </section>
     <TheFooter />
@@ -161,9 +161,38 @@ export default {
         BaseButton
     },
     methods: {
-        info() {
-            console.log(this.reptile)
-        }
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.$swal({
+                        text: "Le enviaremos al cuidador del animal tus datos de contacto y las respuestas del formulario que has rellenado previamente. Si estás de acuerdo haz click en CONTACTAR.",
+                        showCancelButton: "true",
+                        confirmButtonText: "Contactar",
+                        cancelButtonText: "Volver atrás"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$router.push("/ViewCaptcha");
+                        }
+
+                    });
+                } else {
+                    this.$swal({
+                        text: "Para poder ponerte en contacto con el cuidador del animal debes iniciar sesión previamente.",
+                        showCancelButton: "true",
+                        confirmButtonText: "Iniciar sesión",
+                        cancelButtonText: "Volver atrás",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$router.push({
+                                path: '/Login',
+                            })
+                        }
+                    });
+                }
+            });
+        },
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
@@ -186,50 +215,6 @@ export default {
                         })
                 }
             })
-        // Esto es para obtener cuatro animales de la especie Perro para ponerlos en las tarjetas  de la ficha
-        /*const p = query(collection(this.firestore, 'animals'), where('Ubicacion', '==', `Tenerife`));
-        getDocs(p)
-            .then(element => {
-                const aux = Math.floor(Math.random() * element.size);
-                for (let i = 0; i < 5; i++) {
-                    this.arrayAnimales[i] = element._docs[(aux + i) % element.size].data();
-                }
-
-                this.nombre_1 = this.arrayAnimales[0].Nombre;
-                this.location_1 = this.arrayAnimales[0].Ubicacion;
-                getDownloadURL(ref(this.storage, this.arrayAnimales[0].Imagen1))
-                    .then(e => {
-                        this.img_1 = e
-                    })
-
-                this.nombre_2 = this.arrayAnimales[1].Nombre;
-                this.location_2 = this.arrayAnimales[1].Ubicacion;
-                getDownloadURL(ref(this.storage, this.arrayAnimales[1].Imagen1))
-                    .then(e => {
-                        this.img_2 = e
-                    })
-
-                this.nombre_3 = this.arrayAnimales[2].Nombre;
-                this.location_3 = this.arrayAnimales[2].Ubicacion;
-                getDownloadURL(ref(this.storage, this.arrayAnimales[2].Imagen1))
-                    .then(e => {
-                        this.img_3 = e
-                    })
-
-                this.nombre_4 = this.arrayAnimales[3].Nombre;
-                this.location_4 = this.arrayAnimales[3].Ubicacion;
-                getDownloadURL(ref(this.storage, this.arrayAnimales[3].Imagen1))
-                    .then(e => {
-                        this.img_4 = e
-                    })
-
-                this.nombre_5 = this.arrayAnimales[4].Nombre;
-                this.location_5 = this.arrayAnimales[4].Ubicacion;
-                getDownloadURL(ref(this.storage, this.arrayAnimales[4].Imagen1))
-                    .then(e => {
-                        this.img_5 = e
-                    })
-            })*/
 
     },
 }

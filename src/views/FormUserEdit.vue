@@ -181,8 +181,22 @@ export default {
             } else {
                 this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
             }
-        }
-    },
+        },
+
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.userEmail = user.email;
+
+                } else {
+                    this.$router.push("/Login");
+                }
+            });
+        },
+    }
 }
 
 </script>

@@ -15,6 +15,7 @@
 import BaseForm from '../components/BaseForm.vue';
 import TheHeader from '../components/TheHeader.vue';
 import TheFooter from '../components/TheFooter.vue';
+import { getAuth } from 'firebase/auth';
 export default {
     name: "FormCard",
     components: {
@@ -22,7 +23,27 @@ export default {
         TheHeader,
         TheFooter
     },
+    mounted() {
+        this.checkUser();
+    },
+    methods: {
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.userEmail = user.email;
+
+                } else {
+                    this.$router.push("/Login");
+                }
+            });
+        },
+    }
 }
+
+
 </script>
 <style scoped>
 main {
