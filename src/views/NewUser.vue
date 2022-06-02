@@ -11,8 +11,9 @@
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
         <p>Nombre <span>*</span></p>
-        <input v-model="nameUser" class="input-name" ref="name"
-          v-validate="{ required: true, regex: [a - zA - ZñÑáéíóúÁÉÍÓÚ\s] }" , title="Debes poner más de una letra.">
+        <input v-model="nameUser" class="input-name" ref="name" required="required"
+          pattern="[a - zA - ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+
         <p>Apellidos <span>*</span></p>
         <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
           pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
@@ -128,7 +129,7 @@ export default {
     },
     async sendUserData() {
       if (this.$refs.name.validity.valid && this.$refs.subname.validity.valid && this.$refs.dni.validity.valid && this.$refs.date.validity.valid && this.$refs.location.validity.valid && this.$refs.direction.validity.valid && this.$refs.number.validity.valid) {
-        /*await setDoc(doc(this.fs, "usuarios", this.userEmail), {
+        await setDoc(doc(this.fs, "usuarios", this.userEmail), {
           name: this.nameUser,
           surnames: this.surnameUser,
           nif: this.dniUser,
@@ -137,7 +138,7 @@ export default {
           location: this.locationUser,
           direction: this.directionUser,
           phone: this.phoneUser
-        });*/
+        });
 
         this.$swal({
           title: "¡Gracias!",
@@ -146,7 +147,7 @@ export default {
           timer: 1500,
           showConfirmButton: false,
         });
-        // this.$router.push("/OptionsNewUser");
+        this.$router.push("/OptionsNewUser");
       } else {
         this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
       }
