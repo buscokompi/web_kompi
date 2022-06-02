@@ -8,7 +8,7 @@ const router = createRouter({
       name: "home",
       component: () => import("../views/MainPage.vue"),
       meta: {
-        title: "Kompi Home",
+        title: "Kompi | Buscador de animales",
         metaTags: [
           {
             name: "description",
@@ -26,15 +26,15 @@ const router = createRouter({
       name: "FilterAnimals",
       component: () => import("../views/FilterAnimals.vue"),
       meta: {
-        title: "Categoria Animales",
+        title: "Kompi | Filtro de búsqueda",
         metaTags: [
           {
             name: "description",
-            content: "Elige quien sera tu proximo Kompi, en una gran variedad de mascotas."
+            content: "Elige quién será tu próximo Kompi entre una gran variedad de animales."
           },
           {
             property: "og:description",
-            content: "Elige quien sera tu proximo Kompi, en una gran variedad de mascotas."
+            content: "Elige quién será tu próximo Kompi entre una gran variedad de animales."
           }
         ]
       }
@@ -44,15 +44,15 @@ const router = createRouter({
       name: "FormUser",
       component: () => import("../views/FormUser.vue"),
       meta: {
-        title: "Formulario Usuario",
+        title: "Kompi | Formulario usuario",
         metaTags: [
           {
             name: "description",
-            content: "Rellena el formulario para hacer una busqueda más exacta de el Kompi."
+            content: "Rellena el formulario que será facilitado al cuidador del animal que te interesa."
           },
           {
             property: "og:description",
-            content: "Rellena el formulario para hacer una busqueda más exacta de el Kompi."
+            content: "Rellena el formulario que será facilitado al cuidador del animal que te interesa."
           }
         ]
       }
@@ -62,15 +62,15 @@ const router = createRouter({
       name: "FormUserEdit",
       component: () => import("../views/FormUserEdit.vue"),
       meta: {
-        title: "Editar Formulario Usuario",
+        title: "Kompi | Edita tu formulario",
         metaTags: [
           {
             name: "description",
-            content: "Edita tu usuario por si has tenido algun error un perfil."
+            content: "Edita el formulario que has rellenado previamente y actualiza tus respuestas en cualquier momento."
           },
           {
             property: "og:description",
-            content: "Edita tu usuario por si has tenido algun error un perfil."
+            content: "Edita el formulario que has rellenado previamente y actualiza tus respuestas en cualquier momento."
           }
         ]
       }
@@ -80,15 +80,15 @@ const router = createRouter({
       name: "TemplateCat",
       component: () => import("../views/TemplateCat.vue"),
       meta: {
-        title: "Categoria Gatos",
+        title: "Kompi | Buscador de gatos",
         metaTags: [
           {
             name: "description",
-            content: "Mira y elige tu Kompi Felino."
+            content: "Busca y elige a tu próximo felino."
           },
           {
             property: "og:description",
-            content: "Mira y elige tu Kompi Felino.."
+            content: "Busca y elige a tu próximo felino."
           }
         ]
       }
@@ -98,15 +98,15 @@ const router = createRouter({
       name: "TemplateDoge",
       component: () => import("../views/TemplateDog.vue"),
       meta: {
-        title: "Categoria Perros",
+        title: "Kompi | Buscador de perros",
         metaTags: [
           {
             name: "description",
-            content: "Mira y elige tu Kompi Perro."
+            content: "Busca y elige a tu próximo canino."
           },
           {
             property: "og:description",
-            content: "Mira y elige tu Kompi Perro."
+            content: "Busca y elige a tu próximo canino."
           }
         ]
       }
@@ -116,15 +116,15 @@ const router = createRouter({
       name: "TemplateReptile",
       component: () => import("../views/TemplateReptile.vue"),
       meta: {
-        title: "Categoria Reptiles",
+        title: "Kompi | Buscador de reptiles",
         metaTags: [
           {
             name: "description",
-            content: "Mira y elige tu Kompi Reptil."
+            content: "Busca y elige a tu próximo reptil."
           },
           {
             property: "og:description",
-            content: "Mira y elige tu Kompi Reptil."
+            content: "Busca y elige a tu próximo reptil."
           }
         ]
       }
@@ -134,15 +134,15 @@ const router = createRouter({
       name: "TemplateBird",
       component: () => import("../views/TemplateBird.vue"),
       meta: {
-        title: "Categoria Aves",
+        title: "Kompi | Buscador de aves",
         metaTags: [
           {
             name: "description",
-            content: "Mira y elige tu Kompi Ave."
+            content: "Busca y elige a tu próxima ave."
           },
           {
             property: "og:description",
-            content: "Mira y elige tu Kompi Ave."
+            content: "Busca y elige a tu próxima ave."
           }
         ]
       }
@@ -152,15 +152,19 @@ const router = createRouter({
       name: "TemplateRodent",
       component: () => import("../views/TemplateRodent.vue"),
       meta: {
-        title: "Categoria Roedores",
+        title: "Kompi | Buscador de roedores",
         metaTags: [
           {
             name: "description",
-            content: "Mira y elige tu Kompi Roedor."
+            content: "Busca y elige a tu próximo roedor."
           },
           {
             property: "og:description",
+<<<<<<< HEAD
             content: "Mira y elige tu Kompi Roedor.."
+=======
+            content: "Busca y elige a tu próximo roedor."
+>>>>>>> atteneri
           }
         ]
       }
@@ -170,15 +174,15 @@ const router = createRouter({
       name: "FormCard",
       component: () => import("../views/FormCard.vue"),
       meta: {
-        title: "Formulario nuevo Kompi",
+        title: "Kompi | Crear ficha adopción",
         metaTags: [
           {
             name: "description",
-            content: "Agrega a tu Kompi para darlo en Adopción."
+            content: "Agrega a tu mascota para darla en adopción."
           },
           {
             property: "og:description",
-            content: "Agrega a tu Kompi para darlo en Adopción."
+            content: "Agrega a tu mascota para darla en adopción."
           }
         ]
       }
@@ -188,15 +192,15 @@ const router = createRouter({
       name: "LogIn",
       component: () => import("../views/LogIn.vue"),
       meta: {
-        title: "Iniciar Sesión",
+        title: "Kompi | Inicio de sesión",
         metaTags: [
           {
             name: "description",
-            content: "Inicia tu sesión y navega con mas facilidad por la página."
+            content: "Inicia sesión y ten acceso a los servicios de adopción de Kompi."
           },
           {
             property: "og:description",
-            content: "Inicia tu sesión y navega con mas facilidad por la página."
+            content: "Inicia sesión y ten acceso a los servicios de adopción de Kompi."
           }
         ]
       }
@@ -206,15 +210,15 @@ const router = createRouter({
       name: "SignIn",
       component: () => import("../views/SignIn.vue"),
       meta: {
-        title: "Registrarse en Kompi",
+        title: "Kompi | Registro de usuario",
         metaTags: [
           {
             name: "description",
-            content: "Crea tu cuenta y para registrate en la página."
+            content: "Crea tu cuenta y ten acceso a los servicios de adopción de Kompi."
           },
           {
             property: "og:description",
-            content: "Crea tu cuenta y para registrate en la página."
+            content: "Crea tu cuenta y ten acceso a los servicios de adopción de Kompi."
           }
         ]
       }
@@ -224,15 +228,15 @@ const router = createRouter({
       name: "ForgotPassword",
       component: () => import("../views/ForgotPassword.vue"),
       meta: {
-        title: "Olvidaste tu contraseña",
+        title: "Kompi | ¿Olvidaste la contraseña?",
         metaTags: [
           {
             name: "description",
-            content: "Has olvidado tu contraseña,no te preocupes nosotors te ayudamos. "
+            content: "¿Has olvidado tu contraseña? No te preocupes nosotros te ayudamos."
           },
           {
             property: "og:description",
-            content: "Has olvidado tu contraseña,no te preocupes nosotors te ayudamos."
+            content: "¿Has olvidado tu contraseña? No te preocupes nosotros te ayudamos."
           }
         ]
       }
@@ -242,7 +246,7 @@ const router = createRouter({
       name: "NewUser",
       component: () => import("../views/NewUser.vue"),
       meta: {
-        title: "Nuevo Usuario",
+        title: "Kompi | Registro de perfil",
         metaTags: [
           {
             name: "description",
@@ -260,15 +264,15 @@ const router = createRouter({
       name: "OptionsNewUser",
       component: () => import("../views/OptionsNewUser.vue"),
       meta: {
-        title: "Opciones de Usuario",
+        title: "Kompi | ¿Adoptar o dar en adopción?",
         metaTags: [
           {
             name: "description",
-            content: "Elige entre dar en adopción o adoptar a un Kompi. "
+            content: "Elige entre adoptar o dar en adopción a un animal. "
           },
           {
             property: "og:description",
-            content: "Elige entre dar en adopción o adoptar a un Kompi."
+            content: "Elige entre adoptar o dar en adopción a un animal."
           }
         ]
       }
@@ -278,15 +282,15 @@ const router = createRouter({
       name: "AboutMe",
       component: () => import("../views/AboutMe.vue"),
       meta: {
-        title: "Sobre Nosotros",
+        title: "Kompi | Sobre nosotros",
         metaTags: [
           {
             name: "description",
-            content: "Conoce más de nuestra pagina y de nuestro equipo."
+            content: "Conoce más sobre nuestra página y nuestro equipo."
           },
           {
             property: "og:description",
-            content: "Conoce más de nuestra pagina y de nuestro equipo."
+            content: "Conoce más sobre nuestra página y nuestro equipo."
           }
         ]
       }
@@ -296,15 +300,15 @@ const router = createRouter({
       name: "GiveAdoptionInfo",
       component: () => import("../views/GiveAdoptionInfo.vue"),
       meta: {
-        title: "Guía de Adopción",
+        title: "Kompi | Dar en adopción",
         metaTags: [
           {
             name: "description",
-            content: "Guía paso de dar en adopción tu Kompi."
+            content: "Guía paso a paso para dar en adopción fácilmente a tu mascota en nuestra plataforma."
           },
           {
             property: "og:description",
-            content: "Guía paso de dar en adopción tu Kompi."
+            content: "Guía paso a paso para dar en adopción fácilmente a tu mascota en nuestra plataforma."
           }
         ]
       }
@@ -314,15 +318,15 @@ const router = createRouter({
       name: "AdoptInfo",
       component: () => import("../views/AdoptInfo.vue"),
       meta: {
-        title: "Guía de Adopción",
+        title: "Kompi | Adoptar",
         metaTags: [
           {
             name: "description",
-            content: "Guía paso de adoptar tu Kompi."
+            content: "Guía paso a paso para adoptar fácilmente a tu nueva mascota en nuestra plataforma."
           },
           {
             property: "og:description",
-            content: "Guía paso de adoptar tu Kompi."
+            content: "Guía paso a paso para adoptar fácilmente a tu nueva mascota en nuestra plataforma."
           }
         ]
       }
@@ -332,15 +336,15 @@ const router = createRouter({
       name: "PrivacyPolicy",
       component: () => import("../views/PrivacyPolicy.vue"),
       meta: {
-        title: "Politica y Privacidad",
+        title: "Kompi | Política y privacidad",
         metaTags: [
           {
             name: "description",
-            content: "Nuestras Politicas y privacidad de la página."
+            content: "Política y privacidad en Kompi."
           },
           {
             property: "og:description",
-            content: "Nuestras Politicas y privacidad de la página."
+            content: "Política y privacidad en Kompi."
           }
         ]
       }
@@ -350,15 +354,15 @@ const router = createRouter({
       name: "Terms&Conditions",
       component: () => import("../views/Terms&Conditions.vue"),
       meta: {
-        title: "Terminos y Condiciones",
+        title: "Kompi | Términos y condiciones",
         metaTags: [
           {
             name: "description",
-            content: "Nuestros Terminos y Condiciones de la página."
+            content: "Términos y condiciones de los servicios de Kompi."
           },
           {
             property: "og:description",
-            content: "Nuestros Terminos y Condiciones de la página."
+            content: "Términos y condiciones de los servicios de Kompi."
           }
         ]
       }
@@ -372,15 +376,15 @@ const router = createRouter({
       path: "/:pathMach(.*)*",
       component: () => import("../views/Error404.vue"),
       meta: {
-        title: "Error 404",
+        title: "Kompi | ¡Algo no ha ido como debía!",
         metaTags: [
           {
             name: "description",
-            content: "La página no se ha encontrado o no existe."
+            content: "¡Algo no ha ido como debía! La página que buscas no se encuentra disponible o no existe."
           },
           {
             property: "og:description",
-            content: "La página no se ha encontrado o no existe."
+            content: "¡Algo no ha ido como debía! La página que buscas no se encuentra disponible o no existe."
           }
         ]
       }

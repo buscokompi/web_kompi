@@ -48,7 +48,7 @@ export default {
       verifyKey: "",
 
       templateparams: {
-        user_email: "joseferalvarezromero@gmail.com",
+        user_email: "",
         client_email: "",
         client_name: "",
         client_phone: "",
@@ -151,7 +151,6 @@ export default {
           } else {
             window.history.back();
           }
-
         });
       }
     },

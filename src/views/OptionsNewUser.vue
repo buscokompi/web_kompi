@@ -12,7 +12,7 @@
         <img src="../assets/icons/icono_logo_negro.svg" alt="Isologo">
         <p>ADOPTAR</p>
       </RouterLink>
-      <RouterLink class="give-in-adoption" to="/formularioEjemplo">
+      <RouterLink class="give-in-adoption" to="/FormCard">
         <img src="../assets/icons/icono_logo_blanco.svg" alt="Isologo">
         <p>DAR EN ADOPCIÓN</p>
       </RouterLink>
@@ -25,6 +25,20 @@
 <script>
 export default {
   name: "login",
+  methods: {
+    checkUser() {
+      const auth = getAuth();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.userEmail = user.email;
+
+        } else {
+          this.$router.push("/Login");
+        }
+      });
+    },
+  },
 }
 
 </script>
@@ -41,7 +55,7 @@ export default {
 
 h1 {
   font-family: var(--text-font);
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--black);
   text-align: center;
@@ -50,7 +64,7 @@ h1 {
 
 p {
   font-family: var(--text-font);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   margin-top: 0.5rem;
@@ -177,6 +191,7 @@ a:hover {
 
   }
 }
+
 
 @media screen and (min-width: 1170px) {
   .card-options {

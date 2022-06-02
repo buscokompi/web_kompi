@@ -172,10 +172,6 @@ export default {
         BaseButton
     },
     methods: {
-        info() {
-            const counter = useCounterStore();
-            console.log(counter.counter);
-        },
         checkUser() {
             const auth = getAuth();
 
@@ -203,6 +199,7 @@ export default {
                             this.$router.push({
                                 path: '/Login',
                             })
+
                         }
 
                     });
@@ -210,13 +207,6 @@ export default {
             });
         },
 
-        async checkForm(user) {
-            const docRef = doc(this.fs, "userform", user);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-
-            }
-        }
     },
     created() {
         this.store = KompiStore() // Inicializamos el enlace a la store cuando se crea el componente
