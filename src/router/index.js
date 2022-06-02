@@ -224,17 +224,7 @@ const router = createRouter({
       name: "ForgotPassword",
       component: () => import("../views/ForgotPassword.vue"),
       meta: {
-        title: "Kompi | ¿Olvidaste la contraseña?",
-        metaTags: [
-          {
-            name: "description",
-            content: "¿Has olvidado tu contraseña? No te preocupes nosotros te ayudamos."
-          },
-          {
-            property: "og:description",
-            content: "¿Has olvidado tu contraseña? No te preocupes nosotros te ayudamos."
-          }
-        ]
+        title: "Kompi | ¿Olvidaste la contraseña?"
       }
     },
     {

@@ -10,43 +10,48 @@
 
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
-        <p>Nombre*</p>
-        <input v-model="nameUser" class="input-name" ref="name" required="required"
-          pattern="[a - zA - ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+        <p>Nombre <span>*</span></p>
+        <input :style="inputName" v-model="nameUser" class="input-name" ref="name" required="required"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra."
+          @input="validateInput('name', this.$refs.name.validity.valid)">
 
-        <p>Apellidos*</p>
-        <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
-          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+        <p>Apellidos <span>*</span></p>
+        <input :style="inputSurname" v-model="surnameUser" class="input-surname" required="required" ref="subname"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra."
+          @input="validateInput('surname', this.$refs.subname.validity.valid)">
 
-        <div class="double-input">
+        <div class=" double-input">
           <div class="input-container">
-            <p>DNI, NIE, Pasaporte*</p>
-            <input v-model="dniUser" class="input-dni" required="required" ref="dni" pattern="[0-9]{8}[A-Za-z]{1}]"
-              title="Debes poner 8 números y una letra.">
+            <p>DNI, NIE, Pasaporte <span>*</span></p>
+            <input :style="inputDNI" v-model="dniUser" class="input-dni" required="required" ref="dni"
+              pattern="[0-9]{8}[A-Za-z]{1}" title="Debes poner 8 números y una letra."
+              @input="validateInput('dni', this.$refs.dni.validity.valid)">
           </div>
           <div class="input-container input-container-date">
-            <p>Fecha de nacimiento*</p>
-            <input v-model="birthdateUser" class="input input-birthdate" ref="date" type="date" required="required">
+            <p>Fecha de nacimiento <span>*</span></p>
+            <input :style="inputDate" v-model="birthdateUser" class="input input-birthdate" ref="date" type="date"
+              required="required">
           </div>
           <div>
-            <p>Provincia*</p>
-            <select>
-              <option v-for="e in provincias">{{ e }}</option>
-            </select>
+            <p>Provincia <span>*</span></p>
+            <SelectOptions :options="provincias" class="select" v-model="provinceUser"></SelectOptions>
           </div>
           <div class="input-container">
-            <p>Localidad*</p>
-            <input class="input input-location" required="required" ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-              title="Debes poner tu localidad.">
+            <p>Localidad <span>*</span></p>
+            <input :style="inputLocation" class="input input-location" v-model="locationUser" required="required"
+              ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner tu localidad."
+              @input="validateInput('location', this.$refs.location.validity.valid)">
           </div>
         </div>
 
-        <p>Dirección*</p>
-        <input v-model="directionUser" class="input-direction" ref="direction" required="required"
-          pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
-        <p>Número de teléfono*</p>
-        <input v-model="phoneUser" class="input-phone" required="required" ref="number" pattern="+?{,3}[0-9]{9,}"
-          title="Debes poner un numéro de teléfono valido.">
+        <p>Dirección <span>*</span></p>
+        <input :style="inputDirection" v-model="directionUser" class="input-direction" ref="direction"
+          required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección."
+          @input="validateInput('direction', this.$refs.direction.validity.valid)">
+        <p>Número de teléfono <span>*</span></p>
+        <input :style="inputPhone" v-model="phoneUser" class="input-phone" required="required" ref="number"
+          pattern="[0-9]{9,}" title="Debes poner un numéro de teléfono valido."
+          @input="validateInput('number', this.$refs.number.validity.valid)">
         <button @click.prevent="sendUserData" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
 
@@ -97,6 +102,30 @@ export default {
         "Toledo",
         "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"
       ],
+
+      inputName: "",
+      inputSurname: "",
+      inputDNI: "",
+      inputDate: "",
+      inputLocation: "",
+      inputDirection: "",
+      inputPhone: "",
+
+      inputTrue: {
+        padding: "0.5rem",
+        "border-radius": "0.75rem",
+        border: "var(--grey) 0.06rem solid",
+        "font-family": "var(--text-font)",
+        "font-size": "1rem",
+      },
+
+      inputFalse: {
+        padding: "0.5rem",
+        "border-radius": "0.75rem",
+        border: "red 0.06rem solid",
+        "font-family": "var(--text-font)",
+        "font-size": "1rem",
+      }
     }
 
   },
@@ -106,8 +135,62 @@ export default {
     this.fs = getFirestore();
     this.checkUser();
 
+    this.inputName = this.inputTrue;
+    this.inputSurname = this.inputTrue;
+    this.inputDNI = this.inputTrue;
+    this.inputDate = this.inputTrue;
+    this.inputLocation = this.inputTrue;
+    this.inputDirection = this.inputTrue;
+    this.inputPhone = this.inputTrue;
+
   },
   methods: {
+    validateInput(value, valid) {
+      switch (value) {
+        case "name":
+          if (valid) {
+            this.inputName = this.inputTrue;
+          } else {
+            this.inputName = this.inputFalse;
+          }
+          break;
+        case "surname":
+          if (valid) {
+            this.inputSurname = this.inputTrue;
+          } else {
+            this.inputSurname = this.inputFalse;
+          }
+          break;
+        case "dni":
+          if (valid) {
+            this.inputDNI = this.inputTrue;
+          } else {
+            this.inputDNI = this.inputFalse;
+          }
+          break;
+        case "location":
+          if (valid) {
+            this.inputLocation = this.inputTrue;
+          } else {
+            this.inputLocation = this.inputFalse;
+          }
+          break;
+        case "direction":
+          if (valid) {
+            this.inputDirection = this.inputTrue;
+          } else {
+            this.inputDirection = this.inputFalse;
+          }
+          break;
+        case "number":
+          if (valid) {
+            this.inputPhone = this.inputTrue;
+          } else {
+            this.inputPhone = this.inputFalse;
+          }
+          break;
+      }
+    },
 
     actualDate() {
       const fecha = new Date();
@@ -129,6 +212,7 @@ export default {
     },
     async sendUserData() {
       if (this.$refs.name.validity.valid && this.$refs.subname.validity.valid && this.$refs.dni.validity.valid && this.$refs.date.validity.valid && this.$refs.location.validity.valid && this.$refs.direction.validity.valid && this.$refs.number.validity.valid) {
+
         await setDoc(doc(this.fs, "usuarios", this.userEmail), {
           name: this.nameUser,
           surnames: this.surnameUser,
@@ -152,21 +236,6 @@ export default {
         this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
       }
     },
-    checkInputs() {
-      if (true) {
-        sendUserData();
-        this.$swal({
-          title: "¡Gracias!",
-          text: "Tu cuenta ha sido creada correctamente",
-          icon: "success",
-          timer: 1500,
-          showConfirmButton: true,
-        });
-      } else {
-        this.$swal("Error", "Uno o varios datos de los introducidos son incorrectos", "error");
-      }
-    },
-
     checkUser() {
       const auth = getAuth();
 
