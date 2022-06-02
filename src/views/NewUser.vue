@@ -35,7 +35,7 @@
           </div>
           <div>
             <p>Provincia*</p>
-            <select>
+            <select v-model="provinceUser">
               <option v-for="e in provincias" :key="e">{{ e }}</option>
             </select>
           </div>

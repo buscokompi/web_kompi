@@ -82,7 +82,8 @@ export default {
     this.fs = getFirestore();
     this.checkUser();
     this.getUserForm();
-    this.templateparams.client_email = this.ownerAnimalEmail;
+    this.templateparams.user_email = this.ownerAnimalEmail;
+    console.log(this.ownerAnimalEmail);
   },
   methods: {
 
