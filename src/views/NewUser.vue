@@ -11,42 +11,50 @@
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
         <p>Nombre*</p>
-        <input v-model="nameUser" class="input-name" ref="name" required="required"
-          pattern="[a - zA - ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+        <input :style="inputName" v-model="nameUser" class="input-name" ref="name" required="required"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra." @input="validateInput('name',
+          this.$refs.name.validity.valid)">
 
         <p>Apellidos*</p>
-        <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
-          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
+        <input :style="inputSurname" v-model="surnameUser" class="input-surname" required="required" ref="subname"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra." @input="validateInput('surname',
+          this.$refs.subname.validity.valid)">
 
         <div class="double-input">
           <div class="input-container">
             <p>DNI, NIE, Pasaporte*</p>
-            <input v-model="dniUser" class="input-dni" required="required" ref="dni" pattern="[0-9]{8}[A-Za-z]{1}]"
-              title="Debes poner 8 números y una letra.">
+            <input :style="inputDNI" v-model="dniUser" class="input-dni" required="required" ref="dni"
+              pattern="[0-9]{8}[A-Za-z]{1}" title="Debes poner 8 números y una letra." @input="validateInput('dni',
+              this.$refs.dni.validity.valid)">
           </div>
           <div class="input-container input-container-date">
             <p>Fecha de nacimiento*</p>
-            <input v-model="birthdateUser" class="input input-birthdate" ref="date" type="date" required="required">
+            <input :style="inputDate" v-model="birthdateUser" class="input input-birthdate" ref="date" type="date"
+              required="required" @input="validateInput('date',
+              this.$refs.date.validity.valid)">
           </div>
           <div>
             <p>Provincia*</p>
             <select>
-              <option v-for="e in provincias">{{ e }}</option>
+              <option v-for="e in provincias" :key="e">{{ e }}</option>
             </select>
           </div>
           <div class="input-container">
             <p>Localidad*</p>
-            <input class="input input-location" required="required" ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
-              title="Debes poner tu localidad.">
+            <input :style="inputLocation" v-model="locationUser" class="input input-location" required="required"
+              ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner tu localidad." @input="validateInput('location',
+              this.$refs.location.validity.valid)">
           </div>
         </div>
 
         <p>Dirección*</p>
-        <input v-model="directionUser" class="input-direction" ref="direction" required="required"
-          pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
+        <input :style="inputDirection" v-model="directionUser" class="input-direction" ref="direction"
+          required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección." @input="validateInput('direction',
+          this.$refs.direction.validity.valid)">
         <p>Número de teléfono*</p>
-        <input v-model="phoneUser" class="input-phone" required="required" ref="number" pattern="+?{,3}[0-9]{9,}"
-          title="Debes poner un numéro de teléfono valido.">
+        <input :style="inputPhone" v-model="phoneUser" class="input-phone" required="required" ref="number"
+          pattern="[0-9]{9,}" title="Debes poner un numéro de teléfono valido." @input="validateInput('number',
+          this.$refs.number.validity.valid)">
         <button @click.prevent="sendUserData" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
 
@@ -107,19 +115,11 @@ export default {
       inputPhone: "",
 
       inputTrue: {
-        padding: "0.5rem",
-        "border-radius": "0.75rem",
-        border: "var(--grey) 0.06rem solid",
-        "font-family": "var(--text-font)",
-        "font-size": "1rem",
+        border: "var(--grey) 0.1rem solid",
       },
 
       inputFalse: {
-        padding: "0.5rem",
-        "border-radius": "0.75rem",
-        border: "red 0.06rem solid",
-        "font-family": "var(--text-font)",
-        "font-size": "1rem",
+        border: "red 0.1rem solid",
       }
     }
 
@@ -314,7 +314,6 @@ select {
   margin-left: 0.5rem;
 }
 
-
 input {
   border: 0;
   min-width: 13rem;
@@ -322,12 +321,12 @@ input {
   min-height: 2.5rem;
   padding: 0 0.5rem;
   border-radius: 0.8rem;
-  border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
   transition: all 1s;
   font-size: 1rem;
-
 }
+
+;
 
 input:focus {
   color: var(--black);

@@ -84,7 +84,7 @@
 
         <div class="other-kompis">
             <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <CardGroup specie="Roedor" />
         </div>
     </section>
     <TheFooter />

@@ -89,7 +89,7 @@
 
         <div class="other-kompis">
             <p>Otros Kompis que encajan con tu búsqueda</p>
-            <CardGroup />
+            <CardGroup specie="Gato" />
         </div>
     </section>
     <TheFooter />
