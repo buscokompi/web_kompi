@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+sitemap: https://www.app.adoptaunkompi.com/
+Disallow: /index.html
