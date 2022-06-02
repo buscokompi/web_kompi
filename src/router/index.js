@@ -184,9 +184,9 @@ const router = createRouter({
       }
     },
     {
-      path: "/Login",
-      name: "Login",
-      component: () => import("../views/login.vue"),
+      path: "/LogIn",
+      name: "LogIn",
+      component: () => import("../views/LogIn.vue"),
       meta: {
         title: "Iniciar Sesión",
         metaTags: [
@@ -202,9 +202,9 @@ const router = createRouter({
       }
     },
     {
-      path: "/Signin",
-      name: "Signin",
-      component: () => import("../views/Signin.vue"),
+      path: "/SignIn",
+      name: "SignIn",
+      component: () => import("../views/SignIn.vue"),
       meta: {
         title: "Registrarse en Kompi",
         metaTags: [

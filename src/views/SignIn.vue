@@ -1,10 +1,78 @@
+<template class="body">
+  <div class="containerall">
+    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
+
+    <div class="container-login">
+
+      <RouterLink to="/">
+        <img class="logo" src="../assets/icons/version_negro_logo.svg">
+      </RouterLink>
+
+      <form class="card-login">
+
+        <div class="field">
+          <p class="email">E-mail*</p>
+          <input v-model="email" class="input-email" type="email" required="required"
+            placeholder="adoptaunkompi@gmail.com">
+        </div>
+
+
+        <div class="field">
+          <p>Contraseña*</p>
+          <div class="see">
+            <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
+              id="password" :type="type_1" required="required"
+              pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+            <div>
+              <input type="checkbox" id="toggle-password" />
+              <label @click="toggleClicked" for="toggle-password"></label>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-pass">Utiliza ocho caracteres como mínimo con una mayúscula, una minúscula, un número y
+          un caracter especial
+        </p>
+
+        <div class="field">
+          <p>Verifica tu contraseña <span>*</span></p>
+          <div class="see">
+            <input v-model="passwordCheck" name="password2" class="input-password input-email"
+              placeholder="Buscokompi6." id="password2" :type="type_2" required="required"
+              pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+            <div><input type="checkbox" id="toggle-password2" />
+              <label @click="toggleClicked2" for="toggle-password2"></label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div @click="signin">
+            <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
+          </div>
+        </div>
+        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
+        <div class="button btn-signin-google"><img class="google" src="../assets/icons/google_icono.svg">Regístrate
+          con Google</div>
+
+
+      </form>
+      <p class="register">¿Ya tienes una cuenta?
+        <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
+      </p>
+    </div>
+
+  </div>
+</template>
+
+
 <script>
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { initFirebase } from '@/firebase/firebase.js';
 import BaseButton from "../components/BaseButton.vue";
 
 export default {
-  name: "Singin",
+  name: "SignIn",
   components: { BaseButton },
   data() {
     return {
@@ -77,67 +145,6 @@ export default {
 }
 </script>
 
-<template class="body">
-  <div class="containerall">
-    <img class="img-dog-login" src="../assets/images/foto_perro.jpg">
-
-    <div class="container-login">
-
-      <RouterLink to="/">
-        <img class="logo" src="../assets/icons/version_negro_logo.svg">
-      </RouterLink>
-
-      <form class="card-login">
-
-        <div class="field">
-          <p class="email">E-mail*</p>
-          <input v-model="email" class="input-email" type="email" required="required"
-            placeholder="adoptaunkompi@gmail.com">
-        </div>
-
-
-        <div class="field">
-          <p>Contraseña*</p>
-          <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
-            id="password" :type="type_1" required="required"
-            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
-          <input type="checkbox" id="toggle-password" />
-          <label @click="toggleClicked" for="toggle-password"></label>
-        </div>
-
-        <p class="text-pass">Utiliza ocho caracteres como mínimo con una mayúscula, una minúscula, un número y
-          un caracter especial
-        </p>
-
-        <div class="field">
-          <p>Verifica tu contraseña <span>*</span></p>
-          <input v-model="passwordCheck" name="password2" class="input-password input-email" placeholder="Buscokompi6."
-            id="password2" :type="type_2" required="required"
-            pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
-          <div><input type="checkbox" id="toggle-password2" />
-            <label @click="toggleClicked2" for="toggle-password2"></label>
-          </div>
-        </div>
-
-        <div>
-          <div @click="signin">
-            <BaseButton text="Continuar" :value="buttonAlert" class="button btn-signin-email" />
-          </div>
-        </div>
-        <!--<div class="button btn-signin-email"><span>Continuar</span></div>-->
-        <div class="button btn-signin-google"><img class="google" src="../assets/icons/google_icono.svg">Regístrate
-          con Google</div>
-
-
-      </form>
-      <p class="register">¿Ya tienes una cuenta?
-        <RouterLink class="link" to="/Login">Inicia sesión</RouterLink>
-      </p>
-    </div>
-
-  </div>
-</template>
-
 <style scoped>
 .containerall {
   display: flex;
@@ -147,6 +154,12 @@ export default {
   justify-content: center;
   width: 100vw;
 
+}
+
+.logo {
+  width: 7rem;
+  margin: 3rem 0 1rem;
+  cursor: pointer;
 }
 
 .img-dog-login {
@@ -162,11 +175,6 @@ export default {
   width: 90%;
 }
 
-.logo {
-  width: 7rem;
-  margin: 3rem 0 1rem;
-  cursor: pointer;
-}
 
 
 .card-login {
@@ -177,7 +185,12 @@ export default {
   width: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
-  background-color: white;
+}
+
+.card-login p {
+  color: var(--black);
+  font-family: var(--text-font);
+
 }
 
 .field {
@@ -187,6 +200,7 @@ export default {
   align-items: center;
   text-align: left;
   height: 5rem;
+  transition: all 1s;
 }
 
 .field p {
@@ -196,20 +210,16 @@ export default {
 }
 
 
-.card-login p {
-  color: var(--black);
-  font-family: var(--text-font);
-
-}
 
 input {
   min-width: 13rem;
   width: 70vw;
-  height: 2.5rem;
+  min-height: 2.5rem;
   padding: 0 0.5rem;
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
+  transition: all 1s;
 }
 
 input:focus {
@@ -232,6 +242,7 @@ input:focus {
   justify-content: center;
   text-align: center;
   margin-top: 2rem;
+  transition: all 1s;
 }
 
 .button img {
@@ -277,22 +288,19 @@ input:focus {
 .link {
   font-family: var(--text-font);
   color: var(--green);
+  font-weight: 600;
 }
 
 .register {
   margin-top: 1rem;
 }
 
-
-
-
-
-#comment {
-  font-family: var(--text-font);
-  font-size: 0.8rem;
-}
-
 /* see first password */
+
+.see {
+  display: flex;
+  flex-direction: row;
+}
 
 #password,
 #password2 {
@@ -316,11 +324,12 @@ input:focus {
 
 #toggle-password+label,
 #toggle-password2+label {
+  display: inline-block;
   width: 20px;
   height: 20px;
   cursor: pointer;
-  margin: -1.8rem 0.9rem 0.5rem 0;
-  align-self: flex-end;
+  position: absolute;
+  margin: 0.7rem 0 0 -1.8rem;
 }
 
 .email {
@@ -334,10 +343,9 @@ input:focus {
 @media screen and (min-width: 767px) {
 
   .logo {
-    margin: 5rem 0 4rem
+    margin: 5rem 0 0
   }
 
-  -bottom: 2rem;
 
   .card-login {
     width: 75%;
@@ -427,10 +435,6 @@ input:focus {
     width: 32rem;
     background: var(--white);
     padding: 3.4rem 0;
-  }
-
-  .desktop {
-    margin-bottom: 0;
   }
 }
 </style>

@@ -10,14 +10,25 @@
       <!-- <img class="logo" src="../assets/icons/version_blanca_logo.svg" alt="Logotipo Kompi Blanco"> -->
       <!-- <DarkMode /> -->
       <div class="card-login">
-        <div class="login">
-          <p class="email">E-mail</p>
+
+        <div class="field">
+          <p class="email">E-mail*</p>
           <input class="input-email" placeholder="adoptaunkompi@gmail.com" v-model="email">
-          <p class="pass">Contraseña</p>
-          <input :type="fieldType" id="password" placeholder="BuscoKompi6." v-model="password" v-bind:class="visible" />
-          <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
-          <label for="toggle-password"></label>
         </div>
+
+        <div class="field">
+          <p>Contraseña*</p>
+          <div class="see">
+            <input :type="fieldType" id="password" placeholder="BuscoKompi6." v-model="password"
+              v-bind:class="visible" />
+            <div>
+              <input type="checkbox" id="toggle-password" @click.prevent="seePassword()" />
+              <label for="toggle-password"></label>
+            </div>
+          </div>
+        </div>
+
+
         <p class="forgot-pass">
           <RouterLink class="link" to="/ForgotPassword">¿Has olvidado tu contraseña?</RouterLink>
         </p>
@@ -134,61 +145,75 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 0;
-  background-color: #fff;
+  background-color: var(--white);
   justify-content: center;
-  height: 100vh;
+  width: 100vw;
+}
+
+.logo {
+  width: 7rem;
+  margin: 3rem 0 1rem;
+  cursor: pointer;
 }
 
 .img-dog-login {
   display: none;
 }
 
-.login {
-  width: 95%
-}
-
-.logo {
-  width: 8rem;
-  margin: 3rem;
-  cursor: pointer;
-}
 
 .container-login {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background: var(--lightgrey);
+  width: 90%;
 }
 
 .card-login {
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  width: 90%;
+  justify-items: center;
+  width: 100%;
   flex-direction: column;
   border-radius: 1.9rem;
 }
 
 .card-login p {
-  width: 75%;
-  min-width: 250px;
   color: var(--black);
   font-family: var(--text-font);
+
 }
 
-.email {
-
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+.field {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  height: 5rem;
+  transition: all 1s;
 }
+
+.field p {
+  width: 70vw;
+  margin: 1rem 0 0;
+  text-align: left;
+}
+
+
+
 
 input {
-  width: 95%;
-  height: 2.5rem;
+  min-width: 13rem;
+  width: 70vw;
+  min-height: 2.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.8rem;
   border: var(--grey) 0.1rem solid;
   font-family: var(--text-font);
-  font-size: 1rem;
+  transition: all 1s;
+
 }
 
 input:focus {
@@ -196,37 +221,45 @@ input:focus {
   outline-color: var(--black);
 }
 
-.pass {
-  margin-top: 2rem;
-  margin-bottom: -1px;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset;
 }
 
 .forgot-pass {
-  margin-top: 1rem;
-  font-family: var(--text-font);
-  font-size: 0.8rem;
+  width: 70vw;
+  margin-top: .5rem;
 }
 
 .forgot-pass a {
-  margin-left: 1rem;
+  font-family: var(--text-font);
+  font-size: 0.8rem;
   cursor: pointer;
   text-decoration: underline;
   color: var(--black);
 }
 
 .button {
-  width: 95%;
-  min-width: 250px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 3rem;
+  min-width: 13rem;
+  width: 70vw;
+  height: 2.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.8rem;
-  border: 0;
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
+  transition: all 1s;
   font-family: var(--text-font);
   font-weight: 600;
-  transition: background-color 0.7s ease;
+}
+
+.button img {
+  object-fit: contain;
+  margin: 0 0.4rem 0 0rem;
 }
 
 /* BOTONES LOGIN */
@@ -234,15 +267,11 @@ input:focus {
 .btn-login-email {
   background-color: var(--orange);
   margin-top: 2rem;
-  margin-bottom: 3rem;
   justify-content: center;
   cursor: pointer;
 }
 
-.button span {
-  color: var(--black);
-  pointer-events: none;
-}
+
 
 .btn-login-email:hover {
   background-color: #cc9320;
@@ -253,13 +282,12 @@ input:focus {
 }
 
 .btn-login-google {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  background-color: white;
-  border: var(--grey) 0.06rem solid;
-  margin-bottom: 1rem;
-  cursor: pointer;
+  background-color: var(--white);
+  color: var(--black);
+  margin: 1rem 0;
+  border: 0.1rem solid var(--grey);
+  font-family: var(--text-font);
+  font-size: 0.93rem;
 }
 
 
@@ -296,16 +324,14 @@ input:focus {
   height: 1.8rem;
 }
 
-p {
-  font-family: var(--text-font);
-  color: var(--black);
-  font-size: 0.9rem;
-}
 
 /* see password */
+.see {
+  display: flex;
+  flex-direction: row;
+}
 
 #password {
-  margin-top: 1rem;
   background-image: url("https://img.icons8.com/material-sharp/20/000000/visible.png");
   background-position: 97% center;
   background-repeat: no-repeat;
@@ -321,110 +347,110 @@ p {
 }
 
 #toggle-password+label {
-  text-indent: -9999px;
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-left: -32px;
   cursor: pointer;
+  position: absolute;
+  margin: 0.7rem 0 0 -1.8rem;
 }
 
 .register {
+  margin-top: 1rem;
   text-align: center;
 }
 
 /* --------------------------------------------------------------- MEDIA QUERIES ----------------------------------------------------------- */
-@media screen and (min-width: 500px) {
-  .register {
+@media screen and (min-width: 767px) {
+
+  .logo {
+    margin: 5rem 0 0
+  }
+
+
+  .card-login {
+    width: 75%;
+    padding: 4rem 0;
+    display: flex;
+    border-radius: 1.9rem;
+    background-color: var(--white);
+    gap: 0.5rem;
+  }
+
+  .button,
+  input,
+  .field p,
+  .forgot-pass {
+    width: 20rem;
+  }
+
+  .forgot-pass {
+    margin-top: 0;
+  }
+
+  .button:first-child {
     margin-top: 3rem;
   }
 
-
-  .button,
-  .card-login p {
-    width: 75%;
-  }
-
-  .login {
-    width: 75%;
-  }
-
-  .email,
-  .pass {
-    margin-left: 1rem;
-  }
-
-  .container-login {
-    width: 100%;
-  }
-
-  .card-login {
-    width: 60%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 1.9rem;
-    background-color: var(--white);
+  .register {
+    margin: 3rem 0;
   }
 }
 
 @media screen and (min-width: 1170px) {
   .img-dog-login {
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    width: 45%;
-    display: block
-  }
-
-  .login,
-  .button,
-  .card-login p {
-    width: 80%;
-  }
-
-  .card-login {
-    width: 60%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 1.9rem;
-    background-color: var(--white);
-  }
-
-  .btn-login-email {
-    margin: 3rem;
   }
 
   .app {
-    display: flex;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 3.5fr;
+    grid-template-rows: 1fr;
+  }
+
+  .container-login {
+    width: auto;
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  .card-login {
+    width: 70%;
+    gap: 0.7rem
+  }
+
+  .field {
+    width: 10vw;
+  }
+
+  .field:nth-child(4) p {
+    margin-top: 0.5rem;
   }
 
 
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1440px) {
+
+  .logo {
+    margin: 4rem 0 3rem;
+  }
+
+  .container-login {
+    background: var(--lightgrey)
+  }
+
 
   .card-login {
-    width: 55%;
-    height: 70%;
+    width: 32rem;
+    background: var(--white);
+    padding: 5.4rem 0;
   }
-
-  .email {
-    margin-top: 4rem;
-  }
-
-
-  .email,
-  .pass {
-    margin-left: 1rem;
-  }
-
-
-  .register {
-    margin-top: 25px;
-  }
-
 
 
 }
