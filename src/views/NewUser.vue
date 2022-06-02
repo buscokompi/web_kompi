@@ -10,48 +10,43 @@
 
       <form class="card-login">
         <!-- <p class="p-title">Regístrate</p> -->
-        <p>Nombre <span>*</span></p>
-        <input :style="inputName" v-model="nameUser" class="input-name" ref="name" required="required"
-          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra."
-          @input="validateInput('name', this.$refs.name.validity.valid)">
+        <p>Nombre*</p>
+        <input v-model="nameUser" class="input-name" ref="name" required="required"
+          pattern="[a - zA - ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
 
-        <p>Apellidos <span>*</span></p>
-        <input :style="inputSurname" v-model="surnameUser" class="input-surname" required="required" ref="subname"
-          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra."
-          @input="validateInput('surname', this.$refs.subname.validity.valid)">
+        <p>Apellidos*</p>
+        <input v-model="surnameUser" class="input-surname" required="required" ref="subname"
+          pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner más de una letra.">
 
-        <div class=" double-input">
+        <div class="double-input">
           <div class="input-container">
-            <p>DNI, NIE, Pasaporte <span>*</span></p>
-            <input :style="inputDNI" v-model="dniUser" class="input-dni" required="required" ref="dni"
-              pattern="[0-9]{8}[A-Za-z]{1}" title="Debes poner 8 números y una letra."
-              @input="validateInput('dni', this.$refs.dni.validity.valid)">
+            <p>DNI, NIE, Pasaporte*</p>
+            <input v-model="dniUser" class="input-dni" required="required" ref="dni" pattern="[0-9]{8}[A-Za-z]{1}]"
+              title="Debes poner 8 números y una letra.">
           </div>
           <div class="input-container input-container-date">
-            <p>Fecha de nacimiento <span>*</span></p>
-            <input :style="inputDate" v-model="birthdateUser" class="input input-birthdate" ref="date" type="date"
-              required="required">
+            <p>Fecha de nacimiento*</p>
+            <input v-model="birthdateUser" class="input input-birthdate" ref="date" type="date" required="required">
           </div>
           <div>
-            <p>Provincia <span>*</span></p>
-            <SelectOptions :options="provincias" class="select" v-model="provinceUser"></SelectOptions>
+            <p>Provincia*</p>
+            <select>
+              <option v-for="e in provincias">{{ e }}</option>
+            </select>
           </div>
           <div class="input-container">
-            <p>Localidad <span>*</span></p>
-            <input :style="inputLocation" class="input input-location" v-model="locationUser" required="required"
-              ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}" title="Debes poner tu localidad."
-              @input="validateInput('location', this.$refs.location.validity.valid)">
+            <p>Localidad*</p>
+            <input class="input input-location" required="required" ref="location" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}"
+              title="Debes poner tu localidad.">
           </div>
         </div>
 
-        <p>Dirección <span>*</span></p>
-        <input :style="inputDirection" v-model="directionUser" class="input-direction" ref="direction"
-          required="required" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección."
-          @input="validateInput('direction', this.$refs.direction.validity.valid)">
-        <p>Número de teléfono <span>*</span></p>
-        <input :style="inputPhone" v-model="phoneUser" class="input-phone" required="required" ref="number"
-          pattern="[0-9]{9,}" title="Debes poner un numéro de teléfono valido."
-          @input="validateInput('number', this.$refs.number.validity.valid)">
+        <p>Dirección*</p>
+        <input v-model="directionUser" class="input-direction" ref="direction" required="required"
+          pattern="/?{,1}[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]{2,}[0-9\s]{1,}" title="Debes poner tu dirección.">
+        <p>Número de teléfono*</p>
+        <input v-model="phoneUser" class="input-phone" required="required" ref="number" pattern="+?{,3}[0-9]{9,}"
+          title="Debes poner un numéro de teléfono valido.">
         <button @click.prevent="sendUserData" type="submit"
           class="button btn-login-email btn-continue">Continuar</button>
 
