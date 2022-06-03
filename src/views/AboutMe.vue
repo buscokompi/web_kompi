@@ -1,125 +1,114 @@
 <template>
     <TheHeader />
-    <div class="container-all">
-        <div class="main">
-            <div class="container">
-                <div class="header">
-                    <h1>Sobre nosotros</h1>
-                    <p>Última Actualización 04/06/2022</p>
-                </div>
-                <div class="mision">
-                    <h2>Nuestra misión</h2>
-                    <p>Esta web ha sido creada con la finalidad de ...</p>
+    <div class="body">
+        <main>
+            <div>
+                <h1>Nuestra misión</h1>
+                <p>Kompi es una plataforma gratuita dedicada a la adopción de animales con cobertura total dentro del
+                    territorio español. Destinada a los amantes de los animales o aquellos que sueñan con tener un
+                    compañero
+                    de vida peludo, ponemos a su disposición un buscador capaz de filtrar por características físicas o
+                    preferencias sobre el animal que se desea adoptar.
 
-                    <p>No compres, adopta. Ese es nuestro lema y nunca nos cansaremos de repetirlo. Miles de
-                        animales
-                        son abandonados cada año en España.</p>
-                </div>
+                    A diferencia de otras páginas de adopción, nosotros valoramos su privacidad. Por lo que la gestión
+                    de
+                    datos se tramitará de informa interna. Es el motivo por el que exigimos a nuestros usuarios que se
+                    registren previamente.</p>
             </div>
+        </main>
 
-            <div class="containerteam">
+        <section>
+            <div class="title">
                 <h2>Nuestro equipo</h2>
-                <div class="parent">
-
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_atte.png" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Atteneri</p>
-                            <p class="textabout">González Mendoza</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/atteneri-gonzalez-mendoza/" target="_blank"> <img
-                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/AtteneriG" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
+                <p>Proyecto de Desarrollo Frontend por alumnos de la EOI</p>
+            </div>
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_atte.png" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Atteneri</p>
+                    <p class="name">González Mendoza</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/atteneri-gonzalez-mendoza/" target="_blank"> <img
+                                class="icon" src="../assets/icons/linkedin-svgrepo-com.svg" alt="icono linkedin"></a>
+                        <a href="https://github.com/AtteneriG" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
                     </div>
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_alexis.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Alexis</p>
-                            <p class="textabout">Plettener Nguyen</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/alexis-plettener-nguyen/" target="_blank"> <img
-                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/alexxispn" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_jose.png" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Jose Fernando</p>
-                            <p class="textabout">Álvarez Romero</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/jose-fernando-alvarez/" target="_blank"> <img
-                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/JoseFerAlvarez" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_juan.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Juan Gabriel</p>
-                            <p class="textabout">Rivero Martel</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/juan-gabriel-rivero-martel-7ab0a6ba/"
-                                    target="_blank"> <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/JuanGabrielRivero" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_kevin.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Kevin</p>
-                            <p class="textabout">Jerónimo Martín</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/kevin-jer%C3%B3nimo-mart%C3%ADn-449594231/"
-                                    target="_blank"> <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/kevichu4" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <img class="foto" src="../assets/images/foto_antonio.jpg" alt="foto Juan">
-                        <div class="text-card">
-                            <p class="textabout">Antonio</p>
-                            <p class="textabout">Bogallo Fernandez</p>
-                            <div class="rrhh">
-                                <a href="https://www.linkedin.com/in/antonio-bogallo/" target="_blank"> <img
-                                        class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
-                                        alt="icono linkedin"></a>
-                                <a href="https://github.com/AntonioBogallo" target="_blank"> <img class="icon"
-                                        src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
 
-            <TheFooter />
-        </div>
-    </div>
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_alexis.jpg" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Alexis</p>
+                    <p class="name">Plettener Nguyen</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/alexis-plettener-nguyen/" target="_blank"> <img
+                                class="icon" src="../assets/icons/linkedin-svgrepo-com.svg" alt="icono linkedin"></a>
+                        <a href="https://github.com/alexxispn" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_jose.png" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Jose Fernando</p>
+                    <p class="name">Álvarez Romero</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/jose-fernando-alvarez/" target="_blank"> <img class="icon"
+                                src="../assets/icons/linkedin-svgrepo-com.svg" alt="icono linkedin"></a>
+                        <a href="https://github.com/JoseFerAlvarez" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_juan.jpg" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Juan Gabriel</p>
+                    <p class="name">Rivero Martel</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/juan-gabriel-rivero-martel-7ab0a6ba/" target="_blank">
+                            <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg" alt="icono linkedin"></a>
+                        <a href="https://github.com/JuanGabrielRivero" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_kevin.jpg" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Kevin</p>
+                    <p class="name">Jerónimo Martín</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/kevin-jer%C3%B3nimo-mart%C3%ADn-449594231/"
+                            target="_blank"> <img class="icon" src="../assets/icons/linkedin-svgrepo-com.svg"
+                                alt="icono linkedin"></a>
+                        <a href="https://github.com/kevichu4" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="foto" src="../assets/images/foto_antonio.jpg" alt="foto Juan">
+                <div class="text-card">
+                    <p class="name">Antonio</p>
+                    <p class="name">Bogallo Fernandez</p>
+                    <div class="rrhh">
+                        <a href="https://www.linkedin.com/in/antonio-bogallo/" target="_blank"> <img class="icon"
+                                src="../assets/icons/linkedin-svgrepo-com.svg" alt="icono linkedin"></a>
+                        <a href="https://github.com/AntonioBogallo" target="_blank"> <img class="icon"
+                                src="../assets/icons/github-svgrepo-com.svg" alt="icono github"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <TheFooter />
 </template>
 
 <script>
@@ -135,58 +124,67 @@ export default {
 </script>
 
 <style scoped>
-.header {
+main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     background-color: var(--orange);
     width: 100vw;
-    height: 85vh;
+    height: 100vh;
+}
+
+main div {
+    width: 80%;
+    margin-top: -15rem;
+}
+
+main p {
+    color: var(--black);
+    margin-bottom: 5rem;
+    width: 80%;
 }
 
 h1 {
     font-family: var(--text-font);
+    color: var(--black);
     font-size: 1.6rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
-
     font-size: 1.6rem;
     text-align: center;
+    margin: 3rem 0 0.5rem;
 }
 
-.mision {
-    width: 100vw;
-    height: 50vh;
+p {
+    font-family: var(--text-font);
+
+}
+
+
+section {
+    background: var(--lightgrey);
+    min-height: 65vh;
+    color: var(--black);
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    background-color: var(--white);
-
 }
 
-.parent {
-    display: grid;
-    justify-items: center;
-    justify-content: center;
-    grid-template-columns: repeat(1, 30rem);
-    grid-template-rows: repeat(2, 1fr);
+.title {
+    margin-bottom: 3.5rem;
 }
 
-.containerteam {
-    background: var(--green);
-}
 
 
 .card {
     display: flex;
     flex-direction: column;
-    width: 15rem;
-    height: 23rem;
-    background: rgb(255, 247, 228);
+    width: 10rem;
+    height: 15rem;
     background: linear-gradient(0deg, rgba(255, 247, 228, 1) 0%, rgba(245, 245, 245, 1) 48%, rgba(255, 255, 255, 1) 100%);
     border-radius: 20px;
     align-items: center;
@@ -195,27 +193,37 @@ h2 {
     margin-bottom: 3rem;
 }
 
-.textabout {
-    text-align: center;
-    font-family: var(--text-font);
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-.icon {
-    width: 2rem;
-    height: 2rem;
-    margin-top: 1rem;
+.card:last-child {
+    margin-bottom: 7rem;
 }
 
 .foto {
-    width: 10.5rem;
-    height: 10.5rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.container-all {
+.name {
+    text-align: center;
+    font-family: var(--text-font);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 1rem;
+    transition: 0.7s;
+    filter: brightness(0) saturate(100%) invert(16%) sepia(1%) saturate(5616%) hue-rotate(341deg) brightness(99%) contrast(77%);
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.body {
     width: 100%
 }
 
@@ -228,8 +236,8 @@ h2 {
 img {
     margin: 0px 5%;
     margin-bottom: 1rem;
-    width: 90%;
-    height: 90%;
+    width: 70%;
+    height: 70%;
 }
 
 .gridcontainer {
@@ -250,88 +258,121 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2.6rem;
+    gap: 1.8rem;
 }
 
-.icon {
-    margin-top: 2rem;
-    width: 1.8rem;
-}
 
 /*Card alternativa*/
 
 
 
-@media screen and (min-width: 767px) {}
+@media screen and (min-width: 767px) {
+    main {
+        justify-content: center;
+        height: 55vh;
+    }
+
+
+
+    main p {
+        margin-bottom: 0;
+        font-size: 1rem;
+
+    }
+
+    main div {
+        width: 80%;
+        margin-top: 7rem;
+    }
+}
 
 @media screen and (min-width: 1170px) {
-
-    .parent {
+    section {
         display: grid;
-        grid-template-columns: repeat(2, 30rem);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 0.3fr repeat(2, 1fr);
+        justify-items: center;
+        padding-bottom: 5rem;
+    }
 
+    .title {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .card:last-child {
+        margin-bottom: 3rem;
     }
 }
 
 
 @media screen and (min-width: 1300px) {
-    .gridcontainer {
-        width: 80%;
-        background-color: var(--orange);
-        margin: 5rem 15rem;
-        display: grid;
-        grid-template-columns: repeat(2, 31rem);
-        grid-template-rows: repeat(2, 30rem);
-        justify-items: stretch;
-        align-items: center;
-        justify-content: center;
+
+    main p {
+        width: 65%;
+    }
+
+    .card:nth-child(2) {
+        justify-self: flex-end;
+    }
+
+    .card:nth-child(4) {
+        justify-self: baseline;
+    }
+
+    .card:nth-child(5) {
+        justify-self: flex-end;
+    }
+
+    .card:nth-child(7) {
+        justify-self: baseline;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    section {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 0.3fr 1fr;
+    }
+
+    .title {
+        grid-area: 1 / 1 / 2 / 9;
+    }
+
+    .card:nth-child(1) {
+        justify-self: center;
+        grid-area: 1 / 1 / 2 / 9;
+    }
+
+    .card:nth-child(2) {
+        justify-self: center;
+        grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .card:nth-child(3) {
+        justify-self: center;
+        grid-area: 2 / 3 / 3 / 4;
+    }
+
+    .card:nth-child(4) {
+        justify-self: center;
+        grid-area: 2 / 4 / 3 / 5;
+    }
+
+    .card:nth-child(5) {
+        justify-self: center;
+        grid-area: 2 / 5 / 3 / 6;
 
     }
 
-    .parent {
-        display: grid;
-        grid-template-columns: repeat(3, 35rem);
-        grid-template-rows: repeat(2, 1fr);
-
+    .card:nth-child(6) {
+        justify-self: center;
+        grid-area: 2 / 6 / 3 / 7;
     }
 
-    .box h3 {
-        margin-top: 0rem;
+    .card:nth-child(7) {
+        justify-self: center;
+        grid-area: 2 / 7 / 3 / 8;
+
     }
-
-
-    .order1 {
-        order: 1;
-    }
-
-    .order2 {
-        order: 2;
-    }
-
-    .order3 {
-        order: 4;
-    }
-
-    .order4 {
-        order: 3;
-    }
-
-    img {
-        margin: 0px 0%;
-        margin-bottom: 1rem;
-        width: 100%;
-        height: 100%;
-    }
-
-    .text {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-    }
-
 }
 </style>
