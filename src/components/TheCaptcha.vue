@@ -96,13 +96,14 @@ export default {
         .then((result) => {
           this.$swal({
             title: "¡Gracias!",
-            text: "Ya le hemos comunicado al cuidador del animal tu interés sobre el animal.",
+            text: "Ya le hemos comunicado al cuidador tu interés sobre el animal.",
             icon: "success",
             timer: 1500,
             showConfirmButton: false,
           });
+          this.$router.push("/FilterAnimals");
         }, (error) => {
-          console.log("No va", error.text);
+          this.$swal("Error", "Ha habido un problema con la verificación. Vuelva a intentarlo más tarde", "error");
         });
     },
 

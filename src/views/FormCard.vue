@@ -47,7 +47,7 @@ export default {
 </script>
 <style scoped>
 main {
-    margin: 6rem 1rem 1rem 2rem;
+    margin: 6rem 1rem 1rem 0;
 }
 
 main p {
@@ -58,12 +58,14 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 h1 {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 1.3rem;
+    margin-top: 4rem;
     margin-bottom: 0.5rem;
 }
 

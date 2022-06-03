@@ -14,9 +14,7 @@
                 datos se tramitará de informa interna. Es el motivo por el que exigimos a nuestros usuarios que se
                 registren previamente.</p>
 
-            <p>A diferencia de otras páginas de adopción, nosotros valoramos su privacidad. Por lo que la gestión de
-                datos se tramitará de informa interna. Es el motivo por el que exigimos a nuestros usuarios que se
-                registren previamente.</p>
+            <p>Asegurarnos que e</p>
         </div>
         <div class="steps">
 

@@ -54,7 +54,7 @@ $vs-border-radius: 0.3rem !default;
 $vs-border-color: map_get($vs-colors, 'lightest') !default;
 
 //  Component Controls: Clear, Open Indicator
-$vs-controls-color: var(--green) !important;
+$vs-controls-color: var(--grey) !important;
 $vs-controls-size: 1 !default;
 $vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
 
@@ -79,7 +79,7 @@ input {
 
 .vs__dropdown-toggle {
     width: 15.5rem;
-    border: 0.15rem solid var(--green) !important;
+    border: 0.15rem solid var(--grey) !important;
 }
 
 .vs__dropdown-menu {
@@ -95,9 +95,9 @@ color: var(--black) !important;
 
 .vs__dropdown-option {
     font-family: var(--text-font);
-
+    font-weight: 500;
     padding: 1rem !important;
-    color: var(--green) !important;
+    color: var(--black) !important;
 
 }
 
@@ -116,7 +116,8 @@ color: var(--black) !important;
 
 .vs__selected {
     font-family: var(--text-font);
-    color: var(--green) !important;
+    color: var(--black) !important;
+    font-weight: 500;
 }
 
 @media screen and (min-width: 1170px) {
