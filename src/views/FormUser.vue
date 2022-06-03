@@ -1,3 +1,46 @@
+<template>
+    <section>
+        <RouterLink to="/">
+            <img src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
+        </RouterLink>
+        <div class="form-user-container">
+            <h1>¡Encuentra a <br> tu mascota ideal!</h1>
+            <p class="subtitle">Para ello, cuéntanos <br> un poco más sobre ti</p>
+            <div class="questions">
+                <!--<SelectForm v-for="answers in answersForm" :key="answers" :label1="answers.text1"
+                    :formOptions="answers.options" v-model="questions[answers]" @option:selected="onChange" />-->
+
+                <div v-for="(answer, index) in answers" :key="answer">
+                    <p>{{ answers[index].text1 }}
+                        <SelectOptions :options="answers[index].options" v-model="questions[index]"
+                            @option:selected="onChange(questions[index])" />
+                    </p>
+                </div>
+
+                <div class="rules">
+                    <p>Por último y a título informativo sepa que existen una serie de normas y obligaciones legales
+                        básicas:</p>
+                    <ul>
+                        <li>Vacunación / Identificación / Desparasitación</li>
+                        <li>Con algunas razas, tener licencia municipal para la tenencia e inscribirlo en el
+                            Registro Municipal de animales potencialmente peligrosos.</li>
+                        <li>Tratarlos humanitariamente.</li>
+                        <li>Disponer de un espacio apropiado, cómodo y cerrado sin opción de que el animal se pueda
+                            escapar o se haga daño.</li>
+                        <li>Mantenerlos en buenas condiciones higiénico-sanitarias.</li>
+                        <li>Proporcionarles alimentación y agua en consonancia al tipo de animal.</li>
+                        <li>Responsabilizarse de los daños que ocasionen.</li>
+                    </ul>
+                    <p class="question-checkbox">¿Está de acuerdo usted y puede cumplir con dichas obligaciones?</p>
+                    <label class="checkbox"><input ref="checkbox" type="checkbox" value="checkbox"> Estoy de
+                        acuerdo</label>
+                </div>
+            </div>
+            <BaseButton class="button" ref="basebutton" url="" text="Iniciar búsqueda" @click="changeView" />
+        </div>
+    </section>
+</template>
+
 <script>
 import SelectForm from '../components/SelectForm.vue';
 import SelectOptions from '../components/SelectOptions.vue';
@@ -65,68 +108,41 @@ export default {
                 answer15: this.questions[14],
             })
         },
-        onChange() {
-            console.log(this.userEmail);
+        changeView() {
+            if (this.$refs.checkbox.checked) {
+                this.addAnswerDataBase();
+                this.$swal({
+                    title: "¡Gracias!",
+                    text: "Los datos han sido guardados correctamente.",
+                    icon: "success",
+                    timer: 1800,
+                    showConfirmButton: false,
+
+                })
+                this.$router.push("/FilterAnimals");
+            } else {
+                this.$swal("Error", "Selecciona la casilla 'Estoy de acuerdo' para poder continuar", "error");
+            }
         },
+
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
         checkUser() {
             const auth = getAuth();
 
             auth.onAuthStateChanged((user) => {
                 if (user) {
                     this.userEmail = user.email;
-                    console.log(this.userEmail);
+
                 } else {
-                    console.log("el usuario no esta logueado");
+                    this.$router.push("/Login");
                 }
             });
-        }
+        },
+
     },
 }
 
 </script>
-
-<template>
-    <section>
-        <RouterLink to="/">
-            <img src="../assets/icons/version_negro_logo.svg" alt="Logotipo Kompi">
-        </RouterLink>
-        <div class="form-user-container">
-            <h1>¡Encuentra a <br> tu mascota ideal!</h1>
-            <p class="subtitle">Para ello, cuéntanos <br> un poco más sobre ti</p>
-            <div class="questions">
-                <!--<SelectForm v-for="answers in answersForm" :key="answers" :label1="answers.text1"
-                    :formOptions="answers.options" v-model="questions[answers]" @option:selected="onChange" />-->
-
-                <div v-for="(answer, index) in answers" :key="answer">
-                    <p>{{ answers[index].text1 }}
-                        <SelectOptions :options="answers[index].options" v-model="questions[index]"
-                            @option:selected="onChange(questions[index])" />
-                    </p>
-                </div>
-
-                <div class="rules">
-                    <p>Por último y a título informativo sepa que existen una serie de normas y obligaciones legales
-                        básicas:</p>
-                    <ul>
-                        <li>Vacunación / Identificación / Desparasitación</li>
-                        <li>Con algunas razas, tener licencia municipal para la tenencia e inscribirlo en el
-                            Registro Municipal de animales potencialmente peligrosos.</li>
-                        <li>Tratarlos humanitariamente.</li>
-                        <li>Disponer de un espacio apropiado, cómodo y cerrado sin opción de que el animal se pueda
-                            escapar o se haga daño.</li>
-                        <li>Mantenerlos en buenas condiciones higiénico-sanitarias.</li>
-                        <li>Proporcionarles alimentación y agua en consonancia al tipo de animal.</li>
-                        <li>Responsabilizarse de los daños que ocasionen.</li>
-                    </ul>
-                    <p class="question-checkbox">¿Está de acuerdo usted y puede cumplir con dichas obligaciones?</p>
-                    <label class="checkbox"><input type="checkbox" value="checkbox"> Estoy de acuerdo</label>
-                </div>
-            </div>
-            <BaseButton class="button" url="" text="Iniciar búsqueda" @click="addAnswerDataBase()" />
-        </div>
-    </section>
-</template>
-
 
 <style lang="scss" scoped>
 section {

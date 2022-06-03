@@ -25,7 +25,7 @@ export default {
     linear-gradient(0deg,
       rgb(0 0 0 / 40%),
       rgb(0 0 0 / 40%)),
-    url("../assets/images/fondo_web.jpg");
+    url("../assets/images/fondo_web.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

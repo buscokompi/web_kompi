@@ -4,8 +4,7 @@
     <div class="information">
 
       <div class="column two">
-        <RouterLink to="./"> <img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo" width="65">
-        </RouterLink>
+        <a href="./index.html"><img src="../assets/icons/version_blanca_logo.svg" alt="Kompi logo" width="65"></a>
         <a href="mailto:adoptaunkompi@gmail.com" class="mail">adoptaunkompi@gmail.com</a>
         <div class="social">
           <a href="https://www.facebook.com/adoptaunkompi/"><img src="../assets/icons/icono_facebook.svg" width="21"
@@ -20,9 +19,9 @@
       <div class="column">
         <p>Información</p>
         <RouterLink to="/AboutMe">Sobre nosotros</RouterLink>
-        <RouterLink to="to=./src/views/FilterAnimals">Busca una mascota</RouterLink>
-        <RouterLink to="./src/views/Adoptar">Adopta una mascota</RouterLink>
-        <RouterLink to="./src/views/Adopcion">Publica una mascota</RouterLink>
+        <RouterLink to="/FilterAnimals">Busca una mascota</RouterLink>
+        <RouterLink to="/AdoptInfo">Adopta una mascota</RouterLink>
+        <RouterLink to="/GiveAdoptionInfo">Publica una mascota</RouterLink>
       </div>
 
       <div class="column three">
@@ -47,6 +46,9 @@ export default {
   name: "TheFooter",
 
 }
+
+
+
 
 </script>
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [build]
 command = 'npm run build'
 functions = 'functions'
@@ -7,3 +8,9 @@ publish = 'build'
   from = "/*"
   to = "/index.html"
   status = 200
+=======
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+>>>>>>> main

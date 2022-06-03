@@ -1,15 +1,13 @@
 <template>
     <TheHeader />
     <section>
-        <div class="white">
-            <main>
-                <h1>Ficha animal</h1>
-                <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal.
-                    Puedes
-                    editarla en cualquier momento.</p>
-            </main>
-            <BaseForm />
-        </div>
+        <main>
+            <h1>Ficha animal</h1>
+            <p>Completa el formulario y presiona el botón ‘Guardar’ para crear y publicar la ficha de tu animal.
+                Puedes
+                editarla en cualquier momento.</p>
+        </main>
+        <BaseForm />
     </section>
     <TheFooter />
 </template>
@@ -17,6 +15,7 @@
 import BaseForm from '../components/BaseForm.vue';
 import TheHeader from '../components/TheHeader.vue';
 import TheFooter from '../components/TheFooter.vue';
+import { getAuth } from 'firebase/auth';
 export default {
     name: "FormCard",
     components: {
@@ -24,38 +23,49 @@ export default {
         TheHeader,
         TheFooter
     },
+    mounted() {
+        this.checkUser();
+    },
+    methods: {
+        //Bloquea el acceso y redirige a iniciar sesión si el usuario no está logueado
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.userEmail = user.email;
+
+                } else {
+                    this.$router.push("/Login");
+                }
+            });
+        },
+    }
 }
+
+
 </script>
 <style scoped>
+main {
+    margin: 6rem 1rem 1rem 0;
+}
+
+main p {
+    width: 30rem;
+}
+
 section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: var(--lightgrey);
-}
 
-.white {
-    margin: 2rem 0 0;
-    background: var(--white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5rem 0 2rem;
-    border-radius: 0.8rem;
-}
-
-main {
-    margin: 0 1rem 2rem 2rem
-}
-
-main p {
-    width: 90%;
 }
 
 h1 {
     color: var(--black);
     font-family: var(--text-font);
     font-size: 1.3rem;
+    margin-top: 4rem;
     margin-bottom: 0.5rem;
 }
 
@@ -68,11 +78,6 @@ p {
 
 
 @media screen and (min-width: 767px) {
-    .white {
-        margin: 8rem 0;
-        padding: 5rem 3rem 2rem;
-    }
-
     main {
         width: 40rem;
     }
@@ -82,22 +87,11 @@ p {
     }
 }
 
-@media screen and (min-width: 1170px) {
-    .white {
-        padding: 5rem 7rem 5rem;
-    }
-
-    main {
-        width: 42rem;
-    }
-
-}
+@media screen and (min-width: 1170px) {}
 
 @media screen and (min-width: 1300px) {
     main {
-        width: 60rem;
-        margin-bottom: 5rem;
-
+        width: 55rem;
     }
 }
 </style>

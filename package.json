@@ -34,11 +34,15 @@
   "license": "ISC",
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+<<<<<<< HEAD
     "@innologica/vue-dropdown-menu": "^0.1.4",
     "emailjs": "^4.0.0",
+=======
+>>>>>>> main
     "firebase": "^9.6.11",
     "pinia": "^2.0.13",
     "sass": "^1.52.1",
+    "swiper": "^8.2.2",
     "v-smooth-scroll": "^2.0.0-beta.2",
     "vue": "^3.2.33",
     "vue-recaptcha": "^2.0.2",

@@ -2,7 +2,13 @@
 @import '../../node_modules/vue-select/src/scss/global/_variables.scss';
 
 $swal2-font: var(--text-font);
+$swal2-title-font-size: 1.5em !important;
 $swal2-button-font-weight: 600;
+$swal2-title-margin: 1rem !important;
+$swal2-success: var(--green) !important;
+$swal2-success-border: var(--green) !important;
+$swal2-error: #D11149 !important;
+
 //popup
 $swal2-background: var(--white);
 $swal2-border-radius: 2rem;
@@ -48,7 +54,7 @@ $vs-border-radius: 0.3rem !default;
 $vs-border-color: map_get($vs-colors, 'lightest') !default;
 
 //  Component Controls: Clear, Open Indicator
-$vs-controls-color: var(--green) !important;
+$vs-controls-color: var(--grey) !important;
 $vs-controls-size: 1 !default;
 $vs-controls-deselect-text-shadow: 0 1px 0 #fff !default;
 
@@ -73,7 +79,7 @@ input {
 
 .vs__dropdown-toggle {
     width: 15.5rem;
-    border: 0.15rem solid var(--green) !important;
+    border: 0.15rem solid var(--grey) !important;
 }
 
 .vs__dropdown-menu {
@@ -88,8 +94,10 @@ color: var(--black) !important;
 }
 
 .vs__dropdown-option {
+    font-family: var(--text-font);
+    font-weight: 500;
     padding: 1rem !important;
-    color: var(--green) !important;
+    color: var(--black) !important;
 
 }
 
@@ -107,7 +115,9 @@ color: var(--black) !important;
 }
 
 .vs__selected {
-    color: var(--green) !important;
+    font-family: var(--text-font);
+    color: var(--black) !important;
+    font-weight: 500;
 }
 
 @media screen and (min-width: 1170px) {
