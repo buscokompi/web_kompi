@@ -70,7 +70,7 @@
             </div>
         </form>
         <div class="save">
-            <BaseButton @click="addAnimal" text="Guardar" />
+            <BaseButton @click="checkUser()" text="Guardar" />
         </div>
     </div>
 </template>
@@ -179,7 +179,8 @@ export default {
                 Esterilizacion: "Cualquiera",
                 Certificado_ppp: "Cualquiera",
                 Descripcion: "",
-                Imagen1: ""
+                Imagen1: "",
+                Propietario: ""
             },
             archivo: null,
 
@@ -197,6 +198,20 @@ export default {
 
     },
     methods: {
+        checkUser() {
+            const auth = getAuth();
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    this.data.Propietario = "/usuarios/" + user.email;
+                    this.addAnimal();
+
+                } else {
+                    this.$router.push("/Login");
+                }
+            });
+        },
+
         async addAnimal() {
             this.subirFoto();
             const imagen1 = "gs://web-kompi.appspot.com/animals/" + this.archivo.name;
