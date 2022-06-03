@@ -333,11 +333,12 @@ p {
 input,
 .textarea {
     height: 1.85rem;
+    width: 15rem;
     appearance: none;
     border-radius: 0.3rem;
     background: var(--lightgrey);
     font-family: var(--text-font);
-    width: 15rem;
+    font-size: 1rem;
     border: 0.15rem solid var(--grey);
 }
 

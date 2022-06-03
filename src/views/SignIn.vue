@@ -11,14 +11,14 @@
       <form class="card-login">
 
         <div class="field">
-          <p class="email">E-mail<span>*</span></p>
+          <p class="email">E-mail*</p>
           <input v-model="email" class="input-email" type="email" required="required"
             placeholder="adoptaunkompi@gmail.com">
         </div>
 
 
         <div class="field">
-          <p>Contraseña<span>*</span></p>
+          <p>Contraseña*</p>
           <div class="see">
             <input v-model="password" name="password" class="input-password input-email" placeholder="Buscokompi6."
               id="password" :type="type_1" required="required"
@@ -35,7 +35,7 @@
         </p>
 
         <div class="field">
-          <p>Verifica tu contraseña<span>*</span></p>
+          <p>Verifica tu contraseña*</p>
           <div class="see">
             <input v-model="passwordCheck" name="password2" class="input-password input-email"
               placeholder="Buscokompi6." id="password2" :type="type_2" required="required"

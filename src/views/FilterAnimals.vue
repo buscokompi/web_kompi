@@ -442,10 +442,7 @@ export default {
     font-size: 1.5rem;
     margin-bottom: 2rem;
   }
-
 }
-
-
 
 @media screen and (min-width: 1170px) {
   .home {
@@ -455,7 +452,6 @@ export default {
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
-
   }
 
   .home h1 {
@@ -504,6 +500,11 @@ export default {
   .group {
     column-gap: 5rem;
   }
+
+  .missing {
+    display: contents
+  }
+
 }
 
 @media screen and (min-width: 1300px) {
@@ -532,7 +533,6 @@ export default {
   .group {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 3rem;
-
   }
 
   .results {
