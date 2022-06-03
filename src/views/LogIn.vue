@@ -99,9 +99,7 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          alert("Login invalido");
+          this.$swal("Error", "El email o contraseña son incorrectos.", "error");
         });
     },
     async loginGoogle() {
@@ -117,11 +115,7 @@ export default {
           const errorMessage = error.message;
           const email = error.email;
           const credential = GoogleAuthProvider.credentialFromError(error);
-          console.log(errorCode);
-          console.log(errorMessage);
-          console.log(email);
-          console.log(credential);
-          alert("Login invalido");
+          this.$swal("Error", "El email o contraseña son incorrectos.", "error");
         });
     },
     seePassword() {
@@ -412,7 +406,7 @@ input:-webkit-autofill:active {
   }
 
   .register {
-    margin: 3rem 0;
+    margin: 3rem 0 0;
   }
 }
 
@@ -420,7 +414,7 @@ input:-webkit-autofill:active {
   .img-dog-login {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
   }
 
@@ -468,7 +462,7 @@ input:-webkit-autofill:active {
   .card-login {
     width: 32rem;
     background: var(--white);
-    padding: 5rem 3rem;
+    padding: 7rem 3rem;
     gap: 1.5rem
   }
 

@@ -320,8 +320,7 @@ p {
     background: var(--lightgrey);
     padding: 3rem 0.5rem;
     width: 100vw;
-
-
+    margin-bottom: 5rem;
 }
 
 .formulario {
@@ -339,17 +338,13 @@ input,
     background: var(--lightgrey);
     font-family: var(--text-font);
     width: 15rem;
-    border: 0.15rem solid var(--green);
-
+    border: 0.15rem solid var(--grey);
 }
 
 .textarea {
     resize: none;
     height: 15rem;
 }
-
-
-
 
 .fileinput::-webkit-file-upload-button {
     display: none;
@@ -371,6 +366,7 @@ input,
     .card {
         width: 35rem;
         padding: 2rem 3rem;
+        border-radius: 2rem;
     }
 
     .formulario {

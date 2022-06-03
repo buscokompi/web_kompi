@@ -94,9 +94,16 @@ export default {
       console.log(this.templateparams);
       emailjs.send("gmailkompi", "templatecontacto", this.templateparams, "G_EMyGv_3eAspWWRT")
         .then((result) => {
-          console.log("Funciona", result.text);
+          this.$swal({
+            title: "¡Gracias!",
+            text: "Ya le hemos comunicado al cuidador tu interés sobre el animal.",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+          this.$router.push("/FilterAnimals");
         }, (error) => {
-          console.log("No va", error.text);
+          this.$swal("Error", "Ha habido un problema con la verificación. Vuelva a intentarlo más tarde", "error");
         });
     },
 

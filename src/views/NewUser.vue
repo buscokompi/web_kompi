@@ -279,6 +279,7 @@ select {
   font-family: var(--text-font);
   transition: all 1s;
   padding: 0 0.5rem;
+  font-size: 1rem;
 
 }
 

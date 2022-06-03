@@ -4,60 +4,65 @@
     <h1>¡Tú próxima mascota está esperándote!</h1>
     <p>Te mostraremos los resultados más acordes a tu búsqueda</p>
   </div>
-
-  <div class="searcher">
-
-    <div class="filter-mobile">
-      <p><img src="" alt="">Filtrar</p>
+  <section>
+    <div class="search">
+      <div class="filter">
+        <div>
+          <p>Localidad</p>
+          <SelectOptions :options="provinciasArr" v-model="location"
+            @option:selected="onChange(location, 'Ubicacion')" />
+        </div>
+        <div>
+          <p>Especie</p>
+          <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
+        </div>
+        <div>
+          <p>Raza</p>
+          <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
+            @option:selected="onChange(race, 'Raza')" />
+        </div>
+        <div>
+          <p>Sexo</p>
+          <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
+        </div>
+        <div>
+          <p>Edad</p>
+          <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
+        </div>
+        <div>
+          <p>Tamaño</p>
+          <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
+        </div>
+        <div>
+          <p>Color</p>
+          <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
+        </div>
+        <div>
+          <p>Vacunas</p>
+          <SelectOptions :options="othersArr" v-model="vaccination"
+            @option:selected="onChange(vaccination, 'Vacunacion')" />
+        </div>
+        <div class="missing">
+          <p>Esterilización</p>
+          <SelectOptions :options="othersArr" v-model="sterilization"
+            @option:selected="onChange(sterilization, 'Esterilizacion')" />
+        </div>
+      </div>
+      <BaseButton class="btn-search" @click="getFilters(checkFilters())" text="Iniciar búsqueda" />
     </div>
+    <div class="group-cards">
+      <div class="results">
+        <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
+        <!--<SelectOptions :options="options" />-->
+      </div>
 
-    <div class="results">
-      <p class="number-animals">{{ nAnimals }} resultados disponibles</p>
-      <!--<SelectOptions :options="options" />-->
+      <div class="group">
+        <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
+          :specie="e.specie">
+        </CardAnimal>
+      </div>
     </div>
-
-    <div class="group">
-      <CardAnimal v-for="e in animalsArr" :key="e" :name="e.name" :location="e.location" :image="e.url" :id="e.id"
-        :specie="e.specie">
-      </CardAnimal>
-    </div>
-
-    <div class="filter">
-      <p>Localidad</p>
-      <SelectOptions :options="provinciasArr" v-model="location" @option:selected="onChange(location, 'Ubicacion')" />
-
-      <p>Especie</p>
-      <SelectOptions :options="speciesArr" v-model="specie" @option:selected="onChange(specie, 'Especie')" />
-
-      <p>Raza</p>
-      <SelectOptions :options="racesArr" v-model="race" :disabled="disableRace === true"
-        @option:selected="onChange(race, 'Raza')" />
-
-      <p>Sexo</p>
-      <SelectOptions :options="sexArr" v-model="sex" @option:selected="onChange(sex, 'Sexo')" />
-
-      <p>Edad</p>
-      <SelectOptions :options="ageArr" v-model="age" @option:selected="onChange(age, 'Edad')" />
-
-      <p>Tamaño</p>
-      <SelectOptions :options="sizeArr" v-model="size" @option:selected="onChange(size, 'Tamano')" />
-
-      <p>Color</p>
-      <SelectOptions :options="colorArr" v-model="color" @option:selected="onChange(color, 'Color')" />
-
-      <p>Vacunas</p>
-      <SelectOptions :options="othersArr" v-model="vaccination"
-        @option:selected="onChange(vaccination, 'Vacunacion')" />
-
-      <p>Esterilización</p>
-      <SelectOptions :options="othersArr" v-model="sterilization"
-        @option:selected="onChange(sterilization, 'Esterilizacion')" />
-
-
-      <button class="btn-search" @click="getFilters(checkFilters())">Iniciar busqueda</button>
-
-    </div>
-  </div>
+  </section>
   <TheFooter />
 </template>
 
@@ -74,6 +79,7 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
 import { optionsArr, provinciasArr, specieArr, dogsracesArr, catsracesArr, rodentracesArr, birdracesArr, reptilracesArr, sexArr, sizeArr, othersArr, ageArr, colorArr } from "../js/options.js"
 import { KompiStore } from '../stores/KompiStore';
+import BaseButton from '../components/BaseButton.vue';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNpsioEsIzd4kywsZhLS0Mhhsqq2WfJoA",
@@ -91,7 +97,8 @@ export default {
     SelectOptions,
     TheHeader,
     CardAnimal,
-    TheFooter
+    TheFooter,
+    BaseButton
   },
   data() {
     return {
@@ -330,13 +337,13 @@ export default {
 
 .home {
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   background: var(--green);
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 0.4rem;
-  text-align: left;
+  text-align: center;
 }
 
 .home h1 {
@@ -344,7 +351,7 @@ export default {
   font-family: var(--text-font);
   font-size: 1.5rem;
   color: var(--white);
-  margin-top: 6.8rem;
+  margin-top: 9rem;
 }
 
 .home p {
@@ -356,26 +363,34 @@ export default {
 
 }
 
-/*---Buscador---*/
-
-.searcher {
-  width: 85vw;
-  display: grid;
-  justify-items: center;
-  margin: auto;
-  text-align: center;
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .filter {
-  display: none;
-} */
-
-.filter-mobile {
+.filter {
   width: 16rem;
-  height: 3rem;
-  background-color: var(--grey);
-  border-radius: 1rem;
+  height: 100%;
+  background-color: var(--white);
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filter p {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-search {
+  margin-top: 2rem;
+  width: 9rem;
+  align-self: center;
+  text-align: center;
 }
 
 .group {
@@ -387,13 +402,11 @@ export default {
   margin-bottom: 5rem;
 }
 
-
-
 .results {
   height: 100%;
   display: flex;
-  flex-direction: column;
-  margin: 2rem 0;
+  justify-content: center;
+  margin: 5rem 0 2rem 0;
 }
 
 .results p {
@@ -401,160 +414,129 @@ export default {
   font-weight: 600;
 }
 
-@media screen and (min-width: 767px) {
-  .home {
-    height: 30vh;
-  }
-
-  .home p {
-    margin-bottom: 4rem;
-  }
-
-  .searcher {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(60, 1fr);
-    margin: 0 auto;
-    width: 95%;
-  }
-
-  .results {
-    grid-area: 1/ 3 / 2 / 7;
-  }
-
-  .group {
-    grid-area: 2 / 3 / 61 / 7;
-  }
-
+@media screen and (min-width: 900px) {
   .filter {
-    grid-area: 1 / 1 / 61 / 3;
-    background: var(--white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-    margin-left: -2rem;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat (5, 1fr);
+    column-gap: 2.5rem;
   }
 
-  .filter p {
-    font-weight: 600;
-    width: 10rem;
-    text-align: left;
-  }
-
-  .filter p:first-child {
-    margin-top: 5rem;
+  .missing {
+    display: none;
   }
 
   .btn-search {
-    margin-top: 3rem;
-    width: 10rem;
-    height: 3rem;
-    border-radius: 3rem;
-    background: var(--orange);
-    border: 0px;
+    margin-top: 4rem;
   }
+
+  .group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto 5rem;
+    width: 65%;
+    row-gap: 4rem;
+  }
+
+  .results p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
 }
+
+
 
 @media screen and (min-width: 1170px) {
   .home {
+    width: 100vw;
     display: flex;
     justify-content: end;
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
-    gap: 0.4rem;
+
   }
 
   .home h1 {
-    margin: 0 3rem;
-  }
-
-  .home p {
-    margin: 0.5rem 3.2rem 2rem;
-    font-size: 1rem;
-  }
-
-  .searcher {
-    grid-template-rows: none;
-  }
-
-  .results {
-    height: fit-content;
-    display: flex;
-    justify-content: space-between;
-    width: 85%;
-    align-items: flex-start;
-  }
-
-  .results select {
-    margin: 1rem 0;
-  }
-
-  .group {
-    width: 85%;
-    grid-template-columns: repeat(2, 1fr);
-    grid-area: 2 / 3 / 30 / 7;
-  }
-
-  .filter {
-    width: 85%;
-    margin: 0;
-  }
-
-  .filter p {
-    width: 17rem;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .home h1 {
-    margin-left: 10rem;
+    margin-left: 7rem;
     font-size: 1.7rem;
   }
 
   .home p {
     font-size: 1.5rem;
-    margin: 0 0 3rem 10.1rem;
+    margin: 0 0 3rem 7rem;
   }
 
-  .searcher {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(20, 1fr);
-    margin: 0 auto;
-    width: 85vw;
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 8rem;
   }
 
-  .results {
-    grid-area: 1 / 3 / 2 / 7;
-    justify-content: space-between;
-    margin-top: 5rem;
-    flex-flow: row;
-    width: 100%;
-  }
-
-  .results p {
-    margin: 0;
-  }
-
-  .results select {
-    margin: -0.5rem 0 0;
-  }
-
-  .group {
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-    justify-items: center;
+  .search {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 7rem;
   }
 
   .filter {
-    margin-left: -10rem;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .results {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5.5rem;
+  }
+
+  .group-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 48%;
+  }
+
+  .group {
+    column-gap: 5rem;
   }
 }
 
-@media screen and (min-width: 1750px) {
+@media screen and (min-width: 1300px) {
+  .home h1 {
+    font-size: 2.3rem;
+    margin-left: 12rem
+  }
+
+  .home p {
+    margin-left: 12rem;
+  }
+
+  section {
+    column-gap: 3rem;
+  }
+
+  .search {
+    margin-left: 12rem;
+  }
+
+  .group-cards {
+    align-items: flex-start;
+    width: 100%;
+  }
+
   .group {
     grid-template-columns: repeat(4, 1fr);
+    column-gap: 3rem;
+
+  }
+
+  .results {
+    margin-left: 8rem;
   }
 }
 </style>

@@ -3,7 +3,7 @@
 
     <div class="unit">
       <p class="number">811</p>
-      <p>adoptadas</p>
+      <p>contactadas</p>
     </div>
     <div class="unit">
       <p class="number">319</p>
@@ -20,14 +20,13 @@
 </template>
 
 <script>
-    export default {
-  components: { },
+export default {
+  components: {},
 
-    }
+}
 </script>
 
 <style scoped>
-
 .counter {
   width: 100%;
   height: 30vh;
@@ -52,7 +51,7 @@
 }
 
 @media screen and (min-width: 767px) {
-.counter {
+  .counter {
     gap: 5rem;
   }
 
@@ -66,15 +65,11 @@
 
 }
 
-@media screen and (min-width: 1170px) {
-
-
-}
+@media screen and (min-width: 1170px) {}
 
 @media screen and (min-width: 1300px) {
-.counter {
+  .counter {
     gap: 10rem;
   }
 }
-
 </style>
